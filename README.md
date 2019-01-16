@@ -12,3 +12,5 @@
 ## 昔のブログ
 - [http://otaku-of-suri.hatenablog.com](http://otaku-of-suri.hatenablog.com): これは学部生のときに同じ学科の友達と共同でやってたブログ。`よねすけ`タグを見てもらうと、僕の書いたものが見れます。
 - [https://yonesuke1729.hatenablog.com](https://yonesuke1729.hatenablog.com): 共同ブログのあとに自分のブログを作ろうと思ったもの。[上のブログ](http://otaku-of-suri.hatenablog.com)の中で自分の書いたものをこっちにインポートしてある。
+
+## [リンク集](https://yonesuke.github.io/link)
