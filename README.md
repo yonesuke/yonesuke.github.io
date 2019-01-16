@@ -7,7 +7,7 @@
 - [Google Scholar](https://scholar.google.com/citations?hl=en&user=XN3JxqIAAAAJ)
 
 ## 雑記
-[ここ](https://github.com/yonesuke/TIL)に日々の学びをtexでまとめたものを貼っています。
+[ここ](https://github.com/yonesuke/TIL)に日々の学びをtexでまとめたものを貼っています。[ここ](TIL)
 
 ## [日記](https://yonesuke.github.io/diary)
 [立川先生の日記](http://yujitach.sakura.ne.jp/diary/)が面白かったので自分も一言日記的なのを書いていこうかな、と思い立ちました。
