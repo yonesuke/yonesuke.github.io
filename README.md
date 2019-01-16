@@ -1,3 +1,6 @@
+## github.ioを使う
+[テスト](index.html)みたいな感じで書けば良い。
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/yonesuke/yonesuke.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
