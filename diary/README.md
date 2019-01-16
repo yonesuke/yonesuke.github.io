@@ -17,3 +17,5 @@ $$
 \begin{equation}
 \frac{\partial f}{\partial t}+\frac{\partial}{\partial \theta}(v[f]f)=0
 \end{equation}
+
+文中で\(\frac{a}{b}\)で出来る？？
