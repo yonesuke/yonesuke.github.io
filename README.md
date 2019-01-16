@@ -1,5 +1,6 @@
 ## github.ioを使う
-[テスト](index.html)みたいな感じで書けば良い。
+~~[テスト](index.html)みたいな感じで書けば良い。~~
+[テスト](https://yonesuke.github.io/index.html)だ。間違えた。
 
 ## Welcome to GitHub Pages
 
