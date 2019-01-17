@@ -9,3 +9,6 @@
 
 ## 機械学習
 - [http://banditalgs.com](http://banditalgs.com): Bandit Algorithmについてまとめた本。Banditアルゴリズムは興味あるから読みたい。有名な人が書いてるらしい。
+- [Dive into Deep Learning](https://en.d2l.ai): 600pを超える大著で，基本的話題からCV，NLP等の話題も多数。Python による実装も
+なお，著者の一人A. J. Smolaはカーネル法，SVMのトップ研究者であり，世界的に有名な本格的教科書『Learning with kernels』の著者。
+だそうです。([元ツイート](https://mobile.twitter.com/learn_learning3/status/1084441691157753856))
