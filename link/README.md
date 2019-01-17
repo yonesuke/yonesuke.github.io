@@ -6,6 +6,7 @@
 
 ## 数学
 - [An introduction to measure theory](https://terrytao.files.wordpress.com/2011/01/measure-book1.pdf): テレンス・タオが書いた測度論の本。一発目の演習問題から難しかった。読み応えは相当ある。
+- [Kovacicのアルゴリズム](https://drive.google.com/file/d/1lsTMOx5PDLnVqeaIUxgWpM4fprYLQ1np/view): Kovacicのアルゴリズムは有理係数の2階線形微分方程式を解くアルゴリズムである。いろいろ使うことがあると思うのでここに載せておく。
 
 ## 機械学習
 - [Bandit Algorithms](http://banditalgs.com): Bandit Algorithmについてまとめた本。Banditアルゴリズムは興味あるから読みたい。有名な人が書いてるらしい。
