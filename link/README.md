@@ -7,7 +7,7 @@
 ## 数学
 - [An introduction to measure theory](https://terrytao.files.wordpress.com/2011/01/measure-book1.pdf){:target="_blank"}: テレンス・タオが書いた測度論の本。一発目の演習問題から難しかった。読み応えは相当ある。
 - [Kovacicのアルゴリズム](https://drive.google.com/file/d/1lsTMOx5PDLnVqeaIUxgWpM4fprYLQ1np/view){:target="_blank"}: Kovacicのアルゴリズムは有理係数の2階線形微分方程式を解くアルゴリズムである。いろいろ使うことがあると思うのでここに載せておく。
-- [Course Notes - J.S. Milne](https://www.jmilne.org/math/CourseNotes/index.html): Milne先生の講義録。幅広いジャンルの講義録を見ることが出来る。
+- [Course Notes - J.S. Milne](https://www.jmilne.org/math/CourseNotes/index.html){:target="_blank"}: Milne先生の講義録。幅広いジャンルの講義録を見ることが出来る。
 
 ## 機械学習
 - [Bandit Algorithms](http://banditalgs.com){:target="_blank"}: Bandit Algorithmについてまとめた本。Banditアルゴリズムは興味あるから読みたい。有名な人が書いてるらしい。
