@@ -2,6 +2,10 @@
 
 # 日記
 
+## 1月22日
+[ここ](https://en.wikipedia.org/wiki/List_of_quantum-mechanical_systems_with_analytical_solutions){:target="_blank"}
+を見るとsolvableな量子力学のモデルに付いて言及があった。ここを見ながら、Kovacicを使ってなにか出来ないか考えてみたい。
+
 ## 1月21日
 食っちゃ寝の土日やった。土曜日は就活イベントに行ったけど、Dへの気持ちを強めるだけやった。
 日曜日は15時に起きてスパイダーマンしてた。研究しよう。
