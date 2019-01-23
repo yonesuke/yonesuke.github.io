@@ -5,6 +5,8 @@
 ## 1月24日
 [藤木直人](https://dot.asahi.com/dot/2018022700056.html?page=1){:target="_blank"}と辻本先生が同時期に同じ研究室にいはったらしい。かっこいい。
 
+[レポート](../TIL/Notes/lv.pdf){:target="_blank"}をまとめ始めた。Darboux変換で解をどんどん作っていく方法、手続きとしては閉じていて問題ないけど、解けるとは言ってない、みたいな感じで非常に厳しい。
+
 ## 1月22日
 [ここ](https://en.wikipedia.org/wiki/List_of_quantum-mechanical_systems_with_analytical_solutions){:target="_blank"}
 を見るとsolvableな量子力学のモデルに付いて言及があった。ここを見ながら、Kovacicを使ってなにか出来ないか考えてみたい。
