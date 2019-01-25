@@ -14,3 +14,6 @@
 - [https://yonesuke1729.hatenablog.com](https://yonesuke1729.hatenablog.com){:target="_blank"}: 共同ブログのあとに自分のブログを作ろうと思ったもの。[上のブログ](http://otaku-of-suri.hatenablog.com){:target="_blank"}の中で自分の書いたものをこっちにインポートしてある。
 
 ## [リンク集](https://yonesuke.github.io/link)
+
+## その他
+- [編集](https://github.com/yonesuke/yonesuke.github.io){:target="_blank"}
