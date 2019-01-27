@@ -1,6 +1,8 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+## 1月27日
+論文読んで再現実装する。
 
 ## 1月25日
 [解答](../TIL/Notes/ode.pdf){:target="_blank"}の中の計算がめんどくさいところを仕方なくtex打ちしてる。
