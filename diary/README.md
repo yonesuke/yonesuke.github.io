@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+## 2月1日
+Darboux変換分かってるのかわかっていないのかよくわからず。レポートの指定通りにやっているがほしい結果にならない。
+
 ## 1月31日
 自分はいろんな方法で一つの事柄を示す、ということが好きらしい。
 - 量子力学の調和振動子のエネルギー固有値の導出
