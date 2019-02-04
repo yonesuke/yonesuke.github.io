@@ -1,6 +1,17 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月4日
+B4のしもんかいだった。お疲れ様。
+
+[茉奈佳奈のホームページ](http://www.manakana.jp/smile/profile/index.html){:target="_blank"}の資格のところに普通自動車免許って書いてるのがツボだった。自分も書こうと思う。
+
+# 2月3日
+一日レポートを考える。Darboux変換はやはりわからない。
+
+# 2月2日
+星野源ライブ！！！たまらんかった！！！ライブのあの高揚感はなんて表現したらいいのかわからんが最高やった。
+
 ## 2月1日
 Darboux変換分かってるのかわかっていないのかよくわからず。レポートの指定通りにやっているがほしい結果にならない。
 
