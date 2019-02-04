@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月5日
+ひとまず[レポート](../TIL/Notes/lv.pdf){:target="_blank"}を終わらせた。Darboux変換の問題を解けなかったのは残念。
+
 # 2月4日
 B4のしもんかいだった。お疲れ様。
 
