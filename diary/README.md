@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月6日
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pHJV-E1EOA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+VillaniがKAMの紹介をした講演。めちゃおもろい。
+
 # 2月5日
 ひとまず[レポート](../TIL/Notes/lv.pdf){:target="_blank"}を終わらせた。Darboux変換の問題を解けなかったのは残念。
 
@@ -11,6 +15,8 @@ B4のしもんかいだった。お疲れ様。
 
 # 2月3日
 一日レポートを考える。Darboux変換はやはりわからない。
+
+その後先輩から教えてもらった。Nソリトン解はN個の固有値から求まる、ということを頭の片隅においておけば楽にわかったかもしれない。
 
 # 2月2日
 星野源ライブ！！！たまらんかった！！！ライブのあの高揚感はなんて表現したらいいのかわからんが最高やった。
