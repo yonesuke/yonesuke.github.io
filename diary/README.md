@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月7日
+集中講義のレポート問題を解きつつ、研究を少ししたりする。
+
 # 2月6日
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pHJV-E1EOA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 VillaniがKAMの紹介をした講演。めちゃおもろい。
