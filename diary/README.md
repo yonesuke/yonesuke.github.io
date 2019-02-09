@@ -1,11 +1,19 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月8日
+昼にピザを食べに行く。授業があるにもかかわらずワインを飲む。
+<center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13067.54596471159!2d135.7805384!3d35.03456944999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3310175f3a562025!2sPizzeria+da+Ciro!5e0!3m2!1sja!2sjp!4v1549696723704" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></center>
+その後先輩の博士公聴会。自分も何年後かにあそこで話すのだろうか。
+
+夜は飲み会。美味しい料理と楽しい会話が出来たので良かった。
+<center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1634.0395621116324!2d135.76952740282107!3d35.004724390393434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108ead4610f77%3A0xf7fd793c5b1d2512!2z5qOy5a62IOacrOW6lw!5e0!3m2!1sja!2sjp!4v1549696989695" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></center>
+
 # 2月7日
 集中講義のレポート問題を解きつつ、研究を少ししたりする。
 
 # 2月6日
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pHJV-E1EOA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/pHJV-E1EOA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 VillaniがKAMの紹介をした講演。めちゃおもろい。
 
 # 2月5日
