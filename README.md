@@ -3,7 +3,7 @@
 
 ## Research Interest
 - 力学系の研究をしています。
-- <script src="https://bibbase.org/show?bib=https%3A%2F%2Fyonesuke.github.io%2Fyoneda.bib&jsonp=1"></script>
+<script src="https://bibbase.org/show?bib=https%3A%2F%2Fyonesuke.github.io%2Fyoneda.bib&jsonp=1"></script>
 
 ## 資格
 - 普通自動車免許
