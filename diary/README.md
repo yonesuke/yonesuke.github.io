@@ -1,6 +1,19 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+
+# 2月14日
+先生との話し合いのすえ、論文がやはりおかしい、という話になった。
+一回自分で計算を確かめてみよう。
+
+# 2月13日
+レポートを提出した。
+
+読んでる論文の計算の確認をした。
+
+# 2月10日
+就活イベントに参加。自分はやはりDに行くべきではないか、という気持ちを強める。
+
 # 2月8日
 昼にピザを食べに行く。授業があるにもかかわらずワインを飲む。
 <center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13067.54596471159!2d135.7805384!3d35.03456944999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3310175f3a562025!2sPizzeria+da+Ciro!5e0!3m2!1sja!2sjp!4v1549696723704" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></center>
