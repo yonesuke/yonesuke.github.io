@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月19日
+研究室の机周りをキレイにした。
+
+mathematicaの導入の仕方で手こずる。
 
 # 2月14日
 先生との話し合いのすえ、論文がやはりおかしい、という話になった。
