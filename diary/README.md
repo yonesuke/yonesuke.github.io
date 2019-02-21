@@ -1,6 +1,14 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月21日
+バイトでせっせとコードを書く。pythonを書くのがだいぶ慣れてきている気がする。
+
+せっかくなので、これからは英語でarticleをまとめたいと思う。論文書く練習にもなると思う。
+
+# 2月20日
+HMFでの計算を振り返ってみると話が合わなくなってきた。ややこしい問題だ。
+
 # 2月19日
 研究室の机周りをキレイにした。
 
