@@ -1,6 +1,14 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 2月25日
+乃木坂のバースデイライブ(ディレイ)を見に行く。なーちゃん卒業おめでとう。
+
+# 2月24日
+大文字山に登る。古傷の左足付け根の痛みが再発。どうしたもんかいの〜〜
+
+self consistency eqを経由して求めた分岐図がなんだか変な感じになった。どうしたもんかいの〜〜
+
 # 2月21日
 バイトでせっせとコードを書く。pythonを書くのがだいぶ慣れてきている気がする。
 
