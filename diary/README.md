@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月5日
+なぜかビルドできないと怒られる。
+
 # 3月4日
 マスカレード・ホテルを前に見に行って面白かったので本をかった。
 
