@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月7日
+研究室に置いていたディスプレイを家に持って帰ってきた。
+
+# 3月6日
+名古屋からの帰還。
+
 # 3月5日
 なぜかビルドできないと怒られる。
 
