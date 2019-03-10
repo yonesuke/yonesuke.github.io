@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月9日
+哲学の道を通って南禅寺に向かった。京都を散歩するのは非常に楽しい物がある。
+
+# 3月8日
+飲み会楽しかった。高校の人たちと集まるの、いいよね。
+
 # 3月7日
 研究室に置いていたディスプレイを家に持って帰ってきた。
 
