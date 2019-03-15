@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月16日
+久々に研究室に向かう。
+机が新しく増えていた。
+
 # 3月11日
 先生との話し合い。博士課程の受け入れ先について。いまがホンマに人生の分岐点な気がする。
 
