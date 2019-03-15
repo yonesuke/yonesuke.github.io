@@ -14,5 +14,4 @@
 - [Dive into Deep Learning](https://en.d2l.ai){:target="_blank"}: 600pを超える大著で，基本的話題からCV，NLP等の話題も多数。Python による実装も
 なお，著者の一人A. J. Smolaはカーネル法，SVMのトップ研究者であり，世界的に有名な本格的教科書『Learning with kernels』の著者。
 だそうです。([元ツイート](https://mobile.twitter.com/learn_learning3/status/1084441691157753856){:target="_blank"})
-- [Computational Optimal Transport](https://optimaltransport.github.io){:target="_blank"}: マルコ先生も加わって書いた最適輸送の本。
-[arXiv:1803.00567](https://arxiv.org/abs/1803.00567){:target="_blank"}:でも読めるよ。
+- [Computational Optimal Transport](https://optimaltransport.github.io){:target="_blank"}: マルコ先生も加わって書いた最適輸送の本。[arXiv:1803.00567](https://arxiv.org/abs/1803.00567){:target="_blank"}でも読めるよ。
