@@ -3,6 +3,7 @@
 ## 物理
 - [https://member.ipmu.jp/yuji.tachikawa/lectures/](https://member.ipmu.jp/yuji.tachikawa/lectures/){:target="_blank"}: 立川先生の講義録。よくまとまっているので読んでみたい。
 - [Introduction to 2d Conformal Field Theories](https://sites.google.com/site/snawata/teaching/fall-2018){:target="_blank"}: 共形場理論のに関する授業。
+- [John Cardy's homepage](http://www-thphys.physics.ox.ac.uk/people/JohnCardy/){:target="_blank"}: Cardy先生のホームページ。くりこみ群とか統計力学絡みの話の講義録がいくらか載っている。
 
 ## 数学
 - [An introduction to measure theory](https://terrytao.files.wordpress.com/2011/01/measure-book1.pdf){:target="_blank"}: テレンス・タオが書いた測度論の本。一発目の演習問題から難しかった。読み応えは相当ある。
