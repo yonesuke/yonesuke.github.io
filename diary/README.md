@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月17日
+キャプテン・マーベルを見た。ドチャクソ面白かったのでマーベル作品を見返していく。
+
+帰りにアップルストアに寄ったが、新しいスマホがめっちゃでかくて使いづらそうに感じてしまった。
+新しいスマホをどうしようかなあ。
+
 # 3月16日
 久々に研究室に向かう。
 机が新しく増えていた。
