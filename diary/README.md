@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月19日
+Quoraに投稿されていた問題の答えがひどかったので、自分で[まとめた](../TIL/Notes/quora.pdf){:target="_blank"}。
+掲示板にも書き込もうかな。こういう掲示板に書き込んだことは無いがやってみよう。
+
 # 3月17日
 キャプテン・マーベルを見た。ドチャクソ面白かったのでマーベル作品を見返していく。
 
