@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月22日
+研究室見学に行ったが、思っているのとは違っていたのかもしれない。という気持ちになってしまった。。。
+
 # 3月19日
 Quoraに投稿されていた問題の答えがひどかったので、自分で[まとめた](../TIL/Notes/quora.pdf){:target="_blank"}。
 掲示板にも書き込もうかな。こういう掲示板に書き込んだことは無いがやってみよう。
