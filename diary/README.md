@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 3月24日
+昨日はアルバイトでLuaを書いたが、非常に難しかった。それでもスクリプト言語ということもあって取り組みやすかったと思う。
+
+PFNの作っているcupyを使って蔵本モデルの数値計算をやってみたい。
+GPUを使ってどれくらい早くなるのかが気になる。
+
 # 3月22日
 研究室見学に行ったが、思っているのとは違っていたのかもしれない。という気持ちになってしまった。。。
 
