@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月1日
+ここ最近考えることが多くて日記を更新するのを忘れていた。
+フランスのことはかなり現実味を帯びてきた。行っちゃうかも。
+
+新元号が発表された。『令和』だそうだ。いまは違和感MAXだがそのうち慣れるのだろうか。
+
 # 3月24日
 昨日はアルバイトでLuaを書いたが、非常に難しかった。それでもスクリプト言語ということもあって取り組みやすかったと思う。
 
