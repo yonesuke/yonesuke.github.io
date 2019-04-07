@@ -1,6 +1,20 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月7日
+ラズパイの調子が悪いので設定し直す。参考にしたwebページをまとめておく。
+- [SDカードのフォーマット](https://www.michaelcrump.net/the-magical-command-to-get-sdcard-formatted-for-fat32/)
+FAT32をExFATに変えれば良い。
+- [残りの設定](https://qiita.com/ttyokoyama/items/7afe6404fd8d3e910d09)
+
+これで大丈夫かな。
+
+# 4月6日
+飲み会で謎にGPUをもらった。ただ、Macでは使うことができなさそう。
+
+南禅寺あたりまで散歩。いつもどおりのコースだけどやはり楽しい。
+
+
 # 4月5日
 Google Colaboratoryを使った数値計算をおこなった。さすがGPUの力は偉大で、えげつない高速化に成功した。。。
 
