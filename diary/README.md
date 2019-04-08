@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月8日
+研究室のGPUのパソコンにCUDAが入らない問題やけど、OPENMPを使うとできる説があるので、そちらで頑張ってみようかなあと思ったり思ったり。
+
 # 4月7日
 ラズパイの調子が悪いので設定し直す。参考にしたwebページをまとめておく。
 - [SDカードのフォーマット](https://www.michaelcrump.net/the-magical-command-to-get-sdcard-formatted-for-fat32/)
