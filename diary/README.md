@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月12日
+甲子園で阪神DeNAの試合を観に行った。高校の友達の近況を聞く。
+やはり医者は儲かるらしい。
+
 # 4月8日
 研究室のGPUのパソコンにCUDAが入らない問題やけど、OPENMPを使うとできる説があるので、そちらで頑張ってみようかなあと思ったり思ったり。
 
