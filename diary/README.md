@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月20日
+フェルミ分布の[低温展開の証明](../TIL/Notes/sommerfeld.pdf){:target="_blank"}のメモを書いた。
+こういう計算ができるのが驚異的だな、と思った。
+
 # 4月12日
 甲子園で阪神DeNAの試合を観に行った。高校の友達の近況を聞く。
 やはり医者は儲かるらしい。
