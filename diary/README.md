@@ -1,6 +1,9 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 4月25日
+早く修論を書き上げるぞ〜〜
+
 # 4月20日
 フェルミ分布の[低温展開の証明](../TIL/Notes/sommerfeld.pdf){:target="_blank"}のメモを書いた。
 こういう計算ができるのが驚異的だな、と思った。
