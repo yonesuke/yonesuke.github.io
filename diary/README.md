@@ -1,6 +1,12 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 5月4日
+論文リジェクトの連絡。。。
+気持ちが折れてしまう。。。
+
+だが、ここが耐え時。最近みんな心労が耐えないが頑張っていきたい。
+
 # 4月25日
 早く修論を書き上げるぞ〜〜
 
