@@ -1,6 +1,10 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # 日記
+# 5月16日
+workonaすごい。めちゃめちゃ便利だ〜〜
+明日はローレンツ祭で研究室のお話を聞きに行くぜ。
+
 # 5月4日
 論文リジェクトの連絡。。。
 気持ちが折れてしまう。。。
