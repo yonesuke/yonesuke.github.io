@@ -7,20 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Sun, 18 Apr 2021 01:55:17 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 21:20:05 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>多変量正規分布間のKL距離</title>
-      <link>https://yonesuke.github.io/posts/my-first-page/</link>
-      <pubDate>Sun, 18 Apr 2021 01:55:17 +0900</pubDate>
+      <link>https://yonesuke.github.io/posts/kl-gaussian/</link>
+      <pubDate>Mon, 19 Apr 2021 00:32:17 +0900</pubDate>
       
-      <guid>https://yonesuke.github.io/posts/my-first-page/</guid>
-      <description>hogefuga
-$1/3$
-$$ \frac{d\theta_{i}}{dt} $$
-確率分布の間の&amp;quot;近さ&amp;quot;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
+      <guid>https://yonesuke.github.io/posts/kl-gaussian/</guid>
+      <description>確率分布の間の&amp;quot;近さ&amp;quot;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
 準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
-導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {2}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) + \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるのでそれぞれと$p(u)$との積の積分を計算していきます。
- $\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {2}|}$  これは$u$に依存しない定数なので、 $$ \frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {2}|}\int_{\mathbb{R}^{N}}p(u)du=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {2}|} $$ となります。</description>
+導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) + \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp;amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp;amp; + \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。</description>
     </item>
     
     <item>
@@ -54,7 +50,14 @@ $$ \frac{d\theta_{i}}{dt} $$
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yonesuke.github.io/about/</guid>
-      <description></description>
+      <description>Education   Ph.D. student April 2020 -
+Nonlinear Physics Division, Department of Applied Mathematical Scienced, Graduate School of Informatics, Kyoto University.
+Supervised by Toshio Aoyagi
+  M.S. April 2018 - March 2020
+Dynamical Systems Group, Department of Applied Mathematics and Physics, Graduate School of Informatics, Kyoto University.
+Supervised by Yoshiyuki Y. Yamaguchi
+  B.S. April 2014 - March 2018
+Department of Informatics and Mathematical Science, Faculty of Engineering, Kyoto University.</description>
     </item>
     
     <item>
