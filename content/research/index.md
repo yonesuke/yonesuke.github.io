@@ -1,3 +1,8 @@
+---
+title: "Research"
+draft: false
+---
+
 # Keywords
 [Synchronization](/posts/), [Kuramoto model](), [Critical phenomena](), [Gaussian process]()
 
