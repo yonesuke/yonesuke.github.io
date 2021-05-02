@@ -52,4 +52,10 @@ url: /teaching/2021-suutekirikai
 $$ (\textrm{成績}) = \min\left\\{100, 5 \times (\textrm{問題演習を提出した回数})+ \left\lceil\frac{5}{3}\times(\textrm{試験で正解した問題数})\right\rceil\right\\} $$
 になります[^ceil]。
 
+---
+
+## 参考
+
+- [2020年度のホームページ](/teaching/2020-suutekirikai/)
+
 [^ceil]: $\lceil x\rceil$は天井関数と呼ばれるもので、$x$以上の最小の整数です。例えば、$\lceil 3\rceil=3, \lceil 12.7\rceil=13, \lceil 33.33\cdots\rceil=34$です。
