@@ -10,6 +10,7 @@ draft: false
 ## 2020
 - 2020年10月-2021年2月, 数的理解(短) (京都外国語大学・非常勤講師)
     - [ホームページ](https://www.notion.so/5b736da8bc5345e4bb5c7feec8825f32)
+    - [ここ](/teaching/2020-suutekirikai)に作り直しました
 
 # Teaching Assistant
 

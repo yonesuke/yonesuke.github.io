@@ -8,13 +8,27 @@
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright><atom:link href="https://yonesuke.github.io/suteki/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>数的理解</title>
+      <title>2020年度 数的理解</title>
+      <link>https://yonesuke.github.io/teaching/2020-suutekirikai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yonesuke.github.io/teaching/2020-suutekirikai/</guid>
+      <description>授業内容・計画 問題演習を通して、基礎的な数学の知識を身につける演習を行う。特に、SPI試験などを受験する際に必要な数学的知識を身につけ、問題が解けるようになることを目指す。また、問題演習を通して、数学的な考え方や論理的な考え方を身につけることも目指す。
+ 教科書 『最新最強のSPIクリア問題集』 成美堂出版編集部　著 (成美堂出版)
+ スケジュール 水曜4限 (15:40~17:20)
+    日付 授業内容 授業スライド 問題演習     第1回 10月7日 オリエンテーション Google スライド      割合 Google スライド 割合 PDF   第2回 10月14日 損益算 Google スライド 損益算 PDF   第3回 10月21日 順序、組み合わせ Google スライド 順序、組み合わせ PDF   第4回 10月28日 確率 Google スライド 確率 PDF   第5回 11月11日 方程式 Google スライド 方程式 PDF   第6回 11月25日 $n$進数 Google スライド $n$進数 PDF   第7回 12月2日 距離と時間と速さ Google スライド 距離と時間と速さ PDF   第8回 12月9日 濃度算 Google スライド 濃度算 PDF   第9回 12月16日 数列 Google スライド 数列 PDF   第10回 12月23日 関数とグラフ Google スライド 関数とグラフ PDF   第11回 1月6日 集合 Google スライド 集合 PDF   第12回 1月13日 論理 Google スライド 論理 PDF   第13回 1月20日 テスト演習と解説1  解答 PDF   第14回 1月27日 テスト演習と解説2  解答 PDF     成績評価   平常点 平常点は60点満点になります。第1回から第12回までの各授業で問題演習を提出した回数に5をかけた数が平常点になります。例えば12回すべての問題演習を提出した方の平常点は60点です。一方で12回のうち9回しか提出出来なかった方の平常点は45点です。</description>
+    </item>
+    
+    <item>
+      <title>2021年度 数的理解</title>
       <link>https://yonesuke.github.io/teaching/2021-suutekirikai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yonesuke.github.io/teaching/2021-suutekirikai/</guid>
       <description>授業内容・計画 問題演習を通して、基礎的な数学の知識を身につける演習を行う。特に、SPI試験などを受験する際に必要な数学的知識を身につけ、問題が解けるようになることを目指す。また、問題演習を通して、数学的な考え方や論理的な考え方を身につけることも目指す。
- 日時    日時 内容 資料     test test test     成績評価  教科書 </description>
+ 教科書 未定
+ スケジュール 水曜4限 (15:40~17:20)
+    日付 授業内容 授業スライド 問題演習     第1回  オリエンテーション       割合     第2回  損益算     第3回  順序、組み合わせ     第4回  確率     第5回  方程式     第6回  $n$進数     第7回  距離と時間と速さ     第8回  濃度算     第9回  数列     第10回  関数とグラフ     第11回  集合     第12回  論理     第13回  テスト演習と解説1     第14回  テスト演習と解説2       成績評価   平常点 平常点は60点満点になります。第1回から第12回までの各授業で問題演習を提出した回数に5をかけた数が平常点になります。例えば12回すべての問題演習を提出した方の平常点は60点です。一方で12回のうち9回しか提出出来なかった方の平常点は45点です。</description>
     </item>
     
   </channel>
