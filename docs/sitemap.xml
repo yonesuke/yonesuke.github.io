@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yonesuke.github.io/posts/latex-setup/</loc>
-    <lastmod>2021-05-05T18:46:29+09:00</lastmod>
-  </url><url>
     <loc>https://yonesuke.github.io/posts/</loc>
+    <lastmod>2021-05-06T12:53:12+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/gp-articles/</loc>
+    <lastmod>2021-05-06T12:53:12+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/latex-setup/</loc>
     <lastmod>2021-05-05T18:46:29+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/posts/stable_simulations/</loc>
