@@ -51,6 +51,18 @@ $\LaTeX$で文章を書くときによく行う設定をまとめておきます
     ```
     特に`breaklinks=true`はリンクを改行してくれるので重宝します。リンクの色は好みに合わせて変えてください。
 
+- `biblatex`
+    次のオプションとともに呼ぶとPR系の論文のように参考文献を表示してくれます。
+    ```tex
+    \usepackage[style=phys,articletitle=true,biblabel=brackets,chaptertitle=false,pageranges=false,doi=false]{biblatex}
+    % bibファイルの読み込み
+    \addbibresource{main.bib}
+    % ...
+    % 本文
+    % ...
+    % これで出力
+    \printbibliography
+    ```
 
 ## 便利サイト
 
