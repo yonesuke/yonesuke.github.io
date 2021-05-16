@@ -4,8 +4,6 @@ date: 2021-05-16T12:18:18+09:00
 draft: false
 ---
 
-# 包除原理
-
 測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して
 $$
 \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right)
