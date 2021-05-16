@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 包除原理 | Ryosuke Yoneda&#39;s Homepage</title>
+  <meta name="description" content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="包除原理" />
+<meta property="og:description" content="包除原理 測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して $$ \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
+証明 証明は $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu $$ を二通りに計算することにより求まります。
+はじめに愚直に展開してみることにします。 $$ \prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i} $$ は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}} =\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}} $$ となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu = \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ がわかります。これで包除原理の右辺が示されました。
+次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}} =1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}} =1_{\bigcup_{i=1}^{n}A_{i}}$$ となります。最後にドモルガンの法則を用いました。 よって、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu =\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu = \mu\left(\bigcup_{i=1}^{n}A_{i}\right) $$ となります。 これで包除原理の左辺が導かれ、包除原理が示されました。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yonesuke.github.io/posts/inclusion_exclusion/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-16T12:18:18&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-16T12:18:18&#43;09:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="包除原理"/>
+<meta name="twitter:description" content="包除原理 測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して $$ \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
+証明 証明は $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu $$ を二通りに計算することにより求まります。
+はじめに愚直に展開してみることにします。 $$ \prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i} $$ は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}} =\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}} $$ となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu = \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ がわかります。これで包除原理の右辺が示されました。
+次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}} =1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}} =1_{\bigcup_{i=1}^{n}A_{i}}$$ となります。最後にドモルガンの法則を用いました。 よって、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu =\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu = \mu\left(\bigcup_{i=1}^{n}A_{i}\right) $$ となります。 これで包除原理の左辺が導かれ、包除原理が示されました。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://yonesuke.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://yonesuke.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://yonesuke.github.io/posts/gp-articles/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&text=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&is_video=false&description=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&name=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86&description=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%20%e6%b8%ac%e5%ba%a6%e7%a9%ba%e9%96%93%24%28X%2c%5cmathcal%7bB%7d%2c%5cmu%29%24%e3%81%ae%e6%9c%89%e9%99%90%e6%b8%ac%e5%ba%a6%e9%9b%86%e5%90%88%24A_%7bi%7d%28i%3d1%2c%5cdots%2cn%29%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%20%24%24%20%5cmu%5cleft%28%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%5cright%29%3d%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d%5cmu%5cleft%28%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%8c%e6%88%90%e3%82%8a%e7%ab%8b%e3%81%a1%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%82%92%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%28Inclusion-exclusion%20principle%29%e3%81%a8%e5%91%bc%e3%81%b3%e3%81%be%e3%81%99%e3%80%82%0a%e8%a8%bc%e6%98%8e%20%e8%a8%bc%e6%98%8e%e3%81%af%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%24%24%20%e3%82%92%e4%ba%8c%e9%80%9a%e3%82%8a%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e3%82%88%e3%82%8a%e6%b1%82%e3%81%be%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%af%e3%81%98%e3%82%81%e3%81%ab%e6%84%9a%e7%9b%b4%e3%81%ab%e5%b1%95%e9%96%8b%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%24%24%20%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-x_%7bi%7d%29%3d%5csum_%7bJ%5csubset%5bn%5d%7d%28-1%29%5e%7b%7cJ%7c%7d%5cprod_%7bi%5cin%20J%7dx_%7bi%7d%20%24%24%20%e3%81%af%e5%b1%95%e9%96%8b%e3%81%99%e3%82%8c%e3%81%b0%e3%82%8f%e3%81%8b%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%e3%81%93%e3%81%ae%24x_%7bi%7d%24%e3%81%ab%241_%7bA_%7bi%7d%7d%24%e3%82%92%e4%bb%a3%e5%85%a5%e3%81%99%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%201-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%3d1-%5csum_%7bJ%5csubset%5bn%5d%7d%28-1%29%5e%7b%7cJ%7c%7d%5cprod_%7bi%5cin%20J%7d1_%7bA_%7bi%7d%7d%20%3d%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d1_%7b%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%93%e3%81%a7%241_%7bA%7d1_%7bB%7d%3d1_%7bA%5ccap%20B%7d%24%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e4%bb%a5%e4%b8%8a%e3%82%88%e3%82%8a%e3%80%81%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%3d%20%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d%5cmu%5cleft%28%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%a7%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%ae%e5%8f%b3%e8%be%ba%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0a%e6%ac%a1%e3%81%ab%e8%b3%a2%e3%81%84%e8%a8%88%e7%ae%97%e3%82%92%e3%81%97%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%241-1_%7bA%7d%3d1_%7b%5coverline%7bA%7d%7d%24%e3%81%aa%e3%81%ae%e3%81%a7%e3%80%81%20%24%24%201-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%3d1-%5cprod_%7bi%3d1%7d%5e%7bn%7d1_%7b%5coverline%7bA_%7bi%7d%7d%7d%3d1-1_%7b%5cbigcap_%7bi%3d1%7d%5e%7bn%7d%5coverline%7bA_%7bi%7d%7d%7d%20%3d1_%7b%5coverline%7b%5cbigcap_%7bi%3d1%7d%5e%7bn%7d%5coverline%7bA_%7bi%7d%7d%7d%7d%20%3d1_%7b%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e6%9c%80%e5%be%8c%e3%81%ab%e3%83%89%e3%83%a2%e3%83%ab%e3%82%ac%e3%83%b3%e3%81%ae%e6%b3%95%e5%89%87%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%3d%5cint_%7bX%7d%201_%7b%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%7dd%5cmu%20%3d%20%5cmu%5cleft%28%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%e3%81%93%e3%82%8c%e3%81%a7%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%ae%e5%b7%a6%e8%be%ba%e3%81%8c%e5%b0%8e%e3%81%8b%e3%82%8c%e3%80%81%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&t=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        包除原理
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-05-16 12:18:18 &#43;0900 JST" itemprop="datePublished">2021-05-16</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <h1 id="包除原理">包除原理</h1>
+<p>測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して
+$$
+\mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right)
+$$
+が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。</p>
+<h2 id="証明">証明</h2>
+<p>証明は
+$$
+\int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu
+$$
+を二通りに計算することにより求まります。</p>
+<p>はじめに愚直に展開してみることにします。
+$$
+\prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i}
+$$
+は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、
+$$
+1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}}
+=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}}
+$$
+となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、
+$$
+\int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu
+= \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right)
+$$
+がわかります。これで包除原理の右辺が示されました。</p>
+<p>次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、
+$$
+1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}}
+=1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}}
+=1_{\bigcup_{i=1}^{n}A_{i}}$$
+となります。最後にドモルガンの法則を用いました。
+よって、
+$$
+\int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu
+=\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu
+= \mu\left(\bigcup_{i=1}^{n}A_{i}\right)
+$$
+となります。
+これで包除原理の左辺が導かれ、包除原理が示されました。</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/research">Research</a></li>
+         
+          <li><a href="/teaching">Teaching</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&text=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&is_video=false&description=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&title=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&name=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86&description=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%20%e6%b8%ac%e5%ba%a6%e7%a9%ba%e9%96%93%24%28X%2c%5cmathcal%7bB%7d%2c%5cmu%29%24%e3%81%ae%e6%9c%89%e9%99%90%e6%b8%ac%e5%ba%a6%e9%9b%86%e5%90%88%24A_%7bi%7d%28i%3d1%2c%5cdots%2cn%29%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%20%24%24%20%5cmu%5cleft%28%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%5cright%29%3d%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d%5cmu%5cleft%28%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%8c%e6%88%90%e3%82%8a%e7%ab%8b%e3%81%a1%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%82%92%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%28Inclusion-exclusion%20principle%29%e3%81%a8%e5%91%bc%e3%81%b3%e3%81%be%e3%81%99%e3%80%82%0a%e8%a8%bc%e6%98%8e%20%e8%a8%bc%e6%98%8e%e3%81%af%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%24%24%20%e3%82%92%e4%ba%8c%e9%80%9a%e3%82%8a%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e3%82%88%e3%82%8a%e6%b1%82%e3%81%be%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%af%e3%81%98%e3%82%81%e3%81%ab%e6%84%9a%e7%9b%b4%e3%81%ab%e5%b1%95%e9%96%8b%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%24%24%20%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-x_%7bi%7d%29%3d%5csum_%7bJ%5csubset%5bn%5d%7d%28-1%29%5e%7b%7cJ%7c%7d%5cprod_%7bi%5cin%20J%7dx_%7bi%7d%20%24%24%20%e3%81%af%e5%b1%95%e9%96%8b%e3%81%99%e3%82%8c%e3%81%b0%e3%82%8f%e3%81%8b%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%e3%81%93%e3%81%ae%24x_%7bi%7d%24%e3%81%ab%241_%7bA_%7bi%7d%7d%24%e3%82%92%e4%bb%a3%e5%85%a5%e3%81%99%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%201-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%3d1-%5csum_%7bJ%5csubset%5bn%5d%7d%28-1%29%5e%7b%7cJ%7c%7d%5cprod_%7bi%5cin%20J%7d1_%7bA_%7bi%7d%7d%20%3d%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d1_%7b%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%93%e3%81%a7%241_%7bA%7d1_%7bB%7d%3d1_%7bA%5ccap%20B%7d%24%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e4%bb%a5%e4%b8%8a%e3%82%88%e3%82%8a%e3%80%81%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%3d%20%5csum_%7bJ%5csubset%5bn%5d%3bJ%5cne%5cemptyset%7d%28-1%29%5e%7b%7cJ%7c-1%7d%5cmu%5cleft%28%5cbigcap_%7bi%5cin%20J%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%a7%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%ae%e5%8f%b3%e8%be%ba%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0a%e6%ac%a1%e3%81%ab%e8%b3%a2%e3%81%84%e8%a8%88%e7%ae%97%e3%82%92%e3%81%97%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%241-1_%7bA%7d%3d1_%7b%5coverline%7bA%7d%7d%24%e3%81%aa%e3%81%ae%e3%81%a7%e3%80%81%20%24%24%201-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%3d1-%5cprod_%7bi%3d1%7d%5e%7bn%7d1_%7b%5coverline%7bA_%7bi%7d%7d%7d%3d1-1_%7b%5cbigcap_%7bi%3d1%7d%5e%7bn%7d%5coverline%7bA_%7bi%7d%7d%7d%20%3d1_%7b%5coverline%7b%5cbigcap_%7bi%3d1%7d%5e%7bn%7d%5coverline%7bA_%7bi%7d%7d%7d%7d%20%3d1_%7b%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e6%9c%80%e5%be%8c%e3%81%ab%e3%83%89%e3%83%a2%e3%83%ab%e3%82%ac%e3%83%b3%e3%81%ae%e6%b3%95%e5%89%87%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5cint_%7bX%7d%5cleft%281-%5cprod_%7bi%3d1%7d%5e%7bn%7d%281-1_%7bA_%7bi%7d%7d%29%5cright%29d%5cmu%20%3d%5cint_%7bX%7d%201_%7b%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%7dd%5cmu%20%3d%20%5cmu%5cleft%28%5cbigcup_%7bi%3d1%7d%5e%7bn%7dA_%7bi%7d%5cright%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%e3%81%93%e3%82%8c%e3%81%a7%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%ae%e5%b7%a6%e8%be%ba%e3%81%8c%e5%b0%8e%e3%81%8b%e3%82%8c%e3%80%81%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2finclusion_exclusion%2f&t=%e5%8c%85%e9%99%a4%e5%8e%9f%e7%90%86">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Ryosuke Yoneda 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
