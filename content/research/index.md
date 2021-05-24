@@ -7,11 +7,11 @@ draft: false
 [Synchronization](/posts/), [Kuramoto model](), [Critical phenomena](), [Gaussian process]()
 
 # Publications
+- **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connetivity guaranteeing in-phase synchronization, accepted to Chaos, arXiv: [2104.05954](https://arxiv.org/abs/2104.05954).
 - **R. Yoneda**, K. Harada, and Y. Y. Yamaguchi, Critical exponents in coupled phase-oscillator models on small-world networks, [Phys. Rev. E **102**, 062212 (2020)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.062212), arXiv: [2007.04539](https://arxiv.org/abs/2007.04539).
 - **R. Yoneda** and Y. Y. Yamaguchi, Classification of bifurcation diagrams in coupled phase-oscillator models with asymmetric natural frequency distributions, [J. Stat. Mech., 033403 (2020)](https://iopscience.iop.org/article/10.1088/1742-5468/ab6f5f), arXiv: [1901.02175](https://arxiv.org/abs/1901.02175).
 
 # Preprints
-- **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connetivity guaranteeing in-phase synchronization, arXiv: [2104.05954](https://arxiv.org/abs/2104.05954).
 - Y. Terada, K. Ito, **R. Yoneda**, T. Aoyagi, and Y. Y. Yamaguchi, A role of asymmetry in linear response of globally coupled oscillator systems, arXiv: [1802.08383](https://arxiv.org/abs/1802.08383).
 
 # Proceedings
