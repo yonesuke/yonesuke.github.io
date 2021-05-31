@@ -75,18 +75,50 @@ $$
 $$
 \\|A-A_{k}\\|_{F}\leq\\|A-B\\|_{F}
 $$
-となります。これをEckart–Young–Mirskyの定理と言います。
+となります。これをEckart–Young–Mirskyの定理と言います。Frobeniusノルムの他にも2ノルムでもこの定理が成り立つそうです。
 
-### 補題
-行列$A$の各行を$V_{k}=\mathrm{Span}(v_{1},\dots,v_{k})$へ射影したものは$A_{k}$に一致します。
+### 特異値に関する関係式
+特異値の性質を少しまとめておきます。
+$\sigma_{i}(M)$を行列$M$の$i$番目に大きい特異値とします。
+また、ランクが$r$のときに、$i>r$であれば$\sigma_{i}(M)=0$としておきます。
 
-これを確認するために$A$の$i$行目を$a_{i}$と置きます。
-横ベクトル$a$に対する$V_{k}$への射影が
-$\sum_{i=1}^{k}(a^{\mathsf{T}},v_{i})v_{i}^{\mathsf{T}}$になることを用いると、
+- 最大特異値について$\sigma_{1}(M)=\max_{\\|x\\|=1}\\| Mx\\|$です。
+- $\sigma_{i}(M)=\sigma_{1}(M-M_{i-1})$です。
+- $\sigma_{1}(A+B)\leq\sigma_{1}(A)+\sigma_{1}(B)$です。三角不等式からわかります。
+- $i,j\in\mathbb{N},i+j-1\leq n$について$\sigma_{i}(A)+\sigma_{j}(B)\geq\sigma_{i+j-1}(A+B)$です。
 $$
-\begin{pmatrix}\sum_{j=1}^{k}(a_{1}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\\\ \sum_{j=1}^{k}(a_{2}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\\\ \vdots \\\\ \sum_{j=1}^{k}(a_{m}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\end{pmatrix}=\sum_{j=1}^{k}\begin{pmatrix} (a_{1}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\\\\(a_{2}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\\\ \vdots \\\\(a_{m}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\end{pmatrix}=\sum_{j=1}^{k}Av_{j}v_{j}^{\mathsf{T}}=\sum_{i=1}^{r}\sum_{j=1}^{k}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}v_{j}v_{j}^{\mathsf{T}}=\sum_{i=1}^{k}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}=A_{k}
+\begin{aligned}
+\sigma_{i}(A)+\sigma_{j}(B)=&\sigma_{1}(A-A_{i-1})+\sigma_{1}(B-B_{j-1})\\\\\geq&\sigma_{1}(A+B-(A_{i-1}+B_{j-1}))\\\\\geq&\sigma_{1}(A+B-(A+B)_{i+j-2})=\sigma_{i+j-1}(A+B)
+\end{aligned}
+$$
+ここで$\mathrm{rank}(A_{i-1}+B_{j-1})\leq i+j-2=\mathrm{rank}((A+B)_{i+j-2})$を用いました。
+
+### 証明
+まず$\\|A-A_{k}\\|_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
+また、$i>k$で$\sigma_{i}(B)=0$より
+$$
+\sigma_{i+k}(A)=\sigma_{i+(k+1)-1}((A-B)+B)\leq\sigma_{i}(A-B)+\sigma_{k+1}(B)=\sigma_{i}(A-B)
+$$
+がわかるので、
+$$
+\begin{aligned}
+\\|A-B\\|^{2}_{F}=&\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\\\geq&\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\\|A-A_{k}\\|_{F}^{2}
+\end{aligned}
 $$
 となり、示されました。
 
-### 証明
-$B$の$i$行目を$b_{i}$と置き、$V=\{b_{1},\dots,b_{m}\}$とすると、$\dim V\leq k$となります。
+## 実装
+実装の流れは$A^{\mathsf{T}}A$の固有値と固有ベクトルを計算したあと、そこから$U,\Sigma,V$を求めるだけです。
+今回はこの画像を使ってみましょう。
+
+{{< figure src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width=700 >}}
+
+コードはこんな感じです。
+
+{{< gist yonesuke 81753f5b58643b2ff508f8daf66e3044 >}}
+
+これをもとにrankが1,2,3,10,30,50の場合のグラフをプロットすると次のようになります。
+
+{{< figure src="rank.png" width=700 >}}
+
+rankが50の段階でもかなり元の画像に近づいてるのが確認できます。
