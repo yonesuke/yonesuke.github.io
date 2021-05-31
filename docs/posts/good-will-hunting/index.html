@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Good Will Hunting Problem | Ryosuke Yoneda&#39;s Homepage</title>
+  <meta name="description" content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Good Will Hunting Problem" />
+<meta property="og:description" content="マット・デイモンとロビン・ウィリアムズ主演の映画『Good Will Hunting』の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。 中学生とかのときに初めてこの映画を見たときにはよっぽど難しい問題なんだろうな、と思ったのですが、最近見返してみると定義に従って素直に計算すれば解ける問題だということがわかったのでまとめておきます。
+ Given the graph $G$, find
+ The adjacency matrix, $A$ The matrix giving the number of 3 step walks The generating function for walks from $i\to j$ The generating function for walks from $1\to3$     問1 グラフの隣接行列$A$の$(i,j)$成分は$i$から$j$に向かう枝があれば$1$、そうでなければ$0$となるように定義されています。 今の場合、頂点$3$と頂点$4$の間には2本枝があるのでその場合は重み付きの枝だと思って$2$とします。 そうすると隣接行列は、 $$ A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 1\\1 &amp; 0 &amp; 2 &amp; 1\\0 &amp; 2 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0 &amp; 0 \end{pmatrix} $$ となります。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yonesuke.github.io/posts/good-will-hunting/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-31T13:01:31&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-31T13:01:31&#43;09:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Good Will Hunting Problem"/>
+<meta name="twitter:description" content="マット・デイモンとロビン・ウィリアムズ主演の映画『Good Will Hunting』の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。 中学生とかのときに初めてこの映画を見たときにはよっぽど難しい問題なんだろうな、と思ったのですが、最近見返してみると定義に従って素直に計算すれば解ける問題だということがわかったのでまとめておきます。
+ Given the graph $G$, find
+ The adjacency matrix, $A$ The matrix giving the number of 3 step walks The generating function for walks from $i\to j$ The generating function for walks from $1\to3$     問1 グラフの隣接行列$A$の$(i,j)$成分は$i$から$j$に向かう枝があれば$1$、そうでなければ$0$となるように定義されています。 今の場合、頂点$3$と頂点$4$の間には2本枝があるのでその場合は重み付きの枝だと思って$2$とします。 そうすると隣接行列は、 $$ A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 1\\1 &amp; 0 &amp; 2 &amp; 1\\0 &amp; 2 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0 &amp; 0 \end{pmatrix} $$ となります。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://yonesuke.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://yonesuke.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://yonesuke.github.io/posts/nowherediff/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&text=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&is_video=false&description=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Good%20Will%20Hunting%20Problem&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&name=Good%20Will%20Hunting%20Problem&description=%e3%83%9e%e3%83%83%e3%83%88%e3%83%bb%e3%83%87%e3%82%a4%e3%83%a2%e3%83%b3%e3%81%a8%e3%83%ad%e3%83%93%e3%83%b3%e3%83%bb%e3%82%a6%e3%82%a3%e3%83%aa%e3%82%a2%e3%83%a0%e3%82%ba%e4%b8%bb%e6%bc%94%e3%81%ae%e6%98%a0%e7%94%bb%e3%80%8eGood%20Will%20Hunting%e3%80%8f%e3%81%ae%e4%b8%ad%e3%81%a7%e3%80%81MIT%e3%81%ae%e5%bb%8a%e4%b8%8b%e3%81%ab%e6%8e%b2%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%9f%e3%82%b0%e3%83%a9%e3%83%95%e7%90%86%e8%ab%96%e3%81%ae%e5%95%8f%e9%a1%8c%e3%82%92%e6%b8%85%e6%8e%83%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%83%9e%e3%83%83%e3%83%88%e3%83%bb%e3%83%87%e3%82%a4%e3%83%a2%e3%83%b3%e3%81%8c%e8%a7%a3%e3%81%84%e3%81%a6%e3%81%97%e3%81%be%e3%81%86%e3%82%b7%e3%83%bc%e3%83%b3%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%e4%b8%ad%e5%ad%a6%e7%94%9f%e3%81%a8%e3%81%8b%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%ab%e5%88%9d%e3%82%81%e3%81%a6%e3%81%93%e3%81%ae%e6%98%a0%e7%94%bb%e3%82%92%e8%a6%8b%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ab%e3%81%af%e3%82%88%e3%81%a3%e3%81%bd%e3%81%a9%e9%9b%a3%e3%81%97%e3%81%84%e5%95%8f%e9%a1%8c%e3%81%aa%e3%82%93%e3%81%a0%e3%82%8d%e3%81%86%e3%81%aa%e3%80%81%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e6%9c%80%e8%bf%91%e8%a6%8b%e8%bf%94%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%a8%e5%ae%9a%e7%be%a9%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e7%b4%a0%e7%9b%b4%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%99%e3%82%8c%e3%81%b0%e8%a7%a3%e3%81%91%e3%82%8b%e5%95%8f%e9%a1%8c%e3%81%a0%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%be%e3%81%a8%e3%82%81%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0a%20Given%20the%20graph%20%24G%24%2c%20find%0a%20The%20adjacency%20matrix%2c%20%24A%24%20The%20matrix%20giving%20the%20number%20of%203%20step%20walks%20The%20generating%20function%20for%20walks%20from%20%24i%5cto%20j%24%20The%20generating%20function%20for%20walks%20from%20%241%5cto3%24%20%20%20%20%20%e5%95%8f1%20%e3%82%b0%e3%83%a9%e3%83%95%e3%81%ae%e9%9a%a3%e6%8e%a5%e8%a1%8c%e5%88%97%24A%24%e3%81%ae%24%28i%2cj%29%24%e6%88%90%e5%88%86%e3%81%af%24i%24%e3%81%8b%e3%82%89%24j%24%e3%81%ab%e5%90%91%e3%81%8b%e3%81%86%e6%9e%9d%e3%81%8c%e3%81%82%e3%82%8c%e3%81%b0%241%24%e3%80%81%e3%81%9d%e3%81%86%e3%81%a7%e3%81%aa%e3%81%91%e3%82%8c%e3%81%b0%240%24%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e5%ae%9a%e7%be%a9%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e4%bb%8a%e3%81%ae%e5%a0%b4%e5%90%88%e3%80%81%e9%a0%82%e7%82%b9%243%24%e3%81%a8%e9%a0%82%e7%82%b9%244%24%e3%81%ae%e9%96%93%e3%81%ab%e3%81%af2%e6%9c%ac%e6%9e%9d%e3%81%8c%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%9d%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e9%87%8d%e3%81%bf%e4%bb%98%e3%81%8d%e3%81%ae%e6%9e%9d%e3%81%a0%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%a6%242%24%e3%81%a8%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%e3%81%9d%e3%81%86%e3%81%99%e3%82%8b%e3%81%a8%e9%9a%a3%e6%8e%a5%e8%a1%8c%e5%88%97%e3%81%af%e3%80%81%20%24%24%20A%3d%20%5cbegin%7bpmatrix%7d%200%20%26amp%3b%201%20%26amp%3b%200%20%26amp%3b%201%5c%5c1%20%26amp%3b%200%20%26amp%3b%202%20%26amp%3b%201%5c%5c0%20%26amp%3b%202%20%26amp%3b%200%20%26amp%3b%200%5c%5c1%20%26amp%3b%201%20%26amp%3b%200%20%26amp%3b%200%20%5cend%7bpmatrix%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&t=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#問1">問1</a></li>
+    <li><a href="#問2">問2</a></li>
+    <li><a href="#問3">問3</a></li>
+    <li><a href="#問4">問4</a></li>
+    <li><a href="#コード">コード</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Good Will Hunting Problem
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-05-31 13:01:31 &#43;0900 JST" itemprop="datePublished">2021-05-31</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+
+    <div class="content" itemprop="articleBody">
+      <p>マット・デイモンとロビン・ウィリアムズ主演の映画『Good Will Hunting』の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。
+中学生とかのときに初めてこの映画を見たときにはよっぽど難しい問題なんだろうな、と思ったのですが、最近見返してみると定義に従って素直に計算すれば解ける問題だということがわかったのでまとめておきます。</p>
+<blockquote>
+<p>Given the graph $G$, find</p>
+<ol>
+<li>The adjacency matrix, $A$</li>
+<li>The matrix giving the number of 3 step walks</li>
+<li>The generating function for walks from $i\to j$</li>
+<li>The generating function for walks from $1\to3$</li>
+</ol>
+</blockquote>
+<figure>
+    <img src="graph.png" width="500"/> 
+</figure>
+
+<h2 id="問1">問1</h2>
+<p>グラフの隣接行列$A$の$(i,j)$成分は$i$から$j$に向かう枝があれば$1$、そうでなければ$0$となるように定義されています。
+今の場合、頂点$3$と頂点$4$の間には2本枝があるのでその場合は重み付きの枝だと思って$2$とします。
+そうすると隣接行列は、
+$$
+A=
+\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; 1\\1 &amp; 0 &amp; 2 &amp; 1\\0 &amp; 2 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0 &amp; 0
+\end{pmatrix}
+$$
+となります。</p>
+<h2 id="問2">問2</h2>
+<p>頂点$i$から始まって3ステップで頂点$j$に行くことができる場合の数(経路の数)を聞いています。
+一般に$n$ステップに拡張した数を$\omega_{n}(i\to j)$と書くことにします。
+例えば2ステップにおける経路の数は頂点$i$からどこかの頂点$k$を経由して頂点$j$にたどり着くことができる場合の数を$k$に渡って和を取れば良いので、
+$$
+\omega_{2}(i\to j)=\sum_{k=1}^{4}\omega_{1}(i\to k)\omega_{1}(k\to j)
+$$
+となることがわかります。$\omega_{1}(i\to j)$は隣接行列$A$の$(i,j)$成分に対応することを用いると、
+$\omega_{2}(i\to j)$は$A^{2}$の$(i,j)$成分になることがわかります。
+より一般に
+$$
+\omega_{n}(i\to j)=A^{n}[i,j]
+$$
+もわかります。ただし行列$M$の$(i,j)$成分を$M[i,j]$と書いています。</p>
+<p>今問題で聞かれているのは3ステップに到達できる経路の数なので、求める行列は
+$$
+A^{3}=\begin{pmatrix}
+2 &amp; 7 &amp; 2 &amp; 3\\7 &amp; 2 &amp; 12 &amp; 7\\2 &amp; 12 &amp; 0 &amp; 2\\3 &amp; 7 &amp; 2 &amp; 2
+\end{pmatrix}
+$$
+となります。</p>
+<h2 id="問3">問3</h2>
+<p>頂点$i$から頂点$j$の経路の数に関する母関数を聞いています。
+母関数の定義は
+$$
+F(z)=\sum_{n=0}^{\infty}\omega_{n}(i\to j)z^{n}
+$$
+です。母関数の優れている点はべき級数の係数がそのまま$n$ステップかかる経路の数を表すところです。
+そのため$z$は本質ではなく、収束についてもあまり気にする必要はありません。形式的べき級数だと思う、ということです。</p>
+<p>$\omega_{n}(i\to j)=A^{n}[i,j]$だったことを思い出すと、
+$$
+F(z)=\sum_{n=0}^{\infty}A^{n}[i,j]z^{n}=\left(\sum_{n=0}^{\infty}z^{n}A^{n}\right)[i,j]
+$$
+となります。さらにスペクトル半径が1よりも小さい行列のべき級数に対して
+$$
+\sum_{k=0}^{\infty}M^{k}=(I-M)^{-1}
+$$
+が成り立つことを思い出すと、
+$$
+F(z)=(I-zA)^{-1}[i,j]
+$$
+となります。(スペクトル半径は1より小さくなるくらい$z$は十分に小さい、と思いこめば良いです。今$z$の値は大事ではないので。)</p>
+<p>可逆な行列$M$に対して
+$$
+M^{-1}[i,j]=(-1)^{i+j}\frac{\det \widetilde{M} _ {ij}}{\det M}
+$$
+が成り立つことを思い出すと
+( $\widetilde{M} _ {ij}$は$i$行目と$j$列目を除いた小行列)、
+$$
+F(z)=(-1)^{i+j}\frac{\det (\widetilde{I} _ {ij}-z\widetilde{A} _ {ij})}{\det(I-zA)}
+$$
+が得られます。</p>
+<h2 id="問4">問4</h2>
+<p>問3をもとに実際に頂点1から頂点3についての母関数を聞いています。$i=1, j=3$を代入すると、
+$$
+F(z)=\frac{\det(\widetilde{I} _ {13}-z\widetilde{A} _ {13})}{\det(I-zA)}
+$$
+です。
+$$\begin{aligned}&amp;\det(I-zA)=\det\begin{pmatrix}1 &amp; -z &amp; 0 &amp; -z \\ -z &amp; 1 &amp; -2z &amp; -z \\ 0 &amp; -2z &amp; 1 &amp; 0 \\ -z &amp; -z &amp; 0 &amp; 1\end{pmatrix} = 4z^4-2z^3-7z^2+1,\\&amp;\det(\widetilde{I} _ {13}-z\widetilde{A}_{13})=\det\begin{pmatrix} -z &amp; 1 &amp; -z \\ 0 &amp; -2z &amp; 0 \\ -z &amp; -z &amp; 1 \end{pmatrix}=2z^{3}+2z^{2}\end{aligned}$$
+なので、母関数は
+$$
+F(z)=\frac{2z^{3}+2z^{2}}{4z^{4}-2z^{3}-7z^{2}+1}=\frac{2z^{2}}{4z^{3}-6z^{2}-z+1}
+$$
+と求まります。$z$が十分に小さいと思って原点付近でTaylor展開をしてみると、
+$$
+F(z)=2z^{2}+2z^{3}+14z^{4}+18z^{5}+\cdots
+$$
+となります。$z^{3}$の係数は2で、これは確かに$A^{3}[1,3]=2$に一致します。</p>
+<h2 id="コード">コード</h2>
+<p>こういった行列計算はSympyを使うと便利です。</p>
+<script type="application/javascript" src="https://gist.github.com/yonesuke/44694b88d8d92eebe7d69fd7182ac444.js"></script>
+
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/research">Research</a></li>
+         
+          <li><a href="/teaching">Teaching</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#問1">問1</a></li>
+    <li><a href="#問2">問2</a></li>
+    <li><a href="#問3">問3</a></li>
+    <li><a href="#問4">問4</a></li>
+    <li><a href="#コード">コード</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&text=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&is_video=false&description=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Good%20Will%20Hunting%20Problem&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&title=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&name=Good%20Will%20Hunting%20Problem&description=%e3%83%9e%e3%83%83%e3%83%88%e3%83%bb%e3%83%87%e3%82%a4%e3%83%a2%e3%83%b3%e3%81%a8%e3%83%ad%e3%83%93%e3%83%b3%e3%83%bb%e3%82%a6%e3%82%a3%e3%83%aa%e3%82%a2%e3%83%a0%e3%82%ba%e4%b8%bb%e6%bc%94%e3%81%ae%e6%98%a0%e7%94%bb%e3%80%8eGood%20Will%20Hunting%e3%80%8f%e3%81%ae%e4%b8%ad%e3%81%a7%e3%80%81MIT%e3%81%ae%e5%bb%8a%e4%b8%8b%e3%81%ab%e6%8e%b2%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%9f%e3%82%b0%e3%83%a9%e3%83%95%e7%90%86%e8%ab%96%e3%81%ae%e5%95%8f%e9%a1%8c%e3%82%92%e6%b8%85%e6%8e%83%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%83%9e%e3%83%83%e3%83%88%e3%83%bb%e3%83%87%e3%82%a4%e3%83%a2%e3%83%b3%e3%81%8c%e8%a7%a3%e3%81%84%e3%81%a6%e3%81%97%e3%81%be%e3%81%86%e3%82%b7%e3%83%bc%e3%83%b3%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%e4%b8%ad%e5%ad%a6%e7%94%9f%e3%81%a8%e3%81%8b%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%ab%e5%88%9d%e3%82%81%e3%81%a6%e3%81%93%e3%81%ae%e6%98%a0%e7%94%bb%e3%82%92%e8%a6%8b%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ab%e3%81%af%e3%82%88%e3%81%a3%e3%81%bd%e3%81%a9%e9%9b%a3%e3%81%97%e3%81%84%e5%95%8f%e9%a1%8c%e3%81%aa%e3%82%93%e3%81%a0%e3%82%8d%e3%81%86%e3%81%aa%e3%80%81%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e6%9c%80%e8%bf%91%e8%a6%8b%e8%bf%94%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%a8%e5%ae%9a%e7%be%a9%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e7%b4%a0%e7%9b%b4%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%99%e3%82%8c%e3%81%b0%e8%a7%a3%e3%81%91%e3%82%8b%e5%95%8f%e9%a1%8c%e3%81%a0%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%be%e3%81%a8%e3%82%81%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0a%20Given%20the%20graph%20%24G%24%2c%20find%0a%20The%20adjacency%20matrix%2c%20%24A%24%20The%20matrix%20giving%20the%20number%20of%203%20step%20walks%20The%20generating%20function%20for%20walks%20from%20%24i%5cto%20j%24%20The%20generating%20function%20for%20walks%20from%20%241%5cto3%24%20%20%20%20%20%e5%95%8f1%20%e3%82%b0%e3%83%a9%e3%83%95%e3%81%ae%e9%9a%a3%e6%8e%a5%e8%a1%8c%e5%88%97%24A%24%e3%81%ae%24%28i%2cj%29%24%e6%88%90%e5%88%86%e3%81%af%24i%24%e3%81%8b%e3%82%89%24j%24%e3%81%ab%e5%90%91%e3%81%8b%e3%81%86%e6%9e%9d%e3%81%8c%e3%81%82%e3%82%8c%e3%81%b0%241%24%e3%80%81%e3%81%9d%e3%81%86%e3%81%a7%e3%81%aa%e3%81%91%e3%82%8c%e3%81%b0%240%24%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e5%ae%9a%e7%be%a9%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e4%bb%8a%e3%81%ae%e5%a0%b4%e5%90%88%e3%80%81%e9%a0%82%e7%82%b9%243%24%e3%81%a8%e9%a0%82%e7%82%b9%244%24%e3%81%ae%e9%96%93%e3%81%ab%e3%81%af2%e6%9c%ac%e6%9e%9d%e3%81%8c%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%9d%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e9%87%8d%e3%81%bf%e4%bb%98%e3%81%8d%e3%81%ae%e6%9e%9d%e3%81%a0%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%a6%242%24%e3%81%a8%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%e3%81%9d%e3%81%86%e3%81%99%e3%82%8b%e3%81%a8%e9%9a%a3%e6%8e%a5%e8%a1%8c%e5%88%97%e3%81%af%e3%80%81%20%24%24%20A%3d%20%5cbegin%7bpmatrix%7d%200%20%26amp%3b%201%20%26amp%3b%200%20%26amp%3b%201%5c%5c1%20%26amp%3b%200%20%26amp%3b%202%20%26amp%3b%201%5c%5c0%20%26amp%3b%202%20%26amp%3b%200%20%26amp%3b%200%5c%5c1%20%26amp%3b%201%20%26amp%3b%200%20%26amp%3b%200%20%5cend%7bpmatrix%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fgood-will-hunting%2f&t=Good%20Will%20Hunting%20Problem">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Ryosuke Yoneda 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
