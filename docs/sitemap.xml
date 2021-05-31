@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yonesuke.github.io/posts/good-will-hunting/</loc>
-    <lastmod>2021-05-31T13:01:31+09:00</lastmod>
-  </url><url>
     <loc>https://yonesuke.github.io/posts/</loc>
+    <lastmod>2021-05-31T16:22:52+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/svd/</loc>
+    <lastmod>2021-05-31T16:22:52+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/good-will-hunting/</loc>
     <lastmod>2021-05-31T13:01:31+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/posts/nowherediff/</loc>

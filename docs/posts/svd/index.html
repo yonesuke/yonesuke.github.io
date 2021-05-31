@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 特異値分解 | Ryosuke Yoneda&#39;s Homepage</title>
+  <meta name="description" content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="特異値分解" />
+<meta property="og:description" content="行列$A$を$m\times n$の実行列とします。 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$ となるようにできます。このような分解を特異値分解と言います。
+証明 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して $$ A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij} $$ となるようにできます。 また、 $$ \xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0 $$ なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。 実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。
+次に$i=1,2,\dots,r$に対して$u_{i}=Av_{i}/\sqrt{\xi_{i}}$としましょう。すると、 $$ (u_{i}, u_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(Av_{i},Av_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(v_{i},A^{\mathsf{T}}Av_{j})=\frac{\xi_{j}\delta_{ij}}{\sqrt{\xi_{i}\xi_{j}}}=\delta_{ij} $$ となり、$u_{i}$たちは互いに直交します。このとき$m-r$個のベクトル${u_{r&#43;1},\dots,u_{m}}$を持ってきて正規直交基底${u_{1},\dots,u_{m}}$を構成することができます。 実はこのベクトル$u_{i}$たちが直交行列$U$に対応します。
+上で得られたベクトルを用いて行列 $$ V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m}) $$ を構成します。これが直交行列なのは明らかです。 $U^{\mathsf{T}}AV$という行列を計算してみると、 $$ U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j}) $$ となります。
+ $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。  よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yonesuke.github.io/posts/svd/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-31T16:22:52&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-31T16:22:52&#43;09:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="特異値分解"/>
+<meta name="twitter:description" content="行列$A$を$m\times n$の実行列とします。 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$ となるようにできます。このような分解を特異値分解と言います。
+証明 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して $$ A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij} $$ となるようにできます。 また、 $$ \xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0 $$ なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。 実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。
+次に$i=1,2,\dots,r$に対して$u_{i}=Av_{i}/\sqrt{\xi_{i}}$としましょう。すると、 $$ (u_{i}, u_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(Av_{i},Av_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(v_{i},A^{\mathsf{T}}Av_{j})=\frac{\xi_{j}\delta_{ij}}{\sqrt{\xi_{i}\xi_{j}}}=\delta_{ij} $$ となり、$u_{i}$たちは互いに直交します。このとき$m-r$個のベクトル${u_{r&#43;1},\dots,u_{m}}$を持ってきて正規直交基底${u_{1},\dots,u_{m}}$を構成することができます。 実はこのベクトル$u_{i}$たちが直交行列$U$に対応します。
+上で得られたベクトルを用いて行列 $$ V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m}) $$ を構成します。これが直交行列なのは明らかです。 $U^{\mathsf{T}}AV$という行列を計算してみると、 $$ U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j}) $$ となります。
+ $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。  よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://yonesuke.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://yonesuke.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://yonesuke.github.io/posts/good-will-hunting/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&text=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&is_video=false&description=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&name=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3&description=%e8%a1%8c%e5%88%97%24A%24%e3%82%92%24m%5ctimes%20n%24%e3%81%ae%e5%ae%9f%e8%a1%8c%e5%88%97%e3%81%a8%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%82%e3%82%8b%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24U%5cin%5cmathbb%7bR%7d%5e%7bm%5ctimes%20m%7d%2cV%5cin%5cmathbb%7bR%7d%5e%7bn%5ctimes%20n%7d%24%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%97%e3%81%a6%e3%80%81%20%24%24U%5e%7b%5cmathsf%7bT%7d%7dAV%3d%5cSigma%3d%5cbegin%7bpmatrix%7d%5cmathrm%7bdiag%7d%28%5csigma_%7b1%7d%2c%5cdots%2c%5csigma_%7br%7d%29%20%26amp%3b%20O_%7br%5ctimes%28n-r%29%7d%20%5c%5c%20O_%7b%28m-r%29%5ctimes%20r%7d%20%26amp%3b%20O_%7b%28m-r%29%5ctimes%20%28n-r%29%7d%5cend%7bpmatrix%7d%5cin%5cmathbb%7bR%7d%5e%7bm%5ctimes%20n%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%88%86%e8%a7%a3%e3%82%92%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3%e3%81%a8%e8%a8%80%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e8%a8%bc%e6%98%8e%20%24A%5e%7b%5cmathsf%7bT%7d%7dA%24%e3%81%af%e5%ae%9f%e5%af%be%e7%a7%b0%e8%a1%8c%e5%88%97%e3%81%aa%e3%81%ae%e3%81%a7%e5%9b%ba%e6%9c%89%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24%7bv_%7b1%7d%2c%5cdots%2cv_%7bn%7d%7d%24%e3%81%a8%e5%9b%ba%e6%9c%89%e5%80%a4%24%7b%5cxi_%7b1%7d%2c%5cdots%2c%5cxi_%7bn%7d%7d%24%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%97%e3%81%a6%20%24%24%20A%5e%7b%5cmathsf%7bT%7d%7dAv_%7bi%7d%3d%5cxi_%7bi%7dv_%7bi%7d%2c%5cquad%20%28v_%7bi%7d%2cv_%7bj%7d%29%3d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%20%24%24%20%5cxi_%7bi%7d%3d%28v_%7bi%7d%2c%5cxi_%7bi%7dv_%7bi%7d%29%3d%28v_%7bi%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bi%7d%29%3d%28Av_%7bi%7d%2cAv_%7bi%7d%29%5cgeq0%20%24%24%20%e3%81%aa%e3%81%ae%e3%81%a7%e5%9b%ba%e6%9c%89%e5%80%a4%e3%81%af%e5%b8%b8%e3%81%ab0%e4%bb%a5%e4%b8%8a%e3%81%a7%e3%81%99%e3%80%82%e7%89%b9%e3%81%ab%e3%80%81%24i%3d1%2c%5cdots%2cr%24%e3%81%a7%24%5cxi_%7bi%7d%26gt%3b0%24%e3%81%8b%e3%81%a4%24i%26gt%3br%24%e3%81%a7%24%5cxi_%7bi%7d%3d0%24%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e5%ae%9f%e3%81%af%e3%81%93%e3%81%ae%e5%9b%ba%e6%9c%89%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24v_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24V%24%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%e6%ac%a1%e3%81%ab%24i%3d1%2c2%2c%5cdots%2cr%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%24u_%7bi%7d%3dAv_%7bi%7d%2f%5csqrt%7b%5cxi_%7bi%7d%7d%24%e3%81%a8%e3%81%97%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%e3%81%99%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%20%28u_%7bi%7d%2c%20u_%7bj%7d%29%3d%5cfrac%7b1%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%28Av_%7bi%7d%2cAv_%7bj%7d%29%3d%5cfrac%7b1%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%28v_%7bi%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bj%7d%29%3d%5cfrac%7b%5cxi_%7bj%7d%5cdelta_%7bij%7d%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%3d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%80%81%24u_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%af%e4%ba%92%e3%81%84%e3%81%ab%e7%9b%b4%e4%ba%a4%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%24m-r%24%e5%80%8b%e3%81%ae%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24%7bu_%7br%2b1%7d%2c%5cdots%2cu_%7bm%7d%7d%24%e3%82%92%e6%8c%81%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%a6%e6%ad%a3%e8%a6%8f%e7%9b%b4%e4%ba%a4%e5%9f%ba%e5%ba%95%24%7bu_%7b1%7d%2c%5cdots%2cu_%7bm%7d%7d%24%e3%82%92%e6%a7%8b%e6%88%90%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e5%ae%9f%e3%81%af%e3%81%93%e3%81%ae%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24u_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24U%24%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%e4%b8%8a%e3%81%a7%e5%be%97%e3%82%89%e3%82%8c%e3%81%9f%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%a1%8c%e5%88%97%20%24%24%20V%3d%28v_%7b1%7d%2c%5cdots%2cv_%7bn%7d%29%2c%5cquad%20U%3d%28u_%7b1%7d%2c%5cdots%2cu_%7bm%7d%29%20%24%24%20%e3%82%92%e6%a7%8b%e6%88%90%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%e3%81%aa%e3%81%ae%e3%81%af%e6%98%8e%e3%82%89%e3%81%8b%e3%81%a7%e3%81%99%e3%80%82%20%24U%5e%7b%5cmathsf%7bT%7d%7dAV%24%e3%81%a8%e3%81%84%e3%81%86%e8%a1%8c%e5%88%97%e3%82%92%e8%a8%88%e7%ae%97%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%20U%5e%7b%5cmathsf%7bT%7d%7dAV%5bi%2cj%5d%3d%28u_%7bi%7d%2cAv_%7bj%7d%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%20%24j%3dr%2b1%2c%5cdots%2cn%24%e3%81%ab%e3%81%8a%e3%81%84%e3%81%a6%e3%81%af%20%24%24%20%28Av_%7bj%7d%2cAv_%7bj%7d%29%3d%28v_%7bj%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bj%7d%29%3d%28v_%7bj%7d%2c0%29%3d0%20%24%24%20%e3%81%aa%e3%81%ae%e3%81%a7%24%28u_%7bi%7d%2cAv_%7bj%7d%29%3d0%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%24i%3dr%2b1%2c%5cdots%2cm%24%e3%81%8b%e3%81%a4%24j%3d1%2c%5cdots%2cr%24%e3%81%ab%e3%81%8a%e3%81%84%e3%81%a6%e3%82%82%20%24%24%20%28u_%7bi%7d%2cAv_%7bj%7d%29%3d%28u_%7bi%7d%2c%5csqrt%7b%5cxi_%7bj%7d%7du_%7bj%7d%29%3d0%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%241%5cleq%20i%2cj%5cleq%20r%24%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%ab%e3%81%af%e3%80%81%20%24%24%20%28u_%7bi%7d%2cAv_%7bj%7d%29%3d%28u_%7bi%7d%2c%5csqrt%7b%5cxi_%7bj%7d%7du_%7bj%7d%29%3d%5csqrt%7b%5cxi_%7bj%7d%7d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%20%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%24%5csqrt%7b%5cxi_%7bi%7d%7d%3d%5csigma_%7bi%7d%24%e3%81%a8%e7%bd%ae%e3%81%8f%e3%81%93%e3%81%a8%e3%81%a7%20%24%24U%5e%7b%5cmathsf%7bT%7d%7dAV%3d%5cSigma%3d%5cbegin%7bpmatrix%7d%5cmathrm%7bdiag%7d%28%5csigma_%7b1%7d%2c%5cdots%2c%5csigma_%7br%7d%29%20%26amp%3b%20O_%7br%5ctimes%28n-r%29%7d%20%5c%5c%20O_%7b%28m-r%29%5ctimes%20r%7d%20%26amp%3b%20O_%7b%28m-r%29%5ctimes%20%28n-r%29%7d%5cend%7bpmatrix%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e7%89%b9%e3%81%ab%24A%3dU%5cSigma%20V%5e%7b%5cmathsf%7bT%7d%7d%24%e3%82%82%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&t=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+    <li><a href="#rank-k近似としてのsvd">rank-$k$近似としてのSVD</a>
+      <ul>
+        <li><a href="#補題">補題</a></li>
+        <li><a href="#証明-1">証明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        特異値分解
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-05-31 16:22:52 &#43;0900 JST" itemprop="datePublished">2021-05-31</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+
+    <div class="content" itemprop="articleBody">
+      <p>行列$A$を$m\times n$の実行列とします。
+このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、
+$$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$
+となるようにできます。このような分解を特異値分解と言います。</p>
+<h2 id="証明">証明</h2>
+<p>$A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して
+$$
+A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij}
+$$
+となるようにできます。
+また、
+$$
+\xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0
+$$
+なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。
+実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。</p>
+<p>次に$i=1,2,\dots,r$に対して$u_{i}=Av_{i}/\sqrt{\xi_{i}}$としましょう。すると、
+$$
+(u_{i}, u_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(Av_{i},Av_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(v_{i},A^{\mathsf{T}}Av_{j})=\frac{\xi_{j}\delta_{ij}}{\sqrt{\xi_{i}\xi_{j}}}=\delta_{ij}
+$$
+となり、$u_{i}$たちは互いに直交します。このとき$m-r$個のベクトル${u_{r+1},\dots,u_{m}}$を持ってきて正規直交基底${u_{1},\dots,u_{m}}$を構成することができます。
+実はこのベクトル$u_{i}$たちが直交行列$U$に対応します。</p>
+<p>上で得られたベクトルを用いて行列
+$$
+V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m})
+$$
+を構成します。これが直交行列なのは明らかです。
+$U^{\mathsf{T}}AV$という行列を計算してみると、
+$$
+U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j})
+$$
+となります。</p>
+<ul>
+<li>$j=r+1,\dots,n$においては
+$$
+(Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0
+$$
+なので$(u_{i},Av_{j})=0$となります。</li>
+<li>$i=r+1,\dots,m$かつ$j=1,\dots,r$においても
+$$
+(u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0
+$$
+となります。</li>
+<li>$1\leq i,j\leq r$のときには、
+$$
+(u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij}
+$$
+となります。</li>
+</ul>
+<p>よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで
+$$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$
+となることが示されました。
+特に$A=U\Sigma V^{\mathsf{T}}$もわかります。</p>
+<h2 id="rank-k近似としてのsvd">rank-$k$近似としてのSVD</h2>
+<p>行列$A$をSVDしたものはベクトルを用いた表示をするならば、
+$$
+A=\sum_{i=1}^{r}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}
+$$
+となります。これを$k\leq r$に対して
+$$
+A_{k}=\sum_{i=1}^{k}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}
+$$
+と和を$k$までで打ち切ったものを行列$A$のrank-$k$近似と呼ぶことにします。
+実は、ランクが多くても$k$の行列全体の中で、$A_{k}$はFrobeniusノルムのもとで$A$に最も近い行列であることが示されます。
+すなわち、ランクが$k$以下の任意の行列$B$に対して、
+$$
+\|A-A_{k}\|_{F}\leq\|A-B\|_{F}
+$$
+となります。これをEckart–Young–Mirskyの定理と言います。</p>
+<h3 id="補題">補題</h3>
+<p>行列$A$の各行を$V_{k}=\mathrm{Span}(v_{1},\dots,v_{k})$へ射影したものは$A_{k}$に一致します。</p>
+<p>これを確認するために$A$の$i$行目を$a_{i}$と置きます。
+横ベクトル$a$に対する$V_{k}$への射影が
+$\sum_{i=1}^{k}(a^{\mathsf{T}},v_{i})v_{i}^{\mathsf{T}}$になることを用いると、
+$$
+\begin{pmatrix}\sum_{j=1}^{k}(a_{1}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\ \sum_{j=1}^{k}(a_{2}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\ \vdots \\ \sum_{j=1}^{k}(a_{m}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\end{pmatrix}=\sum_{j=1}^{k}\begin{pmatrix} (a_{1}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\\(a_{2}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}} \\ \vdots \\(a_{m}^{\mathsf{T}},v_{j})v_{j}^{\mathsf{T}}\end{pmatrix}=\sum_{j=1}^{k}Av_{j}v_{j}^{\mathsf{T}}=\sum_{i=1}^{r}\sum_{j=1}^{k}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}v_{j}v_{j}^{\mathsf{T}}=\sum_{i=1}^{k}\sigma_{i}u_{i}v_{i}^{\mathsf{T}}=A_{k}
+$$
+となり、示されました。</p>
+<h3 id="証明-1">証明</h3>
+<p>$B$の$i$行目を$b_{i}$と置き、$V={b_{1},\dots,b_{m}}$とすると、$\dim V\leq k$となります。</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/research">Research</a></li>
+         
+          <li><a href="/teaching">Teaching</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+    <li><a href="#rank-k近似としてのsvd">rank-$k$近似としてのSVD</a>
+      <ul>
+        <li><a href="#補題">補題</a></li>
+        <li><a href="#証明-1">証明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&text=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&is_video=false&description=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&title=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&name=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3&description=%e8%a1%8c%e5%88%97%24A%24%e3%82%92%24m%5ctimes%20n%24%e3%81%ae%e5%ae%9f%e8%a1%8c%e5%88%97%e3%81%a8%e3%81%97%e3%81%be%e3%81%99%e3%80%82%20%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%82%e3%82%8b%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24U%5cin%5cmathbb%7bR%7d%5e%7bm%5ctimes%20m%7d%2cV%5cin%5cmathbb%7bR%7d%5e%7bn%5ctimes%20n%7d%24%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%97%e3%81%a6%e3%80%81%20%24%24U%5e%7b%5cmathsf%7bT%7d%7dAV%3d%5cSigma%3d%5cbegin%7bpmatrix%7d%5cmathrm%7bdiag%7d%28%5csigma_%7b1%7d%2c%5cdots%2c%5csigma_%7br%7d%29%20%26amp%3b%20O_%7br%5ctimes%28n-r%29%7d%20%5c%5c%20O_%7b%28m-r%29%5ctimes%20r%7d%20%26amp%3b%20O_%7b%28m-r%29%5ctimes%20%28n-r%29%7d%5cend%7bpmatrix%7d%5cin%5cmathbb%7bR%7d%5e%7bm%5ctimes%20n%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%88%86%e8%a7%a3%e3%82%92%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3%e3%81%a8%e8%a8%80%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e8%a8%bc%e6%98%8e%20%24A%5e%7b%5cmathsf%7bT%7d%7dA%24%e3%81%af%e5%ae%9f%e5%af%be%e7%a7%b0%e8%a1%8c%e5%88%97%e3%81%aa%e3%81%ae%e3%81%a7%e5%9b%ba%e6%9c%89%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24%7bv_%7b1%7d%2c%5cdots%2cv_%7bn%7d%7d%24%e3%81%a8%e5%9b%ba%e6%9c%89%e5%80%a4%24%7b%5cxi_%7b1%7d%2c%5cdots%2c%5cxi_%7bn%7d%7d%24%e3%81%8c%e5%ad%98%e5%9c%a8%e3%81%97%e3%81%a6%20%24%24%20A%5e%7b%5cmathsf%7bT%7d%7dAv_%7bi%7d%3d%5cxi_%7bi%7dv_%7bi%7d%2c%5cquad%20%28v_%7bi%7d%2cv_%7bj%7d%29%3d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%20%24%24%20%5cxi_%7bi%7d%3d%28v_%7bi%7d%2c%5cxi_%7bi%7dv_%7bi%7d%29%3d%28v_%7bi%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bi%7d%29%3d%28Av_%7bi%7d%2cAv_%7bi%7d%29%5cgeq0%20%24%24%20%e3%81%aa%e3%81%ae%e3%81%a7%e5%9b%ba%e6%9c%89%e5%80%a4%e3%81%af%e5%b8%b8%e3%81%ab0%e4%bb%a5%e4%b8%8a%e3%81%a7%e3%81%99%e3%80%82%e7%89%b9%e3%81%ab%e3%80%81%24i%3d1%2c%5cdots%2cr%24%e3%81%a7%24%5cxi_%7bi%7d%26gt%3b0%24%e3%81%8b%e3%81%a4%24i%26gt%3br%24%e3%81%a7%24%5cxi_%7bi%7d%3d0%24%e3%81%a8%e3%81%aa%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e5%ae%9f%e3%81%af%e3%81%93%e3%81%ae%e5%9b%ba%e6%9c%89%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24v_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24V%24%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%e6%ac%a1%e3%81%ab%24i%3d1%2c2%2c%5cdots%2cr%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%24u_%7bi%7d%3dAv_%7bi%7d%2f%5csqrt%7b%5cxi_%7bi%7d%7d%24%e3%81%a8%e3%81%97%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%e3%81%99%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%20%28u_%7bi%7d%2c%20u_%7bj%7d%29%3d%5cfrac%7b1%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%28Av_%7bi%7d%2cAv_%7bj%7d%29%3d%5cfrac%7b1%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%28v_%7bi%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bj%7d%29%3d%5cfrac%7b%5cxi_%7bj%7d%5cdelta_%7bij%7d%7d%7b%5csqrt%7b%5cxi_%7bi%7d%5cxi_%7bj%7d%7d%7d%3d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%80%81%24u_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%af%e4%ba%92%e3%81%84%e3%81%ab%e7%9b%b4%e4%ba%a4%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%24m-r%24%e5%80%8b%e3%81%ae%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24%7bu_%7br%2b1%7d%2c%5cdots%2cu_%7bm%7d%7d%24%e3%82%92%e6%8c%81%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%a6%e6%ad%a3%e8%a6%8f%e7%9b%b4%e4%ba%a4%e5%9f%ba%e5%ba%95%24%7bu_%7b1%7d%2c%5cdots%2cu_%7bm%7d%7d%24%e3%82%92%e6%a7%8b%e6%88%90%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e5%ae%9f%e3%81%af%e3%81%93%e3%81%ae%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%24u_%7bi%7d%24%e3%81%9f%e3%81%a1%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%24U%24%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%e4%b8%8a%e3%81%a7%e5%be%97%e3%82%89%e3%82%8c%e3%81%9f%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%a1%8c%e5%88%97%20%24%24%20V%3d%28v_%7b1%7d%2c%5cdots%2cv_%7bn%7d%29%2c%5cquad%20U%3d%28u_%7b1%7d%2c%5cdots%2cu_%7bm%7d%29%20%24%24%20%e3%82%92%e6%a7%8b%e6%88%90%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%8c%e7%9b%b4%e4%ba%a4%e8%a1%8c%e5%88%97%e3%81%aa%e3%81%ae%e3%81%af%e6%98%8e%e3%82%89%e3%81%8b%e3%81%a7%e3%81%99%e3%80%82%20%24U%5e%7b%5cmathsf%7bT%7d%7dAV%24%e3%81%a8%e3%81%84%e3%81%86%e8%a1%8c%e5%88%97%e3%82%92%e8%a8%88%e7%ae%97%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b%e3%81%a8%e3%80%81%20%24%24%20U%5e%7b%5cmathsf%7bT%7d%7dAV%5bi%2cj%5d%3d%28u_%7bi%7d%2cAv_%7bj%7d%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%20%24j%3dr%2b1%2c%5cdots%2cn%24%e3%81%ab%e3%81%8a%e3%81%84%e3%81%a6%e3%81%af%20%24%24%20%28Av_%7bj%7d%2cAv_%7bj%7d%29%3d%28v_%7bj%7d%2cA%5e%7b%5cmathsf%7bT%7d%7dAv_%7bj%7d%29%3d%28v_%7bj%7d%2c0%29%3d0%20%24%24%20%e3%81%aa%e3%81%ae%e3%81%a7%24%28u_%7bi%7d%2cAv_%7bj%7d%29%3d0%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%24i%3dr%2b1%2c%5cdots%2cm%24%e3%81%8b%e3%81%a4%24j%3d1%2c%5cdots%2cr%24%e3%81%ab%e3%81%8a%e3%81%84%e3%81%a6%e3%82%82%20%24%24%20%28u_%7bi%7d%2cAv_%7bj%7d%29%3d%28u_%7bi%7d%2c%5csqrt%7b%5cxi_%7bj%7d%7du_%7bj%7d%29%3d0%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%241%5cleq%20i%2cj%5cleq%20r%24%e3%81%ae%e3%81%a8%e3%81%8d%e3%81%ab%e3%81%af%e3%80%81%20%24%24%20%28u_%7bi%7d%2cAv_%7bj%7d%29%3d%28u_%7bi%7d%2c%5csqrt%7b%5cxi_%7bj%7d%7du_%7bj%7d%29%3d%5csqrt%7b%5cxi_%7bj%7d%7d%5cdelta_%7bij%7d%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%20%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%24%5csqrt%7b%5cxi_%7bi%7d%7d%3d%5csigma_%7bi%7d%24%e3%81%a8%e7%bd%ae%e3%81%8f%e3%81%93%e3%81%a8%e3%81%a7%20%24%24U%5e%7b%5cmathsf%7bT%7d%7dAV%3d%5cSigma%3d%5cbegin%7bpmatrix%7d%5cmathrm%7bdiag%7d%28%5csigma_%7b1%7d%2c%5cdots%2c%5csigma_%7br%7d%29%20%26amp%3b%20O_%7br%5ctimes%28n-r%29%7d%20%5c%5c%20O_%7b%28m-r%29%5ctimes%20r%7d%20%26amp%3b%20O_%7b%28m-r%29%5ctimes%20%28n-r%29%7d%5cend%7bpmatrix%7d%24%24%20%e3%81%a8%e3%81%aa%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e7%89%b9%e3%81%ab%24A%3dU%5cSigma%20V%5e%7b%5cmathsf%7bT%7d%7d%24%e3%82%82%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fsvd%2f&t=%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Ryosuke Yoneda 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
