@@ -297,14 +297,16 @@ $$
 <h2 id="実装">実装</h2>
 <p>実装の流れは$A^{\mathsf{T}}A$の固有値と固有ベクトルを計算したあと、そこから$U,\Sigma,V$を求めるだけです。
 今回はこの画像を使ってみましょう。</p>
-<figure><img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/>
+<figure>
+    <img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/> 
 </figure>
 
 <p>コードはこんな感じです。</p>
 <script type="application/javascript" src="https://gist.github.com/yonesuke/81753f5b58643b2ff508f8daf66e3044.js"></script>
 
 <p>これをもとにrankが1,2,3,10,30,50の場合のグラフをプロットすると次のようになります。</p>
-<figure><img src="rank.png" width="700"/>
+<figure>
+    <img src="rank.png" width="700"/> 
 </figure>
 
 <p>rankが50の段階でもかなり元の画像に近づいてるのが確認できます。</p>
