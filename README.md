@@ -5,5 +5,5 @@
 ## setup
 ```
 git clone git@github.com:yonesuke/yonesuke.github.io.git
-git submodule update --init --recursive
+cd yonesuke.github.io.git; git submodule update --init --recursive
 ```
