@@ -35,6 +35,11 @@ name = "Posts"
 url = "/posts"
 weight = 5
 
+[[menu.main]]
+name = "CV"
+url = "/cv.pdf"
+weight = 6
+
 [markup]
   [markup.tableOfContents]
     endLevel = 4
