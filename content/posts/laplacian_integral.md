@@ -47,7 +47,7 @@ $$
 と$r\to+0$の極限で求まります。ただし極限操作の交換は優収束定理から正当化されます。
 さらに、$i\ne j$ならば$z_{i}z_{j}$の積分は$0$になり、$i=j$ならば、$z_{i}^{2}$の積分は$i$に依存しないので、
 $$
-\frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\int_{\partial B(0,1)}z_{i}^{2}d\sigma_{z}=\frac{1}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\int_{\partial B(0,1)}\sum_{i=1}^{n}z_{i}^{2}d\sigma_{z}=\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)
+\frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}z_{i}^{2}d\sigma_{z}=\frac{1}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}\sum_{i=1}^{n}z_{i}^{2}d\sigma_{z}=\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)
 $$
 と計算できます。よって、
 $$
