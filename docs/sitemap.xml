@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yonesuke.github.io/posts/laplacian_integral/</loc>
-    <lastmod>2021-07-30T18:34:51+09:00</lastmod>
+    <loc>https://yonesuke.github.io/posts/gram_eigen/</loc>
+    <lastmod>2021-08-02T16:59:14+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/posts/</loc>
+    <lastmod>2021-08-02T16:59:14+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/laplacian_integral/</loc>
     <lastmod>2021-07-30T18:34:51+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/posts/borwein/</loc>
