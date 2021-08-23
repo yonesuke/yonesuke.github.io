@@ -1,6 +1,6 @@
 ---
 title: "MNISTをMLPで推論(Julia/Flux実装)"
-date: 2021-08-23T16:38:35+09:00
+date: 2021-08-23T07:38:35+09:00
 draft: true
 ---
 
