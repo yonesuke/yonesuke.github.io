@@ -7,7 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Mon, 02 Aug 2021 16:59:14 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Aug 2021 16:38:35 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MNISTをMLPで推論(Julia/Flux実装)</title>
+      <link>https://yonesuke.github.io/posts/mnist_mlp/</link>
+      <pubDate>Mon, 23 Aug 2021 16:38:35 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/mnist_mlp/</guid>
+      <description>Juliaで機械学習をするための有名なライブラリにFluxがあります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。 コードは次のようになります。これを参考に書きました。
+ パッケージ 基本的にFluxさえあれば良いです。今回はMNISTデータを用いるのでMLDatasetsというパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
+julia&amp;gt; import Pkg; Pkg.add([&amp;#34;Flux&amp;#34;, &amp;#34;MLDatasets&amp;#34;]) これでパッケージを読み込むことができます。
+using Flux using Flux.Data: DataLoader using Flux: onehotbatch, onecold using Flux.Losses: logitcrossentropy using MLDatasets データの読み込み MNISTデータを読み込みます。
+x_train, y_train = MLDatasets.MNIST.traindata(Float32) x_test, y_test = MLDatasets.MNIST.testdata(Float32) MNISTの画像はサイズ(28,28,1)になっていますが、MLPには1次元の配列として渡したいのでflattenで各データを1次元に落とします。
+x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
+y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。
+img_size = (28,28,1) input_size = prod(img_size) # 784 nclasses = 10 # 0~9 # Define model model = Chain( Dense(input_size, 32, relu), Dense(32, nclasses) ) Dense(input_size, output_size, f)という関数$F\colon\mathbb{R}^{\mathrm{inputsize}}\to\mathbb{R}^{\mathrm{outputsize}}$は $$ F(x) = f(Wx+b) $$ になります。$f$は活性化関数です。$W,b$は内部で勝手に定義されます。デフォルトでは初期値$W,b$はGlorotの一様分布に従ってランダムに選ばれます。 また、$f$を指定しなければ活性化関数は恒等関数になります。すなわち非線形変換は行われません。 今回は活性化関数にReLU関数を用いました。 Chainは合成関数を作ります。すなわち、Chain(F,G)は$G\circ F$という関数に対応します。 今回定義したモデルは784次元の入力から10次元の出力を返します。出力の10次元の中で一番大きい要素のindexが推定される数字とします。</description>
+    </item>
+    
     <item>
       <title>Gram行列の固有値の数値計算</title>
       <link>https://yonesuke.github.io/posts/gram_eigen/</link>
