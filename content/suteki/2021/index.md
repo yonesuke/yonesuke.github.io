@@ -39,7 +39,7 @@ url: /teaching/2021-suutekirikai
 |第3回| 10月13日 | 順序、組み合わせ | [順列、組み合わせ PDF](slide03.pdf) | [順序、組み合わせ PDF](ans03.pdf) | |
 |第4回| 10月20日 | 確率 | [確率 PDF](slide04.pdf) | [確率 PDF](ans04.pdf) | |
 |第5回| 10月27日 | 方程式 | [方程式 PDF](slide05.pdf) |  | [YouTube](https://youtu.be/zxalHfKsoxc)|
-|第6回| 11月10日 | $n$進数 |  |  | |
+|第6回| 11月10日 | $n$進数 | [$n$進数 PDF](slide06.pdf) | [$n$進数 PDF](ans06.pdf) | |
 |第7回| 11月17日 | 距離と時間と速さ |  |  | |
 |第8回| 12月1日 | 濃度算 |  |  | |
 |第9回| 12月8日 | 数列 |  |  | |
