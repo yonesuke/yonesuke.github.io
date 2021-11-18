@@ -30,8 +30,14 @@ draft: false
 
 # Experiences
 ## Internships
+- **Nomura Holdings, Inc., Tokyo**. Nomura Passport (November 2021 - December 2021)
+    - https://nomurapassport.com/
+- **P&G Japan IT, Kobe**. Summer Internship (November 2021)
 - **Mercari Inc., Tokyo**. Professional Internship (August 2018 - September 2018)
     - https://engineering.mercari.com/blog/entry/2018-09-11-171607/
+
+## Grants
+- **Research Fellowship for Young Scientists**, Japan Society for the Promotion of Science (JSPS) DC2 (April 2022 - March 2024)
 
 ## Scholarships
 - **Iwadare Scholarship**, Iwadare Scholarship Foundation (April 2020 - March 2021)
