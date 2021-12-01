@@ -41,8 +41,8 @@ url: /teaching/2021-suutekirikai
 |第5回| 10月27日 | 方程式 | [方程式 PDF](slide05.pdf) | [方程式 PDF](ans05.pdf) | [YouTube](https://youtu.be/zxalHfKsoxc)|
 |第6回| 11月10日 | $n$進数 | [$n$進数 PDF](slide06.pdf) | [$n$進数 PDF](ans06.pdf) | |
 |第7回| 11月17日 | 距離と時間と速さ | [距離と時間と速さ PDF](slide07.pdf) | [距離と時間と速さ PDF](ans07.pdf) | [YouTube](https://youtu.be/WhS2QIIOf-U)|
-|第8回| 12月1日 | 濃度算 |  | [濃度算 PDF](ans08.pdf) | |
-|第9回| 12月8日 | 数列 |  |  | |
+|第8回| 12月1日 | 濃度算 | [濃度算 PDF](slide08.pdf) | [濃度算 PDF](ans08.pdf) | |
+|第9回| 12月8日 | 数列 | [数列 PDF](slide09.pdf) |  | |
 |第10回| 12月15日 | 関数とグラフ |  |  | |
 |第11回| 12月22日 | 集合 |  |  | |
 |第12回| 1月5日 | 論理 |  |  | |
