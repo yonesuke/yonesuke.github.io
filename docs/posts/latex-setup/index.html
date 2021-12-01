@@ -18,8 +18,8 @@ Overleaf  Overleafで日本語で文章を書く場合は次のlatexmkrcとい�
 \usepackage[style=phys,articletitle=true,biblabel=brackets,chaptertitle=false,pageranges=false,doi=false]{biblatex} % bibファイルの読み込み \addbibresource{main." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/latex-setup/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-05T18:46:29&#43;09:00" />
-<meta property="article:modified_time" content="2021-05-05T18:46:29&#43;09:00" />
+<meta property="article:published_time" content="2021-05-05T18:46:29+09:00" />
+<meta property="article:modified_time" content="2021-05-05T18:46:29+09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -208,7 +208,7 @@ Overleaf  Overleafで日本語で文章を書く場合は次のlatexmkrcとい�
 <h2 id="overleaf">Overleaf</h2>
 <ul>
 <li>Overleafで日本語で文章を書く場合は次の<code>latexmkrc</code>というファイルをおいておきます。
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$latex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;platex&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$latex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;platex&#39;</span>;
 $bibtex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pbibtex&#39;</span>;
 $dvipdf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;dvipdfmx %O -o %D %S&#39;</span>;
 $makeindex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mendex -U %O -o %D %S&#39;</span>;
@@ -219,7 +219,7 @@ $pdf_mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 <h2 id="beamer">Beamer</h2>
 <ul>
 <li>LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特に<code>metropolis</code>と<code>focus</code>というテーマが気に入っています。
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\documentclass</span><span style="color:#a6e22e">[dvipdfmx]</span>{beamer}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\documentclass</span><span style="color:#a6e22e">[dvipdfmx]</span>{beamer}
 <span style="color:#66d9ef">\usepackage</span>{bxdpx-beamer}
 <span style="color:#66d9ef">\usepackage</span>{pxjahyper}
 <span style="color:#66d9ef">\usepackage</span>{minijs}
@@ -227,7 +227,7 @@ $pdf_mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 <span style="color:#66d9ef">\usefonttheme</span>{professionalfonts}
 <span style="color:#66d9ef">\usepackage</span>{appendixnumberbeamer}
 </code></pre></div><p>Appendixに移行する際の区切りのページには次を書くと便利です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#75715e">% スライド終わり
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#75715e">% スライド終わり
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">\appendix</span>
 <span style="color:#66d9ef">\begin</span>{frame}[standout]
     APPENDIX
@@ -242,13 +242,13 @@ $pdf_mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 <li>
 <p><code>hyperref</code>
 次のオプションとともに呼ぶと便利です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[colorlinks=true,linkcolor=magenta,citecolor=magenta,breaklinks=true]</span>{hyperref}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[colorlinks=true,linkcolor=magenta,citecolor=magenta,breaklinks=true]</span>{hyperref}
 </code></pre></div><p>特に<code>breaklinks=true</code>はリンクを改行してくれるので重宝します。リンクの色は好みに合わせて変えてください。</p>
 </li>
 <li>
 <p><code>biblatex</code>
 次のオプションとともに呼ぶとPR系の論文のように参考文献を表示してくれます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[style=phys,articletitle=true,biblabel=brackets,chaptertitle=false,pageranges=false,doi=false]</span>{biblatex}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[style=phys,articletitle=true,biblabel=brackets,chaptertitle=false,pageranges=false,doi=false]</span>{biblatex}
 <span style="color:#75715e">% bibファイルの読み込み
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">\addbibresource</span>{main.bib}
 <span style="color:#75715e">% ...
