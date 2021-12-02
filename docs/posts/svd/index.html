@@ -16,8 +16,8 @@
  $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。  よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/svd/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-31T16:22:52+09:00" />
-<meta property="article:modified_time" content="2021-05-31T16:22:52+09:00" />
+<meta property="article:published_time" content="2021-05-31T16:22:52&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-31T16:22:52&#43;09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -305,14 +305,16 @@ $$
 <h2 id="実装">実装</h2>
 <p>実装の流れは$A^{\mathsf{T}}A$の固有値と固有ベクトルを計算したあと、そこから$U,\Sigma,V$を求めるだけです。
 今回はこの画像を使ってみましょう。</p>
-<figure><img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/>
+<figure>
+    <img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/> 
 </figure>
 
 <p>コードはこんな感じです。</p>
 <script type="application/javascript" src="https://gist.github.com/yonesuke/81753f5b58643b2ff508f8daf66e3044.js"></script>
 
 <p>これをもとにrankが1,2,3,10,30,50の場合のグラフをプロットすると次のようになります。</p>
-<figure><img src="rank.png" width="700"/>
+<figure>
+    <img src="rank.png" width="700"/> 
 </figure>
 
 <p>rankが50の段階でもかなり元の画像に近づいてるのが確認できます。</p>
