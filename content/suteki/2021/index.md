@@ -14,7 +14,7 @@ url: /teaching/2021-suutekirikai
 
 ## 教科書
 
-[『最新最強のSPIクリア問題集』](https://www.amazon.co.jp/dp/4415232957) 成美堂出版編集部　著 (成美堂出版)
+[『最新最強のSPIクリア問題集』](https://www.amazon.co.jp/dp/4415232957) 成美堂出版編集部 著 (成美堂出版)
 
 ---
 
@@ -42,9 +42,9 @@ url: /teaching/2021-suutekirikai
 |第6回| 11月10日 | $n$進数 | [$n$進数 PDF](slide06.pdf) | [$n$進数 PDF](ans06.pdf) | |
 |第7回| 11月17日 | 距離と時間と速さ | [距離と時間と速さ PDF](slide07.pdf) | [距離と時間と速さ PDF](ans07.pdf) | [YouTube](https://youtu.be/WhS2QIIOf-U)|
 |第8回| 12月1日 | 濃度算 | [濃度算 PDF](slide08.pdf) | [濃度算 PDF](ans08.pdf) | [YouTube](https://youtu.be/dl58CbapNxw)|
-|第9回| 12月8日 | 数列 | [数列 PDF](slide09.pdf) | [数列 PDF](ans09.pdf) | |
-|第10回| 12月15日 | 関数とグラフ | [関数とグラフ PDF](slide10.pdf) |  | |
-|第11回| 12月22日 | 集合 |  |  | |
+|第9回| 12月8日 | 数列 | [数列 PDF](slide09.pdf) | [数列 PDF](ans09.pdf) | [YouTube](https://youtu.be/sg45QZD8tLw) |
+|第10回| 12月15日 | 関数とグラフ | [関数とグラフ PDF](slide10.pdf) | [関数とグラフ PDF](ans10.pdf) | [YouTube]() |
+|第11回| 12月22日 | 集合 | [集合 PDF](slide11.pdf) |  | |
 |第12回| 1月5日 | 論理 |  |  | |
 |第13回| 1月12日 | テスト演習と解説1 |  |  | |
 |第14回| 1月19日 | テスト演習と解説2 |  |  | |
