@@ -251,8 +251,8 @@ $$
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>
 epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 </code></pre></div><p>これをもとにtrainデータとtestデータをバッチに分けていきます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">train_loader <span style="color:#f92672">=</span> DataLoader((x_train, y_train), batchsize<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>)
-test_loader <span style="color:#f92672">=</span> DataLoader((x_test, y_test), batchsize<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">train_loader <span style="color:#f92672">=</span> DataLoader((x_train, y_train), batchsize<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span>true)
+test_loader <span style="color:#f92672">=</span> DataLoader((x_test, y_test), batchsize<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span>true)
 </code></pre></div><p>また、学習則にはAdamを用いてみましょう。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">opt <span style="color:#f92672">=</span> ADAM()
 </code></pre></div><h2 id="損失関数">損失関数</h2>
@@ -417,7 +417,7 @@ Epoch=10
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2021  Ryosuke Yoneda 
+    Copyright  &copy; 2022  Ryosuke Yoneda 
   </div>
   <div class="footer-right">
     <nav>
