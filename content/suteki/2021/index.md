@@ -46,7 +46,7 @@ url: /teaching/2021-suutekirikai
 |第10回| 12月15日 | 関数とグラフ | [関数とグラフ PDF](slide10.pdf) | [関数とグラフ PDF](ans10.pdf) | [YouTube](https://youtu.be/IAnBQit8F14) |
 |第11回| 12月22日 | 集合 | [集合 PDF](slide11.pdf) | [集合 PDF](ans11.pdf) | [YouTube](https://youtu.be/6u76z8LRenU) |
 |第12回| 1月5日 | 論理 | [論理 PDF](slide12.pdf) | [論理 PDF](ans12.pdf) | [YouTube](https://youtu.be/bXVyQWKgen8) |
-|第13回| 1月12日 | テスト演習と解説1 |  |  | |
+|第13回| 1月12日 | テスト演習と解説1 | [テスト問題 PDF](exam01.pdf) |  | |
 |第14回| 1月19日 | テスト演習と解説2 |  |  | |
 
 ---
