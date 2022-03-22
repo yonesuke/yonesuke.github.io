@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Tue, 22 Mar 2022 13:05:46 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Mar 2022 18:40:13 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>関数列の収束に関して</title>
+      <link>https://yonesuke.github.io/posts/convergence/</link>
+      <pubDate>Tue, 22 Mar 2022 18:40:13 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/convergence/</guid>
+      <description>graph TD A[/一様収束/] --&amp;gt; B[/各点収束/] --&amp;gt; C[/概収束/] A --&amp;gt; D[/ $L^\infty$収束 /] --&amp;gt; E[/概一様収束/] D -. 有限測度 .-&amp;gt; F[/$L^1$収束/] --&amp;gt; G[/測度収束/] E --&amp;gt; C C -. 有限測度 or 優関数 .-&amp;gt; E E --&amp;gt; G C -. 優関数 .-&amp;gt; F D -. outside of a nullset .-&amp;gt; A </description>
+    </item>
+    
     <item>
       <title>Egorov&#39;s theorem</title>
       <link>https://yonesuke.github.io/posts/egorov/</link>
