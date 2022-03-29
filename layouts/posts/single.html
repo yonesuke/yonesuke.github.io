@@ -49,6 +49,9 @@
         </div>
         {{ end }}
       </div>
+      {{ if or .Params.tikz .Site.Params.tikz }}
+        {{ partial "tikz.html" . }}
+      {{ end }}
     </header>
 
 
