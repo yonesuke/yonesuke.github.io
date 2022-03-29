@@ -2,7 +2,7 @@
 title: "TikZ"
 date: 2022-03-29T18:59:16+09:00
 tikz: true
-draft: true
+draft: false
 ---
 
 
