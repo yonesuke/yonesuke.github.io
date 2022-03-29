@@ -24,6 +24,9 @@
   ` | safeHTML }}
 
   {{ partial "favicon.html" . }}
+  {{ if or .Params.tikz .Site.Params.tikz }}
+    {{ partial "tikz.html" . }}
+  {{ end }}
   {{ if .Site.Params.rss }}
   {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
