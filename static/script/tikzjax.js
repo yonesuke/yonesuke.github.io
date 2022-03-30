@@ -21860,7 +21860,7 @@ let pages = 1000;
 var coredump;
 var code;
 
-async function load() {
+async function load_tikz() {
   let tex = await fetch(urlRoot + '/wasm/tikzjax.wasm');
   code = await tex.arrayBuffer();
   let response = await fetch_readablestream__WEBPACK_IMPORTED_MODULE_5___default()(urlRoot + '/gzip/tikzjax.gz');
@@ -21915,7 +21915,7 @@ async function tex(input) {
 }
 
 window.onload = async function () {
-  await load();
+  await load_tikz();
 
   async function process(elt) {
     var text = elt.childNodes[0].nodeValue;
