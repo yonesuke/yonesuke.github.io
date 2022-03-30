@@ -16,8 +16,8 @@
  $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。  よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/svd/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-31T16:22:52+09:00" />
-<meta property="article:modified_time" content="2021-05-31T16:22:52+09:00" />
+<meta property="article:published_time" content="2021-05-31T16:22:52&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-31T16:22:52&#43;09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -271,7 +271,7 @@ $$
 実は、ランクが多くても$k$の行列全体の中で、$A_{k}$はFrobeniusノルムのもとで$A$に最も近い行列であることが示されます。
 すなわち、ランクが$k$以下の任意の行列$B$に対して、
 $$
-\|A-A_{k}\|<em>{F}\leq\|A-B\|</em>{F}
+\|A-A_{k}\|_{F}\leq\|A-B\|_{F}
 $$
 となります。これをEckart–Young–Mirskyの定理と言います。Frobeniusノルムの他にも2ノルムでもこの定理が成り立つそうです。</p>
 <h3 id="特異値に関する関係式">特異値に関する関係式</h3>
@@ -285,13 +285,13 @@ $\sigma_{i}(M)$を行列$M$の$i$番目に大きい特異値とします。
 <li>$i,j\in\mathbb{N},i+j-1\leq n$について$\sigma_{i}(A)+\sigma_{j}(B)\geq\sigma_{i+j-1}(A+B)$です。
 $$
 \begin{aligned}
-\sigma_{i}(A)+\sigma_{j}(B)=&amp;\sigma_{1}(A-A_{i-1})+\sigma_{1}(B-B_{j-1})\\\geq&amp;\sigma_{1}(A+B-(A_{i-1}+B_{j-1}))\\\geq&amp;\sigma_{1}(A+B-(A+B)<em>{i+j-2})=\sigma</em>{i+j-1}(A+B)
+\sigma_{i}(A)+\sigma_{j}(B)=&amp;\sigma_{1}(A-A_{i-1})+\sigma_{1}(B-B_{j-1})\\\geq&amp;\sigma_{1}(A+B-(A_{i-1}+B_{j-1}))\\\geq&amp;\sigma_{1}(A+B-(A+B)_{i+j-2})=\sigma_{i+j-1}(A+B)
 \end{aligned}
 $$
 ここで$\mathrm{rank}(A_{i-1}+B_{j-1})\leq i+j-2=\mathrm{rank}((A+B)_{i+j-2})$を用いました。</li>
 </ul>
 <h3 id="証明-1">証明</h3>
-<p>まず$\|A-A_{k}\|<em>{F}^{2}=\sum</em>{i=k+1}^{r}\sigma_{i}^{2}$です。
+<p>まず$\|A-A_{k}\|_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
 また、$i&gt;k$で$\sigma_{i}(B)=0$より
 $$
 \sigma_{i+k}(A)=\sigma_{i+(k+1)-1}((A-B)+B)\leq\sigma_{i}(A-B)+\sigma_{k+1}(B)=\sigma_{i}(A-B)
@@ -299,21 +299,23 @@ $$
 がわかるので、
 $$
 \begin{aligned}
-\|A-B\|^{2}<em>{F}=&amp;\sum</em>{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\geq&amp;\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\|A-A_{k}\|_{F}^{2}
+\|A-B\|^{2}_{F}=&amp;\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\geq&amp;\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\|A-A_{k}\|_{F}^{2}
 \end{aligned}
 $$
 となり、示されました。</p>
 <h2 id="実装">実装</h2>
 <p>実装の流れは$A^{\mathsf{T}}A$の固有値と固有ベクトルを計算したあと、そこから$U,\Sigma,V$を求めるだけです。
 今回はこの画像を使ってみましょう。</p>
-<figure><img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/>
+<figure>
+    <img src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width="700"/> 
 </figure>
 
 <p>コードはこんな感じです。</p>
 <script type="application/javascript" src="https://gist.github.com/yonesuke/81753f5b58643b2ff508f8daf66e3044.js"></script>
 
 <p>これをもとにrankが1,2,3,10,30,50の場合のグラフをプロットすると次のようになります。</p>
-<figure><img src="rank.png" width="700"/>
+<figure>
+    <img src="rank.png" width="700"/> 
 </figure>
 
 <p>rankが50の段階でもかなり元の画像に近づいてるのが確認できます。</p>
