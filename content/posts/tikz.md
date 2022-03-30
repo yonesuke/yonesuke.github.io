@@ -1,12 +1,12 @@
 ---
-title: "TikZ"
+title: "TikZ test"
 date: 2022-03-29T18:59:16+09:00
 tikz: true
 draft: false
 ---
 
 
-test
+tikzのtestです。
 
 
 {{< tikz "A simple cycle" >}}
@@ -39,5 +39,4 @@ test
 \end{tikzpicture}
 {{< /tikz >}}
 
-
-test
+いい感じ！！
