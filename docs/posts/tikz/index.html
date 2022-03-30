@@ -10,7 +10,9 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="TikZ test" />
 <meta property="og:description" content="tikzのtestです。
-\begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,...,\n} { \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$}; \draw[-, =latex] ({360/\n * (\s - 1)&#43;\margin}:\radius) arc ({360/\n * (\s - 1)&#43;\margin}:{360/\n * (\s)-\margin}:\radius); } \end{tikzpicture}  \begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,." />
+\begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,...,\n} { \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$}; \draw[-, =latex] ({360/\n * (\s - 1)&#43;\margin}:\radius) arc ({360/\n * (\s - 1)&#43;\margin}:{360/\n * (\s)-\margin}:\radius); } \end{tikzpicture}  いい感じ！！
+参考にしたサイト: https://blog.xiupos.net/posts/computer/tikz/
+基本的にはこのサイトの通りにすればうまく動いた。ただ、tikzを動かすのにwindow.onloadの機能を使っていて、それが他のwindow.onloadと競合すると上書きされてtikzのコンパイルが走らなくなるので注意が必要。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/tikz/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-29T18:59:16+09:00" />
@@ -20,7 +22,9 @@
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TikZ test"/>
 <meta name="twitter:description" content="tikzのtestです。
-\begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,...,\n} { \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$}; \draw[-, =latex] ({360/\n * (\s - 1)&#43;\margin}:\radius) arc ({360/\n * (\s - 1)&#43;\margin}:{360/\n * (\s)-\margin}:\radius); } \end{tikzpicture}  \begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,."/>
+\begin{tikzpicture}[scale=1.5,transform shape] \def \n {5} \def \radius {3cm} \def \margin {8} % margin in angles, depends on the radius \foreach \s in {1,...,\n} { \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$}; \draw[-, =latex] ({360/\n * (\s - 1)&#43;\margin}:\radius) arc ({360/\n * (\s - 1)&#43;\margin}:{360/\n * (\s)-\margin}:\radius); } \end{tikzpicture}  いい感じ！！
+参考にしたサイト: https://blog.xiupos.net/posts/computer/tikz/
+基本的にはこのサイトの通りにすればうまく動いた。ただ、tikzを動かすのにwindow.onloadの機能を使っていて、それが他のwindow.onloadと競合すると上書きされてtikzのコンパイルが走らなくなるので注意が必要。"/>
 
   
   
@@ -147,7 +151,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2ftikz%2f&name=TikZ%20test&description=tikz%e3%81%aetest%e3%81%a7%e3%81%99%e3%80%82%0a%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c...%2c%5cn%7d%20%7b%20%5cnode%5bdraw%2c%20circle%5d%20at%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%7d%3a%5cradius%29%20%7b%24%5cs%24%7d%3b%20%5cdraw%5b-%2c%20%3dlatex%5d%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%5cradius%29%20arc%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%7b360%2f%5cn%20%2a%20%28%5cs%29-%5cmargin%7d%3a%5cradius%29%3b%20%7d%20%5cend%7btikzpicture%7d%20%20%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2ftikz%2f&name=TikZ%20test&description=tikz%e3%81%aetest%e3%81%a7%e3%81%99%e3%80%82%0a%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c...%2c%5cn%7d%20%7b%20%5cnode%5bdraw%2c%20circle%5d%20at%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%7d%3a%5cradius%29%20%7b%24%5cs%24%7d%3b%20%5cdraw%5b-%2c%20%3dlatex%5d%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%5cradius%29%20arc%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%7b360%2f%5cn%20%2a%20%28%5cs%29-%5cmargin%7d%3a%5cradius%29%3b%20%7d%20%5cend%7btikzpicture%7d%20%20%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%ef%bc%81%ef%bc%81%0a%e5%8f%82%e8%80%83%e3%81%ab%e3%81%97%e3%81%9f%e3%82%b5%e3%82%a4%e3%83%88%3a%20https%3a%2f%2fblog.xiupos.net%2fposts%2fcomputer%2ftikz%2f%0a%e5%9f%ba%e6%9c%ac%e7%9a%84%e3%81%ab%e3%81%af%e3%81%93%e3%81%ae%e3%82%b5%e3%82%a4%e3%83%88%e3%81%ae%e9%80%9a%e3%82%8a%e3%81%ab%e3%81%99%e3%82%8c%e3%81%b0%e3%81%86%e3%81%be%e3%81%8f%e5%8b%95%e3%81%84%e3%81%9f%e3%80%82%e3%81%9f%e3%81%a0%e3%80%81tikz%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99%e3%81%ae%e3%81%abwindow.onload%e3%81%ae%e6%a9%9f%e8%83%bd%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%84%e3%81%a6%e3%80%81%e3%81%9d%e3%82%8c%e3%81%8c%e4%bb%96%e3%81%aewindow.onload%e3%81%a8%e7%ab%b6%e5%90%88%e3%81%99%e3%82%8b%e3%81%a8%e4%b8%8a%e6%9b%b8%e3%81%8d%e3%81%95%e3%82%8c%e3%81%a6tikz%e3%81%ae%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%ab%e3%81%8c%e8%b5%b0%e3%82%89%e3%81%aa%e3%81%8f%e3%81%aa%e3%82%8b%e3%81%ae%e3%81%a7%e6%b3%a8%e6%84%8f%e3%81%8c%e5%bf%85%e8%a6%81%e3%80%82">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -200,21 +204,9 @@
   }
 \end{tikzpicture}
 </script>
-<script type="text/tikz">
-\begin{tikzpicture}[scale=1.5,transform shape]
-  \def \n {5}
-  \def \radius {3cm}
-  \def \margin {8} % margin in angles, depends on the radius
-
-  \foreach \s in {1,...,\n}
-  {
-    \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$};
-    \draw[->, >=latex] ({360/\n * (\s - 1)+\margin}:\radius) 
-      arc ({360/\n * (\s - 1)+\margin}:{360/\n * (\s)-\margin}:\radius);
-  }
-\end{tikzpicture}
-</script>
 <p>いい感じ！！</p>
+<p>参考にしたサイト: <a href="https://blog.xiupos.net/posts/computer/tikz/">https://blog.xiupos.net/posts/computer/tikz/</a></p>
+<p>基本的にはこのサイトの通りにすればうまく動いた。ただ、tikzを動かすのにwindow.onloadの機能を使っていて、それが他のwindow.onloadと競合すると上書きされてtikzのコンパイルが走らなくなるので注意が必要。</p>
 
     </div>
   </article>
@@ -305,7 +297,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2ftikz%2f&name=TikZ%20test&description=tikz%e3%81%aetest%e3%81%a7%e3%81%99%e3%80%82%0a%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c...%2c%5cn%7d%20%7b%20%5cnode%5bdraw%2c%20circle%5d%20at%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%7d%3a%5cradius%29%20%7b%24%5cs%24%7d%3b%20%5cdraw%5b-%2c%20%3dlatex%5d%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%5cradius%29%20arc%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%7b360%2f%5cn%20%2a%20%28%5cs%29-%5cmargin%7d%3a%5cradius%29%3b%20%7d%20%5cend%7btikzpicture%7d%20%20%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2ftikz%2f&name=TikZ%20test&description=tikz%e3%81%aetest%e3%81%a7%e3%81%99%e3%80%82%0a%5cbegin%7btikzpicture%7d%5bscale%3d1.5%2ctransform%20shape%5d%20%5cdef%20%5cn%20%7b5%7d%20%5cdef%20%5cradius%20%7b3cm%7d%20%5cdef%20%5cmargin%20%7b8%7d%20%25%20margin%20in%20angles%2c%20depends%20on%20the%20radius%20%5cforeach%20%5cs%20in%20%7b1%2c...%2c%5cn%7d%20%7b%20%5cnode%5bdraw%2c%20circle%5d%20at%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%7d%3a%5cradius%29%20%7b%24%5cs%24%7d%3b%20%5cdraw%5b-%2c%20%3dlatex%5d%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%5cradius%29%20arc%20%28%7b360%2f%5cn%20%2a%20%28%5cs%20-%201%29%2b%5cmargin%7d%3a%7b360%2f%5cn%20%2a%20%28%5cs%29-%5cmargin%7d%3a%5cradius%29%3b%20%7d%20%5cend%7btikzpicture%7d%20%20%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%ef%bc%81%ef%bc%81%0a%e5%8f%82%e8%80%83%e3%81%ab%e3%81%97%e3%81%9f%e3%82%b5%e3%82%a4%e3%83%88%3a%20https%3a%2f%2fblog.xiupos.net%2fposts%2fcomputer%2ftikz%2f%0a%e5%9f%ba%e6%9c%ac%e7%9a%84%e3%81%ab%e3%81%af%e3%81%93%e3%81%ae%e3%82%b5%e3%82%a4%e3%83%88%e3%81%ae%e9%80%9a%e3%82%8a%e3%81%ab%e3%81%99%e3%82%8c%e3%81%b0%e3%81%86%e3%81%be%e3%81%8f%e5%8b%95%e3%81%84%e3%81%9f%e3%80%82%e3%81%9f%e3%81%a0%e3%80%81tikz%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99%e3%81%ae%e3%81%abwindow.onload%e3%81%ae%e6%a9%9f%e8%83%bd%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%84%e3%81%a6%e3%80%81%e3%81%9d%e3%82%8c%e3%81%8c%e4%bb%96%e3%81%aewindow.onload%e3%81%a8%e7%ab%b6%e5%90%88%e3%81%99%e3%82%8b%e3%81%a8%e4%b8%8a%e6%9b%b8%e3%81%8d%e3%81%95%e3%82%8c%e3%81%a6tikz%e3%81%ae%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%ab%e3%81%8c%e8%b5%b0%e3%82%89%e3%81%aa%e3%81%8f%e3%81%aa%e3%82%8b%e3%81%ae%e3%81%a7%e6%b3%a8%e6%84%8f%e3%81%8c%e5%bf%85%e8%a6%81%e3%80%82">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
