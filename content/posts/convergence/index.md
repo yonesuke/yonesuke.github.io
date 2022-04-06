@@ -1,5 +1,5 @@
 ---
-title: "Convergence"
+title: "関数列の収束について"
 date: 2022-04-06T11:29:26+09:00
 draft: false
 ---
