@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Wed, 06 Apr 2022 11:29:26 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Apr 2022 11:29:26 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>関数列の収束について</title>
       <link>https://yonesuke.github.io/posts/convergence/</link>
-      <pubDate>Wed, 06 Apr 2022 11:29:26 +0900</pubDate>
+      <pubDate>Sat, 30 Apr 2022 11:29:26 +0900</pubDate>
       
       <guid>https://yonesuke.github.io/posts/convergence/</guid>
       <description>Terrence Taoの&amp;quot;An introduction to measure theory&amp;ldquo;のゼミがつい先日終わりました。演習問題も全部解いたのでかなり力がついたと思います。 演習問題1.5.2で関数列の収束についての問題があり、収束の関係を図式に起こすと良いよ、と書いてあったのでまとめてみました。
