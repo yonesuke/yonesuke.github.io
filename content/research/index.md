@@ -16,6 +16,7 @@ draft: false
 - Y. Terada, K. Ito, **R. Yoneda**, T. Aoyagi, and Y. Y. Yamaguchi, A role of asymmetry in linear response of globally coupled oscillator systems, arXiv: [1802.08383](https://arxiv.org/abs/1802.08383).
 
 # Proceedings
+- **米田亮介**, "結合振動子系において同期しない密なネットワークの探索", 数理解析研究所講究録 (2022).
 - **米田亮介**, "ノイズを受けた大域結合振動子系の同期転移", [数理解析研究所講究録 **2181**, pp. 173-182 (2021)](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2181-20.pdf).
 - **米田亮介**, "Lévyノイズを受けた大域結合振動子系の同期転移", [北海道大学数学講義録 **180**, pp. 509-518 (2021)](https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2021/pdf/yoneda_ryosuke.pdf).
 - **米田亮介**, "蔵本モデルにおける臨界指数", [北海道大学数学講究録 **178**, pp. 511–520 (2020)](https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2020/pdf/yoneda_ryosuke.pdf).
