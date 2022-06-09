@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Kovacicのアルゴリズムを用いて調和振動子を解く | Ryosuke Yoneda&#39;s Homepage</title>
+  <meta name="description" content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Kovacicのアルゴリズムを用いて調和振動子を解く" />
+<meta property="og:description" content="Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う&quot;解ける&quot;という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。
+以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。
+ここでの計算はすべて https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445 とそこに添付のPDFを参考にしています。
+調和振動子 調和振動子のシュレディンガー方程式は $$ i\hbar\frac{\partial}{\partial t}\phi(x,t)=\left(-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x,t) $$ で与えられます。$\phi(x,t)$は波動関数です。特に時間依存しないシュレディンガー方程式は、 $$ \left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して $$\begin{aligned}&amp;E=\left(n&#43;\frac{1}{2}\right)\hbar\omega,\\&amp;\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$ で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。
+ここでは微分方程式を解くことに注目するので係数は無次元化しておきます。$m=\hbar^{2},\hbar\omega=1$とすると微分方程式は $$ \left(-\frac{1}{2}\frac{d^{2}}{dx^{2}}&#43;\frac{1}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。
+Kovacicのアルゴリズム Kovacicのアルゴリズムに従って調和振動子のシュレディンガー方程式を解いていきます。以下の計算はすべて上のリンクに従っていますので適宜そちらを参照しながら計算を追ってもらうと良いと思います。
+前処理 はじめに微分方程式を$\ddot{\eta}=r\eta$の形に前処理をします。シュレディンガー方程式は$\ddot{\phi}=(x^{2}-2E)\phi$となります。複素の微分方程式としてこれを考えるので$x$を$z$にして、 $$ \ddot{\eta}=r\eta,\quad r=z^{2}-2E $$ となります。$r$は$\mathbb{C}$上に特異点はないので、$\Gamma=\emptyset$です。また、$r=(1/z)^{-2}-2E$であるので、$z=\infty$における位数は$-2$です。
+Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きます。
+Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}&#43;\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
+Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yonesuke.github.io/posts/kovacic/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-09T00:14:18+09:00" />
+<meta property="article:modified_time" content="2022-06-09T00:14:18+09:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kovacicのアルゴリズムを用いて調和振動子を解く"/>
+<meta name="twitter:description" content="Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う&quot;解ける&quot;という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。
+以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。
+ここでの計算はすべて https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445 とそこに添付のPDFを参考にしています。
+調和振動子 調和振動子のシュレディンガー方程式は $$ i\hbar\frac{\partial}{\partial t}\phi(x,t)=\left(-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x,t) $$ で与えられます。$\phi(x,t)$は波動関数です。特に時間依存しないシュレディンガー方程式は、 $$ \left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して $$\begin{aligned}&amp;E=\left(n&#43;\frac{1}{2}\right)\hbar\omega,\\&amp;\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$ で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。
+ここでは微分方程式を解くことに注目するので係数は無次元化しておきます。$m=\hbar^{2},\hbar\omega=1$とすると微分方程式は $$ \left(-\frac{1}{2}\frac{d^{2}}{dx^{2}}&#43;\frac{1}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。
+Kovacicのアルゴリズム Kovacicのアルゴリズムに従って調和振動子のシュレディンガー方程式を解いていきます。以下の計算はすべて上のリンクに従っていますので適宜そちらを参照しながら計算を追ってもらうと良いと思います。
+前処理 はじめに微分方程式を$\ddot{\eta}=r\eta$の形に前処理をします。シュレディンガー方程式は$\ddot{\phi}=(x^{2}-2E)\phi$となります。複素の微分方程式としてこれを考えるので$x$を$z$にして、 $$ \ddot{\eta}=r\eta,\quad r=z^{2}-2E $$ となります。$r$は$\mathbb{C}$上に特異点はないので、$\Gamma=\emptyset$です。また、$r=(1/z)^{-2}-2E$であるので、$z=\infty$における位数は$-2$です。
+Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きます。
+Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}&#43;\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
+Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://yonesuke.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://yonesuke.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://yonesuke.github.io/posts/convergence/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&text=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&is_video=false&description=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&name=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f&description=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%af%e6%9c%89%e5%88%a9%e4%bf%82%e6%95%b0%e3%81%ae2%e9%9a%8e%e7%b7%9a%e5%bd%a2%e5%b8%b8%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%8f%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%a7%e3%81%99%e3%80%82%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%9f%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%8c%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e5%a0%b4%e5%90%88%e3%81%ab%e3%81%af%e3%81%9d%e3%81%ae%e8%a7%a3%e3%82%92%e5%87%ba%e5%8a%9b%e3%81%97%e3%80%81%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%ab%e3%81%af%e3%81%9d%e3%81%86%e3%81%a7%e3%81%82%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%8b%e3%81%a8%e3%81%84%e3%81%86%e9%9d%9e%e5%b8%b8%e3%81%ab%e4%be%bf%e5%88%a9%e3%81%aa%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%93%e3%81%a7%e8%a8%80%e3%81%86%26quot%3b%e8%a7%a3%e3%81%91%e3%82%8b%26quot%3b%e3%81%a8%e3%81%84%e3%81%86%e8%a8%80%e8%91%89%e3%81%af%e5%be%ae%e5%88%86%e3%82%ac%e3%83%ad%e3%82%a2%e7%90%86%e8%ab%96%e3%81%ae%e6%84%8f%e5%91%b3%e3%81%a7%e7%94%a8%e3%81%84%e3%82%89%e3%82%8c%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e5%83%95%e8%87%aa%e8%ba%ab%e3%81%af%e5%be%ae%e5%88%86%e3%82%ac%e3%83%ad%e3%82%a2%e7%90%86%e8%ab%96%e3%81%ab%e3%81%af%e8%a9%b3%e3%81%97%e3%81%8f%e3%81%af%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e7%b4%b0%e3%81%8b%e3%81%84%e3%81%93%e3%81%a8%e3%81%af%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%9b%e3%82%93%e3%81%8c%e3%80%81%e7%b4%b0%e3%81%8b%e3%81%84%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%89%e3%81%aa%e3%81%8f%e3%81%a6%e3%82%82Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%82%e3%81%ae%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e4%bb%a5%e5%89%8d%e6%89%80%e5%b1%9e%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e7%a0%94%e7%a9%b6%e5%ae%a4%e3%81%ab%e3%81%af%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%ae%e9%9d%9e%e5%8f%af%e7%a9%8d%e5%88%86%e6%80%a7%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e7%a0%94%e7%a9%b6%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81%e3%81%9d%e3%81%ae%e4%b8%ad%e3%81%a7Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%9f%a5%e3%82%8b%e6%a9%9f%e4%bc%9a%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%8c%e9%81%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a7%e5%83%95%e3%81%8c%e4%b8%80%e7%95%aa%e9%a6%b4%e6%9f%93%e3%81%bf%e6%b7%b1%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%8c%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a7%e3%81%97%e3%81%9f%e3%80%82%e5%ae%9f%e9%9a%9b%e3%81%ab%e3%81%9d%e3%81%ae%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e9%81%a9%e7%94%a8%e3%81%99%e3%82%8b%e3%81%a8%e3%81%9f%e3%81%97%e3%81%8b%e3%81%ab%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%81%a8%e3%81%9d%e3%81%ae%e5%9b%ba%e6%9c%89%e7%8a%b6%e6%85%8b%e3%82%92%e5%be%97%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%af%e3%82%82%e3%81%ae%e3%81%99%e3%81%94%e3%81%8f%e6%84%9f%e5%8b%95%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e7%89%a9%e7%90%86%e3%81%ae%e6%8e%88%e6%a5%ad%e3%81%a7%e7%bf%92%e3%81%86%e3%82%88%e3%81%86%e3%81%aa%e7%94%9f%e6%88%90%e6%b6%88%e6%bb%85%e6%bc%94%e7%ae%97%e5%ad%90%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e6%96%b9%e6%b3%95%e3%81%a7%e3%81%aa%e3%81%8f%e3%81%a8%e3%82%82%e3%80%81%e5%8f%af%e7%a9%8d%e5%88%86%e3%81%aa%e3%81%ae%e3%81%8b%e3%81%a9%e3%81%86%e3%81%8b%e3%81%a8%e3%81%84%e3%81%86%e8%a6%b3%e7%82%b9%e3%81%8b%e3%82%89%e3%81%9d%e3%81%ae%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%82%92%e6%b1%82%e3%82%81%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%ae%e3%81%af%e9%9d%9e%e5%b8%b8%e3%81%ab%e9%9d%a2%e7%99%bd%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%a8%e3%81%84%e3%81%86%e3%82%8f%e3%81%91%e3%81%a7%e3%81%93%e3%81%93%e3%81%a7%e3%81%9d%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%ae%e6%b5%81%e3%82%8c%e3%82%92%e7%b4%b9%e4%bb%8b%e3%81%97%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%93%e3%81%a7%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%af%e3%81%99%e3%81%b9%e3%81%a6%20https%3a%2f%2ftetobourbaki.hatenablog.com%2fentry%2f2018%2f11%2f03%2f231445%20%e3%81%a8%e3%81%9d%e3%81%93%e3%81%ab%e6%b7%bb%e4%bb%98%e3%81%aePDF%e3%82%92%e5%8f%82%e8%80%83%e3%81%ab%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%20%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%20%24%24%20i%5chbar%5cfrac%7b%5cpartial%7d%7b%5cpartial%20t%7d%5cphi%28x%2ct%29%3d%5cleft%28-%5cfrac%7b%5chbar%5e%7b2%7d%7d%7b2m%7d%5cfrac%7b%5cpartial%5e%7b2%7d%7d%7b%5cpartial%20x%5e%7b2%7d%7d%2b%5cfrac%7bm%5comega%5e%7b2%7d%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%2ct%29%20%24%24%20%e3%81%a7%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%be%e3%81%99%e3%80%82%24%5cphi%28x%2ct%29%24%e3%81%af%e6%b3%a2%e5%8b%95%e9%96%a2%e6%95%b0%e3%81%a7%e3%81%99%e3%80%82%e7%89%b9%e3%81%ab%e6%99%82%e9%96%93%e4%be%9d%e5%ad%98%e3%81%97%e3%81%aa%e3%81%84%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%e3%80%81%20%24%24%20%5cleft%28-%5cfrac%7b%5chbar%5e%7b2%7d%7d%7b2m%7d%5cfrac%7bd%5e%7b2%7d%7d%7bdx%5e%7b2%7d%7d%2b%5cfrac%7bm%5comega%5e%7b2%7d%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%29%3dE%5cphi%28x%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%a6%e3%80%81%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%81%a8%e5%9b%ba%e6%9c%89%e7%8a%b6%e6%85%8b%e3%81%af%24n%5cin%5cmathbb%7bZ%7d_%20%7b%5cgeq%200%7d%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%20%24%24%5cbegin%7baligned%7d%26amp%3bE%3d%5cleft%28n%2b%5cfrac%7b1%7d%7b2%7d%5cright%29%5chbar%5comega%2c%5c%5c%26amp%3b%5cphi%28x%29%3dH_%20%7bn%7d%5cleft%28%5csqrt%7b%5cfrac%7bm%5comega%7d%7b%5chbar%7d%7dx%5cright%29%5cexp%5cleft%28-%5cfrac%7bm%5comega%7d%7b2%5chbar%7dx%5e%7b2%7d%5cright%29%5cend%7baligned%7d%24%24%20%e3%81%a7%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%be%e3%81%99%e3%80%82%e8%a6%8f%e6%a0%bc%e5%8c%96%e3%81%ae%e5%ae%9a%e6%95%b0%e3%81%af%e9%99%a4%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%24H_%7bn%7d%24%e3%81%af%24n%24%e6%ac%a1%e3%81%ae%e3%82%a8%e3%83%ab%e3%83%9f%e3%83%bc%e3%83%88%e5%a4%9a%e9%a0%85%e5%bc%8f%e3%81%a7%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%93%e3%81%a7%e3%81%af%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%ab%e6%b3%a8%e7%9b%ae%e3%81%99%e3%82%8b%e3%81%ae%e3%81%a7%e4%bf%82%e6%95%b0%e3%81%af%e7%84%a1%e6%ac%a1%e5%85%83%e5%8c%96%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%24m%3d%5chbar%5e%7b2%7d%2c%5chbar%5comega%3d1%24%e3%81%a8%e3%81%99%e3%82%8b%e3%81%a8%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%20%24%24%20%5cleft%28-%5cfrac%7b1%7d%7b2%7d%5cfrac%7bd%5e%7b2%7d%7d%7bdx%5e%7b2%7d%7d%2b%5cfrac%7b1%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%29%3dE%5cphi%28x%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0aKovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%20Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%84%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%e4%bb%a5%e4%b8%8b%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%af%e3%81%99%e3%81%b9%e3%81%a6%e4%b8%8a%e3%81%ae%e3%83%aa%e3%83%b3%e3%82%af%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%ae%e3%81%a7%e9%81%a9%e5%ae%9c%e3%81%9d%e3%81%a1%e3%82%89%e3%82%92%e5%8f%82%e7%85%a7%e3%81%97%e3%81%aa%e3%81%8c%e3%82%89%e8%a8%88%e7%ae%97%e3%82%92%e8%bf%bd%e3%81%a3%e3%81%a6%e3%82%82%e3%82%89%e3%81%86%e3%81%a8%e8%89%af%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e5%89%8d%e5%87%a6%e7%90%86%20%e3%81%af%e3%81%98%e3%82%81%e3%81%ab%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%24%5cddot%7b%5ceta%7d%3dr%5ceta%24%e3%81%ae%e5%bd%a2%e3%81%ab%e5%89%8d%e5%87%a6%e7%90%86%e3%82%92%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%24%5cddot%7b%5cphi%7d%3d%28x%5e%7b2%7d-2E%29%5cphi%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e8%a4%87%e7%b4%a0%e3%81%ae%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a8%e3%81%97%e3%81%a6%e3%81%93%e3%82%8c%e3%82%92%e8%80%83%e3%81%88%e3%82%8b%e3%81%ae%e3%81%a7%24x%24%e3%82%92%24z%24%e3%81%ab%e3%81%97%e3%81%a6%e3%80%81%20%24%24%20%5cddot%7b%5ceta%7d%3dr%5ceta%2c%5cquad%20r%3dz%5e%7b2%7d-2E%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%24r%24%e3%81%af%24%5cmathbb%7bC%7d%24%e4%b8%8a%e3%81%ab%e7%89%b9%e7%95%b0%e7%82%b9%e3%81%af%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e3%80%81%24%5cGamma%3d%5cemptyset%24%e3%81%a7%e3%81%99%e3%80%82%e3%81%be%e3%81%9f%e3%80%81%24r%3d%281%2fz%29%5e%7b-2%7d-2E%24%e3%81%a7%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%24-2%24%e3%81%a7%e3%81%99%e3%80%82%0aCase%201%20Step%200%20%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%e5%81%b6%e6%95%b0%e3%81%aa%e3%81%ae%e3%81%a7Step%201%e3%81%ab%e8%a1%8c%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aStep%201%20%24%28%5cinfty_%7b3%7d%29%24%e3%82%92%e8%a8%88%e7%ae%97%e3%81%97%e3%81%be%e3%81%99%e3%80%82%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%24m%3d-2%5cnu%24%e3%81%a8%e3%81%97%e3%81%a6%e3%80%81%24%5cnu%3d1%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%24%5csqrt%7br%7d%24%e3%81%ae%24z%3d%5cinfty%24%e5%91%a8%e3%82%8a%e3%81%ae%e5%b1%95%e9%96%8b%e3%81%af%e3%80%81%20%24%24%20%5csqrt%7br%7d%3d%5csqrt%7b%281%2fz%29%5e%7b-2%7d-2E%7d%3d%281%2fz%29%5e%7b-1%7d-E%281%2fz%29%5e%7b1%7d-%5cfrac%7bE%5e%7b2%7d%7d%7b2%7d%281%2fz%29%5e%7b3%7d%2b%5ccdots%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5b%5comega%5d_%20%7b%5cinfty%7d%3d%5b%5csqrt%7br%7d%5d_%20%7b%5cinfty%7d%3dz%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%24a%24%e3%81%af%24%5csqrt%7br%7d%24%e3%81%ae%e3%83%ad%e3%83%bc%e3%83%a9%e3%83%b3%e5%b1%95%e9%96%8b%e3%81%ae%24z%5e%7b%5cnu%7d%3dz%5e%7b1%7d%24%e3%81%ae%e4%bf%82%e6%95%b0%e3%80%81%24b%24%e3%81%af%24r-%5b%5csqrt%7br%7d%5d_%20%7b%5cinfty%7d%5e%7b2%7d%24%e3%81%ae%e3%83%ad%e3%83%bc%e3%83%a9%e3%83%b3%e5%b1%95%e9%96%8b%e3%81%ae%24z%5e%7b%5cnu-1%7d%3dz%5e%7b0%7d%24%e3%81%ae%e4%bf%82%e6%95%b0%e3%81%a8%e3%81%aa%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%20%24%24%20a%3d1%2c%5cquad%20b%3dz%5e%7b2%7d-2E-z%5e%7b2%7d%3d-2E%20%24%24%20%e3%81%a7%e3%81%99%e3%80%82%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5calpha_%7b%5cinfty%7d%5e%7b%5cpm%7d%3d%5cfrac%7b1%7d%7b2%7d%28%5cpm%5cfrac%7bb%7d%7ba%7d-%5cnu%29%3d%5cmp%20E-%5cfrac%7b1%7d%7b2%7d%20%24%24%20%e3%81%a8%e6%b1%82%e3%81%be%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82Step%202%e3%81%ab%e8%a1%8c%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aStep%202%20%24s%3d%28s%28c%29%29_%20%7bc%5cin%5cGamma%5ccup%7b%5cinfty%7d%7d%24%e3%82%92%e5%ae%9a%e3%82%81%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%8a%24%5cGamma%3d%5cemptyset%24%e3%81%aa%e3%81%ae%e3%81%a7%24s%3d%5cpm%24%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%80%83%e3%81%88%e3%82%8c%e3%81%b0%e8%89%af%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%e3%80%81%24d_%7b%5cpm%7d%3d%5calpha_%20%7b%5cinfty%7d%5e%7b%5cpm%7d%3d%5cmp%20E-1%2f2%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%82%89%e3%81%8c%e9%9d%9e%e8%b2%a0%e3%81%ae%e6%95%b4%e6%95%b0%e3%81%a7%e3%81%82%e3%82%8b%e5%bf%85%e8%a6%81%e3%81%8c%e3%81%82%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a0%b4%e5%90%88%e5%88%86%e3%81%91%e3%81%8c%e7%94%9f%e3%81%98%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&t=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#調和振動子">調和振動子</a></li>
+    <li><a href="#kovacicのアルゴリズム">Kovacicのアルゴリズム</a>
+      <ul>
+        <li><a href="#前処理">前処理</a></li>
+        <li><a href="#case-1">Case 1</a>
+          <ul>
+            <li><a href="#step-0">Step 0</a></li>
+            <li><a href="#step-1">Step 1</a></li>
+            <li><a href="#step-2">Step 2</a></li>
+            <li><a href="#step-3">Step 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#考察">考察</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Kovacicのアルゴリズムを用いて調和振動子を解く
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-06-09 00:14:18 &#43;0900 JST" itemprop="datePublished">2022-06-09</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+
+    <div class="content" itemprop="articleBody">
+      <p>Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う&quot;解ける&quot;という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。</p>
+<p>以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。</p>
+<p>ここでの計算はすべて
+<a href="https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445">https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445</a>
+とそこに添付のPDFを参考にしています。</p>
+<h2 id="調和振動子">調和振動子</h2>
+<p>調和振動子のシュレディンガー方程式は
+$$
+i\hbar\frac{\partial}{\partial t}\phi(x,t)=\left(-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}+\frac{m\omega^{2}}{2}x^{2}\right)\phi(x,t)
+$$
+で与えられます。$\phi(x,t)$は波動関数です。特に時間依存しないシュレディンガー方程式は、
+$$
+\left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}+\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x)
+$$
+となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して
+$$\begin{aligned}&amp;E=\left(n+\frac{1}{2}\right)\hbar\omega,\\&amp;\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$
+で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。</p>
+<p>ここでは微分方程式を解くことに注目するので係数は無次元化しておきます。$m=\hbar^{2},\hbar\omega=1$とすると微分方程式は
+$$
+\left(-\frac{1}{2}\frac{d^{2}}{dx^{2}}+\frac{1}{2}x^{2}\right)\phi(x)=E\phi(x)
+$$
+となります。</p>
+<h2 id="kovacicのアルゴリズム">Kovacicのアルゴリズム</h2>
+<p>Kovacicのアルゴリズムに従って調和振動子のシュレディンガー方程式を解いていきます。以下の計算はすべて上のリンクに従っていますので適宜そちらを参照しながら計算を追ってもらうと良いと思います。</p>
+<h3 id="前処理">前処理</h3>
+<p>はじめに微分方程式を$\ddot{\eta}=r\eta$の形に前処理をします。シュレディンガー方程式は$\ddot{\phi}=(x^{2}-2E)\phi$となります。複素の微分方程式としてこれを考えるので$x$を$z$にして、
+$$
+\ddot{\eta}=r\eta,\quad r=z^{2}-2E
+$$
+となります。$r$は$\mathbb{C}$上に特異点はないので、$\Gamma=\emptyset$です。また、$r=(1/z)^{-2}-2E$であるので、$z=\infty$における位数は$-2$です。</p>
+<h3 id="case-1">Case 1</h3>
+<h4 id="step-0">Step 0</h4>
+<p>$z=\infty$における位数は偶数なのでStep 1に行きます。</p>
+<h4 id="step-1">Step 1</h4>
+<p>$(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。
+$\sqrt{r}$の$z=\infty$周りの展開は、
+$$
+\sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}+\cdots
+$$
+となります。よって、
+$$
+[\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z
+$$
+となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、
+$$
+a=1,\quad b=z^{2}-2E-z^{2}=-2E
+$$
+です。よって、
+$$
+\alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2}
+$$
+と求まりました。Step 2に行きます。</p>
+<h4 id="step-2">Step 2</h4>
+<p>$s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。</p>
+<ul>
+<li>$d_ {+}$が非負の整数$n\in\mathbb{Z}_ {\geq0}$の場合$E=-n-1/2$であり、
+$$
+\theta_{+}=+[\omega]_ {\infty}=z
+$$
+となります。</li>
+<li>$d_ {-}$が非負の整数$n\in\mathbb{Z}_ {\geq0}$の場合$E=n+1/2$であり、
+$$
+\theta_{-}=-[\omega]_ {\infty}=-z
+$$
+となります。</li>
+</ul>
+<p>これをもとにStep 3に向かいます。</p>
+<h4 id="step-3">Step 3</h4>
+<p>Step 2に引き続き場合分けが生じます。</p>
+<ul>
+<li>
+<p>$s=+$のとき、$E=-n-1/2$であり、$\theta_{+}=z$でした。このもとで考えるべき微分方程式は
+$$
+\ddot{P}+2z\dot{P}-2nP=0
+$$
+となります。これは任意の$n\in\mathbb{Z}_ {\geq0}$に対して$n$次の多項式解を持ちます(多項式の係数に関する式が出てきます。最高次の係数を$0$以外に適当に定めると他の係数がすべて決まっていきます)。これを$\tilde{H}_ {n}$と置くことにすると、調和振動子の固有エネルギーと固有状態はそれぞれ、
+$$
+E=-n-\frac{1}{2},\quad\eta=\tilde{H}_{n}(z)e^{z^{2}/2}
+$$
+と求まることがわかりました。</p>
+</li>
+<li>
+<p>$s=-$のとき、$E=n+1/2$であり、$\theta_{-}=-z$でした。このもとで考えるべき微分方程式は
+$$
+\ddot{P}-2z\dot{P}+2nP=0
+$$
+となります。これは任意の$n\in\mathbb{Z}_ {\geq0}$に対して$n$次の多項式解を持ちます。しかもこれはエルミート多項式が従う微分方程式になっています。よって解はエルミート多項式$H_ {n}$であり、調和振動子の固有エネルギーと固有状態はそれぞれ、
+$$
+E=n+\frac{1}{2},\quad\eta=H_{n}(z)e^{-z^{2}/2}
+$$
+と求まることがわかりました。</p>
+</li>
+</ul>
+<h2 id="考察">考察</h2>
+<p>Kovacicのアルゴリズムを用いて調和振動子のシュレディンガー方程式を解きました。結果をまとめると、正のエネルギーを持つ場合には、$n\in\mathbb{Z}_ {\geq0}$として、
+$$
+E=n+\frac{1}{2},\quad \phi(x)=H_{n}(x)e^{-x^{2}/2}
+$$
+となります。これは量子力学で習う結果に完全に一致しています。一方で、負のエネルギーを持つものもあって、$n\in\mathbb{Z}_ {\geq0}$に対して
+$$
+E=-n-\frac{1}{2},\quad \phi(x)=\tilde{H}_{n}(x)e^{x^{2}/2}
+$$
+となります。これは量子力学では得られない解です。実際、$\phi$は二乗可積分関数ではないので波動関数にはなり得ません。微分ガロアのもとでは解にはなるけど波動関数の性質を満たさないギャップにこのような解が存在することがわかりました。これはこれで面白いような気がします。</p>
+<p>今回は調和振動子のシュレディンガー方程式をKovacicのアルゴリズムを用いて解きました。他の一般のポテンシャルを持つシュレディンガー方程式に関する微分ガロア理論の意味での可積分性については例えば</p>
+<ul>
+<li><a href="https://arxiv.org/abs/0906.3532">arXiv: 0906.3532</a></li>
+<li><a href="https://arxiv.org/abs/1008.3445">arXiv: 1008.3445</a></li>
+</ul>
+<p>が詳しいと思います。</p>
+
+    </div>
+  </article>
+
+
+  <script src="https://utteranc.es/client.js"
+  repo="yonesuke/yonesuke.github.io"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  label="comment"
+  async>
+</script>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/research">Research</a></li>
+         
+          <li><a href="/teaching">Teaching</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#調和振動子">調和振動子</a></li>
+    <li><a href="#kovacicのアルゴリズム">Kovacicのアルゴリズム</a>
+      <ul>
+        <li><a href="#前処理">前処理</a></li>
+        <li><a href="#case-1">Case 1</a>
+          <ul>
+            <li><a href="#step-0">Step 0</a></li>
+            <li><a href="#step-1">Step 1</a></li>
+            <li><a href="#step-2">Step 2</a></li>
+            <li><a href="#step-3">Step 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#考察">考察</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&text=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&is_video=false&description=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&title=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&name=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f&description=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%af%e6%9c%89%e5%88%a9%e4%bf%82%e6%95%b0%e3%81%ae2%e9%9a%8e%e7%b7%9a%e5%bd%a2%e5%b8%b8%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%8f%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%a7%e3%81%99%e3%80%82%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%9f%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%8c%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e5%a0%b4%e5%90%88%e3%81%ab%e3%81%af%e3%81%9d%e3%81%ae%e8%a7%a3%e3%82%92%e5%87%ba%e5%8a%9b%e3%81%97%e3%80%81%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%ab%e3%81%af%e3%81%9d%e3%81%86%e3%81%a7%e3%81%82%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%8b%e3%81%a8%e3%81%84%e3%81%86%e9%9d%9e%e5%b8%b8%e3%81%ab%e4%be%bf%e5%88%a9%e3%81%aa%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%93%e3%81%a7%e8%a8%80%e3%81%86%26quot%3b%e8%a7%a3%e3%81%91%e3%82%8b%26quot%3b%e3%81%a8%e3%81%84%e3%81%86%e8%a8%80%e8%91%89%e3%81%af%e5%be%ae%e5%88%86%e3%82%ac%e3%83%ad%e3%82%a2%e7%90%86%e8%ab%96%e3%81%ae%e6%84%8f%e5%91%b3%e3%81%a7%e7%94%a8%e3%81%84%e3%82%89%e3%82%8c%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e5%83%95%e8%87%aa%e8%ba%ab%e3%81%af%e5%be%ae%e5%88%86%e3%82%ac%e3%83%ad%e3%82%a2%e7%90%86%e8%ab%96%e3%81%ab%e3%81%af%e8%a9%b3%e3%81%97%e3%81%8f%e3%81%af%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e7%b4%b0%e3%81%8b%e3%81%84%e3%81%93%e3%81%a8%e3%81%af%e3%82%8f%e3%81%8b%e3%82%8a%e3%81%be%e3%81%9b%e3%82%93%e3%81%8c%e3%80%81%e7%b4%b0%e3%81%8b%e3%81%84%e3%81%93%e3%81%a8%e3%81%8c%e3%82%8f%e3%81%8b%e3%82%89%e3%81%aa%e3%81%8f%e3%81%a6%e3%82%82Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%82%e3%81%ae%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e4%bb%a5%e5%89%8d%e6%89%80%e5%b1%9e%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e7%a0%94%e7%a9%b6%e5%ae%a4%e3%81%ab%e3%81%af%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%ae%e9%9d%9e%e5%8f%af%e7%a9%8d%e5%88%86%e6%80%a7%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e7%a0%94%e7%a9%b6%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81%e3%81%9d%e3%81%ae%e4%b8%ad%e3%81%a7Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%9f%a5%e3%82%8b%e6%a9%9f%e4%bc%9a%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%8c%e9%81%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a7%e5%83%95%e3%81%8c%e4%b8%80%e7%95%aa%e9%a6%b4%e6%9f%93%e3%81%bf%e6%b7%b1%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%8c%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a7%e3%81%97%e3%81%9f%e3%80%82%e5%ae%9f%e9%9a%9b%e3%81%ab%e3%81%9d%e3%81%ae%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e9%81%a9%e7%94%a8%e3%81%99%e3%82%8b%e3%81%a8%e3%81%9f%e3%81%97%e3%81%8b%e3%81%ab%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%81%a8%e3%81%9d%e3%81%ae%e5%9b%ba%e6%9c%89%e7%8a%b6%e6%85%8b%e3%82%92%e5%be%97%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%af%e3%82%82%e3%81%ae%e3%81%99%e3%81%94%e3%81%8f%e6%84%9f%e5%8b%95%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e7%89%a9%e7%90%86%e3%81%ae%e6%8e%88%e6%a5%ad%e3%81%a7%e7%bf%92%e3%81%86%e3%82%88%e3%81%86%e3%81%aa%e7%94%9f%e6%88%90%e6%b6%88%e6%bb%85%e6%bc%94%e7%ae%97%e5%ad%90%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e6%96%b9%e6%b3%95%e3%81%a7%e3%81%aa%e3%81%8f%e3%81%a8%e3%82%82%e3%80%81%e5%8f%af%e7%a9%8d%e5%88%86%e3%81%aa%e3%81%ae%e3%81%8b%e3%81%a9%e3%81%86%e3%81%8b%e3%81%a8%e3%81%84%e3%81%86%e8%a6%b3%e7%82%b9%e3%81%8b%e3%82%89%e3%81%9d%e3%81%ae%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%82%92%e6%b1%82%e3%82%81%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%ae%e3%81%af%e9%9d%9e%e5%b8%b8%e3%81%ab%e9%9d%a2%e7%99%bd%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%a8%e3%81%84%e3%81%86%e3%82%8f%e3%81%91%e3%81%a7%e3%81%93%e3%81%93%e3%81%a7%e3%81%9d%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%ae%e6%b5%81%e3%82%8c%e3%82%92%e7%b4%b9%e4%bb%8b%e3%81%97%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%93%e3%81%a7%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%af%e3%81%99%e3%81%b9%e3%81%a6%20https%3a%2f%2ftetobourbaki.hatenablog.com%2fentry%2f2018%2f11%2f03%2f231445%20%e3%81%a8%e3%81%9d%e3%81%93%e3%81%ab%e6%b7%bb%e4%bb%98%e3%81%aePDF%e3%82%92%e5%8f%82%e8%80%83%e3%81%ab%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%20%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%20%24%24%20i%5chbar%5cfrac%7b%5cpartial%7d%7b%5cpartial%20t%7d%5cphi%28x%2ct%29%3d%5cleft%28-%5cfrac%7b%5chbar%5e%7b2%7d%7d%7b2m%7d%5cfrac%7b%5cpartial%5e%7b2%7d%7d%7b%5cpartial%20x%5e%7b2%7d%7d%2b%5cfrac%7bm%5comega%5e%7b2%7d%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%2ct%29%20%24%24%20%e3%81%a7%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%be%e3%81%99%e3%80%82%24%5cphi%28x%2ct%29%24%e3%81%af%e6%b3%a2%e5%8b%95%e9%96%a2%e6%95%b0%e3%81%a7%e3%81%99%e3%80%82%e7%89%b9%e3%81%ab%e6%99%82%e9%96%93%e4%be%9d%e5%ad%98%e3%81%97%e3%81%aa%e3%81%84%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%e3%80%81%20%24%24%20%5cleft%28-%5cfrac%7b%5chbar%5e%7b2%7d%7d%7b2m%7d%5cfrac%7bd%5e%7b2%7d%7d%7bdx%5e%7b2%7d%7d%2b%5cfrac%7bm%5comega%5e%7b2%7d%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%29%3dE%5cphi%28x%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%a6%e3%80%81%e5%9b%ba%e6%9c%89%e3%82%a8%e3%83%8d%e3%83%ab%e3%82%ae%e3%83%bc%e3%81%a8%e5%9b%ba%e6%9c%89%e7%8a%b6%e6%85%8b%e3%81%af%24n%5cin%5cmathbb%7bZ%7d_%20%7b%5cgeq%200%7d%24%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%20%24%24%5cbegin%7baligned%7d%26amp%3bE%3d%5cleft%28n%2b%5cfrac%7b1%7d%7b2%7d%5cright%29%5chbar%5comega%2c%5c%5c%26amp%3b%5cphi%28x%29%3dH_%20%7bn%7d%5cleft%28%5csqrt%7b%5cfrac%7bm%5comega%7d%7b%5chbar%7d%7dx%5cright%29%5cexp%5cleft%28-%5cfrac%7bm%5comega%7d%7b2%5chbar%7dx%5e%7b2%7d%5cright%29%5cend%7baligned%7d%24%24%20%e3%81%a7%e4%b8%8e%e3%81%88%e3%82%89%e3%82%8c%e3%81%be%e3%81%99%e3%80%82%e8%a6%8f%e6%a0%bc%e5%8c%96%e3%81%ae%e5%ae%9a%e6%95%b0%e3%81%af%e9%99%a4%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%24H_%7bn%7d%24%e3%81%af%24n%24%e6%ac%a1%e3%81%ae%e3%82%a8%e3%83%ab%e3%83%9f%e3%83%bc%e3%83%88%e5%a4%9a%e9%a0%85%e5%bc%8f%e3%81%a7%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%93%e3%81%a7%e3%81%af%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%8f%e3%81%93%e3%81%a8%e3%81%ab%e6%b3%a8%e7%9b%ae%e3%81%99%e3%82%8b%e3%81%ae%e3%81%a7%e4%bf%82%e6%95%b0%e3%81%af%e7%84%a1%e6%ac%a1%e5%85%83%e5%8c%96%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%24m%3d%5chbar%5e%7b2%7d%2c%5chbar%5comega%3d1%24%e3%81%a8%e3%81%99%e3%82%8b%e3%81%a8%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%20%24%24%20%5cleft%28-%5cfrac%7b1%7d%7b2%7d%5cfrac%7bd%5e%7b2%7d%7d%7bdx%5e%7b2%7d%7d%2b%5cfrac%7b1%7d%7b2%7dx%5e%7b2%7d%5cright%29%5cphi%28x%29%3dE%5cphi%28x%29%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0aKovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%20Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%e8%a7%a3%e3%81%84%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%e4%bb%a5%e4%b8%8b%e3%81%ae%e8%a8%88%e7%ae%97%e3%81%af%e3%81%99%e3%81%b9%e3%81%a6%e4%b8%8a%e3%81%ae%e3%83%aa%e3%83%b3%e3%82%af%e3%81%ab%e5%be%93%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%ae%e3%81%a7%e9%81%a9%e5%ae%9c%e3%81%9d%e3%81%a1%e3%82%89%e3%82%92%e5%8f%82%e7%85%a7%e3%81%97%e3%81%aa%e3%81%8c%e3%82%89%e8%a8%88%e7%ae%97%e3%82%92%e8%bf%bd%e3%81%a3%e3%81%a6%e3%82%82%e3%82%89%e3%81%86%e3%81%a8%e8%89%af%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e5%89%8d%e5%87%a6%e7%90%86%20%e3%81%af%e3%81%98%e3%82%81%e3%81%ab%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%82%92%24%5cddot%7b%5ceta%7d%3dr%5ceta%24%e3%81%ae%e5%bd%a2%e3%81%ab%e5%89%8d%e5%87%a6%e7%90%86%e3%82%92%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%82%b7%e3%83%a5%e3%83%ac%e3%83%87%e3%82%a3%e3%83%b3%e3%82%ac%e3%83%bc%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%af%24%5cddot%7b%5cphi%7d%3d%28x%5e%7b2%7d-2E%29%5cphi%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e8%a4%87%e7%b4%a0%e3%81%ae%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e5%bc%8f%e3%81%a8%e3%81%97%e3%81%a6%e3%81%93%e3%82%8c%e3%82%92%e8%80%83%e3%81%88%e3%82%8b%e3%81%ae%e3%81%a7%24x%24%e3%82%92%24z%24%e3%81%ab%e3%81%97%e3%81%a6%e3%80%81%20%24%24%20%5cddot%7b%5ceta%7d%3dr%5ceta%2c%5cquad%20r%3dz%5e%7b2%7d-2E%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%24r%24%e3%81%af%24%5cmathbb%7bC%7d%24%e4%b8%8a%e3%81%ab%e7%89%b9%e7%95%b0%e7%82%b9%e3%81%af%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e3%80%81%24%5cGamma%3d%5cemptyset%24%e3%81%a7%e3%81%99%e3%80%82%e3%81%be%e3%81%9f%e3%80%81%24r%3d%281%2fz%29%5e%7b-2%7d-2E%24%e3%81%a7%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%24-2%24%e3%81%a7%e3%81%99%e3%80%82%0aCase%201%20Step%200%20%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%e5%81%b6%e6%95%b0%e3%81%aa%e3%81%ae%e3%81%a7Step%201%e3%81%ab%e8%a1%8c%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aStep%201%20%24%28%5cinfty_%7b3%7d%29%24%e3%82%92%e8%a8%88%e7%ae%97%e3%81%97%e3%81%be%e3%81%99%e3%80%82%24z%3d%5cinfty%24%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b%e4%bd%8d%e6%95%b0%e3%81%af%24m%3d-2%5cnu%24%e3%81%a8%e3%81%97%e3%81%a6%e3%80%81%24%5cnu%3d1%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%20%24%5csqrt%7br%7d%24%e3%81%ae%24z%3d%5cinfty%24%e5%91%a8%e3%82%8a%e3%81%ae%e5%b1%95%e9%96%8b%e3%81%af%e3%80%81%20%24%24%20%5csqrt%7br%7d%3d%5csqrt%7b%281%2fz%29%5e%7b-2%7d-2E%7d%3d%281%2fz%29%5e%7b-1%7d-E%281%2fz%29%5e%7b1%7d-%5cfrac%7bE%5e%7b2%7d%7d%7b2%7d%281%2fz%29%5e%7b3%7d%2b%5ccdots%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5b%5comega%5d_%20%7b%5cinfty%7d%3d%5b%5csqrt%7br%7d%5d_%20%7b%5cinfty%7d%3dz%20%24%24%20%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%24a%24%e3%81%af%24%5csqrt%7br%7d%24%e3%81%ae%e3%83%ad%e3%83%bc%e3%83%a9%e3%83%b3%e5%b1%95%e9%96%8b%e3%81%ae%24z%5e%7b%5cnu%7d%3dz%5e%7b1%7d%24%e3%81%ae%e4%bf%82%e6%95%b0%e3%80%81%24b%24%e3%81%af%24r-%5b%5csqrt%7br%7d%5d_%20%7b%5cinfty%7d%5e%7b2%7d%24%e3%81%ae%e3%83%ad%e3%83%bc%e3%83%a9%e3%83%b3%e5%b1%95%e9%96%8b%e3%81%ae%24z%5e%7b%5cnu-1%7d%3dz%5e%7b0%7d%24%e3%81%ae%e4%bf%82%e6%95%b0%e3%81%a8%e3%81%aa%e3%82%8b%e3%81%ae%e3%81%a7%e3%80%81%20%24%24%20a%3d1%2c%5cquad%20b%3dz%5e%7b2%7d-2E-z%5e%7b2%7d%3d-2E%20%24%24%20%e3%81%a7%e3%81%99%e3%80%82%e3%82%88%e3%81%a3%e3%81%a6%e3%80%81%20%24%24%20%5calpha_%7b%5cinfty%7d%5e%7b%5cpm%7d%3d%5cfrac%7b1%7d%7b2%7d%28%5cpm%5cfrac%7bb%7d%7ba%7d-%5cnu%29%3d%5cmp%20E-%5cfrac%7b1%7d%7b2%7d%20%24%24%20%e3%81%a8%e6%b1%82%e3%81%be%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82Step%202%e3%81%ab%e8%a1%8c%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aStep%202%20%24s%3d%28s%28c%29%29_%20%7bc%5cin%5cGamma%5ccup%7b%5cinfty%7d%7d%24%e3%82%92%e5%ae%9a%e3%82%81%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%8a%24%5cGamma%3d%5cemptyset%24%e3%81%aa%e3%81%ae%e3%81%a7%24s%3d%5cpm%24%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%80%83%e3%81%88%e3%82%8c%e3%81%b0%e8%89%af%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%81%a8%e3%81%8d%e3%80%81%24d_%7b%5cpm%7d%3d%5calpha_%20%7b%5cinfty%7d%5e%7b%5cpm%7d%3d%5cmp%20E-1%2f2%24%e3%81%a8%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%82%89%e3%81%8c%e9%9d%9e%e8%b2%a0%e3%81%ae%e6%95%b4%e6%95%b0%e3%81%a7%e3%81%82%e3%82%8b%e5%bf%85%e8%a6%81%e3%81%8c%e3%81%82%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a0%b4%e5%90%88%e5%88%86%e3%81%91%e3%81%8c%e7%94%9f%e3%81%98%e3%81%be%e3%81%99%e3%80%82">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fkovacic%2f&t=Kovacic%e3%81%ae%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e8%aa%bf%e5%92%8c%e6%8c%af%e5%8b%95%e5%ad%90%e3%82%92%e8%a7%a3%e3%81%8f">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Ryosuke Yoneda 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
