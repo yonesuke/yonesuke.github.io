@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> M1 MacでのPython環境構築(tensorflowとか) | Ryosuke Yoneda&#39;s Homepage</title>
+  <meta name="description" content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="M1 MacでのPython環境構築(tensorflowとか)" />
+<meta property="og:description" content="Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。) インストールに手こずることがあれば随時この記事に書き足していきたいと思います。
+特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。
+https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。
+Apple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。
+pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。
+インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
+-&gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.9.0 0 apple これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。
+-&gt; % pip install tensorflow-macos== ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yonesuke.github.io/posts/m1-mac-python/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-11T10:26:10+09:00" />
+<meta property="article:modified_time" content="2022-07-11T10:26:10+09:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="M1 MacでのPython環境構築(tensorflowとか)"/>
+<meta name="twitter:description" content="Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。) インストールに手こずることがあれば随時この記事に書き足していきたいと思います。
+特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。
+https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。
+Apple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。
+pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。
+インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
+-&gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.9.0 0 apple これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。
+-&gt; % pip install tensorflow-macos== ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://yonesuke.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://yonesuke.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://yonesuke.github.io/posts/kovacic/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&text=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&is_video=false&description=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&name=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29&description=Apple%20Silicon%e3%81%8c%e6%90%ad%e8%bc%89%e3%81%95%e3%82%8c%e3%81%9fMac%e3%81%8c%e6%89%8b%e5%85%83%e3%81%ab%e4%bd%95%e5%8f%b0%e3%81%8b%e3%81%82%e3%81%a3%e3%81%a6%e3%80%81%e3%81%9d%e3%81%ae%e4%b8%8a%e3%81%a7%e8%89%b2%e3%80%85%e3%81%a8%e7%a0%94%e7%a9%b6%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81python%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%ab%e7%b5%90%e6%a7%8b%e6%89%8b%e3%81%93%e3%81%9a%e3%81%a3%e3%81%a6%e3%81%97%e3%81%be%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e4%bd%95%e5%ba%a6%e3%81%8b%e8%a9%a6%e3%81%97%e3%81%a6%e3%81%86%e3%81%be%e3%81%8f%e8%a1%8c%e3%81%a3%e3%81%9f%e3%82%82%e3%81%ae%e3%82%92%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a8%e3%81%97%e3%81%a6%e8%a8%98%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%28%e3%81%93%e3%81%93%e3%81%a7%e3%81%afpyenv%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%a8%98%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%82%82%e3%81%a1%e3%82%8d%e3%82%93%e4%bb%96%e3%81%ab%e3%82%82%e8%89%af%e3%81%84%e6%96%b9%e6%b3%95%e3%81%af%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%29%20%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%ab%e6%89%8b%e3%81%93%e3%81%9a%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8c%e3%81%b0%e9%9a%8f%e6%99%82%e3%81%93%e3%81%ae%e8%a8%98%e4%ba%8b%e3%81%ab%e6%9b%b8%e3%81%8d%e8%b6%b3%e3%81%97%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e7%89%b9%e3%81%abtensorflow%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e9%9b%a3%e3%81%97%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e4%bb%a5%e4%b8%8b%e3%81%ae%e8%a8%98%e4%ba%8b%e3%81%8c%e5%8f%82%e8%80%83%e3%81%ab%e3%81%aa%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e3%81%82%e3%82%8a%e3%81%8c%e3%81%a8%e3%81%86%e3%81%94%e3%81%96%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0ahttps%3a%2f%2fqiita.com%2fchipmunk-star%2fitems%2f90931fb5180b8024adcb%20pyenv%20%e3%81%af%e3%81%98%e3%82%81%e3%81%abpyenv%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%afpyenv%e3%81%aeGitHub%e3%83%9a%e3%83%bc%e3%82%b8%e3%81%ab%e5%be%93%e3%81%88%e3%81%b0%e3%81%86%e3%81%be%e3%81%8f%e5%8b%95%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aApple%20Silicon%e3%81%a7%e3%81%afarm%e3%82%a2%e3%83%bc%e3%82%ad%e3%83%86%e3%82%af%e3%83%81%e3%83%a3%e3%81%8c%e6%8e%a1%e7%94%a8%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%a7miniforge%e3%82%92%e4%bd%bf%e3%82%8f%e3%81%aa%e3%81%84%e3%81%a8%e3%81%84%e3%81%91%e3%81%aa%e3%81%84%e3%80%81%e3%81%a8%e3%81%84%e3%81%86%e8%aa%ac%e6%98%8e%e3%81%8c%e3%83%8d%e3%83%83%e3%83%88%e4%b8%8a%e3%81%ab%e7%84%a1%e6%95%b0%e3%81%ab%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%9d%e3%82%8c%e3%81%ab%e5%be%93%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e4%bb%8a%e3%81%a7%e3%81%afminiforge%e4%bb%a5%e5%a4%96%e3%82%82%e5%af%be%e5%bf%9c%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e3%82%82%e3%81%97%e3%82%8c%e3%81%aa%e3%81%84%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e3%82%88%e3%81%8f%e3%82%8f%e3%81%8b%e3%82%89%e3%81%aa%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%20%e3%81%93%e3%81%ae%e8%a8%98%e4%ba%8b%e3%82%92%e6%9b%b8%e3%81%84%e3%81%a6%e3%81%84%e3%82%8b%e7%8f%be%e6%99%82%e7%82%b9%282022%2f07%2f11%29%e3%81%a7%e3%81%afminiforge3-4.10.3-10%e3%81%8c%e6%9c%80%e6%96%b0%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e8%a6%8b%e3%81%88%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%93%e3%82%8c%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%a6global%e3%81%ae%e7%92%b0%e5%a2%83%e3%81%ab%e8%a8%ad%e5%ae%9a%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0apyenv%20install%20miniforge3-4.10.3-10%20pyenv%20global%20miniforge3-4.10.3-10%20TensorFlow%20tensorflow%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e4%b8%80%e7%95%aa%e5%a4%a7%e5%a4%89%e3%81%a7%e3%80%81%e3%81%84%e3%82%8d%e3%82%93%e3%81%aa%e8%a8%98%e4%ba%8b%e3%82%92%e7%9c%ba%e3%82%81%e3%81%a6%e3%81%af%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e8%a9%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%81%8c%e6%88%90%e5%8a%9f%e3%81%ab%e3%81%af%e8%87%b3%e3%82%8a%e3%81%be%e3%81%9b%e3%82%93%e3%81%a7%e3%81%97%e3%81%9f%e3%80%82%e4%b8%8a%e3%81%ae%e3%83%aa%e3%83%b3%e3%82%af%e3%81%ab%e5%be%93%e3%81%86%e3%81%a8%e3%81%99%e3%82%93%e3%81%aa%e3%82%8a%e3%81%a8%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e5%ae%8c%e4%ba%86%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0a%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e3%81%ae%e3%81%aftensorflow-deps%2c%20tensorflow-macos%2c%20tensorflow-metal%e3%81%ae3%e3%81%a4%28%e5%a4%9a%e3%81%84%ef%bc%81%ef%bc%81%29%e3%82%89%e3%81%97%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%81%86%e3%81%a1tensorflow-deps%2c%20tensorflow-macos%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b%e3%81%a8%e3%81%8d%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%8ctensorflow%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%99%e3%82%8b%e3%82%89%e3%81%97%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81%e3%81%ab%e3%81%be%e3%81%9atensorflow-deps%e3%81%8c%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e5%8f%af%e8%83%bd%e3%81%aa%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%97%e3%81%be%e3%81%99%e3%80%82tensorflow-deps%e3%81%afconda%e3%81%ab%e3%82%88%e3%82%8b%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e5%88%a9%e7%94%a8%e3%81%99%e3%82%8b%e3%82%89%e3%81%97%e3%81%84%e3%81%ae%e3%81%a7conda%20search%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a-%26gt%3b%20%25%20conda%20search%20-c%20apple%20tensorflow-deps%20Loading%20channels%3a%20done%20%23%20Name%20Version%20Build%20Channel%20tensorflow-deps%202.5.0%200%20apple%20tensorflow-deps%202.5.0%201%20apple%20tensorflow-deps%202.6.0%200%20apple%20tensorflow-deps%202.7.0%200%20apple%20tensorflow-deps%202.8.0%200%20apple%20tensorflow-deps%202.9.0%200%20apple%20%e3%81%93%e3%82%8c%e3%82%92%e8%a6%8b%e3%82%8b%e3%81%a82.9.0%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%8c%e4%b8%80%e7%95%aa%e6%96%b0%e3%81%97%e3%81%9d%e3%81%86%e3%81%a7%e3%81%99%e3%80%82%e6%ac%a1%e3%81%abtensorflow-macos%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%a1%e3%82%89%e3%81%afpip%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e8%a1%8c%e3%81%86%e3%81%9d%e3%81%86%e3%81%aa%e3%81%ae%e3%81%a7pip%20search%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%a8%e8%a8%80%e3%81%84%e3%81%9f%e3%81%84%e3%81%a8%e3%81%93%e3%82%8d%e3%81%a7%e3%81%99%e3%81%8cpip%20search%e3%81%af%e7%8f%be%e7%8a%b6%e4%bd%bf%e3%81%88%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e9%83%a8%e5%88%86%e3%82%92%e7%a9%ba%e3%81%ab%e3%81%99%e3%82%8b%e3%81%a8%e3%81%84%e3%81%86%e8%a3%8f%e6%8a%80%e3%81%a7%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e5%8f%af%e8%83%bd%e3%81%aa%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e3%83%aa%e3%82%b9%e3%83%88%e3%82%a2%e3%83%83%e3%83%97%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a-%26gt%3b%20%25%20pip%20install%20tensorflow-macos%3d%3d%20ERROR%3a%20Could%20not%20find%20a%20version%20that%20satisfies%20the%20requirement%20tensorflow-macos%3d%3d%20%28from%20versions%3a%202.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&t=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyenv">pyenv</a></li>
+    <li><a href="#tensorflow">TensorFlow</a></li>
+    <li><a href="#tensorflow-probability">TensorFlow Probability</a></li>
+    <li><a href="#gpflow">GPflow</a></li>
+    <li><a href="#jax">JAX</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        M1 MacでのPython環境構築(tensorflowとか)
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-07-11 10:26:10 &#43;0900 JST" itemprop="datePublished">2022-07-11</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+
+    <div class="content" itemprop="articleBody">
+      <p>Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。
+(ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。)
+インストールに手こずることがあれば随時この記事に書き足していきたいと思います。</p>
+<p>特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。</p>
+<ul>
+<li><a href="https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb">https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb</a></li>
+</ul>
+<h2 id="pyenv">pyenv</h2>
+<p>はじめにpyenvをインストールします。これは<a href="https://github.com/pyenv/pyenv#installation">pyenvのGitHubページ</a>に従えばうまく動きます。</p>
+<p>Apple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。
+この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pyenv install miniforge3-4.10.3-10
+</span></span><span style="display:flex;"><span>pyenv global miniforge3-4.10.3-10
+</span></span></code></pre></div><h2 id="tensorflow">TensorFlow</h2>
+<p>tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。</p>
+<p>インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-&gt; % conda search -c apple tensorflow-deps
+</span></span><span style="display:flex;"><span>Loading channels: <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Name                       Version           Build  Channel</span>
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.5.0               <span style="color:#ae81ff">0</span>  apple
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.5.0               <span style="color:#ae81ff">1</span>  apple
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.6.0               <span style="color:#ae81ff">0</span>  apple
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.7.0               <span style="color:#ae81ff">0</span>  apple
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.8.0               <span style="color:#ae81ff">0</span>  apple
+</span></span><span style="display:flex;"><span>tensorflow-deps                2.9.0               <span style="color:#ae81ff">0</span>  apple
+</span></span></code></pre></div><p>これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-&gt; % pip install tensorflow-macos<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>ERROR: Could not find a version that satisfies the requirement tensorflow-macos<span style="color:#f92672">==</span> <span style="color:#f92672">(</span>from versions: 2.5.0, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.9.1, 2.9.2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>ERROR: No matching distribution found <span style="color:#66d9ef">for</span> tensorflow-macos<span style="color:#f92672">==</span>
+</span></span></code></pre></div><p>これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。最終的なtensorflowのインストールコマンドは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install -c apple tensorflow-deps<span style="color:#f92672">==</span>2.9.0
+</span></span><span style="display:flex;"><span>python -m pip install tensorflow-macos<span style="color:#f92672">==</span>2.9.0
+</span></span><span style="display:flex;"><span>python -m pip install tensorflow-metal
+</span></span></code></pre></div><p>になります。これでtensorflowが動くようになりました！！！感動！！！</p>
+<h2 id="tensorflow-probability">TensorFlow Probability</h2>
+<p>tensorflow probabilityはtensorflowで確率的な推論を用いる際に非常に重宝するライブラリです。こちらはtensorflowのバージョンに非常に強く依存します。この依存関係は<a href="https://github.com/tensorflow/probability/releases">tensorflow probabilityのリリースノート</a>を読めばわかります。自分の環境にあったバージョンを選択してインストールしましょう。私はtensorflowのバージョンに合わせて0.17.0のバージョンをインストールしました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install tensorflow-probability<span style="color:#f92672">==</span>0.17.0
+</span></span></code></pre></div><h2 id="gpflow">GPflow</h2>
+<p>gpflowはtensorflowベースのガウス過程回帰ライブラリです。基本的な回帰に合わせてデータ数が多いときに有用な変分推論に基づく回帰(Sparse Variational Inferenceとか言われるもの)に非常に強いものとして知られています。この具体例は<a href="https://gpflow.github.io/GPflow/2.5.2/notebooks/advanced/gps_for_big_data.html">ドキュメント</a>が詳しいです。
+愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは&ndash;no-dependenciesオプションで実現できます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install --no-dependencies gpflow
+</span></span></code></pre></div><p>あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install tabulate
+</span></span><span style="display:flex;"><span>python -m pip install deprecated
+</span></span><span style="display:flex;"><span>python -m pip install multipledispatch
+</span></span><span style="display:flex;"><span>python -m pip install lark
+</span></span></code></pre></div><p>gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。<a href="https://github.com/GPflow/GPflow/pull/1924">こちらのissue</a>が参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。</p>
+<h2 id="jax">JAX</h2>
+<p>jaxが自動微分とjitコンパイルがついたnumpy、なんて呼ばれ方がよくされています。これは本当にそのとおりで個人的に結構好きなライブラリです。jaxは最近Apple Siliconでのインストールに対応しています(<a href="https://github.com/google/jax/issues/5501">こちらのissue</a>が参考になります)。この前まではjaxをimportするとこれはexperimentalだ、みたいな警告文が出てきていたのですが最近はその警告文も消えてます。随分と進歩を感じます。
+インストールは基本的に<a href="https://github.com/google/jax#installation">GitHubページ</a>に従えば良いです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install --upgrade <span style="color:#e6db74">&#34;jax[cpu]&#34;</span>
+</span></span></code></pre></div>
+    </div>
+  </article>
+
+
+  <script src="https://utteranc.es/client.js"
+  repo="yonesuke/yonesuke.github.io"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  label="comment"
+  async>
+</script>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/research">Research</a></li>
+         
+          <li><a href="/teaching">Teaching</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyenv">pyenv</a></li>
+    <li><a href="#tensorflow">TensorFlow</a></li>
+    <li><a href="#tensorflow-probability">TensorFlow Probability</a></li>
+    <li><a href="#gpflow">GPflow</a></li>
+    <li><a href="#jax">JAX</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&text=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&is_video=false&description=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29&body=Check out this article: https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&title=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&name=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29&description=Apple%20Silicon%e3%81%8c%e6%90%ad%e8%bc%89%e3%81%95%e3%82%8c%e3%81%9fMac%e3%81%8c%e6%89%8b%e5%85%83%e3%81%ab%e4%bd%95%e5%8f%b0%e3%81%8b%e3%81%82%e3%81%a3%e3%81%a6%e3%80%81%e3%81%9d%e3%81%ae%e4%b8%8a%e3%81%a7%e8%89%b2%e3%80%85%e3%81%a8%e7%a0%94%e7%a9%b6%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81python%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%ab%e7%b5%90%e6%a7%8b%e6%89%8b%e3%81%93%e3%81%9a%e3%81%a3%e3%81%a6%e3%81%97%e3%81%be%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e4%bd%95%e5%ba%a6%e3%81%8b%e8%a9%a6%e3%81%97%e3%81%a6%e3%81%86%e3%81%be%e3%81%8f%e8%a1%8c%e3%81%a3%e3%81%9f%e3%82%82%e3%81%ae%e3%82%92%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a8%e3%81%97%e3%81%a6%e8%a8%98%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%28%e3%81%93%e3%81%93%e3%81%a7%e3%81%afpyenv%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%a8%98%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%82%82%e3%81%a1%e3%82%8d%e3%82%93%e4%bb%96%e3%81%ab%e3%82%82%e8%89%af%e3%81%84%e6%96%b9%e6%b3%95%e3%81%af%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%29%20%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%ab%e6%89%8b%e3%81%93%e3%81%9a%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8c%e3%81%b0%e9%9a%8f%e6%99%82%e3%81%93%e3%81%ae%e8%a8%98%e4%ba%8b%e3%81%ab%e6%9b%b8%e3%81%8d%e8%b6%b3%e3%81%97%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e7%89%b9%e3%81%abtensorflow%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e9%9b%a3%e3%81%97%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e4%bb%a5%e4%b8%8b%e3%81%ae%e8%a8%98%e4%ba%8b%e3%81%8c%e5%8f%82%e8%80%83%e3%81%ab%e3%81%aa%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e3%81%82%e3%82%8a%e3%81%8c%e3%81%a8%e3%81%86%e3%81%94%e3%81%96%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0ahttps%3a%2f%2fqiita.com%2fchipmunk-star%2fitems%2f90931fb5180b8024adcb%20pyenv%20%e3%81%af%e3%81%98%e3%82%81%e3%81%abpyenv%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%82%8c%e3%81%afpyenv%e3%81%aeGitHub%e3%83%9a%e3%83%bc%e3%82%b8%e3%81%ab%e5%be%93%e3%81%88%e3%81%b0%e3%81%86%e3%81%be%e3%81%8f%e5%8b%95%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aApple%20Silicon%e3%81%a7%e3%81%afarm%e3%82%a2%e3%83%bc%e3%82%ad%e3%83%86%e3%82%af%e3%83%81%e3%83%a3%e3%81%8c%e6%8e%a1%e7%94%a8%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%a7miniforge%e3%82%92%e4%bd%bf%e3%82%8f%e3%81%aa%e3%81%84%e3%81%a8%e3%81%84%e3%81%91%e3%81%aa%e3%81%84%e3%80%81%e3%81%a8%e3%81%84%e3%81%86%e8%aa%ac%e6%98%8e%e3%81%8c%e3%83%8d%e3%83%83%e3%83%88%e4%b8%8a%e3%81%ab%e7%84%a1%e6%95%b0%e3%81%ab%e3%81%82%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%9d%e3%82%8c%e3%81%ab%e5%be%93%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e4%bb%8a%e3%81%a7%e3%81%afminiforge%e4%bb%a5%e5%a4%96%e3%82%82%e5%af%be%e5%bf%9c%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e3%82%82%e3%81%97%e3%82%8c%e3%81%aa%e3%81%84%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e3%82%88%e3%81%8f%e3%82%8f%e3%81%8b%e3%82%89%e3%81%aa%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%20%e3%81%93%e3%81%ae%e8%a8%98%e4%ba%8b%e3%82%92%e6%9b%b8%e3%81%84%e3%81%a6%e3%81%84%e3%82%8b%e7%8f%be%e6%99%82%e7%82%b9%282022%2f07%2f11%29%e3%81%a7%e3%81%afminiforge3-4.10.3-10%e3%81%8c%e6%9c%80%e6%96%b0%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e8%a6%8b%e3%81%88%e3%82%8b%e3%81%ae%e3%81%a7%e3%81%93%e3%82%8c%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%a6global%e3%81%ae%e7%92%b0%e5%a2%83%e3%81%ab%e8%a8%ad%e5%ae%9a%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0apyenv%20install%20miniforge3-4.10.3-10%20pyenv%20global%20miniforge3-4.10.3-10%20TensorFlow%20tensorflow%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e4%b8%80%e7%95%aa%e5%a4%a7%e5%a4%89%e3%81%a7%e3%80%81%e3%81%84%e3%82%8d%e3%82%93%e3%81%aa%e8%a8%98%e4%ba%8b%e3%82%92%e7%9c%ba%e3%82%81%e3%81%a6%e3%81%af%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e8%a9%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%81%8c%e6%88%90%e5%8a%9f%e3%81%ab%e3%81%af%e8%87%b3%e3%82%8a%e3%81%be%e3%81%9b%e3%82%93%e3%81%a7%e3%81%97%e3%81%9f%e3%80%82%e4%b8%8a%e3%81%ae%e3%83%aa%e3%83%b3%e3%82%af%e3%81%ab%e5%be%93%e3%81%86%e3%81%a8%e3%81%99%e3%82%93%e3%81%aa%e3%82%8a%e3%81%a8%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8c%e5%ae%8c%e4%ba%86%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0a%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e3%81%ae%e3%81%aftensorflow-deps%2c%20tensorflow-macos%2c%20tensorflow-metal%e3%81%ae3%e3%81%a4%28%e5%a4%9a%e3%81%84%ef%bc%81%ef%bc%81%29%e3%82%89%e3%81%97%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%81%86%e3%81%a1tensorflow-deps%2c%20tensorflow-macos%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b%e3%81%a8%e3%81%8d%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%8ctensorflow%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%99%e3%82%8b%e3%82%89%e3%81%97%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81%e3%81%ab%e3%81%be%e3%81%9atensorflow-deps%e3%81%8c%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e5%8f%af%e8%83%bd%e3%81%aa%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%97%e3%81%be%e3%81%99%e3%80%82tensorflow-deps%e3%81%afconda%e3%81%ab%e3%82%88%e3%82%8b%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e5%88%a9%e7%94%a8%e3%81%99%e3%82%8b%e3%82%89%e3%81%97%e3%81%84%e3%81%ae%e3%81%a7conda%20search%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a-%26gt%3b%20%25%20conda%20search%20-c%20apple%20tensorflow-deps%20Loading%20channels%3a%20done%20%23%20Name%20Version%20Build%20Channel%20tensorflow-deps%202.5.0%200%20apple%20tensorflow-deps%202.5.0%201%20apple%20tensorflow-deps%202.6.0%200%20apple%20tensorflow-deps%202.7.0%200%20apple%20tensorflow-deps%202.8.0%200%20apple%20tensorflow-deps%202.9.0%200%20apple%20%e3%81%93%e3%82%8c%e3%82%92%e8%a6%8b%e3%82%8b%e3%81%a82.9.0%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%81%8c%e4%b8%80%e7%95%aa%e6%96%b0%e3%81%97%e3%81%9d%e3%81%86%e3%81%a7%e3%81%99%e3%80%82%e6%ac%a1%e3%81%abtensorflow-macos%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%97%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%a1%e3%82%89%e3%81%afpip%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%92%e8%a1%8c%e3%81%86%e3%81%9d%e3%81%86%e3%81%aa%e3%81%ae%e3%81%a7pip%20search%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%a8%e8%a8%80%e3%81%84%e3%81%9f%e3%81%84%e3%81%a8%e3%81%93%e3%82%8d%e3%81%a7%e3%81%99%e3%81%8cpip%20search%e3%81%af%e7%8f%be%e7%8a%b6%e4%bd%bf%e3%81%88%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e9%83%a8%e5%88%86%e3%82%92%e7%a9%ba%e3%81%ab%e3%81%99%e3%82%8b%e3%81%a8%e3%81%84%e3%81%86%e8%a3%8f%e6%8a%80%e3%81%a7%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e5%8f%af%e8%83%bd%e3%81%aa%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%92%e3%83%aa%e3%82%b9%e3%83%88%e3%82%a2%e3%83%83%e3%83%97%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a-%26gt%3b%20%25%20pip%20install%20tensorflow-macos%3d%3d%20ERROR%3a%20Could%20not%20find%20a%20version%20that%20satisfies%20the%20requirement%20tensorflow-macos%3d%3d%20%28from%20versions%3a%202.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fyonesuke.github.io%2fposts%2fm1-mac-python%2f&t=M1%20Mac%e3%81%a7%e3%81%aePython%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%28tensorflow%e3%81%a8%e3%81%8b%29">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Ryosuke Yoneda 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/about">About</a></li>
+         
+        <li><a href="/research">Research</a></li>
+         
+        <li><a href="/teaching">Teaching</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/cv.pdf">CV</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
+    });
+  });
+</script>
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
