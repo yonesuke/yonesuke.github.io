@@ -3,4 +3,4 @@
 	url = https://github.com/monkeyWzr/hugo-theme-cactus.git
 [submodule "themes/papermod"]
 	path = themes/papermod
-	url = git@github.com:adityatelange/hugo-PaperMod.git
+	url = https://github.com/adityatelange/hugo-PaperMod.git
