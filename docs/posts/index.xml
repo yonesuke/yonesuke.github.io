@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Mon, 11 Jul 2022 10:26:10 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 16:38:49 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ランダムグラフ上の最小全域木</title>
+      <link>https://yonesuke.github.io/posts/random_mst/</link>
+      <pubDate>Wed, 20 Jul 2022 16:38:49 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/random_mst/</guid>
+      <description>集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。
+Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、全域木は
+1 2 3 import numpy as np import tensorflow as tf import gpflow Random Minimum Spanning Tree Numerical Simulation </description>
+    </item>
+    
     <item>
       <title>M1 MacでのPython環境構築(tensorflowとか)</title>
       <link>https://yonesuke.github.io/posts/m1-mac-python/</link>
@@ -18,10 +29,9 @@
 特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。
 https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。
 Apple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。
-pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。
+1 2 pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。
 インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
--&amp;gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.9.0 0 apple これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。
--&amp;gt; % pip install tensorflow-macos== ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2.</description>
+1 2 3 4 5 6 7 8 9 -&amp;gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.</description>
     </item>
     
     <item>
@@ -103,12 +113,11 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
       <guid>https://yonesuke.github.io/posts/mnist_mlp/</guid>
       <description>Juliaで機械学習をするための有名なライブラリにFluxがあります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。 コードは次のようになります。これを参考に書きました。
 パッケージ 基本的にFluxさえあれば良いです。今回はMNISTデータを用いるのでMLDatasetsというパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
-julia&amp;gt; import Pkg; Pkg.add([&amp;#34;Flux&amp;#34;, &amp;#34;MLDatasets&amp;#34;]) これでパッケージを読み込むことができます。
-using Flux using Flux.Data: DataLoader using Flux: onehotbatch, onecold using Flux.Losses: logitcrossentropy using MLDatasets データの読み込み MNISTデータを読み込みます。
-x_train, y_train = MLDatasets.MNIST.traindata(Float32) x_test, y_test = MLDatasets.MNIST.testdata(Float32) MNISTの画像はサイズ(28,28,1)になっていますが、MLPには1次元の配列として渡したいのでflattenで各データを1次元に落とします。
-x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
-y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。
-img_size = (28,28,1) input_size = prod(img_size) # 784 nclasses = 10 # 0~9 # Define model model = Chain( Dense(input_size, 32, relu), Dense(32, nclasses) ) Dense(input_size, output_size, f)という関数$F\colon\mathbb{R}^{\mathrm{inputsize}}\to\mathbb{R}^{\mathrm{outputsize}}$は $$ F(x) = f(Wx+b) $$ になります。$f$は活性化関数です。$W,b$は内部で勝手に定義されます。デフォルトでは初期値$W,b$はGlorotの一様分布に従ってランダムに選ばれます。 また、$f$を指定しなければ活性化関数は恒等関数になります。すなわち非線形変換は行われません。 今回は活性化関数にReLU関数を用いました。 Chainは合成関数を作ります。すなわち、Chain(F,G)は$G\circ F$という関数に対応します。 今回定義したモデルは784次元の入力から10次元の出力を返します。出力の10次元の中で一番大きい要素のindexが推定される数字とします。</description>
+1 julia&amp;gt; import Pkg; Pkg.add([&amp;#34;Flux&amp;#34;, &amp;#34;MLDatasets&amp;#34;]) これでパッケージを読み込むことができます。
+1 2 3 4 5 using Flux using Flux.Data: DataLoader using Flux: onehotbatch, onecold using Flux.Losses: logitcrossentropy using MLDatasets データの読み込み MNISTデータを読み込みます。
+1 2 x_train, y_train = MLDatasets.MNIST.traindata(Float32) x_test, y_test = MLDatasets.MNIST.testdata(Float32) MNISTの画像はサイズ(28,28,1)になっていますが、MLPには1次元の配列として渡したいのでflattenで各データを1次元に落とします。
+1 2 x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
+1 2 y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。</description>
     </item>
     
     <item>
@@ -121,11 +130,8 @@ img_size = (28,28,1) input_size = prod(img_size) # 784 nclasses = 10 # 0~9 # Def
 Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成り立ってグラム行列が(半)正定値行列になることです。すなわち、任意のベクトル$\bm{c}$に対して、 $$ \bm{c}^{\top}K\bm{c}\geq0 $$ が成り立つことです。なので、カーネル関数から生成されたGram行列は常に半正定値行列になります。 半正定値性と固有値が非負であることは同値なのでGram行列の固有値は常に非負です。
 ガウス過程に従う関数の生成 次にガウス過程から関数をサンプルすることを考えましょう。$f\sim\mathcal{GP}(m,k)$について、特にかんたんのために平均を$0$としておきましょう。 このとき、$\{x_{i}\}_{i=1}^{n}$上で関数$f$のベクトル$\bm{f}$は $$ \bm{f}\sim\mathcal{N}(\bm{0},K) $$ という多次元ガウス分布に従うものになります。これはGram行列を分散共分散行列とするガウス分布で、代表的なサンプル方法は$K$のコレスキー分解行列と$n$次元の独立標準正規分布に従う乱数との行列・ベクトル積を計算することで得られます。
 固有値分布とガウス過程の関係 RBFカーネルからGram行列を生成し、コレスキー分解することを考えましょう。ここでRBFカーネルは $$ k(x,y)=\exp\left(-\frac{(x-y)^{2}}{2l^{2}}\right) $$ で与えられます。Julia実装をしてみると、
-using LinearAlgebra xs = -2:0.02:2 K = [exp(-(x-y)^2) for x in xs, y in xs] cholesky(K) となりますが、これを実行すると、
-ERROR: PosDefException: matrix is not positive definite; Cholesky factorization failed. と帰ってきて、Gram行列が正定値でないと言われてしまいます。理論ではGram行列は正定値であるはずなので、これは数値的な誤差に起因していると考えられます。 そこでGram行列の固有値分布を確認してみることにします。この際、RBFカーネルだけでなく周期カーネルとMatérnカーネルについても固有値分布と対応するガウス過程のサンプルをプロットしました。この結果が次のようになります。
-固有値分布については降順にソートしたものの絶対値をとったものをプロットしています。ガウス過程のサンプル方法については後述します。
-RBFカーネルと周期カーネルの固有値分布に着目すると、指数的な減衰の後、途中で$0$を横切って負の値をとっていることが確認できます。これは固有値が非常に小さく、数値的な誤差によって負だと出力してしまったケースだと考えることができます。一方で、Matérnカーネルの固有値分布に着目すると、ベキ的な減衰が起こっており、負の値を取る等の誤差が見られるわけではありません。
-次にガウス過程のサンプルに目を向けてみましょう。RBFカーネルと周期カーネルについては非常に滑らかな関数が出力されています。実際、RBFカーネルと周期カーネルから出力される関数は確率$1$で$C^{\infty}$級の関数がサンプルされることが知られています。一方で、Matérnカーネルについてはそこまで滑らかではない関数が出力されており、これは実際Matérnカーネルによりサンプルされる関数は有限回微分可能な関数になることにも一致します。</description>
+1 2 3 4 using LinearAlgebra xs = -2:0.02:2 K = [exp(-(x-y)^2) for x in xs, y in xs] cholesky(K) となりますが、これを実行すると、
+1 ERROR: PosDefException: matrix is not positive definite; Cholesky factorization failed. と帰ってきて、Gram行列が正定値でないと言われてしまいます。理論ではGram行列は正定値であるはずなので、これは数値的な誤差に起因していると考えられます。 そこでGram行列の固有値分布を確認してみることにします。この際、RBFカーネルだけでなく周期カーネルとMatérnカーネルについても固有値分布と対応するガウス過程のサンプルをプロットしました。この結果が次のようになります。</description>
     </item>
     
     <item>
@@ -247,10 +253,7 @@ Gaussian processes for Big data
       
       <guid>https://yonesuke.github.io/posts/latex-setup/</guid>
       <description>$\LaTeX$で文章を書くときによく行う設定をまとめておきます。
-Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcというファイルをおいておきます。 $latex = &amp;#39;platex&amp;#39;; $bibtex = &amp;#39;pbibtex&amp;#39;; $dvipdf = &amp;#39;dvipdfmx %O -o %D %S&amp;#39;; $makeindex = &amp;#39;mendex -U %O -o %D %S&amp;#39;; $pdf_mode = 3; さらにCompilerはLaTeXにしておきましょう。 Beamer LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特にmetropolisとfocusというテーマが気に入っています。 \documentclass[dvipdfmx]{beamer} \usepackage{bxdpx-beamer} \usepackage{pxjahyper} \usepackage{minijs} \usetheme[numbering=fraction,block=fill,progressbar=frametitle]{metropolis} \usefonttheme{professionalfonts} \usepackage{appendixnumberbeamer} Appendixに移行する際の区切りのページには次を書くと便利です。 % スライド終わり \appendix \begin{frame}[standout] APPENDIX \end{frame} % アペンディクスはじまり % \begin{frame} % ... 便利Package hyperref 次のオプションとともに呼ぶと便利です。
-\usepackage[colorlinks=true,linkcolor=magenta,citecolor=magenta,breaklinks=true]{hyperref} 特にbreaklinks=trueはリンクを改行してくれるので重宝します。リンクの色は好みに合わせて変えてください。
-biblatex 次のオプションとともに呼ぶとPR系の論文のように参考文献を表示してくれます。
-\usepackage[style=phys,articletitle=true,biblabel=brackets,chaptertitle=false,pageranges=false,doi=false]{biblatex} % bibファイルの読み込み \addbibresource{main.bib} % ... % 本文 % ... % これで出力 \printbibliography 便利サイト doi2bib DOIのリンクを入力するとBibTeXが帰ってきます。各出版社が出力するbibファイルを用いてもよいのですが、出版社によって出力のされ方がまちまちです。このサイトだと一貫した出力のされ方になるので結構気に入っています。 </description>
+Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcというファイルをおいておきます。 1 2 3 4 5 $latex = &amp;#39;platex&amp;#39;; $bibtex = &amp;#39;pbibtex&amp;#39;; $dvipdf = &amp;#39;dvipdfmx %O -o %D %S&amp;#39;; $makeindex = &amp;#39;mendex -U %O -o %D %S&amp;#39;; $pdf_mode = 3; さらにCompilerはLaTeXにしておきましょう。 Beamer LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特にmetropolisとfocusというテーマが気に入っています。 1 2 3 4 5 6 7 \documentclass[dvipdfmx]{beamer} \usepackage{bxdpx-beamer} \usepackage{pxjahyper} \usepackage{minijs} \usetheme[numbering=fraction,block=fill,progressbar=frametitle]{metropolis} \usefonttheme{professionalfonts} \usepackage{appendixnumberbeamer} Appendixに移行する際の区切りのページには次を書くと便利です。 1 2 3 4 5 6 7 8 % スライド終わり \appendix \begin{frame}[standout] APPENDIX \end{frame} % アペンディクスはじまり % \begin{frame} % ... 便利Package hyperref 次のオプションとともに呼ぶと便利です。</description>
     </item>
     
     <item>
