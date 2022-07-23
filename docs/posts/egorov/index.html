@@ -21,7 +21,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -230,10 +230,25 @@
     <h1 class="post-title">
       Egorov&#39;s theorem
     </h1>
-    <div class="post-meta"><span title='2022-03-22 13:05:46 +0900 JST'>March 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;113 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/egorov.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-03-22 13:05:46 +0900 JST'>March 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;113 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+    <li><a href="#有限でない場合の反例">有限でない場合の反例</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>Egorovの定理は関数列の概収束と概一様収束の関係を述べたものになります。</p>
 <blockquote>
 <p>有限測度空間$(X,\mathcal{F},\mu)$上の可測関数列$f_{n}\colon X\to\mathbb{C}$に対して、
@@ -407,6 +422,53 @@ $$
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

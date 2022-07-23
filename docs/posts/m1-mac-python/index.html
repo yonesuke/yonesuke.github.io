@@ -23,7 +23,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -216,10 +216,28 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
     <h1 class="post-title">
       M1 MacでのPython環境構築(tensorflowとか)
     </h1>
-    <div class="post-meta"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/m1-mac-python.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyenv">pyenv</a></li>
+    <li><a href="#tensorflow">TensorFlow</a></li>
+    <li><a href="#tensorflow-probability">TensorFlow Probability</a></li>
+    <li><a href="#gpflow">GPflow</a></li>
+    <li><a href="#jax">JAX</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。
 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。)
 インストールに手こずることがあれば随時この記事に書き足していきたいと思います。</p>
@@ -479,6 +497,53 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

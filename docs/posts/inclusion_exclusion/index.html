@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -227,10 +227,24 @@
     <h1 class="post-title">
       包除原理
     </h1>
-    <div class="post-meta"><span title='2021-05-16 12:18:18 +0900 JST'>May 16, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;50 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/inclusion_exclusion.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-05-16 12:18:18 +0900 JST'>May 16, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;50 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#証明">証明</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して
 $$
 \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right)
@@ -407,6 +421,53 @@ $$
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

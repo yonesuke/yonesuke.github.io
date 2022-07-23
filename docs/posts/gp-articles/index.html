@@ -32,7 +32,7 @@ Gaussian processes for Big data
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -243,10 +243,27 @@ Gaussian processes for Big data
     <h1 class="post-title">
       ガウス過程に関する文献
     </h1>
-    <div class="post-meta"><span title='2021-05-06 12:53:12 +0900 JST'>May 6, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;59 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/gp-articles.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-05-06 12:53:12 +0900 JST'>May 6, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;59 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ガウス過程全般">ガウス過程全般</a></li>
+    <li><a href="#ガウス過程の数学的な基礎に関する文献">ガウス過程の数学的な基礎に関する文献</a></li>
+    <li><a href="#補助変数法">補助変数法</a></li>
+    <li><a href="#深層学習との関係">深層学習との関係</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>ガウス過程とその機械学習への応用に関する文献はたくさんあります。ここで特に有用だと思ったものを紹介していきます。</p>
 <h2 id="ガウス過程全般">ガウス過程全般<a hidden class="anchor" aria-hidden="true" href="#ガウス過程全般">#</a></h2>
 <ul>
@@ -426,6 +443,53 @@ Gaussian processes for Big data
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

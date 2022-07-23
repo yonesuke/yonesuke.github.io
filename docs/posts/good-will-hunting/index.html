@@ -19,7 +19,7 @@ The adjacency matrix, $A$ The matrix giving the number of 3 step walks The gener
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -224,10 +224,28 @@ The adjacency matrix, $A$ The matrix giving the number of 3 step walks The gener
     <h1 class="post-title">
       Good Will Hunting Problem
     </h1>
-    <div class="post-meta"><span title='2021-05-31 13:01:31 +0900 JST'>May 31, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;244 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/good-will-hunting/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-05-31 13:01:31 +0900 JST'>May 31, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;244 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#問1">問1</a></li>
+    <li><a href="#問2">問2</a></li>
+    <li><a href="#問3">問3</a></li>
+    <li><a href="#問4">問4</a></li>
+    <li><a href="#コード">コード</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>マット・デイモンとロビン・ウィリアムズ主演の映画『グッド・ウィル・ハンティング/旅立ち』(Good Will Hunting)の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。
 中学生とかのときに初めてこの映画を見たときにはよっぽど難しい問題なんだろうな、と思ったのですが、最近見返してみると定義に従って素直に計算すれば解ける問題だということがわかったのでまとめておきます。</p>
 <blockquote>
@@ -462,6 +480,53 @@ $$
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

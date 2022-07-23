@@ -22,7 +22,7 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -233,10 +233,27 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
     <h1 class="post-title">
       Gram行列の固有値の数値計算
     </h1>
-    <div class="post-meta"><span title='2021-08-02 16:59:14 +0900 JST'>August 2, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;184 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/gram_eigen/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-08-02 16:59:14 +0900 JST'>August 2, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;184 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#gram行列の性質">Gram行列の性質</a></li>
+    <li><a href="#ガウス過程に従う関数の生成">ガウス過程に従う関数の生成</a></li>
+    <li><a href="#固有値分布とガウス過程の関係">固有値分布とガウス過程の関係</a></li>
+    <li><a href="#対応策">対応策(?)</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\{x_{i}\}<em>{i=1}^{n}$に対するGram行列(グラム行列)は
 $$
 K=\begin{pmatrix}k(x</em>{1},x_{1}) &amp; \cdots &amp; k(x_{1},x_{n})\\\vdots &amp; \ddots &amp; \vdots\\ k(x_{n},x_{1}) &amp; \cdots &amp; k(x_{n},x_{n})\end{pmatrix}
@@ -453,6 +470,53 @@ $$
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

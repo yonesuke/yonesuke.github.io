@@ -20,7 +20,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -29,7 +29,7 @@ params:
   comments: true
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
 
   assets:
@@ -39,7 +39,7 @@ params:
     favicon16x16: "favicon_io/favicon-16x16.png"
     favicon32x32: "favicon_io/favicon-32x32.png"
     apple_touch_icon: "favicon_io/apple-touch-icon.png"
-    safari_pinned_tab: "<link / abs url>"
+    # safari_pinned_tab: "<link / abs url>"
 
   label:
     text: "Ryosuke Yoneda's Home Page"
@@ -48,7 +48,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: true # needs to be explicitly set
+    enabled: false # needs to be explicitly set
     title: Ryosuke Yoneda's Homepage
     # subtitle: "This is subtitle"
     imageUrl: homepage.jpg
@@ -68,13 +68,19 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Ryosuke Yoneda's Home Page"
-    Content: Welcome to my homepage
+    Content: >
+              I am a Ph.D. student at the [Nonlinear Physics Division, Kyoto University](https://www-np.acs.i.kyoto-u.ac.jp/).
+
+
+              My main research areas are **nonlinear dynamics** and **statistical mechanics**. I am especially interested in theoretical analysis and numerical simulation of phase transition phenomena. In specific, I have been analyzing the **Kuramoto model**, which is known to exhibit synchronous phenomena. For numerical analysis, I often use regression with **Gaussian process** and **neural networks**. Recently, I am also studying **spectral graph theory** to investigate the effect of network structure on synchronization phenomena.
 
   socialIcons:
     - name: twitter
       url: "https://twitter.com/yonesuke1729"
     - name: github
       url: "https://github.com/yonesuke"
+    - name: googlescholar
+      url: "https://scholar.google.com/citations?user=XN3JxqIAAAAJ"
     - name: email
       url: yoneda.ryosuke.56a@st.kyoto-u.ac.jp
 
@@ -83,10 +89,10 @@ params:
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
 
-  editPost:
-    URL: "https://github.com/yonesuke/yonesuke.github.io/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+  # editPost:
+  #   URL: "https://github.com/yonesuke/yonesuke.github.io/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html

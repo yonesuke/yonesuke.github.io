@@ -24,7 +24,7 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://yonesuke.github.io/favicon_io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://yonesuke.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://yonesuke.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -239,10 +239,29 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
     <h1 class="post-title">
       Uniform ratio distribution and pi
     </h1>
-    <div class="post-meta"><span title='2022-03-15 13:05:46 +0900 JST'>March 15, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;120 words&nbsp;·&nbsp;Ryosuke Yoneda&nbsp;|&nbsp;<a href="https://github.com/yonesuke/yonesuke.github.io/content/posts/uniform-ratio-pi.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-03-15 13:05:46 +0900 JST'>March 15, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;120 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#uniform-ratio-distribution">Uniform ratio distribution</a>
+      <ul>
+        <li><a href="#証明">証明</a></li>
+      </ul>
+    </li>
+    <li><a href="#calculating-probability">Calculating probability</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>3月14日は円周率の日ということもあって次のツイートを見つけました。</p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Happy Pi Day, folks!<br><br>(Today = March 14 = 3/14. And pi ~= 3.14.)<br><br>Here&#39;s a fun way to approximate pi using probability.<br><br>Take 2 random numbers X and Y between 0 and 1. What&#39;s the probability that the integer nearest to X/Y is even?<br><br>Answer: (5 - pi)/4 <a href="https://t.co/ZWviwSQ2VM">pic.twitter.com/ZWviwSQ2VM</a></p>&mdash; 10-K Diver (@10kdiver) <a href="https://twitter.com/10kdiver/status/1503307755976765443?ref_src=twsrc%5Etfw">March 14, 2022</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -435,6 +454,53 @@ $$
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
