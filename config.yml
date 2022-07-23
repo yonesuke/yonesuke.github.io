@@ -44,7 +44,7 @@ params:
     # safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Ryosuke Yoneda's Home Page"
+    text: "Ryosuke Yoneda's Homepage"
     icon: favicon_io/apple-touch-icon.png
     iconHeight: 35
 
@@ -69,7 +69,7 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Ryosuke Yoneda's Home Page"
+    Title: "Ryosuke Yoneda's Homepage"
     Content: >
               I am a Ph.D. student at the [Nonlinear Physics Division, Kyoto University](https://www-np.acs.i.kyoto-u.ac.jp/).
 
