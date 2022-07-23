@@ -11,20 +11,6 @@ ShowWordCount: false
 
 # Publications
 {{< bib >}}https://yonesuke.github.io/research/yoneda.bib{{< /bib >}}
-[Google Scholar](https://scholar.google.com/citations?user=XN3JxqIAAAAJ)
-- **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connectivity guaranteeing in-phase synchronization, [Chaos **31**, 063124 (2021)](https://aip.scitation.org/doi/abs/10.1063/5.0054271). [![arXiv](https://img.shields.io/badge/arXiv-2104.05954-b31b1b.svg)](https://arxiv.org/abs/2104.05954) [![GitHub](https://badgen.net/badge/icon/github?icon=github&label=yonesuke/DenseSync)](https://github.com/yonesuke/DenseSync)
-- **R. Yoneda**, K. Harada, and Y. Y. Yamaguchi, Critical exponents in coupled phase-oscillator models on small-world networks, [Phys. Rev. E **102**, 062212 (2020)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.062212). [![arXiv](https://img.shields.io/badge/arXiv-2007.04539-b31b1b.svg)](https://arxiv.org/abs/2007.04539)
-- **R. Yoneda** and Y. Y. Yamaguchi, Classification of bifurcation diagrams in coupled phase-oscillator models with asymmetric natural frequency distributions, [J. Stat. Mech., 033403 (2020)](https://iopscience.iop.org/article/10.1088/1742-5468/ab6f5f). [![arXiv](https://img.shields.io/badge/arXiv-1901.02175-b31b1b.svg)](https://arxiv.org/abs/1901.02175)
-
-# Preprints
-- Y. Terada, K. Ito, **R. Yoneda**, T. Aoyagi, and Y. Y. Yamaguchi, A role of asymmetry in linear response of globally coupled oscillator systems [![arXiv](https://img.shields.io/badge/arXiv-1802.08383-b31b1b.svg)](https://arxiv.org/abs/1802.08383)
-
-# Proceedings
-- **米田亮介**, "結合振動子系において同期しない密なネットワークの探索", 数理解析研究所講究録 (2022).
-- **米田亮介**, "ノイズを受けた大域結合振動子系の同期転移", [数理解析研究所講究録 **2181**, pp. 173-182 (2021)](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2181-20.pdf).
-- **米田亮介**, "Lévyノイズを受けた大域結合振動子系の同期転移", [北海道大学数学講義録 **180**, pp. 509-518 (2021)](https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2021/pdf/yoneda_ryosuke.pdf).
-- **米田亮介**, "蔵本モデルにおける臨界指数", [北海道大学数学講究録 **178**, pp. 511–520 (2020)](https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2020/pdf/yoneda_ryosuke.pdf).
-- **米田亮介**, "蔵本モデルにおける臨界指数", 第11回白浜研究集会報告集, 京都大学, pp. 15–23 (2019). 
 
 # Presentations
 ## 2022
