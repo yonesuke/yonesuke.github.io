@@ -1,4 +1,3 @@
-
 ---
 title: 2021年度 数的理解
 type: new
@@ -8,6 +7,7 @@ math: true
 ShowReadingTime: false
 ShowToc: false
 ShowWordCount: false
+ShowBreadCrumbs: false
 ---
 
 ## 授業内容・計画

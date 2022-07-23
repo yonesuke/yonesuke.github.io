@@ -4,6 +4,7 @@ draft: false
 ShowReadingTime: false
 ShowToc: false
 ShowWordCount: false
+ShowBreadCrumbs: false
 ---
 
 # Education

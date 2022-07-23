@@ -4,9 +4,8 @@ draft: false
 ShowReadingTime: false
 ShowToc: false
 ShowWordCount: false
+ShowBreadCrumbs: false
 ---
-
-# Teaching
 
 ## 2022
 - 2022年10月-2023年2月, 数的理解(短) (京都外国語大学・非常勤講師)
