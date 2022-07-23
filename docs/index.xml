@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ryosuke Yoneda&#39;s Homepage</title>
+    <title>Ryosuke Yoneda</title>
     <link>https://yonesuke.github.io/</link>
-    <description>Recent content on Ryosuke Yoneda&#39;s Homepage</description>
+    <description>Recent content on Ryosuke Yoneda</description>
+    <image>
+      <url>https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Ryosuke Yoneda</copyright>
-    <lastBuildDate>Sun, 18 Apr 2021 21:20:05 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 16:38:49 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ランダムグラフ上の最小全域木</title>
       <link>https://yonesuke.github.io/posts/random_mst/</link>
@@ -50,30 +53,6 @@ Kovacicのアルゴリズム Kovacicのアルゴリズムに従って調和振�
 Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きます。
 Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}+\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
 Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。</description>
-    </item>
-    
-    <item>
-      <title>関数列の収束について</title>
-      <link>https://yonesuke.github.io/posts/convergence/</link>
-      <pubDate>Sat, 30 Apr 2022 11:29:26 +0900</pubDate>
-      
-      <guid>https://yonesuke.github.io/posts/convergence/</guid>
-      <description>Terrence Taoの&amp;quot;An introduction to measure theory&amp;ldquo;のゼミがつい先日終わりました。演習問題も全部解いたのでかなり力がついたと思います。 演習問題1.5.2で関数列の収束についての問題があり、収束の関係を図式に起こすと良いよ、と書いてあったのでまとめてみました。
-$(X,\mathcal{B},\mu)$を測度空間とします。このとき関数列の収束に関して次のような図式があります。
-それぞれの収束は次のとおりです。$f_{n}\colon X\to\mathbb{C},f\colon X\to\mathbb{C}$はそれぞれ可測関数であるとします。
-uniform conv.: 任意の$\varepsilon&amp;gt;0$に対してある$N$が存在して、$n\geq N$で$|f_{n}(x)-f(x)|&amp;lt;\varepsilon$が任意の$x\in X$で成立するとき、$f_{n}$は$f$に一様収束(uniform convergence)すると言います。 point-wise conv.: 任意の$x\in X$で$f_{n}(x)$が$f(x)$に収束するとき、$f_{n}$が$f$に各点収束(point-wise convergence)すると言います。より正確に言うと、任意の$x\in X$と$\varepsilon&amp;gt;0$に対してある$N$が存在して、$n\geq N$で$|f_{n}(x)-f(x)|&amp;lt;\varepsilon$が成立するとき各点収束すると言います。 point-wise conv. (a.e.): (測度$\mu$のもとで)ほとんど至るところの$x\in X$で$f_{n}(x)$が$f(x)$に収束するとき、$f_{n}$は$f$に概収束(pointwise almost everywhere convergence)すると言います。 $L^{\infty}$ conv.: 任意の$\varepsilon&amp;gt;0$に対してある$N$が存在して、$n\geq N$で$|f_{n}(x)-f(x)|&amp;lt;\varepsilon$がほとんど至るところの$x\in X$で成立するとき、$f_{n}$は$f$に $L^{\infty}$収束($L^{\infty}$ convergence, converge uniformly almost everywhere)すると言います。 almost uniform conv.: 任意の$\varepsilon&amp;gt;0$に対してある可測集合$E\in\mathcal{B}$で$\mu(E)\leq\varepsilon$なるものが存在して、$E^{\mathrm{c}}$上で$f_{n}$が$f$に一様収束するとき、$f_{n}$は$f$に概一様収束(almost uniform convergence)すると言います。 $L^{1}$ conv.: $n\to\infty$で$\|f_{n}-f\|_{L^{1}(\mu)}=\int_{X}|f_{n}(x)-f(x)|d\mu\to0$となると、$f_{n}$は$f$に $L^{1}$収束($L^{1}$ convergence)すると言います。 conv. in measure: 任意の$\varepsilon&amp;gt;0$に対して$n\to\infty$で$\mu(\{x\in X\mid|f_{n}(x)-f(x)|\geq\varepsilon\})\to0$が$0$となるとき、$f_{n}$が$f$に測度収束(convergence in measure)すると言います。 conv. in distribution: 分布収束(convergence in distribution)に関しては確率空間$\mu(X)=1$で定まるものです。$f_{n}\colon X\to\mathbb{R},f\colon X\to\mathbb{R}$をそれぞれ可測関数とします。累積分布関数(cumulative distribution function)$F\colon\mathbb{R}\to[0,1]$を$F(\lambda)\coloneqq\mu(\{x\in X\mid f(x)\leq\lambda\})$で定義します。$f_{n}$の累積分布関数$F_{n}$が$f$の累積分布関数$F$の連続点において各点収束するとき、$f_{n}$は$f$に分布収束すると言います。 収束の関係 上に添付した図式の矢印はそれぞれ次のようになります。</description>
-    </item>
-    
-    <item>
-      <title>TikZ test</title>
-      <link>https://yonesuke.github.io/posts/tikz/</link>
-      <pubDate>Tue, 29 Mar 2022 18:59:16 +0900</pubDate>
-      
-      <guid>https://yonesuke.github.io/posts/tikz/</guid>
-      <description>tikzのtestです。
-いい感じ！！
-参考にしたサイト: https://blog.xiupos.net/posts/computer/tikz/
-基本的にはこのサイトの通りにすればうまく動いた。ただ、tikzを動かすのにwindow.onloadの機能を使っていて、それが他のwindow.onloadと競合すると上書きされてtikzのコンパイルが走らなくなるので注意が必要。</description>
     </item>
     
     <item>
@@ -281,6 +260,16 @@ $\alpha=1$の場合には、 $$ X = \frac{2}{\pi}\left[(\frac{\pi}{2}+\beta V)\t
       <description>確率分布の間の&amp;quot;近さ&amp;quot;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
 準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
 導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) + \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp;amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp;amp; + \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yonesuke.github.io/cactus_index/</link>
+      <pubDate>Sun, 18 Apr 2021 21:20:05 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/cactus_index/</guid>
+      <description>Ryosuke Yoneda Currently a Ph.D. student at the Department of Advanced Mathematical Sciences, Graduate School of Informatics, Kyoto University, Japan, from April 2020.
+米田 亮介 Email: yoneda@acs.i.kyoto-u.ac.jp GitHub: yonesuke Twitter: @yonesuke1729 </description>
     </item>
     
     <item>

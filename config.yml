@@ -2,6 +2,7 @@ baseURL: 'https://yonesuke.github.io'
 languageCode: 'en-us'
 title: 'Ryosuke Yoneda'
 theme: "PaperMod"
+publishDir: "docs"
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
