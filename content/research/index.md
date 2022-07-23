@@ -27,7 +27,7 @@ ShowWordCount: false
 
 # Presentations
 ## 2022
-- 米田亮介, **原田健自**, "ニューラルネットワークを用いたスケーリング解析手法", [日本物理学会 2022年年次大会, 2022年3月 (オンライン)](https://onsite.gakkai-web.net/jps/jps_search/2022sp/index.html). [:open_file_folder: PDF](slides/talk20220315.pdf)
+- 米田亮介, **原田健自**, "ニューラルネットワークを用いたスケーリング解析手法", [日本物理学会 2022年年次大会, 2022年3月 (オンライン)](https://onsite.gakkai-web.net/jps/jps_search/2022sp/index.html). [:open_file_folder: PDF](files/talk20220315.pdf)
 - 樋口智英, 米田亮介, **小林望**, 藤田政文, "デジタルおよびバリアオプションに対する Deep Hedging の学習性能の評価", [日本金融・証券計量・工学学会 2021年冬季大会, 2022年2月 (オンライン)](http://www.jafee.gr.jp/01rally/conference/pro_56th_2022_0121.pdf).
 
 ## 2021
