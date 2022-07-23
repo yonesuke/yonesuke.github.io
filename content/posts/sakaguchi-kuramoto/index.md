@@ -61,27 +61,27 @@ $$
 ## Fourier級数展開
 分布関数$f(\theta,\omega,t)$について、$\theta$方向は$\mathbb{S}^{1}$に乗っているのでFourier級数展開ができます。
 $$
-f(\theta,\omega,t)=\frac{1}{2\pi}\sum_{k\in\mathbb{Z}}\hat{f}_{k}(\omega,t)e^{-ik\theta}
+f(\theta,\omega,t)=\frac{1}{2\pi}\sum_{k\in\mathbb{Z}}\hat{f} _ {k}(\omega,t)e^{-ik\theta}
 $$
 これをもとに連続の式もFourier級数展開しましょう。
 かんたんのために$h(\omega)$の$\omega$積分を$\langle h\rangle$と書くことにします。
 $$
-\begin{aligned}V[f]=&\omega+\frac{Ke^{-i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega'\int_{\mathbb{S}^{1}}d\theta' f(\theta',\omega',t)e^{i\theta'}-\frac{Ke^{i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega'\int_{\mathbb{S}^{1}}d\theta' f(\theta',\omega',t)e^{-i\theta'}\\\\=&\omega+\frac{Ke^{-i(\theta-\alpha)}}{2i}\langle\hat{f}_{1}\rangle-\frac{Ke^{i(\theta-\alpha)}}{2i}\langle\hat{f}_{-1}\rangle
+\begin{aligned}V[f]=&\omega+\frac{Ke^{-i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega'\int_{\mathbb{S}^{1}}d\theta' f(\theta',\omega',t)e^{i\theta'}-\frac{Ke^{i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega'\int_{\mathbb{S}^{1}}d\theta' f(\theta',\omega',t)e^{-i\theta'}\\\\=&\omega+\frac{Ke^{-i(\theta-\alpha)}}{2i}\langle\hat{f} _ {1}\rangle-\frac{Ke^{i(\theta-\alpha)}}{2i}\langle\hat{f} _ {-1}\rangle
 \end{aligned}$$
 であるので、
 $$
-\widehat{V[f]}_{0}=2\pi\omega,\widehat{V[f]}_{-1}=i\pi Ke^{-i\alpha}\langle\hat{f}_{-1}\rangle,\widehat{V[f]}_{1}=-i\pi Ke^{i\alpha}\langle\hat{f}_{1}\rangle
+\widehat{V[f]} _ {0}=2\pi\omega,\widehat{V[f]} _ {-1}=i\pi Ke^{-i\alpha}\langle\hat{f} _ {-1}\rangle,\widehat{V[f]} _ {1}=-i\pi Ke^{i\alpha}\langle\hat{f} _ {1}\rangle
 $$
 がわかります。
 これを連続の式に代入することで、
 $$
 \begin{aligned}
-\frac{\partial\hat{f}_{k}}{\partial t}=&-\widehat{\frac{\partial}{\partial\theta}(V[f]f)}_{k}=ik\widehat{V[f]f}_{k}=\frac{ik}{2\pi}\left(\sum_{l\in\mathbb{Z}}\widehat{V[f]}_{l}\hat{f}_{k-l}\right)=\frac{ik}{2\pi}\left(\sum_{l=0,\pm1}\widehat{V[f]}_{l}\hat{f}_{k-l}\right)\\\\=&ik\omega\hat{f}_{k}+\frac{kKe^{i\alpha}}{2}\langle\hat{f}_{1}\rangle\hat{f}_{k-1}-\frac{kKe^{-i\alpha}}{2}\langle\hat{f}_{-1}\rangle\hat{f}_{k+1}
+\frac{\partial\hat{f} _ {k}}{\partial t}=&-\widehat{\frac{\partial}{\partial\theta}(V[f]f)} _ {k}=ik\widehat{V[f]f} _ {k}=\frac{ik}{2\pi}\left(\sum_{l\in\mathbb{Z}}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)=\frac{ik}{2\pi}\left(\sum_{l=0,\pm1}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)\\\\=&ik\omega\hat{f} _ {k}+\frac{kKe^{i\alpha}}{2}\langle\hat{f} _ {1}\rangle\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}}{2}\langle\hat{f} _ {-1}\rangle\hat{f} _ {k+1}
 \end{aligned}
 $$
-となります。特に秩序変数が$z=\langle\hat{f}_{1}\rangle$で書けるので、
+となります。特に秩序変数が$z=\langle\hat{f} _ {1}\rangle$で書けるので、
 $$
-\frac{\partial\hat{f}_{k}}{\partial t}=ik\omega\hat{f}_{k}+\frac{kKe^{i\alpha}z}{2}\hat{f}_{k-1}-\frac{kKe^{-i\alpha}\overline{z}}{2}\hat{f}_{k+1}
+\frac{\partial\hat{f} _ {k}}{\partial t}=ik\omega\hat{f} _ {k}+\frac{kKe^{i\alpha}z}{2}\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}\overline{z}}{2}\hat{f} _ {k+1}
 $$
 とさらに簡略化して書くことができます。
 この偏微分方程式を解くことができればダイナミクスの理解が進むのですが、
@@ -115,7 +115,7 @@ Cauchy分布の場合は$\overline{a}$の偏微分方程式がさらにかんた
 Ott-Antonsen縮約のもとで$z=\langle g(\cdot)\overline{a(\cdot,t)}\rangle$となります。
 さらに、$\overline{a(\omega,t)}$が複素平面の上半平面上で$\omega$に関して正則かつ遠方で$0$に減衰すると仮定すると留数定理を使うことができて、極$\omega=\omega_{0}+i\Delta$周りの留数を計算することで、
 $$
-z=\frac{\Delta}{\pi}\int_{\mathbb{R}}\frac{\overline{a(\omega,t)}}{(\omega-\omega_{0})^{2}+\Delta^{2}}d\omega=\frac{\Delta}{\pi}2\pi i \text{Res}_{\omega=\omega_{0}+i\Delta}\frac{\overline{a(\omega,t)}}{(\omega-\omega_{0})^{2}+\Delta^{2}}=\overline{a(\omega_{0}+i\Delta,t)}
+z=\frac{\Delta}{\pi}\int_{\mathbb{R}}\frac{\overline{a(\omega,t)}}{(\omega-\omega_{0})^{2}+\Delta^{2}}d\omega=\frac{\Delta}{\pi}2\pi i \text{Res} _ {\omega=\omega_{0}+i\Delta}\frac{\overline{a(\omega,t)}}{(\omega-\omega_{0})^{2}+\Delta^{2}}=\overline{a(\omega_{0}+i\Delta,t)}
 $$
 となります。
 $\overline{a}$の$\omega_{0}+i\Delta$における値がちょうど秩序変数になる、というのは極めて重要な結果です。こういう理由もあって蔵本モデルではCauchy分布が積極的に用いられます。

@@ -5,7 +5,7 @@ draft: false
 math: true
 ---
 
-カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\\{x_{i}\\}_{i=1}^{n}$に対するGram行列(グラム行列)は
+カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\\{x_{i}\\}\_{i=1}^{n}$に対するGram行列(グラム行列)は
 $$
 K=\begin{pmatrix}k(x_{1},x_{1}) & \cdots & k(x_{1},x_{n})\\\\\vdots & \ddots & \vdots\\\\ k(x_{n},x_{1}) & \cdots & k(x_{n},x_{n})\end{pmatrix}
 $$

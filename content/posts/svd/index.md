@@ -74,7 +74,7 @@ $$
 実は、ランクが多くても$k$の行列全体の中で、$A_{k}$はFrobeniusノルムのもとで$A$に最も近い行列であることが示されます。
 すなわち、ランクが$k$以下の任意の行列$B$に対して、
 $$
-\\|A-A_{k}\\|_{F}\leq\\|A-B\\|_{F}
+\\|A-A_{k}\\|\_{F}\leq\\|A-B\\|\_{F}
 $$
 となります。これをEckart–Young–Mirskyの定理と言います。Frobeniusノルムの他にも2ノルムでもこの定理が成り立つそうです。
 
@@ -89,13 +89,13 @@ $\sigma_{i}(M)$を行列$M$の$i$番目に大きい特異値とします。
 - $i,j\in\mathbb{N},i+j-1\leq n$について$\sigma_{i}(A)+\sigma_{j}(B)\geq\sigma_{i+j-1}(A+B)$です。
 $$
 \begin{aligned}
-\sigma_{i}(A)+\sigma_{j}(B)=&\sigma_{1}(A-A_{i-1})+\sigma_{1}(B-B_{j-1})\\\\\geq&\sigma_{1}(A+B-(A_{i-1}+B_{j-1}))\\\\\geq&\sigma_{1}(A+B-(A+B)_{i+j-2})=\sigma_{i+j-1}(A+B)
+\sigma_{i}(A)+\sigma_{j}(B)=&\sigma_{1}(A-A_{i-1})+\sigma_{1}(B-B_{j-1})\\\\\geq&\sigma_{1}(A+B-(A_{i-1}+B_{j-1}))\\\\\geq&\sigma_{1}(A+B-(A+B)\_{i+j-2})=\sigma_{i+j-1}(A+B)
 \end{aligned}
 $$
 ここで$\mathrm{rank}(A_{i-1}+B_{j-1})\leq i+j-2=\mathrm{rank}((A+B)_{i+j-2})$を用いました。
 
 ### 証明
-まず$\\|A-A_{k}\\|_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
+まず$\\|A-A_{k}\\|\_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
 また、$i>k$で$\sigma_{i}(B)=0$より
 $$
 \sigma_{i+k}(A)=\sigma_{i+(k+1)-1}((A-B)+B)\leq\sigma_{i}(A-B)+\sigma_{k+1}(B)=\sigma_{i}(A-B)
@@ -103,7 +103,7 @@ $$
 がわかるので、
 $$
 \begin{aligned}
-\\|A-B\\|^{2}_{F}=&\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\\\geq&\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\\|A-A_{k}\\|_{F}^{2}
+\\|A-B\\|^{2}\_{F}=&\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\\\geq&\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\\|A-A_{k}\\|_{F}^{2}
 \end{aligned}
 $$
 となり、示されました。

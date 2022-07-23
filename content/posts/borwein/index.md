@@ -81,13 +81,13 @@ $$
     となり、$R\to\infty$の極限で$0$に収束することが確認できます。
 - 経路$\gamma_{\varepsilon}$については、極$z=0$周りを時計回りに半周だけ回るので$\varepsilon\to0$の極限で
     $$
-    \int_{\gamma_{\varepsilon}}f(z)dz=-\pi i~\mathrm{Res}_{z=0}f(z)
+    \int_{\gamma_{\varepsilon}}f(z)dz=-\pi i~\mathrm{Res}\_{z=0}f(z)
     $$
     となることが示せます。
     $$
     f(z)=\frac{e^{iaz}}{z^{n}}=\frac{1}{z^{n}}\sum_{l=0}^{\infty}\frac{(ia)^{l}}{l!}z^{l}=\frac{(ia)^{n-1}}{(n-1)!}\frac{1}{z}+(\mathrm{holomorphic\ term})
     $$
-    なので、$\mathrm{Res}_{z=0}f(z)=(ia)^{n-1}/(n-1)!$となり、
+    なので、$\mathrm{Res}\_{z=0}f(z)=(ia)^{n-1}/(n-1)!$となり、
     $$
     \int_{\gamma_{\varepsilon}}f(z)dz=-\frac{\pi i^{n}a^{n-1}}{(n-1)!}
     $$

@@ -76,7 +76,7 @@ $$ \begin{aligned} \text{KL}[p \|| q] = &\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\
         \int_{\mathbb{R}^{N}}w_{i}w_{j}\text{e}^{-w^{\mathsf{T}}w/2}dw=0
         $$
         であるから、上の計算は
-        $$\begin{aligned}&\frac{1}{2\sqrt{2\pi}^{N}}\sum_{i=1}^{N}\int_{\mathbb{R}^{N}}\left[\Sigma_{1}^{1/2}\Sigma_{2}^{-1}\Sigma_{1}^{1/2}\right]_{i,i}w_{i}^{2}\text{e}^{-w^{\mathsf{T}}w/2}dw\\\\=&\frac{\text{tr}\left(\Sigma_{1}^{1/2}\Sigma_{2}^{-1}\Sigma_{1}^{1/2}\right)}{2\sqrt{2\pi}^{N}}\int_{\mathbb{R}^{N}}w_{1}^{2}\text{e}^{-w^{\mathsf{T}}w/2}dw\end{aligned}$$
+        $$\begin{aligned}&\frac{1}{2\sqrt{2\pi}^{N}}\sum_{i=1}^{N}\int_{\mathbb{R}^{N}}\left[\Sigma_{1}^{1/2}\Sigma_{2}^{-1}\Sigma_{1}^{1/2}\right]\_{i,i}w_{i}^{2}\text{e}^{-w^{\mathsf{T}}w/2}dw\\\\=&\frac{\text{tr}\left(\Sigma_{1}^{1/2}\Sigma_{2}^{-1}\Sigma_{1}^{1/2}\right)}{2\sqrt{2\pi}^{N}}\int_{\mathbb{R}^{N}}w_{1}^{2}\text{e}^{-w^{\mathsf{T}}w/2}dw\end{aligned}$$
         と簡単になって、上の二行目の計算を繰り返すと、
         $$
         \frac{1}{2}\text{tr}\left(\Sigma_{1}\Sigma_{2}^{-1}\right)
