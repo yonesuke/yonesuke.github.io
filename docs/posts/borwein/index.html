@@ -80,6 +80,9 @@ $\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="Borwein integral" />
 <meta property="og:description" content="Borwein積分は$\sin x/x$に関する興味深い性質を持った積分のことです。 例えば $$ \int_{0}^{\infty}\frac{\sin x}{x}dx=\frac{\pi}{2} $$ となることはよく知られていますが、これに$\sin(3x)/3x$をかけたものについても $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}dx=\frac{\pi}{2} $$ が成り立ちます。同様のことは$\sin (x/5)/(x/5)$や$\sin(x/7)/(x/7)$をかけていっても成り立ち、 $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}\cdots\frac{\sin (x/13)}{x/13}dx=\frac{\pi}{2} $$ となります。しかし、次のステップではこの計算は崩れて $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}\cdots\frac{\sin (x/15)}{x/15}dx=\frac{467807924713440738696537864469}{935615849440640907310521750000}\pi&lt;\frac{\pi}{2} $$ となってしまいます。一見するとこの値も$\pi/2$になりそうなのですが、何故か値がずれてしまいます。 このような積分のことをBorwein積分とよび、いくつかの計算がなされています。
 公式 数列$a_{1},a_{2},\dots,a_{n}$に対して、Borwein積分$\tau_{n}$を $$ \tau_{n}=\int_{0}^{\infty}\prod_{k=1}^{n}\frac{\sin(a_{k}x)}{a_{k}x}dx $$ で定めます。ここでは各$a_{i}$は正だとしておきます。この積分は完全に計算することができて、 $$ \tau_{n}=\frac{\pi}{2^{n&#43;1}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)(\bm{p}\cdot\bm{a})^{n-1} $$ となります。以下でこれを示していきます。元論文ではFourier変換による畳込み積分を用いて計算していますが、留数定理を用いた計算でも示すことができたのでそれを紹介していきます。

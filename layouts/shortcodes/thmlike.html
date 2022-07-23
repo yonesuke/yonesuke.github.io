@@ -1,0 +1,14 @@
+<div class="thmlike">
+	<div class="thmheader">
+		<span class="thmtype">
+			{{ with .Get "type" }}
+				{{ . }}
+			{{ else }}
+				Theorem
+			{{ end }}
+			&nbsp;
+		</span>
+		{{ with .Get "title" }} &nbsp;[{{.}}] {{ end }}
+	</div>
+	<div class="thmbody">{{ .Inner | markdownify }}</div>
+</div>

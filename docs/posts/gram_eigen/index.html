@@ -81,6 +81,9 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="Gram行列の固有値の数値計算" />
 <meta property="og:description" content="カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\{x_{i}\}_{i=1}^{n}$に対するGram行列(グラム行列)は $$ K=\begin{pmatrix}k(x_{1},x_{1}) &amp; \cdots &amp; k(x_{1},x_{n})\\\vdots &amp; \ddots &amp; \vdots\\ k(x_{n},x_{1}) &amp; \cdots &amp; k(x_{n},x_{n})\end{pmatrix} $$ で与えられます。色々な場面に登場するのですが、RBFカーネルからガウス過程を生成する際にその固有値計算で詰まったところがあったのでかんたんにまとめておきます。
 Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成り立ってグラム行列が(半)正定値行列になることです。すなわち、任意のベクトル$\bm{c}$に対して、 $$ \bm{c}^{\top}K\bm{c}\geq0 $$ が成り立つことです。なので、カーネル関数から生成されたGram行列は常に半正定値行列になります。 半正定値性と固有値が非負であることは同値なのでGram行列の固有値は常に非負です。

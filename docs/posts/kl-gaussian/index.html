@@ -78,6 +78,9 @@
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="多変量正規分布間のKL距離" />
 <meta property="og:description" content="確率分布の間の&quot;近さ&quot;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
 準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。

@@ -82,6 +82,9 @@ $f_{0}$は$\varphi$にほかなりません。 $f_{1}$は$\varphi(4x)$によっ�
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="至るところ微分不可能な連続関数: 初等的な構成方法" />
 <meta property="og:description" content="$[-1,1]$上の関数 $$ \varphi(x)=|x| $$ を考え、 これを$\varphi(x&#43;2)=\varphi(x)$として$\mathbb{R}$上へ拡張します。 このとき、 $$ f(x)=\sum_{n=0}^{\infty}\left(\frac{3}{4}\right)^{n}\varphi(4^{n}x) $$ は$\mathbb{R}$上の連続関数ですが至るところ微分不可能であることが知られています。 以下でこれを示していきましょう。
 連続であること 連続であることの証明はかんたんです。 $$ f_{k}(x)=\sum_{n=0}^{k}\left(\frac{3}{4}\right)^{n}\varphi(4^{n}x) $$ とおくと、$f_{k}$は連続関数です。 $$ |f(x)-f_{k}(x)|\leq\sum_{n=k&#43;1}^{\infty}\left(\frac{3}{4}\right)^{n}=4\left(\frac{3}{4}\right)^{k&#43;1} $$ となるので、$x$によらずに一様に抑えることができます。 これは連続関数$f_{k}$が$f$に一様収束していることを表します。 連続関数の一様収束極限は連続関数なので$f$は連続関数です。

@@ -80,6 +80,9 @@ $f(\theta,\omega,t)$は時刻$t$における$\theta,\omega$の密度関数にな
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="坂口-蔵本モデルのダイナミクス" />
 <meta property="og:description" content="坂口-蔵本モデルは蔵本モデルにphase lagを導入したモデルで、次の微分方程式で表されます。 $$ \frac{d\theta_{i}}{dt}=\omega_{i}&#43;\frac{K}{N}\sum_{j=1}^{N}\sin(\theta_{j}-\theta_{i}&#43;\alpha),\quad i=1,\dots,N. $$ $\alpha$が位相差に対応していて、$\alpha=0$のときは蔵本モデルに戻ります。 結合強度$K$が変化したときに振動子が同期するかどうかを調べていきましょう。
 自然振動数分布 各振動子は固有の角速度である$\omega_{i}$を持っています。 蔵本モデル関連の論文では$\omega_{i}$は分布に従っていると仮定しています。 この分布のことを自然振動数分布と呼びます。 分布としてはGauss分布を選ぶのかと思いきや、蔵本モデルにおいては解析のしやすさからCauchy分布が選ばれています。 $$ g(\omega)=\frac{\Delta}{\pi}\frac{1}{(\omega-\omega_{0})^{2}&#43;\Delta^{2}} $$ $\omega_{0}$は分布の中心で、$\Delta$は分布の幅を表します。 このページでもCauchy分布を用いることにします。

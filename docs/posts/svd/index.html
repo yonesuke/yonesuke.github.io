@@ -80,6 +80,9 @@ $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j
         });
     });
 </script>
+
+
+<link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="特異値分解" />
 <meta property="og:description" content="行列$A$を$m\times n$の実行列とします。 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$ となるようにできます。このような分解を特異値分解と言います。
 証明 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して $$ A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij} $$ となるようにできます。 また、 $$ \xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0 $$ なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。 実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。
