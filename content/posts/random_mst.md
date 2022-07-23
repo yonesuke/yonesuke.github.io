@@ -18,7 +18,9 @@ import tensorflow as tf
 import gpflow
 ```
 
-
+{{< notice warning >}}
+This is a warning notice. Be warned!
+{{< /notice >}}
 
 ## Random Minimum Spanning Tree
 
