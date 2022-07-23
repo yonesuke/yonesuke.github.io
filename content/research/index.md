@@ -1,6 +1,9 @@
 ---
 title: "Research"
 draft: false
+ShowReadingTime: false
+ShowToc: false
+ShowWordCount: false
 ---
 
 # Keywords

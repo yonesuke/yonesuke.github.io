@@ -4,6 +4,10 @@ title: 2021年度 数的理解
 type: new
 layout: mylayout
 url: /teaching/2021-suutekirikai
+math: true
+ShowReadingTime: false
+ShowToc: false
+ShowWordCount: false
 ---
 
 ## 授業内容・計画

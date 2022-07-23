@@ -1,6 +1,9 @@
 ---
 title: "About"
 draft: false
+ShowReadingTime: false
+ShowToc: false
+ShowWordCount: false
 ---
 
 # Education

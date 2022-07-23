@@ -1,6 +1,9 @@
 ---
 title: "Teaching"
 draft: false
+ShowReadingTime: false
+ShowToc: false
+ShowWordCount: false
 ---
 
 # Teaching
