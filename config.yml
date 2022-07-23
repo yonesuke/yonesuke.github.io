@@ -85,6 +85,8 @@ params:
       url: "https://scholar.google.com/citations?user=XN3JxqIAAAAJ"
     - name: email
       url: yoneda.ryosuke.56a@st.kyoto-u.ac.jp
+    - name: cv
+      url: "cv.pdf"
 
   cover:
     hidden: true # hide everywhere but not in structured data
