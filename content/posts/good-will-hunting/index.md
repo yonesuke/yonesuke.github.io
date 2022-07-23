@@ -3,6 +3,7 @@ title: "Good Will Hunting Problem"
 date: 2021-05-31T13:01:31+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 マット・デイモンとロビン・ウィリアムズ主演の映画『グッド・ウィル・ハンティング/旅立ち』(Good Will Hunting)の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。

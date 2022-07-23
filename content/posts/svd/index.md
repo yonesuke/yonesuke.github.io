@@ -3,6 +3,7 @@ title: "特異値分解"
 date: 2021-05-31T16:22:52+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 行列$A$を$m\times n$の実行列とします。

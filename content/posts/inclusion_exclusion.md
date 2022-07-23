@@ -3,6 +3,7 @@ title: "包除原理"
 date: 2021-05-16T12:18:18+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して

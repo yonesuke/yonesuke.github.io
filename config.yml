@@ -11,7 +11,7 @@ params:
   title: Ryosuke Yoneda
   description: "Ryosuke Yoneda's Homepage"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Ryosuke Yoneda
+  # author: Ryosuke Yoneda
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"

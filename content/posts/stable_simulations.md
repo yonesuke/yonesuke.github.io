@@ -3,6 +3,7 @@ title: "安定分布に従うノイズの生成方法"
 date: 2021-04-21T20:58:21+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 安定分布に従うノイズの生成方法について簡単にまとめておきます。

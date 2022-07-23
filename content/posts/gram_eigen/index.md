@@ -3,6 +3,7 @@ title: "Gram行列の固有値の数値計算"
 date: 2021-08-02T16:59:14+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\\{x_{i}\\}\_{i=1}^{n}$に対するGram行列(グラム行列)は

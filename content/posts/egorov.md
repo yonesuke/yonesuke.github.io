@@ -3,6 +3,7 @@ title: "Egorov's theorem"
 date: 2022-03-22T13:05:46+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 Egorovの定理は関数列の概収束と概一様収束の関係を述べたものになります。

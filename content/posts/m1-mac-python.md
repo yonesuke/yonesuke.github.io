@@ -2,6 +2,7 @@
 title: "M1 MacでのPython環境構築(tensorflowとか)"
 date: 2022-07-11T10:26:10+09:00
 draft: false
+author: Ryosuke Yoneda
 ---
 
 Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。

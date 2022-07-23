@@ -3,6 +3,7 @@ title: "Uniform ratio distribution and pi"
 date: 2022-03-15T13:05:46+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 3月14日は円周率の日ということもあって次のツイートを見つけました。

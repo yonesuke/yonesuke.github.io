@@ -3,6 +3,7 @@ title: "坂口-蔵本モデルのダイナミクス"
 date: 2021-05-28T13:32:31+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 坂口-蔵本モデルは蔵本モデルにphase lagを導入したモデルで、次の微分方程式で表されます。

@@ -3,6 +3,7 @@ title: "MNISTをMLPで推論(Julia/Flux実装)"
 date: 2021-08-23T16:38:35+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 Juliaで機械学習をするための有名なライブラリに[Flux](https://github.com/FluxML/Flux.jl)があります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。

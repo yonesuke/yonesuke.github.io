@@ -3,6 +3,7 @@ title: "LaTeXの設定"
 date: 2021-05-05T18:46:29+09:00
 draft: false
 math: true
+author: Ryosuke Yoneda
 ---
 
 $\LaTeX$で文章を書くときによく行う設定をまとめておきます。
