@@ -5,6 +5,7 @@ theme: ["PaperMod", "hugo-notice"]
 publishDir: "docs"
 
 enableEmoji: true
+buildDrafts: true
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.

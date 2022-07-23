@@ -10,8 +10,11 @@
 <meta name="description" content="集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。
 Info
 Hugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。
-Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。
-Random Minimum Spanning Tree Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
+Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。 例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。
+グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。 左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2&#43;3&#43;1&#43;3=9$になります。
+Random Minimum Spanning Tree 今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。 このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。
+頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。 Theorem &nbsp; &nbsp;[Alan M. Frieze 1985] $$ \lim_{n\to\infty}\mathbb{E}[T_{n}]=\zeta(3) $$ ここで、$\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$は$\Re s&gt;1$で定義されるリーマンゼータ関数です。
+Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
 gnmatiohnioanhaet@qio
 $\frac{1}{3}$">
 <meta name="author" content="Ryosuke Yoneda">
@@ -89,8 +92,11 @@ $\frac{1}{3}$">
 <meta property="og:description" content="集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。
 Info
 Hugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。
-Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。
-Random Minimum Spanning Tree Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
+Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。 例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。
+グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。 左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2&#43;3&#43;1&#43;3=9$になります。
+Random Minimum Spanning Tree 今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。 このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。
+頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。 Theorem &nbsp; &nbsp;[Alan M. Frieze 1985] $$ \lim_{n\to\infty}\mathbb{E}[T_{n}]=\zeta(3) $$ ここで、$\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$は$\Re s&gt;1$で定義されるリーマンゼータ関数です。
+Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
 gnmatiohnioanhaet@qio
 $\frac{1}{3}$" />
 <meta property="og:type" content="article" />
@@ -105,8 +111,11 @@ $\frac{1}{3}$" />
 <meta name="twitter:description" content="集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。
 Info
 Hugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。
-Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。
-Random Minimum Spanning Tree Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
+Minimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition &nbsp; &nbsp;[全域木] グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。 例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。
+グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。 左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2&#43;3&#43;1&#43;3=9$になります。
+Random Minimum Spanning Tree 今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。 このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。
+頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。 Theorem &nbsp; &nbsp;[Alan M. Frieze 1985] $$ \lim_{n\to\infty}\mathbb{E}[T_{n}]=\zeta(3) $$ ここで、$\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$は$\Re s&gt;1$で定義されるリーマンゼータ関数です。
+Numerical Simulation Conjecture &nbsp; &nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here
 gnmatiohnioanhaet@qio
 $\frac{1}{3}$"/>
 
@@ -137,12 +146,12 @@ $\frac{1}{3}$"/>
   "@type": "BlogPosting",
   "headline": "ランダムグラフ上の最小全域木",
   "name": "ランダムグラフ上の最小全域木",
-  "description": "集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。\nInfo\nHugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。\nMinimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition \u0026nbsp; \u0026nbsp;[全域木] グラフ$G(V,E)$において$T\\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。\nRandom Minimum Spanning Tree Numerical Simulation Conjecture \u0026nbsp; \u0026nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here\ngnmatiohnioanhaet@qio\n$\\frac{1}{3}$",
+  "description": "集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。\nInfo\nHugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。\nMinimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition \u0026nbsp; \u0026nbsp;[全域木] グラフ$G(V,E)$において$T\\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。 例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。\nグラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。 左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2+3+1+3=9$になります。\nRandom Minimum Spanning Tree 今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。 このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。\n頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。 Theorem \u0026nbsp; \u0026nbsp;[Alan M. Frieze 1985] $$ \\lim_{n\\to\\infty}\\mathbb{E}[T_{n}]=\\zeta(3) $$ ここで、$\\zeta(s)=\\sum_{n=1}^{\\infty}n^{-s}$は$\\Re s\u0026gt;1$で定義されるリーマンゼータ関数です。\nNumerical Simulation Conjecture \u0026nbsp; \u0026nbsp;[Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here\ngnmatiohnioanhaet@qio\n$\\frac{1}{3}$",
   "keywords": [
     
   ],
-  "articleBody": "集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。\nInfo\nHugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。\nMinimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition [全域木] グラフ$G(V,E)$において$T\\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。\nRandom Minimum Spanning Tree Numerical Simulation Conjecture [Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here\ngnmatiohnioanhaet@qio\n$\\frac{1}{3}$\n",
-  "wordCount" : "40",
+  "articleBody": "集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\\zeta(3)$に収束するという驚異的な定理を目にしました。 今回はその定理をかんたんに紹介したいと思います。\nInfo\nHugo上で定義・定理・証明環境を整えるのにこのページが参考になりました。ありがとうございます。 また、このinfoはこの拡張機能を用いました。\nMinimum Spanning Tree はじめに最小全域木についてまとめておきます。まず、Wikipediaによると全域木は Definition [全域木] グラフ$G(V,E)$において$T\\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。 で定義されます。 例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。\nグラフの各辺に重みが与えられているときに、最小の重み和となる全域木を最小全域木と言います。 左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2+3+1+3=9$になります。\nRandom Minimum Spanning Tree 今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。 このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。\n頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。 Theorem [Alan M. Frieze 1985] $$ \\lim_{n\\to\\infty}\\mathbb{E}[T_{n}]=\\zeta(3) $$ ここで、$\\zeta(s)=\\sum_{n=1}^{\\infty}n^{-s}$は$\\Re s\u003e1$で定義されるリーマンゼータ関数です。\nNumerical Simulation Conjecture [Riemann Hypothesis] This can be sometimes useful Proof [Of Theorem 1]: Insert your proof here\ngnmatiohnioanhaet@qio\n$\\frac{1}{3}$\n",
+  "wordCount" : "57",
   "inLanguage": "en",
   "datePublished": "2022-07-20T16:38:49+09:00",
   "dateModified": "2022-07-20T16:38:49+09:00",
@@ -237,9 +246,9 @@ $\frac{1}{3}$"/>
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://yonesuke.github.io">Home</a>&nbsp;»&nbsp;<a href="https://yonesuke.github.io/posts/">Posts</a></div>
     <h1 class="post-title">
-      ランダムグラフ上の最小全域木
+      ランダムグラフ上の最小全域木<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
     </h1>
-    <div class="post-meta"><span title='2022-07-20 16:38:49 +0900 JST'>July 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;40 words&nbsp;·&nbsp;Ryosuke Yoneda
+    <div class="post-meta"><span title='2022-07-20 16:38:49 +0900 JST'>July 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;57 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
   </header> <div class="toc">
@@ -280,8 +289,37 @@ $\frac{1}{3}$"/>
 	</div>
 	<div class="thmbody">グラフ$G(V,E)$において$T\subseteq E$となる辺集合$T$があるとき、グラフ$S(V,T)$が木（閉路を持たないグラフ）であるなら、$S(V,T)$のことをグラフ$G(V,E)$の全域木であるとする。</div>
 </div>
-で定義されます。グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を<strong>最小全域木</strong>と言います。</p>
+で定義されます。
+<figure>
+    <img loading="lazy" src="spanning_tree.png"/> 
+</figure>
+
+例えば左端のグラフに対して、真ん中と右端のグラフ(実線が選ばれた枝に対応しています)は全域木になっています。この例からわかるように全域木は一意ではありません。</p>
+<p>グラフの各辺に重みが与えられているときに、最小の重み和となる全域木を<strong>最小全域木</strong>と言います。
+<figure>
+    <img loading="lazy" src="minimum_spanning_tree.png"/> 
+</figure>
+
+左のグラフのように辺重みが与えられているとき、最小全域木は右のようになります。また、そのときの重み和は$2+3+1+3=9$になります。</p>
 <h2 id="random-minimum-spanning-tree">Random Minimum Spanning Tree<a hidden class="anchor" aria-hidden="true" href="#random-minimum-spanning-tree">#</a></h2>
+<p>今、各頂点が他のすべての頂点と繋がっている完全グラフを考えます。また、それぞれの枝重みは独立に$[0,1]$区間からランダムに取ることにします。
+このように構成されたグラフに対して最小全域木の重み和を求めます。この重み和は頂点数が無限の極限で期待値としてどのような値を取るのでしょうか？極限では重み和は発散してしまう可能性もあります。</p>
+<p>頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。
+<div class="thmlike">
+	<div class="thmheader">
+		<span class="thmtype">
+			
+				Theorem
+			
+			&nbsp;
+		</span>
+		 &nbsp;[Alan M. Frieze 1985] 
+	</div>
+	<div class="thmbody">$$
+\lim_{n\to\infty}\mathbb{E}[T_{n}]=\zeta(3)
+$$</div>
+</div>
+ここで、$\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$は$\Re s&gt;1$で定義されるリーマンゼータ関数です。</p>
 <h2 id="numerical-simulation">Numerical Simulation<a hidden class="anchor" aria-hidden="true" href="#numerical-simulation">#</a></h2>
 <div class="thmlike">
 	<div class="thmheader">
