@@ -1,0 +1,127 @@
+baseURL: 'https://yonesuke.github.io'
+languageCode: 'en-us'
+title: 'Ryosuke Yoneda'
+theme: "PaperMod"
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Ryosuke Yoneda
+  description: "Ryosuke Yoneda's Homepage"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Ryosuke Yoneda
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "favicon_io/favicon.ico"
+    favicon16x16: "favicon_io/favicon-16x16.png"
+    favicon32x32: "favicon_io/favicon-32x32.png"
+    apple_touch_icon: "favicon_io/apple-touch-icon.png"
+    safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "Ryosuke Yoneda's Home Page"
+    icon: favicon_io/apple-touch-icon.png
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: true # needs to be explicitly set
+    title: Ryosuke Yoneda's Homepage
+    # subtitle: "This is subtitle"
+    imageUrl: homepage.jpg
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: my image
+    buttons:
+      - name: About
+        url: about
+      - name: Research
+        url: research
+      - name: Teaching
+        url: teaching
+      - name: Posts
+        url: posts
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Ryosuke Yoneda's Home Page"
+    Content: Welcome to my homepage
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/yonesuke1729"
+    - name: github
+      url: "https://github.com/yonesuke"
+    - name: email
+      url: yoneda.ryosuke.56a@st.kyoto-u.ac.jp
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/yonesuke/yonesuke.github.io/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: about
+      weight: 2
+    - identifier: research  
+      name: Research
+      url: research
+      weight: 3
+    - identifier: teaching
+      name: Teaching
+      url: teaching
+      weight: 4
+    - identifier: posts
+      name: Posts
+      url: posts
+      weight: 5
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    # anchorLineNos: true
+    # codeFences: true
+    # guessSyntax: true
+    lineNos: true
+    # style: monokai
