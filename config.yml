@@ -84,7 +84,7 @@ params:
     - name: googlescholar
       url: "https://scholar.google.com/citations?user=XN3JxqIAAAAJ"
     - name: email
-      url: yoneda.ryosuke.56a@st.kyoto-u.ac.jp
+      url: mailto:yoneda.ryosuke.56a@st.kyoto-u.ac.jp
     - name: cv
       url: "cv.pdf"
 
