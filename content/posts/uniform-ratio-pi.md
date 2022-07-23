@@ -2,11 +2,12 @@
 title: "Uniform ratio distribution and pi"
 date: 2022-03-15T13:05:46+09:00
 draft: false
+math: true
 ---
 
 3月14日は円周率の日ということもあって次のツイートを見つけました。
 
-{{<tweet 1503307755976765443 >}}
+{{<tweet user="10kdiver" id="1503307755976765443" >}}
 
 この証明を行っていきます。
 

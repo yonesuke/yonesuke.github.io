@@ -2,6 +2,7 @@
 title: "Borwein integral"
 date: 2021-07-13T02:20:20+09:00
 draft: false
+math: true
 ---
 
 Borwein積分は$\sin x/x$に関する興味深い性質を持った積分のことです。

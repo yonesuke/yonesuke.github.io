@@ -58,7 +58,27 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="多変量正規分布間のKL距離" />
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+<meta property="og:title" content="多変量正規分布間のKL距離" />
 <meta property="og:description" content="確率分布の間の&quot;近さ&quot;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
 準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
 導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) &#43; \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp; &#43; \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。" />

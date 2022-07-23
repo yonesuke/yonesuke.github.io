@@ -61,7 +61,27 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
         }
 
     </style>
-</noscript><meta property="og:title" content="Gram行列の固有値の数値計算" />
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+<meta property="og:title" content="Gram行列の固有値の数値計算" />
 <meta property="og:description" content="カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\{x_{i}\}{i=1}^{n}$に対するGram行列(グラム行列)は $$ K=\begin{pmatrix}k(x{1},x_{1}) &amp; \cdots &amp; k(x_{1},x_{n})\\\vdots &amp; \ddots &amp; \vdots\\ k(x_{n},x_{1}) &amp; \cdots &amp; k(x_{n},x_{n})\end{pmatrix} $$ で与えられます。色々な場面に登場するのですが、RBFカーネルからガウス過程を生成する際にその固有値計算で詰まったところがあったのでかんたんにまとめておきます。
 Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成り立ってグラム行列が(半)正定値行列になることです。すなわち、任意のベクトル$\bm{c}$に対して、 $$ \bm{c}^{\top}K\bm{c}\geq0 $$ が成り立つことです。なので、カーネル関数から生成されたGram行列は常に半正定値行列になります。 半正定値性と固有値が非負であることは同値なのでGram行列の固有値は常に非負です。
 ガウス過程に従う関数の生成 次にガウス過程から関数をサンプルすることを考えましょう。$f\sim\mathcal{GP}(m,k)$について、特にかんたんのために平均を$0$としておきましょう。 このとき、$\{x_{i}\}_{i=1}^{n}$上で関数$f$のベクトル$\bm{f}$は $$ \bm{f}\sim\mathcal{N}(\bm{0},K) $$ という多次元ガウス分布に従うものになります。これはGram行列を分散共分散行列とするガウス分布で、代表的なサンプル方法は$K$のコレスキー分解行列と$n$次元の独立標準正規分布に従う乱数との行列・ベクトル積を計算することで得られます。

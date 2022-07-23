@@ -62,7 +62,27 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="MNISTをMLPで推論(Julia/Flux実装)" />
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+<meta property="og:title" content="MNISTをMLPで推論(Julia/Flux実装)" />
 <meta property="og:description" content="Juliaで機械学習をするための有名なライブラリにFluxがあります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。 コードは次のようになります。これを参考に書きました。
 パッケージ 基本的にFluxさえあれば良いです。今回はMNISTデータを用いるのでMLDatasetsというパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
 1 julia&gt; import Pkg; Pkg.add([&#34;Flux&#34;, &#34;MLDatasets&#34;]) これでパッケージを読み込むことができます。

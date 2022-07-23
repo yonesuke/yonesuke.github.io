@@ -2,6 +2,7 @@
 title: "Laplacianの積分表現"
 date: 2021-07-30T18:34:51+09:00
 draft: false
+math: true
 ---
 
 領域$\Omega\subset\mathbb{R}^{n}$上で定義された関数$u\in C^{2}(\Omega)$についてLaplacian(ラプラシアン)は
