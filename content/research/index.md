@@ -10,6 +10,7 @@ ShowWordCount: false
 [Synchronization](/posts/), [Kuramoto model](), [Critical phenomena](), [Gaussian process]()
 
 # Publications
+{{< bib "https://yonesuke.github.io/research/yoneda.bib" >}}
 [Google Scholar](https://scholar.google.com/citations?user=XN3JxqIAAAAJ)
 - **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connectivity guaranteeing in-phase synchronization, [Chaos **31**, 063124 (2021)](https://aip.scitation.org/doi/abs/10.1063/5.0054271). [![arXiv](https://img.shields.io/badge/arXiv-2104.05954-b31b1b.svg)](https://arxiv.org/abs/2104.05954) [![GitHub](https://badgen.net/badge/icon/github?icon=github&label=yonesuke/DenseSync)](https://github.com/yonesuke/DenseSync)
 - **R. Yoneda**, K. Harada, and Y. Y. Yamaguchi, Critical exponents in coupled phase-oscillator models on small-world networks, [Phys. Rev. E **102**, 062212 (2020)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.062212). [![arXiv](https://img.shields.io/badge/arXiv-2007.04539-b31b1b.svg)](https://arxiv.org/abs/2007.04539)

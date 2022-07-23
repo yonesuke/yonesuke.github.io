@@ -136,3 +136,5 @@ markup:
     # guessSyntax: true
     lineNos: true
     # style: monokai
+  asciidocExt:
+    safeMode: 'unsafe'
