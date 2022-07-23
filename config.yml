@@ -4,6 +4,8 @@ title: 'Ryosuke Yoneda'
 theme: "PaperMod"
 publishDir: "docs"
 
+enableEmoji: true
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Ryosuke Yoneda

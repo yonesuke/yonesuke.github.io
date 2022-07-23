@@ -11,12 +11,12 @@ ShowWordCount: false
 
 # Publications
 [Google Scholar](https://scholar.google.com/citations?user=XN3JxqIAAAAJ)
-- **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connectivity guaranteeing in-phase synchronization, [Chaos **31**, 063124 (2021)](https://aip.scitation.org/doi/abs/10.1063/5.0054271), arXiv: [2104.05954](https://arxiv.org/abs/2104.05954).
-- **R. Yoneda**, K. Harada, and Y. Y. Yamaguchi, Critical exponents in coupled phase-oscillator models on small-world networks, [Phys. Rev. E **102**, 062212 (2020)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.062212), arXiv: [2007.04539](https://arxiv.org/abs/2007.04539).
-- **R. Yoneda** and Y. Y. Yamaguchi, Classification of bifurcation diagrams in coupled phase-oscillator models with asymmetric natural frequency distributions, [J. Stat. Mech., 033403 (2020)](https://iopscience.iop.org/article/10.1088/1742-5468/ab6f5f), arXiv: [1901.02175](https://arxiv.org/abs/1901.02175).
+- **R. Yoneda**, T. Tatsukawa, and J. Teramae, The lower bound of the network connectivity guaranteeing in-phase synchronization, [Chaos **31**, 063124 (2021)](https://aip.scitation.org/doi/abs/10.1063/5.0054271). [![arXiv](https://img.shields.io/badge/arXiv-2104.05954-b31b1b.svg)](https://arxiv.org/abs/2104.05954) [![GitHub](https://badgen.net/badge/icon/github?icon=github&label=yonesuke/DenseSync)](https://github.com/yonesuke/DenseSync)
+- **R. Yoneda**, K. Harada, and Y. Y. Yamaguchi, Critical exponents in coupled phase-oscillator models on small-world networks, [Phys. Rev. E **102**, 062212 (2020)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.062212). [![arXiv](https://img.shields.io/badge/arXiv-2007.04539-b31b1b.svg)](https://arxiv.org/abs/2007.04539)
+- **R. Yoneda** and Y. Y. Yamaguchi, Classification of bifurcation diagrams in coupled phase-oscillator models with asymmetric natural frequency distributions, [J. Stat. Mech., 033403 (2020)](https://iopscience.iop.org/article/10.1088/1742-5468/ab6f5f). [![arXiv](https://img.shields.io/badge/arXiv-1901.02175-b31b1b.svg)](https://arxiv.org/abs/1901.02175)
 
 # Preprints
-- Y. Terada, K. Ito, **R. Yoneda**, T. Aoyagi, and Y. Y. Yamaguchi, A role of asymmetry in linear response of globally coupled oscillator systems, arXiv: [1802.08383](https://arxiv.org/abs/1802.08383).
+- Y. Terada, K. Ito, **R. Yoneda**, T. Aoyagi, and Y. Y. Yamaguchi, A role of asymmetry in linear response of globally coupled oscillator systems [![arXiv](https://img.shields.io/badge/arXiv-1802.08383-b31b1b.svg)](https://arxiv.org/abs/1802.08383)
 
 # Proceedings
 - **米田亮介**, "結合振動子系において同期しない密なネットワークの探索", 数理解析研究所講究録 (2022).
@@ -27,7 +27,7 @@ ShowWordCount: false
 
 # Presentations
 ## 2022
-- 米田亮介, **原田健自**, "ニューラルネットワークを用いたスケーリング解析手法", [日本物理学会 2022年年次大会, 2022年3月 (オンライン)](https://onsite.gakkai-web.net/jps/jps_search/2022sp/index.html).
+- 米田亮介, **原田健自**, "ニューラルネットワークを用いたスケーリング解析手法", [日本物理学会 2022年年次大会, 2022年3月 (オンライン)](https://onsite.gakkai-web.net/jps/jps_search/2022sp/index.html). [:open_file_folder: PDF](slides/talk20220315.pdf)
 - 樋口智英, 米田亮介, **小林望**, 藤田政文, "デジタルおよびバリアオプションに対する Deep Hedging の学習性能の評価", [日本金融・証券計量・工学学会 2021年冬季大会, 2022年2月 (オンライン)](http://www.jafee.gr.jp/01rally/conference/pro_56th_2022_0121.pdf).
 
 ## 2021
