@@ -20,7 +20,7 @@ ShowBreadCrumbs: false
 
 ## 2021
 - **米田亮介**, "結合振動子系において同期しない密なネットワークの探索", [RIMS研究集会「数理科学の諸問題と力学系理論の新展開」, 2021年6月 (オンライン)](https://sites.google.com/view/rims-dyn-sys2021/).
-- **米田亮介**, 立川剛至, 寺前順之介, "結合振動子系において完全同期以外の安定平衡点を持つ密なネットワークの探索", [日本物理学会 2021年年次大会, 2021年3月 (オンライン)](https://w4.gakkai-web.net/jps_search/2021sp/index.html).
+- **米田亮介**, 立川剛至, 寺前順之介, "結合振動子系において完全同期以外の安定平衡点を持つ密なネットワークの探索", [日本物理学会 2021年年次大会, 2021年3月 (オンライン)](https://w4.gakkai-web.net/jps_search/2021sp/index.html). [:open_file_folder: PDF](files/talk20210315.pdf)
 - **米田亮介**, "Lévyノイズを受けた大域結合振動子系の同期転移", [第17回数学総合若手研究集会 ~数学の交叉点~, 北海道大学, 2021年3月 (オンライン)](https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2021/ja/index.html).
 
 ## 2020
