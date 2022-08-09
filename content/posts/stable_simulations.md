@@ -28,7 +28,7 @@ author: Ryosuke Yoneda
     を計算します。
 
 これより、$X\sim S(\alpha,\beta,1,0)$なる安定分布ノイズが得られます。
-より一般に$S(\alpha,\beta,\gamma,\delta)$に従うノイズがほしければ$\gamma X+\delta$とすれば良いです。
+より一般に$S(\alpha,\beta,\gamma,\delta)$に従うノイズがほしければ$\gamma^{1/\alpha} X+\delta$とすれば良いです。
 
 ## 補足
 $\beta=0$の場合には$S(\alpha,0,1,0)$に従うノイズの生成式は一つにまとめられて、
