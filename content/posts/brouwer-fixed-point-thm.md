@@ -1,5 +1,5 @@
 ---
-title: "ブラウワーの不動点定理"
+title: "Brouwer's fixed-point theorem"
 date: 2022-08-18T12:01:27+09:00
 draft: false
 math: true
@@ -23,7 +23,7 @@ $$
 $$
 (\varphi\circ\psi) _ {\ast}=\varphi_{\ast}\circ\psi_{\ast}
 $$
-になります。これは$(\varphi\circ\psi) _ {\ast}([f])=[(\varphi\circ\psi)\circ f]=[\varphi \circ (\psi \circ f)]=\varphi_{\ast}([\psi \circ f])=\varphi_{\ast}(\psi_{\ast}[f])=\varphi_{\ast}\circ\psi_{\ast}[f]$からわかります。
+になります。これは$(\varphi\circ\psi) _ {\ast}([f])=[(\varphi\circ\psi)\circ f]=[\varphi \circ (\psi \circ f)]=\varphi_{\ast}([\psi \circ f])=\varphi_{\ast}(\psi_{\ast}[f])=\varphi_{\ast}\circ\psi_{\ast}([f])$からわかります。
 
 ### レトラクション
 $X$から$A\subset X$への**レトラクション**を次のように定義します。
