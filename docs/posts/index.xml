@@ -10,7 +10,30 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Aug 2022 12:01:27 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Aug 2022 17:18:33 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>はめ込みと埋め込み</title>
+      <link>https://yonesuke.github.io/posts/immersion-embedding/</link>
+      <pubDate>Tue, 30 Aug 2022 17:18:33 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/immersion-embedding/</guid>
+      <description>松本『多様体の基礎』とTu『トゥー多様体』を読みながらはめ込みと埋め込みについて書いてあったことをまとめます。
+はめ込みと埋め込み Definition &amp;nbsp; &amp;nbsp;[はめ込み] $f\colon M\to N$がはめ込みであるとは、任意の$p\in M$における$f$の微分$(df) _ {p}\colon T_{p} M\to T_{f(p)} N$が単射になることである。 ユークリッド空間のもとでのはめ込みは$\mathbb{R}^{m}$からより高い次元$\mathbb{R}^{m}$への包含写像 $$ i\colon\mathbb{R}^{m}\to\mathbb{R}^{n};(x_{1},\dots,x_{m})\mapsto(x_{1},\dots,x_{n},0,\dots,0) $$ となります。この写像は局所的であり、これを多様体へと拡張したものが次のはめ込み定理になります。
+Theorem &amp;nbsp; &amp;nbsp;[はめ込み定理] $f\colon M\to N$がはめ込みであるとする。任意の点$p\in M$に対してある座標近傍$(U;\phi)$と$f(p)\in N$に対するある座標近傍$(V;\psi)$があって、$\phi(p)$のある近傍で、 $$ (\psi\circ f\circ \phi^{-1})(r_{1},\dots,r_{m})=(r_{1},\dots,r_{n},0,\dots,0) $$ なるものが存在する。 この意味ですべてのはめ込みは局所的には包含写像になることがわかります。しかし、この場合$f(M)$は後で見る部分多様体にはならないことがあります。この場合$f$に次の条件を与えた埋め込みを考えます。
+Definition &amp;nbsp; &amp;nbsp;[埋め込み] $f\colon M\to N$が埋め込みであるとは、$f$がはめ込みであってかつ、$f(M)$に$N$の相対位相を入れたときに$f\colon M\to f(M)$が同相写像となることである。 ただしはめ込み定理があるので、はめ込みは局所的には埋め込みになります。
+Proposition &amp;nbsp; $C^{r}$級はめ込みは局所的には$C^{r}$級埋め込みである。すなわり、任意の点$p\in M$に対して, $p$のある開近傍$U$が存在して、$f|_{U}\colon U\to N$は埋め込みである。 部分多様体 Definition &amp;nbsp; &amp;nbsp;[正則部分多様体] $n$次元$C^{r}$級多様体$N$の部分集合$S$が$k$次元の $C^{r}$級正則部分多様体であるとは、任意の点$p\in S$に対して、ある座標近傍$(U;x_{1},\dots,x_{n})$が存在して、 $$ U\cap S=\{(x_{1},\dots,x_{n})\in U\mid x_{k+1}=\cdots=x_{n}=0\} $$ が成り立つことである。 『トゥー多様体』ではこのような$N$のチャートを$S$に適合するチャートと呼びます。
+Proposition &amp;nbsp; $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分多様体$S$はそれ自身$k$次元$C^{r}$級多様体である。 Proof [Of Proposition]: $(U;\phi)=(U;x_{1},\dots,x_{n}),(V,\psi)=(V;y_{1},\dots,y_{n})$を適合するチャートとし、$U\cap V\ne\emptyset$とする。このとき、$p\in U\cap V\cap S$に対して $$ \phi(p)=(x_{1}(p),\dots,x_{k}(p),0,\dots,0),\psi(p)=(y_{1}(p),\dots,y_{k}(p),0,\dots,0) $$ である。そこで、$\phi,\psi$の出力を$k$次元目までのところに制限したものを$\phi_{S},\psi_{S}$と書くことにすると、$\psi_{S}\circ\phi_{S}^{-1},\phi_{S}\circ\psi_{S}^{-1}$はそれぞれ$C^{r}$級の座標変換関数になる。 よって適合するチャートから構成した族$\{(U\cap S;\phi_{S})\}$は$S$の$C^{r}$級のアトラスになる。よって$S$は$k$次元$C^{r}$級多様体である。 次の2つの定理によって多様体の埋め込みと正則部分多様体は同じものとみなすことができます。</description>
+    </item>
+    
+    <item>
+      <title>JAXで蔵本モデル</title>
+      <link>https://yonesuke.github.io/posts/jax-kuramoto/</link>
+      <pubDate>Fri, 26 Aug 2022 14:46:14 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/jax-kuramoto/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import jax.numpy as jnp from jax import random, jit from jax.lax import fori_loop class AutonomousDiffEq: def __init__(self, n_dim: int): self.n_dim = n_dim def forward(self, state): return NotImplementedError def runge_kutta(self, state, dt): k1 = self.forward(state) k2 = self.forward(state + 0.5 * dt * k1) k3 = self.</description>
+    </item>
+    
     <item>
       <title>Brouwer&#39;s fixed-point theorem</title>
       <link>https://yonesuke.github.io/posts/brouwer-fixed-point-thm/</link>
