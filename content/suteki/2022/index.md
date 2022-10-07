@@ -43,7 +43,7 @@ ShowBreadCrumbs: false
 |第1回| 9月28日 | オリエンテーション | [[:green_book:スライド]](intro.pdf) |
 || | 割合 | [[:green_book:スライド]](slide01.pdf) [[:blue_book:演習解答]](ans01.pdf) [[📹 講義動画]](https://youtu.be/fBae_fzTZZs) |
 |第2回| 10月5日 | 損益算 | [[:green_book:スライド]](slide02.pdf) [[:blue_book:演習解答]](ans02.pdf) [[📹 講義動画]](https://youtu.be/elwrxxqJsAs) |
-|第3回| 10月12日 | 順序、組み合わせ | |
+|第3回| 10月12日 | 順序、組み合わせ | [[:green_book:スライド]](slide03.pdf) [[:blue_book:演習解答]](ans03.pdf) [[📹 講義動画]]() |
 |第4回| 10月19日 | 確率 | |
 |第5回| 10月26日 | 方程式 | |
 |第6回| 11月2日 | $n$進数 | |
