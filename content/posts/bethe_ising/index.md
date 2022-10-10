@@ -47,7 +47,7 @@ P(\bm{\sigma})=\exp(h\sigma_{0})\prod_{j=1}^{q}Q_{n}(\sigma_{0}\mid s^{(j)})
 $$
 で書けます。ここで、
 $$
-Q_{n}(\sigma_{0}\mid s) = \exp\left[K\sum_{\langle i,j\rangle}s_{i}s_{j}+Ks_{1}\sigma_{0}+h\sigma_{i}s_{i}\right]
+Q_{n}(\sigma_{0}\mid s) = \exp\left[K\sum_{\langle i,j\rangle}s_{i}s_{j}+Ks_{1}\sigma_{0}+h\sum_{i}s_{i}\right]
 $$
 は$\sigma_{0}$と木$s$との接続が寄与する項を表します。そのため和を取る項はすべて$s$内のものになります。
 添字$n$はこの段階では$n$番目の殻まで打ち切ったベーテ格子を考えていることから来るものです。このあとで$n\to\infty$の極限を考えます。
