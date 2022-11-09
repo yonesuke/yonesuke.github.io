@@ -95,8 +95,8 @@ Recurrence relation ベーテ格子の対称性から中心の点はは$q$個の
 $x_{n}$は$n$に依存するので、$n$に関する漸化式を求めてみましょう。$Q_{n}$を構成する部分木$s$はそれ自身$q-1$個の部分木を含みます。なので、$Q_{n}$はさらなる分解が期待されます。 $$ Q_{n}(\sigma_{0}\mid s)=\exp(K\sigma_{0}s_{1}&#43;hs_{1})\prod_{j=1}^{q-1}Q_{n-1}(s_{1}\mid t^{(j)}) $$ ここで、$s_{1}$は部分木$s$の根であり、$t^{(j)}$は$s_{1}$に接続する$j$番目の部分木になります。 この式を部分木$s$上で和を取って見ましょう。特に、右辺は$s_{1}$と$t^{(j)}$上の和に分解してみると、 $$ \begin{align*} g_{n}(\sigma_{0})=&amp;\sum_{s_{1}}\exp(K\sigma_{0}s_{1}&#43;hs_{1})[g_{n-1}(s_{1})]^{q-1}\\ =&amp;\exp(K\sigma_{0}&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K\sigma_{0}-h)[g_{n-1}(-1)]^{q-1} \end{align*} $$ になるので、$x_{n}$については $$ \begin{align*} x_{n}=&amp;\frac{g_{n}(-1)}{g_{n}(&#43;1)}\\ =&amp;\frac{\exp(-K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(K-h)[g_{n-1}(-1)]^{q-1}}{\exp(K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K-h)[g_{n-1}(-1)]^{q-1}}\\ =&amp;\frac{e^{-K&#43;h}&#43;e^{K-h}x_{n-1}^{q-1}}{e^{K&#43;h}&#43;e^{-K-h}x_{n-1}^{q-1}} \end{align*} $$ が得られます。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/bethe_ising/" /><meta property="og:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-10-01T16:15:49&#43;09:00" />
-<meta property="article:modified_time" content="2022-10-01T16:15:49&#43;09:00" /><meta property="og:site_name" content="Ryosuke Yoneda" />
+<meta property="article:published_time" content="2022-10-01T16:15:49+09:00" />
+<meta property="article:modified_time" content="2022-10-01T16:15:49+09:00" /><meta property="og:site_name" content="Ryosuke Yoneda" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>

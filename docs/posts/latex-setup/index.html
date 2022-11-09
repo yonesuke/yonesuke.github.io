@@ -85,8 +85,8 @@ Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcという
 Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcというファイルをおいておきます。 1 2 3 4 5 $latex = &#39;platex&#39;; $bibtex = &#39;pbibtex&#39;; $dvipdf = &#39;dvipdfmx %O -o %D %S&#39;; $makeindex = &#39;mendex -U %O -o %D %S&#39;; $pdf_mode = 3; さらにCompilerはLaTeXにしておきましょう。 Beamer LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特にmetropolisとfocusというテーマが気に入っています。 1 2 3 4 5 6 7 \documentclass[dvipdfmx]{beamer} \usepackage{bxdpx-beamer} \usepackage{pxjahyper} \usepackage{minijs} \usetheme[numbering=fraction,block=fill,progressbar=frametitle]{metropolis} \usefonttheme{professionalfonts} \usepackage{appendixnumberbeamer} Appendixに移行する際の区切りのページには次を書くと便利です。 1 2 3 4 5 6 7 8 % スライド終わり \appendix \begin{frame}[standout] APPENDIX \end{frame} % アペンディクスはじまり % \begin{frame} % ... 便利Package hyperref 次のオプションとともに呼ぶと便利です。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/latex-setup/" /><meta property="og:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-05T18:46:29&#43;09:00" />
-<meta property="article:modified_time" content="2021-05-05T18:46:29&#43;09:00" /><meta property="og:site_name" content="Ryosuke Yoneda" />
+<meta property="article:published_time" content="2021-05-05T18:46:29+09:00" />
+<meta property="article:modified_time" content="2021-05-05T18:46:29+09:00" /><meta property="og:site_name" content="Ryosuke Yoneda" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>

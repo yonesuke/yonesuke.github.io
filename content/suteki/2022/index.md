@@ -47,7 +47,7 @@ ShowBreadCrumbs: false
 |第4回| 10月19日 | 確率 | [[:green_book:スライド]](slide04.pdf) [[:blue_book:演習解答]](ans04.pdf) [[📹 講義動画]](https://youtu.be/_-N_zrH63v8) |
 |第5回| 10月26日 | 方程式 | [[:green_book:スライド]](slide05.pdf) [[:blue_book:演習解答]](ans05.pdf) [[📹 講義動画]](https://youtu.be/mYF0uLNIyBQ) |
 |第6回| 11月2日 | $n$進数 | [[:green_book:スライド]](slide06.pdf) [[:blue_book:演習解答]](ans06.pdf) [[📹 講義動画]](https://youtu.be/EqJw72OPWWY) |
-|第7回| 11月9日 | 距離と時間と速さ | |
+|第7回| 11月9日 | 距離と時間と速さ | [[:green_book:スライド]](slide07.pdf) [[:blue_book:演習解答]](ans07.pdf) [[📹 講義動画]]() |
 |第8回| 11月16日 | 濃度算 | |
 |第9回| 11月30日 | 数列 | |
 |第10回| 12月7日 | 関数とグラフ | |
