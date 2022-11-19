@@ -210,6 +210,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>AUTOのインストール方法<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AUTOはODE(常微分方程式)の分岐解析を扱うソフトウェアで、1980年に開発されて以来力学系界隈で使われてきました。 現在はGitHubにてコードが公開されて細々と(?)開発が続けられています。
+https://github.com/auto-07p/auto-07p AUTOは便利ではあるのですが、そのインストール方法がプログラム初心者には少し難しいことがあるそうなのでその流れを少しまとめてみました。 以下では基本的にMac OSでインストールする方法を述べますが、WindowsやLinuxでも同様だと思います。 また、最低限のターミナルでの操作は出来るものとしておきます。
+インストール方法 はじめにGitHubからコードをダウンロードする必要があります。これには、リポジトリをcloneする方法とリリースからダウンロードをする方法があります。 cloneという言葉の意味がわからなければリリースからダウンロードする方が良いかもしれません。
+GitHubからAUTOのリポジトリをcloneする場合は次のコマンドを打ち込みます。 1 git clone git@github.com:auto-07p/auto-07p.git 次にこのフォルダをホーム直下で~/.auto-07pという名前で移動させましょう。 1 mv auto-07p ~/.auto-07p この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。その場合は後で編集するauto.env.shも適切に変えてください。 GitHub内のリリースページ内にある最新のリリースからSource code (zip)をダウンロードしてください。記事作成時点ではバージョン0.9.3が最新でした。例えばDownloadsフォルダ内にzipファイルが格納されたとしましょう。このフォルダを開いてzipファイルを展開してください。同一フォルダ内でauto-07p-0.9.3というフォルダが作られるはずです(後ろの数字はバージョンを表すので変動する可能性はあります)。次にターミナルを開いて次のコマンドを打ち込んでください。 1 mv ~/Downloads/auto-07p-0.9.3 ~/.auto-07p 上に同じですが、この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。 このフォルダ内に移動しておきます。
+1 cd ~/.auto-07p フォルダ内で./configureを実行した上でmakeを行います。
+1 2 ./configure make 何も問題がなければこのmakeは成功しますが、うまくAUTOが起動出来ない場合はこのmakeで失敗している可能性が高いです。エラーが出ていないかはよく見ておいてください。
+あとはAUTOの設定ファイルをシェルに読み込ませるだけですが、GitHubからcloneしたファイルに間違いがあるので修正する(間違っているというか、リリースされているもののフォルダ構成がGitHubのフォルダ構成と微妙に違うだけ、ではあります)。~/.auto-07p/cmds/auto.env.shの5行目を次のように編集してください。
+1 2 -AUTO_DIR=$HOME/auto/07p &#43;AUTO_DIR=$HOME/.auto-07p このとき~/.auto-07p以外にフォルダを設置している場合はそのようにAUTO_DIRを設定しておいてください。 最終的に~/.auto-07p/cmds/auto.env.shは次のようになります。
+1 2 3 4 5 6 7 8 9 10 11 12 13 # # This file has to be sourced before activating AUTO if you are using # a &#39;sh&#39; compatible shell, such as sh, bash, ksh, or ash....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-11-20 00:21:47 +0900 JST'>November 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;124 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to AUTOのインストール方法" href="https://yonesuke.github.io/posts/auto_install/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Ising model on a Bethe lattice<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
     </h2>
   </header>
@@ -366,24 +386,6 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
   </div>
   <footer class="entry-footer"><span title='2022-03-15 13:05:46 +0900 JST'>March 15, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;120 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Uniform ratio distribution and pi" href="https://yonesuke.github.io/posts/uniform-ratio-pi/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>MNISTをMLPで推論(Julia/Flux実装)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Juliaで機械学習をするための有名なライブラリにFluxがあります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。 コードは次のようになります。これを参考に書きました。
-パッケージ 基本的にFluxさえあれば良いです。今回はMNISTデータを用いるのでMLDatasetsというパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
-1 julia&gt; import Pkg; Pkg.add([&#34;Flux&#34;, &#34;MLDatasets&#34;]) これでパッケージを読み込むことができます。
-1 2 3 4 5 using Flux using Flux.Data: DataLoader using Flux: onehotbatch, onecold using Flux.Losses: logitcrossentropy using MLDatasets データの読み込み MNISTデータを読み込みます。
-1 2 x_train, y_train = MLDatasets.MNIST.traindata(Float32) x_test, y_test = MLDatasets.MNIST.testdata(Float32) MNISTの画像はサイズ(28,28,1)になっていますが、MLPには1次元の配列として渡したいのでflattenで各データを1次元に落とします。
-1 2 x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
-1 2 y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-08-23 16:38:35 +0900 JST'>August 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;296 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to MNISTをMLPで推論(Julia/Flux実装)" href="https://yonesuke.github.io/posts/mnist_mlp/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

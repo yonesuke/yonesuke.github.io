@@ -168,6 +168,24 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>MNISTをMLPで推論(Julia/Flux実装)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Juliaで機械学習をするための有名なライブラリにFluxがあります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。 コードは次のようになります。これを参考に書きました。
+パッケージ 基本的にFluxさえあれば良いです。今回はMNISTデータを用いるのでMLDatasetsというパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
+1 julia&gt; import Pkg; Pkg.add([&#34;Flux&#34;, &#34;MLDatasets&#34;]) これでパッケージを読み込むことができます。
+1 2 3 4 5 using Flux using Flux.Data: DataLoader using Flux: onehotbatch, onecold using Flux.Losses: logitcrossentropy using MLDatasets データの読み込み MNISTデータを読み込みます。
+1 2 x_train, y_train = MLDatasets.MNIST.traindata(Float32) x_test, y_test = MLDatasets.MNIST.testdata(Float32) MNISTの画像はサイズ(28,28,1)になっていますが、MLPには1次元の配列として渡したいのでflattenで各データを1次元に落とします。
+1 2 x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
+1 2 y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-23 16:38:35 +0900 JST'>August 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;296 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to MNISTをMLPで推論(Julia/Flux実装)" href="https://yonesuke.github.io/posts/mnist_mlp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Gram行列の固有値の数値計算
     </h2>
   </header>
@@ -317,19 +335,6 @@ Gaussian processes for Big data
   </div>
   <footer class="entry-footer"><span title='2021-05-06 12:53:12 +0900 JST'>May 6, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;59 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to ガウス過程に関する文献" href="https://yonesuke.github.io/posts/gp-articles/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>LaTeXの設定
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>$\LaTeX$で文章を書くときによく行う設定をまとめておきます。
-Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcというファイルをおいておきます。 1 2 3 4 5 $latex = &#39;platex&#39;; $bibtex = &#39;pbibtex&#39;; $dvipdf = &#39;dvipdfmx %O -o %D %S&#39;; $makeindex = &#39;mendex -U %O -o %D %S&#39;; $pdf_mode = 3; さらにCompilerはLaTeXにしておきましょう。 Beamer LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特にmetropolisとfocusというテーマが気に入っています。 1 2 3 4 5 6 7 \documentclass[dvipdfmx]{beamer} \usepackage{bxdpx-beamer} \usepackage{pxjahyper} \usepackage{minijs} \usetheme[numbering=fraction,block=fill,progressbar=frametitle]{metropolis} \usefonttheme{professionalfonts} \usepackage{appendixnumberbeamer} Appendixに移行する際の区切りのページには次を書くと便利です。 1 2 3 4 5 6 7 8 % スライド終わり \appendix \begin{frame}[standout] APPENDIX \end{frame} % アペンディクスはじまり % \begin{frame} % ... 便利Package hyperref 次のオプションとともに呼ぶと便利です。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-05-05 18:46:29 +0900 JST'>May 5, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;102 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to LaTeXの設定" href="https://yonesuke.github.io/posts/latex-setup/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

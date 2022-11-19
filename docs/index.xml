@@ -10,7 +10,24 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Oct 2022 16:15:49 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Nov 2022 00:21:47 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AUTOのインストール方法</title>
+      <link>https://yonesuke.github.io/posts/auto_install/</link>
+      <pubDate>Sun, 20 Nov 2022 00:21:47 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/auto_install/</guid>
+      <description>AUTOはODE(常微分方程式)の分岐解析を扱うソフトウェアで、1980年に開発されて以来力学系界隈で使われてきました。 現在はGitHubにてコードが公開されて細々と(?)開発が続けられています。
+https://github.com/auto-07p/auto-07p AUTOは便利ではあるのですが、そのインストール方法がプログラム初心者には少し難しいことがあるそうなのでその流れを少しまとめてみました。 以下では基本的にMac OSでインストールする方法を述べますが、WindowsやLinuxでも同様だと思います。 また、最低限のターミナルでの操作は出来るものとしておきます。
+インストール方法 はじめにGitHubからコードをダウンロードする必要があります。これには、リポジトリをcloneする方法とリリースからダウンロードをする方法があります。 cloneという言葉の意味がわからなければリリースからダウンロードする方が良いかもしれません。
+GitHubからAUTOのリポジトリをcloneする場合は次のコマンドを打ち込みます。 1 git clone git@github.com:auto-07p/auto-07p.git 次にこのフォルダをホーム直下で~/.auto-07pという名前で移動させましょう。 1 mv auto-07p ~/.auto-07p この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。その場合は後で編集するauto.env.shも適切に変えてください。 GitHub内のリリースページ内にある最新のリリースからSource code (zip)をダウンロードしてください。記事作成時点ではバージョン0.9.3が最新でした。例えばDownloadsフォルダ内にzipファイルが格納されたとしましょう。このフォルダを開いてzipファイルを展開してください。同一フォルダ内でauto-07p-0.9.3というフォルダが作られるはずです(後ろの数字はバージョンを表すので変動する可能性はあります)。次にターミナルを開いて次のコマンドを打ち込んでください。 1 mv ~/Downloads/auto-07p-0.9.3 ~/.auto-07p 上に同じですが、この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。 このフォルダ内に移動しておきます。
+1 cd ~/.auto-07p フォルダ内で./configureを実行した上でmakeを行います。
+1 2 ./configure make 何も問題がなければこのmakeは成功しますが、うまくAUTOが起動出来ない場合はこのmakeで失敗している可能性が高いです。エラーが出ていないかはよく見ておいてください。
+あとはAUTOの設定ファイルをシェルに読み込ませるだけですが、GitHubからcloneしたファイルに間違いがあるので修正する(間違っているというか、リリースされているもののフォルダ構成がGitHubのフォルダ構成と微妙に違うだけ、ではあります)。~/.auto-07p/cmds/auto.env.shの5行目を次のように編集してください。
+1 2 -AUTO_DIR=$HOME/auto/07p +AUTO_DIR=$HOME/.auto-07p このとき~/.auto-07p以外にフォルダを設置している場合はそのようにAUTO_DIRを設定しておいてください。 最終的に~/.auto-07p/cmds/auto.env.shは次のようになります。
+1 2 3 4 5 6 7 8 9 10 11 12 13 # # This file has to be sourced before activating AUTO if you are using # a &amp;#39;sh&amp;#39; compatible shell, such as sh, bash, ksh, or ash.</description>
+    </item>
+    
     <item>
       <title>Ising model on a Bethe lattice</title>
       <link>https://yonesuke.github.io/posts/bethe_ising/</link>
