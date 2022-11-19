@@ -1,7 +1,7 @@
 ---
 title: "AUTOのインストール方法"
 date: 2022-11-20T00:21:47+09:00
-draft: true
+draft: false
 math: true
 author: Ryosuke Yoneda
 ---
