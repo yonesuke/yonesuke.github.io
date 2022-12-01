@@ -49,8 +49,8 @@ ShowBreadCrumbs: false
 |第6回| 11月2日 | $n$進数 | [[:green_book:スライド]](slide06.pdf) [[:blue_book:演習解答]](ans06.pdf) [[📹 講義動画]](https://youtu.be/EqJw72OPWWY) |
 |第7回| 11月9日 | 距離と時間と速さ | [[:green_book:スライド]](slide07.pdf) [[:blue_book:演習解答]](ans07.pdf) [[📹 講義動画]](https://youtu.be/oc0wggvDlJ8) |
 |第8回| 11月16日 | 濃度算 | [[:green_book:スライド]](slide08.pdf) [[:blue_book:演習解答]](ans08.pdf) [[📹 講義動画]](https://youtu.be/TA9Kzqxb3TA) |
-|第9回| 11月30日 | 数列 | [[:green_book:スライド]](slide09.pdf) [[:blue_book:演習解答]](ans09.pdf) [[📹 講義動画]]() |
-|第10回| 12月7日 | 関数とグラフ | |
+|第9回| 11月30日 | 数列 | [[:green_book:スライド]](slide09.pdf) [[:blue_book:演習解答]](ans09.pdf) [[📹 講義動画]](https://youtu.be/wmfwKtGJCIE) |
+|第10回| 12月7日 | 関数とグラフ | [[:green_book:スライド]](slide10.pdf) [[:blue_book:演習解答]](ans10.pdf) [[📹 講義動画]]() |
 |第11回| 12月14日 | 集合 | |
 |第12回| 12月21日 | 論理 | |
 |第13回| 1月11日 | テスト演習と解説1 | |
