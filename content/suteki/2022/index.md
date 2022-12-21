@@ -52,7 +52,7 @@ ShowBreadCrumbs: false
 |第9回| 11月30日 | 数列 | [[:green_book:スライド]](slide09.pdf) [[:blue_book:演習解答]](ans09.pdf) [[📹 講義動画]](https://youtu.be/wmfwKtGJCIE) |
 |第10回| 12月7日 | 関数とグラフ | [[:green_book:スライド]](slide10.pdf) [[:blue_book:演習解答]](ans10.pdf) [[📹 講義動画]](https://youtu.be/viXkB9G4wIQ) |
 |第11回| 12月14日 | 集合 | [[:green_book:スライド]](slide11.pdf) [[:blue_book:演習解答]](ans11.pdf) [[📹 講義動画]]() |
-|第12回| 12月21日 | 論理 | |
+|第12回| 12月21日 | 論理 | [[:green_book:スライド]](slide12.pdf) [[:blue_book:演習解答]](ans12.pdf) [[📹 講義動画]]() |
 |第13回| 1月11日 | テスト演習と解説1 | |
 |第14回| 1月18日 | テスト演習と解説2 | |
 
