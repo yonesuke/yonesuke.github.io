@@ -1,7 +1,7 @@
 ---
 title: "Random Fourier Features"
 date: 2023-01-06T23:34:02+09:00
-draft: true
+draft: false
 math: true
 author: Ryosuke Yoneda
 ---
