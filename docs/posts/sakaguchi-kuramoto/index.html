@@ -14,7 +14,7 @@ $r\approx0$のときは振動子たちは円周上をバラバラに分布して
 $f(\theta,\omega,t)$は時刻$t$における$\theta,\omega$の密度関数になります。 すなわち、$[\theta,\theta&#43;\delta\theta)\times[\omega,\omega&#43;\delta\omega)$に存在する振動子の割合が $f(\theta,\omega,t)\delta\theta\delta\omega$になります。 $\omega$は$g(\omega)$に従うので、 $$ \int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)=g(\omega) $$ が成り立ちます。 連続極限において秩序変数は $$ z=re^{i\phi}=\int_{\mathbb{R}}d\omega\int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)e^{i\theta} $$ となります。 Fourier級数展開 分布関数$f(\theta,\omega,t)$について、$\theta$方向は$\mathbb{S}^{1}$に乗っているのでFourier級数展開ができます。 $$ f(\theta,\omega,t)=\frac{1}{2\pi}\sum_{k\in\mathbb{Z}}\hat{f} _ {k}(\omega,t)e^{-ik\theta} $$ これをもとに連続の式もFourier級数展開しましょう。 かんたんのために$h(\omega)$の$\omega$積分を$\langle h\rangle$と書くことにします。 $$ \begin{aligned}V[f]=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega&rsquo;\int_{\mathbb{S}^{1}}d\theta&rsquo; f(\theta&rsquo;,\omega&rsquo;,t)e^{i\theta&rsquo;}-\frac{Ke^{i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega&rsquo;\int_{\mathbb{S}^{1}}d\theta&rsquo; f(\theta&rsquo;,\omega&rsquo;,t)e^{-i\theta&rsquo;}\\=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\langle\hat{f} _ {1}\rangle-\frac{Ke^{i(\theta-\alpha)}}{2i}\langle\hat{f} _ {-1}\rangle \end{aligned}$$ であるので、 $$ \widehat{V[f]} _ {0}=2\pi\omega,\widehat{V[f]} _ {-1}=i\pi Ke^{-i\alpha}\langle\hat{f} _ {-1}\rangle,\widehat{V[f]} _ {1}=-i\pi Ke^{i\alpha}\langle\hat{f} _ {1}\rangle $$ がわかります。 これを連続の式に代入することで、 $$ \begin{aligned} \frac{\partial\hat{f} _ {k}}{\partial t}=&amp;-\widehat{\frac{\partial}{\partial\theta}(V[f]f)} _ {k}=ik\widehat{V[f]f} _ {k}=\frac{ik}{2\pi}\left(\sum_{l\in\mathbb{Z}}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)=\frac{ik}{2\pi}\left(\sum_{l=0,\pm1}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)\\=&amp;ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}}{2}\langle\hat{f} _ {1}\rangle\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}}{2}\langle\hat{f} _ {-1}\rangle\hat{f} _ {k&#43;1} \end{aligned} $$ となります。特に秩序変数が$z=\langle\hat{f} _ {1}\rangle$で書けるので、 $$ \frac{\partial\hat{f} _ {k}}{\partial t}=ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}z}{2}\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}\overline{z}}{2}\hat{f} _ {k&#43;1} $$ とさらに簡略化して書くことができます。 この偏微分方程式を解くことができればダイナミクスの理解が進むのですが、 このままでは難しいです。 この難しさを乗り越えたのがOtt-Antonsen縮約と呼ばれるものがあって、この偏微分方程式の特解を表します。">
 <meta name="author" content="Ryosuke Yoneda">
 <link rel="canonical" href="https://yonesuke.github.io/posts/sakaguchi-kuramoto/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://yonesuke.github.io/favicon_io/favicon.ico">
@@ -476,7 +476,7 @@ $$
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://yonesuke.github.io">Ryosuke Yoneda</a></span>
+    <span>&copy; 2023 <a href="https://yonesuke.github.io">Ryosuke Yoneda</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

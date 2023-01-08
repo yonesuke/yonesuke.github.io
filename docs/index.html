@@ -11,7 +11,7 @@
 <meta name="description" content="Ryosuke Yoneda&#39;s Homepage">
 <meta name="author" content="">
 <link rel="canonical" href="https://yonesuke.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://yonesuke.github.io/favicon_io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://yonesuke.github.io/favicon_io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://yonesuke.github.io/favicon_io/favicon-32x32.png">
@@ -210,6 +210,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Random Fourier Features<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>カーネル法によるリッジ回帰は表現力が高いことが知られており、またその数学的背景の豊かさから多くの研究がなされてきました。 しかし、$n$個のデータ数に対して推論に$\mathcal{O}(n^{3})$の計算量が必要とされるため、計算量を低減させる方法を検討することは非常に重要です。 ここでは、Random Fourier Features 1と呼ばれる方法を紹介します。 実装も行ったがGistにも公開している。
+Random Fourier Features Random Fourier Featuresはカーネル関数$k(x,y)\colon\mathbb{R}^{d}\times\mathbb{R}^{d}\to\mathbb{R}$が$x-y$の関数$\phi(x-y)$で表現できる場合に、それをランダムな基底で近似する手法である。キモとなるのはBochnerの定理である。
+Theorem    [Bochnerの定理] $k(x,y)=\phi(x-y)$が連続な正定値カーネルであるための必要十分条件は$\mathbb{R}^{d}$上の有限非負Borel測度$\mu$があって、 $$ k(x,y)=\int_{\mathbb{R}^{d}}e^{i\omega^{\top}(x-y)}\mathrm{d}\mu(\omega) $$ で表されることである。 適当にスケールすれば$\mu$は確率になり、(存在すれば)$\mathrm{d}\mu(\omega)=p(\omega)\mathrm{d}\omega$と書くことが出来る。 このとき、$k$の値域は実数であるので、 $$ k(x,y)=\mathbb{E}_ {\omega}[\cos(\omega^{\top}(x-y))] $$ 実はこれは$b$を$[0,2\pi)$上の一様乱数として、 $$ 2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x&#43;b)\cos(\omega^{\top}y&#43;b)] $$ と一致することがわかる。(加法定理を用いよ)
+Proposition    [Random Fourier Features] カーネル関数$k(x,y)$が$x-y$の関数で与えられるとき、 $$ k(x,y)=2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x&#43;b)\cos(\omega^{\top}y&#43;b)] $$ が成立する。ここで、$\omega$は$k$の確率に従い、$b$は$[0,2\pi)$上の一様分布に従う。 この性質を用いてカーネル関数を近似することを考える。$\omega_{i},b_{i}$をそれぞれの分布に従う乱数として$m$個発生させ、関数$z_{i}(x)=\sqrt{2/m}\cos(\omega_{i}^{\top}x&#43;b_{i})$を構成したとき、 $$ \sum_{i=1}^{m}z_{i}(x)z_{i}(y)\to k(x,y) $$ が$m\to\infty$の極限で大数の法則により収束していく。
+Kernel Ridge Regression Random Fourier Featuresを用いてカーネル関数を表現することによってカーネルリッジ回帰の計算量が低減される。
+データ$\mathcal{D}=\{(x_{i},y_{i})\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。 損失関数は $$ L=\sum_{i=1}^{n}[y_{i}-f(x_{i})]^{2}&#43;\lambda||f||^{2}_ {H} $$ となり、これを最小化する$f\in H$を探す。$\lambda||f||^{2}_ {H}$は正則化の項である。 Representation定理により$f$は$\Phi(x_{i})$で展開されることがわかり、色々計算すると損失関数を最小化する$\hat{f}$は $$ \hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}_{i}k(x_{i},x) $$ となることがわかる。ここで、$\hat{\alpha}=(K&#43;\lambda I_{n})^{-1}y,[K]_{ij}=k(x_{i},x_{j})$である。 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-01-06 23:34:02 +0900 JST'>January 6, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;766 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Random Fourier Features" href="https://yonesuke.github.io/posts/random_fourier_feature/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>AUTOのインストール方法
     </h2>
   </header>
@@ -368,25 +385,6 @@ Definition    [概収束] 関数列$f_{n}$が$f$に概収束するとは、ほ
   <footer class="entry-footer"><span title='2022-03-22 13:05:46 +0900 JST'>March 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;126 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Egorov&#39;s theorem" href="https://yonesuke.github.io/posts/egorov/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Uniform ratio distribution and pi
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>3月14日は円周率の日ということもあって次のツイートを見つけました。
-Happy Pi Day, folks!
-(Today = March 14 = 3/14. And pi ~= 3.14.)
-Here&#39;s a fun way to approximate pi using probability.
-Take 2 random numbers X and Y between 0 and 1. What&#39;s the probability that the integer nearest to X/Y is even?
-Answer: (5 - pi)/4 pic.twitter.com/ZWviwSQ2VM
-— 10-K Diver (@10kdiver) March 14, 2022 この証明を行っていきます。
-Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が取る分布はuniform ratio distributionという名前がついています。この分布は手で計算することができて、 $$ \begin{aligned} P_{X/Y}(u)\coloneqq&amp; \int_{0}^{1}\int_{0}^{1}\delta\left(\frac{x}{y}-u\right)dxdy\\ =&amp;\begin{cases} 1/2, &amp; 0&lt;u&lt;1\\ 1/(2u^{2}), &amp; u\geq1 \end{cases} \end{aligned} $$ となることが知られています。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-03-15 13:05:46 +0900 JST'>March 15, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;120 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Uniform ratio distribution and pi" href="https://yonesuke.github.io/posts/uniform-ratio-pi/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="https://yonesuke.github.io/page/2/">Next&nbsp;&nbsp;»
@@ -396,7 +394,7 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://yonesuke.github.io">Ryosuke Yoneda</a></span>
+    <span>&copy; 2023 <a href="https://yonesuke.github.io">Ryosuke Yoneda</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
