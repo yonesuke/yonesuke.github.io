@@ -68,6 +68,9 @@ ShowBreadCrumbs: false
 $$ (\textrm{成績}) = \min\left\\{100, \left\lceil 5 \times (\textrm{問題演習を提出した回数})+ \frac{5}{3}\times(\textrm{試験で正解した問題数})\right\rceil\right\\} $$
 になります[^ceil]。
 
+成績評価に用いたPythonコードです。
+{{< gist yonesuke e62720fd2433b4f51a69d6bb23e2c5d6 >}}
+
 ---
 
 ## 参考
