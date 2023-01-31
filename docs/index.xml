@@ -10,7 +10,17 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jan 2023 23:34:02 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Jan 2023 19:06:00 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermite多項式の係数</title>
+      <link>https://yonesuke.github.io/posts/hermite_coeff/</link>
+      <pubDate>Tue, 31 Jan 2023 19:06:00 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/hermite_coeff/</guid>
+      <description>Hermite多項式の係数をpythonで求める方法を紹介します。 係数自体は三項間漸化式で求められますが、高次の係数を求めるときには再帰が必要になり計算量が増えてしまいます。 functoolsモジュールのcacheを使うと再帰を高速化できます。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from functools import cache @cache def hermite_coeff(n: int) -&amp;gt; list: &amp;#34;&amp;#34;&amp;#34;Compute the coefficients of the nth Hermite polynomial.&amp;#34;&amp;#34;&amp;#34; if not isinstance(n, int): raise TypeError(&amp;#34;n must be an integer&amp;#34;) if n &amp;lt; 0: raise ValueError(&amp;#34;n must be non-negative&amp;#34;) if n == 0: return [1] elif n == 1: return [0, 2] else: return [- 2 * (n - 1) * hermite_coeff(n - 2)[0]]\ + [2 * hermite_coeff(n - 1)[i] - 2 * (n - 1) * hermite_coeff(n - 2)[i + 1] for i in range(n - 2)]\ + [2 * hermite_coeff(n - 1)[n - 2], 2 * hermite_coeff(n - 1)[n - 1]] hermite_coeff(n)はn次のHermite多項式の係数を返します。 hermite_coeff(n)はnが整数でないとき、nが負のとき、nが0のときにTypeErrorとValueErrorを返します。</description>
+    </item>
+    
     <item>
       <title>Random Fourier Features</title>
       <link>https://yonesuke.github.io/posts/random_fourier_feature/</link>

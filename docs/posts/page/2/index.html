@@ -168,6 +168,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Egorov&#39;s theorem
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Egorovの定理は関数列の概収束と概一様収束の関係を述べたものになります。
+Theorem    [Egorovの定理] 有限測度空間$(X,\mathcal{F},\mu)$上の可測関数列$f_{n}\colon X\to\mathbb{C}$に対して、 $f_{n}$が可測関数$f$に概収束するならば、$f_{n}$は$f$に概一様収束する。 ここで、収束の定義についてそれぞれまとめておきます。
+Definition    [概収束] 関数列$f_{n}$が$f$に概収束するとは、ほとんどすべての$x\in X$に対して$f_{n}(x)$が$f(x)$に収束することである。すなわち、$f_{n}$はほとんど至るところ$f$に各点収束する。 Definition    [概一様収束] 関数列$f_{n}$が$f$に概一様収束するとは、任意の$\varepsilon&gt;0$に対して$\mu(E)&lt;\varepsilon$なる可測集合$E\in\mathcal{F}$が存在して、$E^{\mathrm{c}}$上では$f_{n}$が$f$に一様収束するようにできることである。 ちなみにT. TaoのAn Introduction to Measure Theoryでは、概収束のことをpointwise almost everywhere convergence, 概一様収束のことをalmost uniform convergenceと呼んでいます。(Taoの英語の本をずっと英語で読んでいたので対応する日本語を調べる必要がありました。)
+証明 Proof [Of Theorem 1]: 点$x_{0}$において$f_{n}$が$f$に収束することを集合を用いて表してみましょう。 $$\begin{aligned}&amp;f_{n}(x_{0})\to f(x_{0})\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow |f_{n}(x_{0})-f(x_{0})|\leq\frac{1}{m}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow x_{0}\in\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ x_{0}\in\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, x_{0}\in\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; x_{0}\in\bigcap_{m\in\mathbb{N}}\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\\end{aligned}$$ となります。これより、点$x_{0}$において$f_{n}$が$f$に収束しないことは $$ x_{0}\in\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}\bigcup_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|&gt;\frac{1}{m}\right\} $$ で書くことができます。ここで、 $$ E_{N,m}=\bigcup_{n\geq N} \left\{ x\in X \mid |f_{n}(x)-f(x)| &gt; \frac{1}{m} \right\} $$ を定義すると(これが可測集合であることは明らかです)、収束しない点の測度は0なので$\mu(\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}E_{N,m})=0$がわかります。特に測度の劣加法性から、任意の$m\in\mathbb{N}$に対して $$ \mu\left(\bigcap_{N\in\mathbb{N}}E_{N,m}\right)=0 $$ がわかります。$E_{N,m}$が集合として$N$に関して単調減少であり、しかも$\mu(X)&lt;\infty$であることから、$\lim_{N\to\infty}\mu\left(E_{N,m}\right)=0$とも書けます。これは$m$を決めるたびごとに定まる$N$に関する数列だと思うと、任意の$\varepsilon&gt;0$と任意の$m$に対してある$N_{m}$があって、$\mu\left(E_{N_{m},m}\right)&lt;\varepsilon/2^{m}$となるようにできます。このときに集合$E$を $$ E=\bigcup_{m\in\mathbb{N}}E_{N_{m},m} $$ で定めると、$\mu(E)&lt;\varepsilon$は測度の加法性から明らかです。$E^{\mathrm{c}}$は、 $$ E^{\mathrm{c}}=\bigcap_{m\in\mathbb{N}}\bigcap_{n\geq N_{m}}\left\{ x\in X \mid |f_{n}(x)-f(x)| \leq \frac{1}{m} \right\} $$ と書けて、これは$E^{\mathrm{c}}$上では$x$の選び方によらずに関数の差が$1/m$で抑えられていることを意味します。よって、$E^{\mathrm{c}}$上で一様収束することが示せました。 有限でない場合の反例 有限でない場合の例として、測度空間$(\mathbb{R}, \mathcal{B}, \mu)$で、$f_{n}=1_{[n,n&#43;1]}$を考えます。この関数が$f=0$に各点収束することは明らかですが、$\mu(E)&lt;1$であれば$E^{\mathrm{c}}$上で$f_{n}$の値が1になるようなものを作ることができてしまうので、この場合には概一様収束にはなりえません。</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-03-22 13:05:46 +0900 JST'>March 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;126 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Egorov&#39;s theorem" href="https://yonesuke.github.io/posts/egorov/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Uniform ratio distribution and pi
     </h2>
   </header>
@@ -312,21 +327,6 @@ $f(\theta,\omega,t)$は時刻$t$における$\theta,\omega$の密度関数にな
   </div>
   <footer class="entry-footer"><span title='2021-05-28 13:32:31 +0900 JST'>May 28, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;217 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 坂口-蔵本モデルのダイナミクス" href="https://yonesuke.github.io/posts/sakaguchi-kuramoto/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>包除原理
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して $$ \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
-証明 証明は $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu $$ を二通りに計算することにより求まります。
-はじめに愚直に展開してみることにします。 $$ \prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i} $$ は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}} =\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}} $$ となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu = \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ がわかります。これで包除原理の右辺が示されました。
-次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}} =1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}} =1_{\bigcup_{i=1}^{n}A_{i}}$$ となります。最後にドモルガンの法則を用いました。 よって、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu =\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu = \mu\left(\bigcup_{i=1}^{n}A_{i}\right) $$ となります。 これで包除原理の左辺が導かれ、包除原理が示されました。</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-05-16 12:18:18 +0900 JST'>May 16, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;50 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to 包除原理" href="https://yonesuke.github.io/posts/inclusion_exclusion/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
