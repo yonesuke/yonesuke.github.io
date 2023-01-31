@@ -31,7 +31,7 @@ def hermite_coeff(n: int) -> list:
 ```
 
 `hermite_coeff(n)`はn次のHermite多項式の係数を返します。
-`hermite_coeff(n)`は`n`が整数でないとき、`n`が負のとき、`n`が`0`のときに`TypeError`と`ValueError`を返します。
+`hermite_coeff(n)`は`n`が整数でないとき、`n`が負のときに`TypeError`と`ValueError`を返します。
     
 ```python
 for n in range(11):
