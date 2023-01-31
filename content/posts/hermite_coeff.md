@@ -1,7 +1,7 @@
 ---
 title: "Hermite多項式の係数"
 date: 2023-01-31T19:06:00+09:00
-draft: true
+draft: false
 math: true
 author: Ryosuke Yoneda
 ---
