@@ -154,6 +154,27 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Kovacicのアルゴリズムを用いて調和振動子を解く
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う&#34;解ける&#34;という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。
+以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。
+ここでの計算はすべて https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445 とそこに添付のPDFを参考にしています。
+調和振動子 調和振動子のシュレディンガー方程式は $$ i\hbar\frac{\partial}{\partial t}\phi(x,t)=\left(-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x,t) $$ で与えられます。$\phi(x,t)$は波動関数です。特に時間依存しないシュレディンガー方程式は、 $$ \left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して $$\begin{aligned}&amp;E=\left(n&#43;\frac{1}{2}\right)\hbar\omega,\\&amp;\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$ で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。
+ここでは微分方程式を解くことに注目するので係数は無次元化しておきます。$m=\hbar^{2},\hbar\omega=1$とすると微分方程式は $$ \left(-\frac{1}{2}\frac{d^{2}}{dx^{2}}&#43;\frac{1}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。
+Kovacicのアルゴリズム Kovacicのアルゴリズムに従って調和振動子のシュレディンガー方程式を解いていきます。以下の計算はすべて上のリンクに従っていますので適宜そちらを参照しながら計算を追ってもらうと良いと思います。
+前処理 はじめに微分方程式を$\ddot{\eta}=r\eta$の形に前処理をします。シュレディンガー方程式は$\ddot{\phi}=(x^{2}-2E)\phi$となります。複素の微分方程式としてこれを考えるので$x$を$z$にして、 $$ \ddot{\eta}=r\eta,\quad r=z^{2}-2E $$ となります。$r$は$\mathbb{C}$上に特異点はないので、$\Gamma=\emptyset$です。また、$r=(1/z)^{-2}-2E$であるので、$z=\infty$における位数は$-2$です。
+Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きます。
+Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}&#43;\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
+Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-06-09 00:14:18 +0900 JST'>June 9, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;138 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Kovacicのアルゴリズムを用いて調和振動子を解く" href="https://yonesuke.github.io/posts/kovacic/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Egorov&#39;s theorem
     </h2>
   </header>
@@ -297,22 +318,6 @@ $f_{0}$は$\varphi$にほかなりません。 $f_{1}$は$\varphi(4x)$によっ�
   </div>
   <footer class="entry-footer"><span title='2021-05-30 09:56:32 +0900 JST'>May 30, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;68 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 至るところ微分不可能な連続関数: 初等的な構成方法" href="https://yonesuke.github.io/posts/nowherediff/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>坂口-蔵本モデルのダイナミクス
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>坂口-蔵本モデルは蔵本モデルにphase lagを導入したモデルで、次の微分方程式で表されます。 $$ \frac{d\theta_{i}}{dt}=\omega_{i}&#43;\frac{K}{N}\sum_{j=1}^{N}\sin(\theta_{j}-\theta_{i}&#43;\alpha),\quad i=1,\dots,N. $$ $\alpha$が位相差に対応していて、$\alpha=0$のときは蔵本モデルに戻ります。 結合強度$K$が変化したときに振動子が同期するかどうかを調べていきましょう。
-自然振動数分布 各振動子は固有の角速度である$\omega_{i}$を持っています。 蔵本モデル関連の論文では$\omega_{i}$は分布に従っていると仮定しています。 この分布のことを自然振動数分布と呼びます。 分布としてはGauss分布を選ぶのかと思いきや、蔵本モデルにおいては解析のしやすさからCauchy分布が選ばれています。 $$ g(\omega)=\frac{\Delta}{\pi}\frac{1}{(\omega-\omega_{0})^{2}&#43;\Delta^{2}} $$ $\omega_{0}$は分布の中心で、$\Delta$は分布の幅を表します。 このページでもCauchy分布を用いることにします。
-秩序変数 同期の具合をはかるパラメーターとして秩序変数(order parameter)を導入します。 $$ z=re^{i\phi}=\frac{1}{N}\sum_{j=1}^{N}e^{i\theta_{j}} $$
-$r\approx0$のときは振動子たちは円周上をバラバラに分布しているため、同期していないことがわかります。 $r=1$のときには振動子たちは円周上の1点に集中しているため、完全同期しています。 連続極限 振動子が無限個ある極限$N\to\infty$において、微分方程式は連続の式に従います。 $$ \frac{\partial f}{\partial t}&#43;\frac{\partial}{\partial\theta}(V[f]f)=0 $$ ここで$V[f]$は速度場で微分方程式を無限に飛ばした式になります。 $$ V[f]=\omega&#43;K\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)\sin(\theta’-\theta&#43;\alpha) $$
-$f(\theta,\omega,t)$は時刻$t$における$\theta,\omega$の密度関数になります。 すなわち、$[\theta,\theta&#43;\delta\theta)\times[\omega,\omega&#43;\delta\omega)$に存在する振動子の割合が $f(\theta,\omega,t)\delta\theta\delta\omega$になります。 $\omega$は$g(\omega)$に従うので、 $$ \int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)=g(\omega) $$ が成り立ちます。 連続極限において秩序変数は $$ z=re^{i\phi}=\int_{\mathbb{R}}d\omega\int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)e^{i\theta} $$ となります。 Fourier級数展開 分布関数$f(\theta,\omega,t)$について、$\theta$方向は$\mathbb{S}^{1}$に乗っているのでFourier級数展開ができます。 $$ f(\theta,\omega,t)=\frac{1}{2\pi}\sum_{k\in\mathbb{Z}}\hat{f} _ {k}(\omega,t)e^{-ik\theta} $$ これをもとに連続の式もFourier級数展開しましょう。 かんたんのために$h(\omega)$の$\omega$積分を$\langle h\rangle$と書くことにします。 $$ \begin{aligned}V[f]=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)e^{i\theta’}-\frac{Ke^{i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)e^{-i\theta’}\\=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\langle\hat{f} _ {1}\rangle-\frac{Ke^{i(\theta-\alpha)}}{2i}\langle\hat{f} _ {-1}\rangle \end{aligned}$$ であるので、 $$ \widehat{V[f]} _ {0}=2\pi\omega,\widehat{V[f]} _ {-1}=i\pi Ke^{-i\alpha}\langle\hat{f} _ {-1}\rangle,\widehat{V[f]} _ {1}=-i\pi Ke^{i\alpha}\langle\hat{f} _ {1}\rangle $$ がわかります。 これを連続の式に代入することで、 $$ \begin{aligned} \frac{\partial\hat{f} _ {k}}{\partial t}=&amp;-\widehat{\frac{\partial}{\partial\theta}(V[f]f)} _ {k}=ik\widehat{V[f]f} _ {k}=\frac{ik}{2\pi}\left(\sum_{l\in\mathbb{Z}}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)=\frac{ik}{2\pi}\left(\sum_{l=0,\pm1}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)\\=&amp;ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}}{2}\langle\hat{f} _ {1}\rangle\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}}{2}\langle\hat{f} _ {-1}\rangle\hat{f} _ {k&#43;1} \end{aligned} $$ となります。特に秩序変数が$z=\langle\hat{f} _ {1}\rangle$で書けるので、 $$ \frac{\partial\hat{f} _ {k}}{\partial t}=ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}z}{2}\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}\overline{z}}{2}\hat{f} _ {k&#43;1} $$ とさらに簡略化して書くことができます。 この偏微分方程式を解くことができればダイナミクスの理解が進むのですが、 このままでは難しいです。 この難しさを乗り越えたのがOtt-Antonsen縮約と呼ばれるものがあって、この偏微分方程式の特解を表します。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-05-28 13:32:31 +0900 JST'>May 28, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;217 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to 坂口-蔵本モデルのダイナミクス" href="https://yonesuke.github.io/posts/sakaguchi-kuramoto/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

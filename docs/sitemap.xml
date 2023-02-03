@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yonesuke.github.io/posts/hermite_coeff/</loc>
-    <lastmod>2023-01-31T19:06:00+09:00</lastmod>
-  </url><url>
     <loc>https://yonesuke.github.io/posts/</loc>
-    <lastmod>2023-01-31T19:06:00+09:00</lastmod>
+    <lastmod>2023-02-03T15:10:38+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/</loc>
+    <lastmod>2023-02-03T15:10:38+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/unique_lifting_property/</loc>
+    <lastmod>2023-02-03T15:10:38+09:00</lastmod>
+  </url><url>
+    <loc>https://yonesuke.github.io/posts/hermite_coeff/</loc>
     <lastmod>2023-01-31T19:06:00+09:00</lastmod>
   </url><url>
     <loc>https://yonesuke.github.io/posts/random_fourier_feature/</loc>

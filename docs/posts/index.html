@@ -168,6 +168,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Unique lifting property<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hatcherの&#34;Algebraic Topology&#34;のProposition 1.34でUnique lifting propertyとその証明が与えられているのですが、その証明がわかりにくかったのでここに分かりやすくまとめてみます。 Hatcherが全体的に読みにくいと感じるのは自分だけだろうか。。。
+Unique lifting property Unique lifting propertyは被覆空間によってリフトされた連続写像が一点を決めれば一意に定まることを主張しています。
+Theorem    [Unique lifting property] 被覆写像$p\colon \tilde{X}\to X$と連続写像$f\colon Y\to X$が与えられている。 また、$Y$は連結であるとする。 $f$のリフト$\tilde{f} _{1},\tilde{f} _{2}\colon Y\to\tilde{X}$がある一点で同じ値を取るとき、$\tilde{f} _{1}=\tilde{f} _{2}$である。 この証明は$Y$が連結であることを巧妙に使います。
+Proof [Of Theorem 1]: はじめに被覆空間にまたがる性質を見る。 $y\in Y$に対して$U\subset X$を均一な被覆を持つ$f(y)$の開近傍とする。 すなわち、$p^{-1}(U)=\bigcup_{\lambda\in\Lambda}\tilde{U} _ {\lambda}$で$\tilde{U} _ {\lambda}$は互いに素な集合となっていることである。 このとき、$\left.p\right| _ {\tilde{U} _ {\lambda}}\colon\tilde{U} _ {\lambda}\to U$が同相写像となる。 今リフトは連続であるから、$y$のある開近傍$N(y)$が存在して、 $$ \tilde{f} _ {1}(N(y))\subset \tilde{U} _ {1},\quad \tilde{f} _ {2}(N(y))\subset \tilde{U} _ {2} $$ なるような$\tilde{U} _ {1},\tilde{U} _ {2}\in\bigcup_{\lambda\in\Lambda}\tilde{U} _ {\lambda}$が存在する。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 15:10:38 +0900 JST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;131 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Unique lifting property" href="https://yonesuke.github.io/posts/unique_lifting_property/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Hermite多項式の係数
     </h2>
   </header>
@@ -319,27 +334,6 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
   </div>
   <footer class="entry-footer"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to M1 MacでのPython環境構築(tensorflowとか)" href="https://yonesuke.github.io/posts/m1-mac-python/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Kovacicのアルゴリズムを用いて調和振動子を解く
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う&#34;解ける&#34;という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。
-以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。
-ここでの計算はすべて https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445 とそこに添付のPDFを参考にしています。
-調和振動子 調和振動子のシュレディンガー方程式は $$ i\hbar\frac{\partial}{\partial t}\phi(x,t)=\left(-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x,t) $$ で与えられます。$\phi(x,t)$は波動関数です。特に時間依存しないシュレディンガー方程式は、 $$ \left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}&#43;\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して $$\begin{aligned}&amp;E=\left(n&#43;\frac{1}{2}\right)\hbar\omega,\\&amp;\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$ で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。
-ここでは微分方程式を解くことに注目するので係数は無次元化しておきます。$m=\hbar^{2},\hbar\omega=1$とすると微分方程式は $$ \left(-\frac{1}{2}\frac{d^{2}}{dx^{2}}&#43;\frac{1}{2}x^{2}\right)\phi(x)=E\phi(x) $$ となります。
-Kovacicのアルゴリズム Kovacicのアルゴリズムに従って調和振動子のシュレディンガー方程式を解いていきます。以下の計算はすべて上のリンクに従っていますので適宜そちらを参照しながら計算を追ってもらうと良いと思います。
-前処理 はじめに微分方程式を$\ddot{\eta}=r\eta$の形に前処理をします。シュレディンガー方程式は$\ddot{\phi}=(x^{2}-2E)\phi$となります。複素の微分方程式としてこれを考えるので$x$を$z$にして、 $$ \ddot{\eta}=r\eta,\quad r=z^{2}-2E $$ となります。$r$は$\mathbb{C}$上に特異点はないので、$\Gamma=\emptyset$です。また、$r=(1/z)^{-2}-2E$であるので、$z=\infty$における位数は$-2$です。
-Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きます。
-Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}&#43;\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
-Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-06-09 00:14:18 +0900 JST'>June 9, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;138 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Kovacicのアルゴリズムを用いて調和振動子を解く" href="https://yonesuke.github.io/posts/kovacic/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
