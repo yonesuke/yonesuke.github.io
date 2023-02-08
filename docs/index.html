@@ -210,6 +210,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>連結と局所連結、弧状連結と局所弧状連結について<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ホモロジーゼミの中で連結性に関する議論が何度も出てくるのでその違いについていくらかまとめておきます。
+定義 はじめに連結の定義を述べる。直感的に想像するような&#34;連結&#34;からかけ離れているように思われる。
+Definition    [連結] 位相空間$X$が連結であるとは、同時に開かつ閉になる部分集合が$X$自身と空集合以外に存在しないことをいう。 連結であることの定義は若干直感的に理解するのが難しい。連結でない空間の特徴づけの一つにわかりやすいものがある。これは、“空でない2つの互いに素な開集合$A,B\subset X$によって$X=A\cup B$とかける&#34;ことによって連結でない空間を定義するものである。実際この性質を用いることもある。 位相空間$X$の部分集合$M$が連結であるとは、$M$に導入される相対位相に対して$M$が連結であることとして定義する。$M$が連結でないことは$X$の開集合を用いて上と同様に特徴づけられる。すなわち、空でない2つの開集合$A,B$が存在して、 $$ M\subset A\cup B, \quad A\cap B\cap M=\emptyset, \quad A\cap M\neq\emptyset, \quad B\cap M\neq\emptyset $$ となることである。 局所的に連結な空間を局所連結と呼ぶ。
+Definition    [局所連結] 位相空間$X$の任意の$x\in X$の任意の開近傍$V$に対して、$x\in U\subset V$なる連結開集合$U$が存在するとき、$X$は局所連結であるという。 局所連結は局所的なものを見るので連結であれば局所連結であるように思われるがそうではない。これは後で反例を見る。
+次に弧状連結の定義を見る。むしろ弧状連結のほうが&#34;連結&#34;らしさを感じる。
+Definition    [弧状連結] 位相空間$X$が弧状連結であるとは、任意の2点$x,y\in X$に対してある連続写像$f\colon [0,1]\to X$が存在して、$f(0)=x,f(1)=y$が成り立つことをいう。 定義内に登場する$f$は$x$と$y$を結ぶ弧(path)である。 位相空間$X$の部分集合$M$が弧状連結であるとは、$M$に導入される相対位相に対して$M$が弧状連結であることとして定義する。 局所的に弧状連結な空間を局所弧状連結と呼ぶ。
+Definition    [局所弧状連結] 位相空間$X$の任意の$x\in X$の任意の開近傍$V$に対して、$x\in U\subset V$なる弧状連結開集合$U$が存在するとき、$X$は局所弧状連結であるという。 局所弧状連結についても弧状連結と直接の関係がない。すなわち、弧状連結であれば局所弧状連結であるとは限らない。
+性質 連結性に関する性質の中でも一番重要なのは、“連続写像を通して連結性が写る&#34;ことであろう。
+Theorem   位相空間$X$は連結で連続写像$f\colon X\to Y$を通して位相空間$Y$へ写る。このとき、$f(X)$は$Y$の連結部分集合である。 Proof: $f(X)$が連結でないとすると、$Y$の空でない開集合$A,B$が存在して、 $$ f(X)\subset A\cup B, \quad A\cap B\cap f(Y) = \emptyset, \quad A\cap f(X)\neq\emptyset, \quad B\cap f(X)\neq\emptyset $$ となることである。これより、 $$ X = f^{-1}(A) \cup f^{-1}(B), \quad f^{-1}(A)\cap f^{-1}(B) = \emptyset $$ が得られる。また、$f$の連続性から$f^{-1}(A)$と$f^{-1}(B)$はそれぞれ$X$の空でない開集合である。 これは$X$が連結であることに矛盾する。 また、連結性に関する挟み撃ちの定理のようなものも成立する。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-08 12:56:17 +0900 JST'>February 8, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;189 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 連結と局所連結、弧状連結と局所弧状連結について" href="https://yonesuke.github.io/posts/connected/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Unique lifting property
     </h2>
   </header>
@@ -357,24 +377,6 @@ $\frac{1}{3}$</p>
   </div>
   <footer class="entry-footer"><span title='2022-07-20 16:38:49 +0900 JST'>July 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;57 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to ランダムグラフ上の最小全域木" href="https://yonesuke.github.io/posts/random_mst/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>M1 MacでのPython環境構築(tensorflowとか)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。) インストールに手こずることがあれば随時この記事に書き足していきたいと思います。
-特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。
-https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。
-Apple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。
-1 2 pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。
-インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
-1 2 3 4 5 6 7 8 9 -&gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2....</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to M1 MacでのPython環境構築(tensorflowとか)" href="https://yonesuke.github.io/posts/m1-mac-python/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
