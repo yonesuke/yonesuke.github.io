@@ -10,7 +10,21 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Feb 2023 12:56:17 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Feb 2023 14:32:22 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>位相の基底</title>
+      <link>https://yonesuke.github.io/posts/topology_basis/</link>
+      <pubDate>Fri, 17 Feb 2023 14:32:22 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/topology_basis/</guid>
+      <description>ホモロジーゼミの中で位相の基底に関する議論が出てきたのでそれについてまとめます。 この記事は大部分が松坂の集合位相入門によっています。
+定義 位相の生成 考える空間を$S$とし、その部分集合全体を集めた集合を$B(S)$で定めます。 $B(S)$の任意の部分集合$M$に対して$O(M)$を$O\supset M$であるような任意の位相に対する下限(すなわちそのような位相たちの共通部分)で定めます。
+$O(M)$が具体的にどのような$S$の部分集合で表現されるかを決めるのが次の定理です。
+Theorem &amp;nbsp; $M$を$B(S)$の任意の部分集合とする。このとき、 $$ O(M)=\left\{\bigcup_{\lambda\in\Lambda} B_{\lambda} \mathrel{}\middle|\mathrel{} B_{\lambda}\in M_{0}\right\} $$ である。ただし、 $$ M_{0}=\left\{ \bigcap_{i\in I} A_{i} \mathrel{}\middle|\mathrel{} A_{i}\in M, \# I&amp;lt;\infty\right\} $$ である。 ここで、$\#I=0$であれば$\bigcap_{i\in I}A_{i}=S$で定めます。積の単位元を全体にしているようなものです。
+位相の基底 Definition &amp;nbsp; &amp;nbsp;[位相の基底] $M$が位相$O$の部分集合で$O$の任意の元$A$が $$ A=\bigcup_{\lambda\in\Lambda} W_{\lambda},\quad W_{\lambda}\in M $$ と表されるとき、$M$は$O$の基底であるという。 すなわち、任意の開集合が$M$の元を用いて展開できる、という意味で基底になっている、ということです。
+性質 Theorem &amp;nbsp; $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、 $$ x\in W,\quad W\subset A $$ となる$W\in M$が存在することは同値である。 Proof: $M$が$O$の基底であるとき、$A$を$O$の任意の元とすると、基底の定義からある$W_{\lambda}\in M$が存在して、 $$ A=\bigcup_{\lambda\in\Lambda} W_{\lambda} $$ が成り立つ。このとき、$x\in A$なので、ある$\lambda^{\ast}\in \Lambda$が存在して$x\in W_{\lambda^{\ast}}$となるので示される。 逆に任意の$A\in O$と任意の$x\in A$に対して$x\in W_{x},W_{x}\subset A$なる$W_{x}\in M$が存在するとき、 $$ A=\bigcup_{x\in A}\{x\}=\bigcup_{x\in A} W_{x} $$ となるのでたしかに$M$は$O$の基底である。 Theorem &amp;nbsp; 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。</description>
+    </item>
+    
     <item>
       <title>連結と局所連結、弧状連結と局所弧状連結について</title>
       <link>https://yonesuke.github.io/posts/connected/</link>
