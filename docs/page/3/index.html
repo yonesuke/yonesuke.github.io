@@ -154,6 +154,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>特異値分解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>行列$A$を$m\times n$の実行列とします。 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$ となるようにできます。このような分解を特異値分解と言います。
+証明 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して $$ A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij} $$ となるようにできます。 また、 $$ \xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0 $$ なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。 実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。
+次に$i=1,2,\dots,r$に対して$u_{i}=Av_{i}/\sqrt{\xi_{i}}$としましょう。すると、 $$ (u_{i}, u_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(Av_{i},Av_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(v_{i},A^{\mathsf{T}}Av_{j})=\frac{\xi_{j}\delta_{ij}}{\sqrt{\xi_{i}\xi_{j}}}=\delta_{ij} $$ となり、$u_{i}$たちは互いに直交します。このとき$m-r$個のベクトル${u_{r&#43;1},\dots,u_{m}}$を持ってきて正規直交基底${u_{1},\dots,u_{m}}$を構成することができます。 実はこのベクトル$u_{i}$たちが直交行列$U$に対応します。
+上で得られたベクトルを用いて行列 $$ V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m}) $$ を構成します。これが直交行列なのは明らかです。 $U^{\mathsf{T}}AV$という行列を計算してみると、 $$ U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j}) $$ となります。
+$j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。 よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-05-31 16:22:52 +0900 JST'>May 31, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;130 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 特異値分解" href="https://yonesuke.github.io/posts/svd/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Good Will Hunting Problem
     </h2>
   </header>

@@ -121,8 +121,8 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
   "keywords": [
     
   ],
-  "articleBody": "Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。) インストールに手こずることがあれば随時この記事に書き足していきたいと思います。\n特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。\nhttps://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。\nApple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。\n1 2 pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。\nインストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。\n1 2 3 4 5 6 7 8 9 -\u003e % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.9.0 0 apple これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。\n1 2 3 -\u003e % pip install tensorflow-macos== ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2.5.0, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.9.1, 2.9.2) ERROR: No matching distribution found for tensorflow-macos== これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。最終的なtensorflowのインストールコマンドは\n1 2 3 conda install -c apple tensorflow-deps==2.9.0 python -m pip install tensorflow-macos==2.9.0 python -m pip install tensorflow-metal になります。これでtensorflowが動くようになりました！！！感動！！！\nTensorFlow Probability tensorflow probabilityはtensorflowで確率的な推論を用いる際に非常に重宝するライブラリです。こちらはtensorflowのバージョンに非常に強く依存します。この依存関係はtensorflow probabilityのリリースノートを読めばわかります。自分の環境にあったバージョンを選択してインストールしましょう。私はtensorflowのバージョンに合わせて0.17.0のバージョンをインストールしました。\n1 python -m pip install tensorflow-probability==0.17.0 GPflow gpflowはtensorflowベースのガウス過程回帰ライブラリです。基本的な回帰に合わせてデータ数が多いときに有用な変分推論に基づく回帰(Sparse Variational Inferenceとか言われるもの)に非常に強いものとして知られています。この具体例はドキュメントが詳しいです。 愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは–no-dependenciesオプションで実現できます。\n1 python -m pip install --no-dependencies gpflow あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。\n1 2 3 4 python -m pip install tabulate python -m pip install deprecated python -m pip install multipledispatch python -m pip install lark gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。こちらのissueが参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。\nJAX jaxが自動微分とjitコンパイルがついたnumpy、なんて呼ばれ方がよくされています。これは本当にそのとおりで個人的に結構好きなライブラリです。jaxは最近Apple Siliconでのインストールに対応しています(こちらのissueが参考になります)。この前まではjaxをimportするとこれはexperimentalだ、みたいな警告文が出てきていたのですが最近はその警告文も消えてます。随分と進歩を感じます。 インストールは基本的にGitHubページに従えば良いです。\n1 python -m pip install --upgrade \"jax[cpu]\" ",
-  "wordCount" : "192",
+  "articleBody": "Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。 (ここではpyenvを用いた環境構築について記しています。もちろん他にも良い方法はあると思います。) インストールに手こずることがあれば随時この記事に書き足していきたいと思います。\n特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。\nhttps://qiita.com/chipmunk-star/items/90931fb5180b8024adcb pyenv はじめにpyenvをインストールします。これはpyenvのGitHubページに従えばうまく動きます。\nApple Siliconではarmアーキテクチャが採用されているのでminiforgeを使わないといけない、という説明がネット上に無数にあるのでそれに従います。今ではminiforge以外も対応しているのかもしれないですが、よくわからないです。 この記事を書いている現時点(2022/07/11)ではminiforge3-4.10.3-10が最新のように見えるのでこれをインストールしてglobalの環境に設定しておきます。\n1 2 pyenv install miniforge3-4.10.3-10 pyenv global miniforge3-4.10.3-10 TensorFlow tensorflowのインストールが一番大変で、いろんな記事を眺めてはインストールを試みましたが成功には至りませんでした。上のリンクに従うとすんなりとインストールが完了しました。\nインストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。\n1 2 3 4 5 6 7 8 9 -\u003e % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2.9.0 0 apple これを見ると2.9.0のバージョンが一番新しそうです。次にtensorflow-macosのバージョンを確認します。こちらはpipを用いたインストールを行うそうなのでpip searchを行います。と言いたいところですがpip searchは現状使えないのでバージョン部分を空にするという裏技でインストール可能なバージョンをリストアップします。\n1 2 3 -\u003e % pip install tensorflow-macos== ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2.5.0, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.9.1, 2.9.2) ERROR: No matching distribution found for tensorflow-macos== これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。\n最後にtensorflow-metalのバージョンですが、これはappleの公式ページを見ればわかります。テーブルをこちらに転記すると以下のようになります。\ntensorflow-macos Version tensorflow-metal Version v2.5 0.1.2 v2.6 0.2.0 v2.7 0.3.0 v2.8 0.4.0 v2.9 0.5.0 v2.10 0.6.0 v2.11 0.7.0 最終的なtensorflowのインストールコマンドは\n1 2 3 conda install -c apple tensorflow-deps==2.9.0 python -m pip install tensorflow-macos==2.9.0 python -m pip install tensorflow-metal==0.5.0 になります。これでtensorflowが動くようになりました！！！感動！！！\nTensorFlow Probability tensorflow probabilityはtensorflowで確率的な推論を用いる際に非常に重宝するライブラリです。こちらはtensorflowのバージョンに非常に強く依存します。この依存関係はtensorflow probabilityのリリースノートを読めばわかります。自分の環境にあったバージョンを選択してインストールしましょう。私はtensorflowのバージョンに合わせて0.17.0のバージョンをインストールしました。\n1 python -m pip install tensorflow-probability==0.17.0 GPflow gpflowはtensorflowベースのガウス過程回帰ライブラリです。基本的な回帰に合わせてデータ数が多いときに有用な変分推論に基づく回帰(Sparse Variational Inferenceとか言われるもの)に非常に強いものとして知られています。この具体例はドキュメントが詳しいです。 愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは–no-dependenciesオプションで実現できます。\n1 python -m pip install --no-dependencies gpflow あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。\n1 2 3 4 python -m pip install tabulate python -m pip install deprecated python -m pip install multipledispatch python -m pip install lark gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。こちらのissueが参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。\n現在、gpflowのsetup.pyは更新されていてtensorflow-macosに対してもpip installが有効になっています。素直にpip install gpflowを実行してください。\n1 python -m pip install gpflow JAX jaxが自動微分とjitコンパイルがついたnumpy、なんて呼ばれ方がよくされています。これは本当にそのとおりで個人的に結構好きなライブラリです。jaxは最近Apple Siliconでのインストールに対応しています(こちらのissueが参考になります)。この前まではjaxをimportするとこれはexperimentalだ、みたいな警告文が出てきていたのですが最近はその警告文も消えてます。随分と進歩を感じます。 インストールは基本的にGitHubページに従えば良いです。\n1 python -m pip install --upgrade \"jax[cpu]\" ",
+  "wordCount" : "222",
   "inLanguage": "en",
   "datePublished": "2022-07-11T10:26:10+09:00",
   "dateModified": "2022-07-11T10:26:10+09:00",
@@ -219,7 +219,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
     <h1 class="post-title">
       M1 MacでのPython環境構築(tensorflowとか)
     </h1>
-    <div class="post-meta"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda
+    <div class="post-meta"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;222 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
   </header> <div class="toc">
@@ -302,7 +302,47 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 </span></span><span class="line"><span class="cl">ERROR: No matching distribution found <span class="k">for</span> tensorflow-macos<span class="o">==</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。最終的なtensorflowのインストールコマンドは</p>
+</div><p>これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。</p>
+<p>最後にtensorflow-metalのバージョンですが、これは<a href="https://developer.apple.com/metal/tensorflow-plugin/">appleの公式ページ</a>を見ればわかります。テーブルをこちらに転記すると以下のようになります。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">tensorflow-macos Version</th>
+<th style="text-align:center">tensorflow-metal Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">v2.5</td>
+<td style="text-align:center">0.1.2</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.6</td>
+<td style="text-align:center">0.2.0</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.7</td>
+<td style="text-align:center">0.3.0</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.8</td>
+<td style="text-align:center">0.4.0</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.9</td>
+<td style="text-align:center">0.5.0</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.10</td>
+<td style="text-align:center">0.6.0</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.11</td>
+<td style="text-align:center">0.7.0</td>
+</tr>
+</tbody>
+</table>
+<p>最終的なtensorflowのインストールコマンドは</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -312,7 +352,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda install -c apple tensorflow-deps<span class="o">==</span>2.9.0
 </span></span><span class="line"><span class="cl">python -m pip install tensorflow-macos<span class="o">==</span>2.9.0
-</span></span><span class="line"><span class="cl">python -m pip install tensorflow-metal
+</span></span><span class="line"><span class="cl">python -m pip install tensorflow-metal<span class="o">==</span>0.5.0
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>になります。これでtensorflowが動くようになりました！！！感動！！！</p>
@@ -328,7 +368,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 </div>
 </div><h2 id="gpflow">GPflow<a hidden class="anchor" aria-hidden="true" href="#gpflow">#</a></h2>
 <p>gpflowはtensorflowベースのガウス過程回帰ライブラリです。基本的な回帰に合わせてデータ数が多いときに有用な変分推論に基づく回帰(Sparse Variational Inferenceとか言われるもの)に非常に強いものとして知られています。この具体例は<a href="https://gpflow.github.io/GPflow/2.5.2/notebooks/advanced/gps_for_big_data.html">ドキュメント</a>が詳しいです。
-愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは&ndash;no-dependenciesオプションで実現できます。</p>
+<del>愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは&ndash;no-dependenciesオプションで実現できます。</del></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -337,7 +377,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m pip install --no-dependencies gpflow
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。</p>
+</div><p><del>あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。</del></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -352,8 +392,17 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 </span></span><span class="line"><span class="cl">python -m pip install lark
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。<a href="https://github.com/GPflow/GPflow/pull/1924">こちらのissue</a>が参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。</p>
-<h2 id="jax">JAX<a hidden class="anchor" aria-hidden="true" href="#jax">#</a></h2>
+</div><p><del>gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。<a href="https://github.com/GPflow/GPflow/pull/1924">こちらのissue</a>が参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。</del></p>
+<p>現在、gpflowのsetup.pyは更新されていてtensorflow-macosに対してもpip installが有効になっています。素直にpip install gpflowを実行してください。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m pip install gpflow
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="jax">JAX<a hidden class="anchor" aria-hidden="true" href="#jax">#</a></h2>
 <p>jaxが自動微分とjitコンパイルがついたnumpy、なんて呼ばれ方がよくされています。これは本当にそのとおりで個人的に結構好きなライブラリです。jaxは最近Apple Siliconでのインストールに対応しています(<a href="https://github.com/google/jax/issues/5501">こちらのissue</a>が参考になります)。この前まではjaxをimportするとこれはexperimentalだ、みたいな警告文が出てきていたのですが最近はその警告文も消えてます。随分と進歩を感じます。
 インストールは基本的に<a href="https://github.com/google/jax#installation">GitHubページ</a>に従えば良いです。</p>
 <div class="highlight"><div class="chroma">

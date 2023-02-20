@@ -168,6 +168,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>単連結な被覆空間の存在<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。
+Theorem   弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。
+Definition    [半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
+Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
+Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。
+$p$はwell-defined
+$[\gamma_{1}]=[\gamma_{2}]$のとき、$\gamma_{1}(1)=\gamma_{2}(1)$であるから、$p$はwell-definedである。
+$p$は全射
+任意の$x\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\gamma$が存在する。このとき、$p([\gamma])=\gamma(1)=x$であるから、$p$は全射である。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-17 22:17:24 +0900 JST'>February 17, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;77 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 単連結な被覆空間の存在" href="https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>位相の基底
     </h2>
   </header>
@@ -312,25 +332,6 @@ Proposition   $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分
   </div>
   <footer class="entry-footer"><span title='2022-08-26 14:46:14 +0900 JST'>August 26, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;157 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to JAXで蔵本モデル" href="https://yonesuke.github.io/posts/jax-kuramoto/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Brouwer&#39;s fixed-point theorem
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>ホモロジーゼミの中でブラウワーの不動点定理の証明が出てきました。特に円盤$D^{2}$上でのブラウワーの不動点定理は基本群を用いて簡便に証明ができることを学んだので備忘録としてまとめておきます。 Theorem    [ブラウワーの不動点定理] $D^{2}\to D^{2}$の任意の連続関数は不動点を持つ。 ホモトピーからの準備 誘導準同型 連続関数を$\varphi\colon(X,x_{0})\to(Y,y_{0})$のように書いたとき、$\varphi\colon X\to Y$で$\varphi(x_{0})=y_{0}$なるものとします。位相空間の間の連続関数$\varphi$から誘導される基本群の間の準同型を次のように定めます。 $$ \varphi_{\ast}\colon \pi_{1}(X,x_{0})\to\pi_{1}(Y,y_{0}),\quad\varphi_{\ast}([f])=[\varphi\circ f] $$ これは$x_{0}$を基点とする$X$内のループ(をホモトピー同値類で割ったもの)を$\varphi$で$y_{0}$を基点とする$Y$内のループ(をホモトピー同値類で割ったもの)に移す写像になります。この写像はwell-definedです。
-連続関数の間の合成という操作は誘導準同型を通して準同型写像の間の合成に移ります。すなわち、$\psi\colon(X,x_{0})\to(Y,y_{0}),\varphi\colon(Y,y_{0})\to(Z,z_{0})$に対して、 $$ (\varphi\circ\psi) _ {\ast}=\varphi_{\ast}\circ\psi_{\ast} $$ になります。これは$(\varphi\circ\psi) _ {\ast}([f])=[(\varphi\circ\psi)\circ f]=[\varphi \circ (\psi \circ f)]=\varphi_{\ast}([\psi \circ f])=\varphi_{\ast}(\psi_{\ast}[f])=\varphi_{\ast}\circ\psi_{\ast}([f])$からわかります。
-レトラクション $X$から$A\subset X$へのレトラクションを次のように定義します。
-Definition    [レトラクション] 連続関数$r\colon X\to A$がレトラクションであるとは、任意の$a\in A$で$r(a)=a$となることである。 Info
-レトラクションは射影のようなものと見ることができます。線形写像$P$が射影であることは$P^{2}=P\circ P=P$で特徴づけられましたが、同様にレトラクションは$r\circ r=r$となります。
-また、レトラクションの対となるものとして包含写像が定まります。 $$ i\colon A\hookrightarrow X $$
-すると、$r\circ i=\mathrm{id} _ {A}$になります。誘導準同型からの帰結として、 $$ r_{\ast}\circ i_{\ast}=\mathrm{id} _ {\pi _ {1}(A,x_{0})} $$ になります。特に、$i_{\ast}\colon\pi_{1}(A,x_{0})\to\pi_{1}(X,x_{0})$は単射準同型になります。
-証明 Proof [Of Theorem 1]: 背理法で示す。ある連続関数$h\colon D^{2}\to D^{2}$が存在して、任意の$x\in D^{2}$で$h(x)\ne x$であるとしよう。 このとき、$r\colon D^{2}\to\mathbb{S}^{1}$のレトラクションを次のように構成できる。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-08-18 12:01:27 +0900 JST'>August 18, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;89 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Brouwer&#39;s fixed-point theorem" href="https://yonesuke.github.io/posts/brouwer-fixed-point-thm/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

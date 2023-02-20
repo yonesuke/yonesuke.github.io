@@ -10,7 +10,24 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Feb 2023 14:32:22 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Feb 2023 22:17:24 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>単連結な被覆空間の存在</title>
+      <link>https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/</link>
+      <pubDate>Fri, 17 Feb 2023 22:17:24 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/</guid>
+      <description>ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。
+Theorem &amp;nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。
+Definition &amp;nbsp; &amp;nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
+Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
+Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。
+$p$はwell-defined
+$[\gamma_{1}]=[\gamma_{2}]$のとき、$\gamma_{1}(1)=\gamma_{2}(1)$であるから、$p$はwell-definedである。
+$p$は全射
+任意の$x\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\gamma$が存在する。このとき、$p([\gamma])=\gamma(1)=x$であるから、$p$は全射である。</description>
+    </item>
+    
     <item>
       <title>位相の基底</title>
       <link>https://yonesuke.github.io/posts/topology_basis/</link>

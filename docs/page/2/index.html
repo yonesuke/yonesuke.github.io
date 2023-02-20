@@ -154,6 +154,25 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Brouwer&#39;s fixed-point theorem
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ホモロジーゼミの中でブラウワーの不動点定理の証明が出てきました。特に円盤$D^{2}$上でのブラウワーの不動点定理は基本群を用いて簡便に証明ができることを学んだので備忘録としてまとめておきます。 Theorem    [ブラウワーの不動点定理] $D^{2}\to D^{2}$の任意の連続関数は不動点を持つ。 ホモトピーからの準備 誘導準同型 連続関数を$\varphi\colon(X,x_{0})\to(Y,y_{0})$のように書いたとき、$\varphi\colon X\to Y$で$\varphi(x_{0})=y_{0}$なるものとします。位相空間の間の連続関数$\varphi$から誘導される基本群の間の準同型を次のように定めます。 $$ \varphi_{\ast}\colon \pi_{1}(X,x_{0})\to\pi_{1}(Y,y_{0}),\quad\varphi_{\ast}([f])=[\varphi\circ f] $$ これは$x_{0}$を基点とする$X$内のループ(をホモトピー同値類で割ったもの)を$\varphi$で$y_{0}$を基点とする$Y$内のループ(をホモトピー同値類で割ったもの)に移す写像になります。この写像はwell-definedです。
+連続関数の間の合成という操作は誘導準同型を通して準同型写像の間の合成に移ります。すなわち、$\psi\colon(X,x_{0})\to(Y,y_{0}),\varphi\colon(Y,y_{0})\to(Z,z_{0})$に対して、 $$ (\varphi\circ\psi) _ {\ast}=\varphi_{\ast}\circ\psi_{\ast} $$ になります。これは$(\varphi\circ\psi) _ {\ast}([f])=[(\varphi\circ\psi)\circ f]=[\varphi \circ (\psi \circ f)]=\varphi_{\ast}([\psi \circ f])=\varphi_{\ast}(\psi_{\ast}[f])=\varphi_{\ast}\circ\psi_{\ast}([f])$からわかります。
+レトラクション $X$から$A\subset X$へのレトラクションを次のように定義します。
+Definition    [レトラクション] 連続関数$r\colon X\to A$がレトラクションであるとは、任意の$a\in A$で$r(a)=a$となることである。 Info
+レトラクションは射影のようなものと見ることができます。線形写像$P$が射影であることは$P^{2}=P\circ P=P$で特徴づけられましたが、同様にレトラクションは$r\circ r=r$となります。
+また、レトラクションの対となるものとして包含写像が定まります。 $$ i\colon A\hookrightarrow X $$
+すると、$r\circ i=\mathrm{id} _ {A}$になります。誘導準同型からの帰結として、 $$ r_{\ast}\circ i_{\ast}=\mathrm{id} _ {\pi _ {1}(A,x_{0})} $$ になります。特に、$i_{\ast}\colon\pi_{1}(A,x_{0})\to\pi_{1}(X,x_{0})$は単射準同型になります。
+証明 Proof [Of Theorem 1]: 背理法で示す。ある連続関数$h\colon D^{2}\to D^{2}$が存在して、任意の$x\in D^{2}$で$h(x)\ne x$であるとしよう。 このとき、$r\colon D^{2}\to\mathbb{S}^{1}$のレトラクションを次のように構成できる。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-08-18 12:01:27 +0900 JST'>August 18, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;89 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Brouwer&#39;s fixed-point theorem" href="https://yonesuke.github.io/posts/brouwer-fixed-point-thm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>ランダムグラフ上の最小全域木<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
     </h2>
   </header>
@@ -187,7 +206,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
 1 2 3 4 5 6 7 8 9 -&gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2....</p>
   </div>
-  <footer class="entry-footer"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;192 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2022-07-11 10:26:10 +0900 JST'>July 11, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;222 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to M1 MacでのPython環境構築(tensorflowとか)" href="https://yonesuke.github.io/posts/m1-mac-python/"></a>
 </article>
 
@@ -309,22 +328,6 @@ $\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに
   </div>
   <footer class="entry-footer"><span title='2021-07-13 02:20:20 +0900 JST'>July 13, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;259 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Borwein integral" href="https://yonesuke.github.io/posts/borwein/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>特異値分解
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>行列$A$を$m\times n$の実行列とします。 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$ となるようにできます。このような分解を特異値分解と言います。
-証明 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル${v_{1},\dots,v_{n}}$と固有値${\xi_{1},\dots,\xi_{n}}$が存在して $$ A^{\mathsf{T}}Av_{i}=\xi_{i}v_{i},\quad (v_{i},v_{j})=\delta_{ij} $$ となるようにできます。 また、 $$ \xi_{i}=(v_{i},\xi_{i}v_{i})=(v_{i},A^{\mathsf{T}}Av_{i})=(Av_{i},Av_{i})\geq0 $$ なので固有値は常に0以上です。特に、$i=1,\dots,r$で$\xi_{i}&gt;0$かつ$i&gt;r$で$\xi_{i}=0$となるようにしておきます。 実はこの固有ベクトル$v_{i}$たちが直交行列$V$に対応します。
-次に$i=1,2,\dots,r$に対して$u_{i}=Av_{i}/\sqrt{\xi_{i}}$としましょう。すると、 $$ (u_{i}, u_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(Av_{i},Av_{j})=\frac{1}{\sqrt{\xi_{i}\xi_{j}}}(v_{i},A^{\mathsf{T}}Av_{j})=\frac{\xi_{j}\delta_{ij}}{\sqrt{\xi_{i}\xi_{j}}}=\delta_{ij} $$ となり、$u_{i}$たちは互いに直交します。このとき$m-r$個のベクトル${u_{r&#43;1},\dots,u_{m}}$を持ってきて正規直交基底${u_{1},\dots,u_{m}}$を構成することができます。 実はこのベクトル$u_{i}$たちが直交行列$U$に対応します。
-上で得られたベクトルを用いて行列 $$ V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m}) $$ を構成します。これが直交行列なのは明らかです。 $U^{\mathsf{T}}AV$という行列を計算してみると、 $$ U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j}) $$ となります。
-$j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。 よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-05-31 16:22:52 +0900 JST'>May 31, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;130 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to 特異値分解" href="https://yonesuke.github.io/posts/svd/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

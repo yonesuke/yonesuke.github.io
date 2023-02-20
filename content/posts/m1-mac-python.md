@@ -43,11 +43,25 @@ tensorflow-deps                2.9.0               0  apple
 ERROR: Could not find a version that satisfies the requirement tensorflow-macos== (from versions: 2.5.0, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.9.1, 2.9.2)
 ERROR: No matching distribution found for tensorflow-macos==
 ```
-これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。最終的なtensorflowのインストールコマンドは
+これを見ると2.9.2までのバージョンが提供されているようです。tensorflow-depsの結果と合わせてここでは2.9.0のバージョンをインストールしましょう。
+
+最後にtensorflow-metalのバージョンですが、これは[appleの公式ページ](https://developer.apple.com/metal/tensorflow-plugin/)を見ればわかります。テーブルをこちらに転記すると以下のようになります。
+
+| tensorflow-macos Version | tensorflow-metal Version |
+|:------------------:|:------------------------:|
+| v2.5             | 0.1.2                    |
+| v2.6              | 0.2.0                    |
+| v2.7              | 0.3.0                    |
+| v2.8              | 0.4.0                    |
+| v2.9              | 0.5.0                    |
+| v2.10              | 0.6.0                    |
+| v2.11              | 0.7.0                    |
+
+最終的なtensorflowのインストールコマンドは
 ```bash
 conda install -c apple tensorflow-deps==2.9.0
 python -m pip install tensorflow-macos==2.9.0
-python -m pip install tensorflow-metal
+python -m pip install tensorflow-metal==0.5.0
 ```
 になります。これでtensorflowが動くようになりました！！！感動！！！
 
@@ -59,11 +73,11 @@ python -m pip install tensorflow-probability==0.17.0
 
 ## GPflow
 gpflowはtensorflowベースのガウス過程回帰ライブラリです。基本的な回帰に合わせてデータ数が多いときに有用な変分推論に基づく回帰(Sparse Variational Inferenceとか言われるもの)に非常に強いものとして知られています。この具体例は[ドキュメント](https://gpflow.github.io/GPflow/2.5.2/notebooks/advanced/gps_for_big_data.html)が詳しいです。
-愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは--no-dependenciesオプションで実現できます。
+~~愚直にgpflowをインストールするとsetup.pyにあるtensorflowライブラリが必要と言われてインストールがうまくいきません。これはpipでtensorflowをインストールしたときのライブラリ名がtensorflow-macosであることに起因します。このままではうまく行かないので一旦setup.pyに書かれている依存ライブラリは無視してgpflowをインストールします(若干無茶なことをしていますが、動けば良いのスタンスでやっていきます)。これは--no-dependenciesオプションで実現できます。~~
 ```bash
 python -m pip install --no-dependencies gpflow
 ```
-あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。
+~~あとはpython上で実際にgpflowを動かしてみてライブラリが足りないと怒られたらその都度ライブラリを入れていきましょう。幸いtensorflowをインストールするという山場は超えているので今の所問題は起きていません。今の所インストールが必要になったらライブラリは次の通りです。~~
 ```bash
 python -m pip install tabulate
 python -m pip install deprecated
@@ -71,7 +85,13 @@ python -m pip install multipledispatch
 python -m pip install lark
 ```
 
-gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。[こちらのissue](https://github.com/GPflow/GPflow/pull/1924)が参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。
+~~gpflowのissueを眺めているとgpflow側もこの問題に気づいているようでこれから修正が入っていくことになるのだと思います。[こちらのissue](https://github.com/GPflow/GPflow/pull/1924)が参考になります(本当はこういう問題に気づいた時点でissueを投げていく姿勢が必要なのだろうな〜とは思いますが忙しくてやれない。。。)。~~
+
+現在、gpflowのsetup.pyは更新されていてtensorflow-macosに対してもpip installが有効になっています。素直にpip install gpflowを実行してください。
+
+```bash
+python -m pip install gpflow
+```
 
 ## JAX
 jaxが自動微分とjitコンパイルがついたnumpy、なんて呼ばれ方がよくされています。これは本当にそのとおりで個人的に結構好きなライブラリです。jaxは最近Apple Siliconでのインストールに対応しています([こちらのissue](https://github.com/google/jax/issues/5501)が参考になります)。この前まではjaxをimportするとこれはexperimentalだ、みたいな警告文が出てきていたのですが最近はその警告文も消えてます。随分と進歩を感じます。
