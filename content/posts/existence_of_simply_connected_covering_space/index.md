@@ -21,9 +21,25 @@ author: Ryosuke Yoneda
 位相空間$X$が**半局所単連結**であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。
 {{< /thmlike >}}
 
+{{< thmlike type="Theorem">}}
+$O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、
+$$
+x\in W,\quad W\subset A
+$$
+となる$W\in M$が存在することは同値である。
+{{< /thmlike >}}
+
+{{< thmlike type="Theorem">}}
+空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。
+1. 任意の$x\in S$に対してある$W\in M$が存在して$x\in W$となる。
+2. 任意の$W_{1},W_{2}\in M$で$W_{1}\cap W_{2}\ne \emptyset$であるとき、任意の$x\in W_{1}\cap W_{2}$に対して、ある$W\subset W_{1} \cap W_{2}$が存在して$x\in W$なる$W\in M$が存在する。
+{{< /thmlike >}}
+
+証明は[位相の基底](../topology_basis)を参照してください。
+
 ## 証明
 
-はじめに、必要条件を示します。
+はじめに、*必要条件*を示します。
 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
 
 {{< proof >}}
@@ -33,8 +49,9 @@ $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。
 これより$X$は半局所単連結である。
 {{< /proof >}}
 
-次に、十分条件を示します。
-すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
+次に、*十分条件*を示します。
+すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\tilde{X}$を持つことを示します。
+証明は具体的に$\tilde{X}$を構成し、それが単連結であることを示すことで行います。
 
 {{< proof >}}
 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。
@@ -59,9 +76,43 @@ $$
 
 3. **$X$の基底 $\mathcal{U}$**
 
+    はじめに$X$の部分集合族を次のように
+
+    $$
+    \mathcal{U}=\left\\{\textrm{path-connected open set }U\subset X \mathrel{}\middle|\mathrel{} \pi_{1}(U)\hookrightarrow\pi_{1}(X)\colon\textrm{trivial} \right\\}
+    $$
+
+    で$\mathcal{U}$を定める。このとき、任意の弧状連結開集合$V\subset U \in \mathcal{U}$に対して$\pi_{1}(V) \hookrightarrow \pi_{1}(U) \hookrightarrow \pi_{1}(X)$は自明になるので$V\in \mathcal{U}$がわかる。
+    これと$X$が局所弧状連結かつ半局所単連結より$\mathcal{U}$が基底であることがわかる。
+
 4. **$\tilde{X}$の基底 $\tilde{\mathcal{U}}$**
 
+    任意の$U\in\mathcal{U}$と$x_{0}\in X$を起点とし$U$内の一点を終点とするpath$\gamma$を取る(このような$\gamma$が取れることは$X$の弧状連結性からわかる)。
+    これに対して$\tilde{X}$の部分集合
+
+    $$
+    U_{[\gamma]}=\left\\{[\gamma\cdot\eta] \mathrel{}\middle|\mathrel{} \eta\colon \textrm{path in } U \textrm{ with } \eta(0)=\gamma(1) \right\\}
+    $$
+
+    を定める。これは$\gamma$のとり方に対してwell-definedである。これは$\gamma\sim\gamma'$ならば$[\gamma\cdot\eta]=[\gamma'\cdot\eta]$からわかる。
+    このとき、
+    $$
+    [\gamma']\in U_{[\gamma]} \Longrightarrow U_{[\gamma]} = U_{[\gamma']}
+    $$
+
+    が成り立つ。
+    - $U_{[\gamma']}\subset U_{[\gamma]}$であること: $[\gamma']\in U_{[\gamma]}$であるとき、$\gamma(1)$を起点とする$U$内のpath $\eta$が存在して$\gamma'=\gamma\cdot\eta$が成り立つ。このとき、$U_{[\gamma']}$内の任意の元は$U$内のあるpath $\mu$が存在して$[\gamma'\cdot\mu]=[\gamma\cdot\eta\cdot\mu]$と表される。$\eta\cdot\mu$は$U$内のpathであり、$(\eta\cdot\mu)(0)=\eta(0)=\gamma(1)$であるから$[\gamma\cdot\eta\cdot\mu]=[\gamma\cdot(\eta\cdot\mu)]$は$U_{[\gamma]}$の元である。よって、$U_{[\gamma']}\subset U_{[\gamma]}$である。
+    - $U_{[\gamma]}\subset U_{[\gamma']}$であること: 上と同様に$\gamma'=\gamma\cdot\eta$と表現する。$U_{[\gamma]}$の任意の元は$U$内のあるpath $\mu$を用いて$[\gamma\cdot\mu]$と書ける。$[\gamma\cdot\mu]=[\gamma'\cdot(\overline{\eta}\cdot \mu)]$であり、$\overline{\eta}\cdot \mu$は$U$内のpathであるから$[\gamma'\cdot(\overline{\eta}\cdot \mu)]$は$U_{[\gamma']}$の元である。よって、$U_{[\gamma]}\subset U_{[\gamma']}$である。
+
+    この結果を用いると$\\{U_{[\gamma]}\\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4により示される。
+
+    - hoge
+
 5. **$p$は局所同型**
+
+    $p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射である。
+    - 全射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta$であって$\eta([0,1])\subset U$なるものが存在する(このような$\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\gamma\cdot\eta]\in U_{[\gamma]}$であり、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta])=\eta(1)=x$となるから、$p| _ {U_{[\gamma]}}$は全射である。
+    - 単射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta_{1},\eta_{2}$が取れる。このとき、$\pi_{1}(U)\hookrightarrow \pi_{1}(X)$は自明より$\eta_{1}\sim\eta_{2}$である。これより、$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$であるから$p| _ {U_{[\gamma]}}$は単射である。
 
 6. **$p$は被覆空間**
 

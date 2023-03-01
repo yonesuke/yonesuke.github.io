@@ -9,13 +9,11 @@
 <meta name="keywords" content="">
 <meta name="description" content="ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。
 Theorem &nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。
-Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
-Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
-Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。
-$p$はwell-defined
-$[\gamma_{1}]=[\gamma_{2}]$のとき、$\gamma_{1}(1)=\gamma_{2}(1)$であるから、$p$はwell-definedである。
-$p$は全射
-任意の$x\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\gamma$が存在する。このとき、$p([\gamma])=\gamma(1)=x$であるから、$p$は全射である。">
+Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 Theorem &nbsp; $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、 $$ x\in W,\quad W\subset A $$ となる$W\in M$が存在することは同値である。 Theorem &nbsp; 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。
+任意の$x\in S$に対してある$W\in M$が存在して$x\in W$となる。 任意の$W_{1},W_{2}\in M$で$W_{1}\cap W_{2}\ne \emptyset$であるとき、任意の$x\in W_{1}\cap W_{2}$に対して、ある$W\subset W_{1} \cap W_{2}$が存在して$x\in W$なる$W\in M$が存在する。 証明は位相の基底を参照してください。
+証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
+Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\tilde{X}$を持つことを示します。 証明は具体的に$\tilde{X}$を構成し、それが単連結であることを示すことで行います。
+Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。">
 <meta name="author" content="Ryosuke Yoneda">
 <link rel="canonical" href="https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
@@ -90,13 +88,11 @@ $p$は全射
 <meta property="og:title" content="単連結な被覆空間の存在" />
 <meta property="og:description" content="ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。
 Theorem &nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。
-Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
-Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
-Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。
-$p$はwell-defined
-$[\gamma_{1}]=[\gamma_{2}]$のとき、$\gamma_{1}(1)=\gamma_{2}(1)$であるから、$p$はwell-definedである。
-$p$は全射
-任意の$x\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\gamma$が存在する。このとき、$p([\gamma])=\gamma(1)=x$であるから、$p$は全射である。" />
+Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 Theorem &nbsp; $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、 $$ x\in W,\quad W\subset A $$ となる$W\in M$が存在することは同値である。 Theorem &nbsp; 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。
+任意の$x\in S$に対してある$W\in M$が存在して$x\in W$となる。 任意の$W_{1},W_{2}\in M$で$W_{1}\cap W_{2}\ne \emptyset$であるとき、任意の$x\in W_{1}\cap W_{2}$に対して、ある$W\subset W_{1} \cap W_{2}$が存在して$x\in W$なる$W\in M$が存在する。 証明は位相の基底を参照してください。
+証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
+Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\tilde{X}$を持つことを示します。 証明は具体的に$\tilde{X}$を構成し、それが単連結であることを示すことで行います。
+Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/" /><meta property="og:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-17T22:17:24+09:00" />
@@ -108,13 +104,11 @@ $p$は全射
 <meta name="twitter:title" content="単連結な被覆空間の存在"/>
 <meta name="twitter:description" content="ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。
 Theorem &nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。
-Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
-Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。
-Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。
-$p$はwell-defined
-$[\gamma_{1}]=[\gamma_{2}]$のとき、$\gamma_{1}(1)=\gamma_{2}(1)$であるから、$p$はwell-definedである。
-$p$は全射
-任意の$x\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\gamma$が存在する。このとき、$p([\gamma])=\gamma(1)=x$であるから、$p$は全射である。"/>
+Definition &nbsp; &nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。 Theorem &nbsp; $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、 $$ x\in W,\quad W\subset A $$ となる$W\in M$が存在することは同値である。 Theorem &nbsp; 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。
+任意の$x\in S$に対してある$W\in M$が存在して$x\in W$となる。 任意の$W_{1},W_{2}\in M$で$W_{1}\cap W_{2}\ne \emptyset$であるとき、任意の$x\in W_{1}\cap W_{2}$に対して、ある$W\subset W_{1} \cap W_{2}$が存在して$x\in W$なる$W\in M$が存在する。 証明は位相の基底を参照してください。
+証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。
+Proof: $p\colon \tilde{X}\to X$が被覆空間で$\tilde{X}$が単連結とする。 任意の$x\in X$とその開近傍$U\subset X$に対して、そのリフト$\tilde{U}\subset \tilde{X}$が存在して、$p| _ {\tilde{U}}\colon \tilde{U}\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\gamma$に対して、対応する$\tilde{U}$内の$\tilde{\gamma}$が存在する。$\tilde{X}$は単連結であるから$\tilde{\gamma}$は$\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\tilde{X}$を持つことを示します。 証明は具体的に$\tilde{X}$を構成し、それが単連結であることを示すことで行います。
+Proof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \begin{aligned} \tilde{X} &amp;= \left\{[\gamma] \mathrel{}\middle|\mathrel{} \gamma\colon \textrm{path in } X \textrm{ starting at } x_{0}\right\} \\ p &amp;\colon \tilde{X}\to X;\quad[\gamma] \mapsto \gamma(1) \end{aligned} $$ で定める。$[\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。"/>
 
 
 <script type="application/ld+json">
@@ -143,12 +137,12 @@ $p$は全射
   "@type": "BlogPosting",
   "headline": "単連結な被覆空間の存在",
   "name": "単連結な被覆空間の存在",
-  "description": "ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。\nTheorem \u0026nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\\tilde{X}$で、$\\tilde{X}$は$X$の被覆空間とする。$\\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。\nDefinition \u0026nbsp; \u0026nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\\colon U\\hookrightarrow X$から誘導される基本群の準同型写像$i_{\\ast}\\colon \\pi_{1}(U,x)\\hookrightarrow \\pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。\nProof: $p\\colon \\tilde{X}\\to X$が被覆空間で$\\tilde{X}$が単連結とする。 任意の$x\\in X$とその開近傍$U\\subset X$に対して、そのリフト$\\tilde{U}\\subset \\tilde{X}$が存在して、$p| _ {\\tilde{U}}\\colon \\tilde{U}\\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\\gamma$に対して、対応する$\\tilde{U}$内の$\\tilde{\\gamma}$が存在する。$\\tilde{X}$は単連結であるから$\\tilde{\\gamma}$は$\\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。\nProof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \\begin{aligned} \\tilde{X} \u0026amp;= \\left\\{[\\gamma] \\mathrel{}\\middle|\\mathrel{} \\gamma\\colon \\textrm{path in } X \\textrm{ starting at } x_{0}\\right\\} \\\\ p \u0026amp;\\colon \\tilde{X}\\to X;\\quad[\\gamma] \\mapsto \\gamma(1) \\end{aligned} $$ で定める。$[\\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。\n$p$はwell-defined\n$[\\gamma_{1}]=[\\gamma_{2}]$のとき、$\\gamma_{1}(1)=\\gamma_{2}(1)$であるから、$p$はwell-definedである。\n$p$は全射\n任意の$x\\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\\gamma$が存在する。このとき、$p([\\gamma])=\\gamma(1)=x$であるから、$p$は全射である。",
+  "description": "ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。\nTheorem \u0026nbsp; 弧状連結かつ局所弧状連結な位相空間$X,\\tilde{X}$で、$\\tilde{X}$は$X$の被覆空間とする。$\\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。\nDefinition \u0026nbsp; \u0026nbsp;[半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\\colon U\\hookrightarrow X$から誘導される基本群の準同型写像$i_{\\ast}\\colon \\pi_{1}(U,x)\\hookrightarrow \\pi_{1}(X,x)$が自明になることである。 Theorem \u0026nbsp; $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\\in O$と任意の$x\\in A$に対して、 $$ x\\in W,\\quad W\\subset A $$ となる$W\\in M$が存在することは同値である。 Theorem \u0026nbsp; 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。\n任意の$x\\in S$に対してある$W\\in M$が存在して$x\\in W$となる。 任意の$W_{1},W_{2}\\in M$で$W_{1}\\cap W_{2}\\ne \\emptyset$であるとき、任意の$x\\in W_{1}\\cap W_{2}$に対して、ある$W\\subset W_{1} \\cap W_{2}$が存在して$x\\in W$なる$W\\in M$が存在する。 証明は位相の基底を参照してください。\n証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。\nProof: $p\\colon \\tilde{X}\\to X$が被覆空間で$\\tilde{X}$が単連結とする。 任意の$x\\in X$とその開近傍$U\\subset X$に対して、そのリフト$\\tilde{U}\\subset \\tilde{X}$が存在して、$p| _ {\\tilde{U}}\\colon \\tilde{U}\\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\\gamma$に対して、対応する$\\tilde{U}$内の$\\tilde{\\gamma}$が存在する。$\\tilde{X}$は単連結であるから$\\tilde{\\gamma}$は$\\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\\tilde{X}$を持つことを示します。 証明は具体的に$\\tilde{X}$を構成し、それが単連結であることを示すことで行います。\nProof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \\begin{aligned} \\tilde{X} \u0026amp;= \\left\\{[\\gamma] \\mathrel{}\\middle|\\mathrel{} \\gamma\\colon \\textrm{path in } X \\textrm{ starting at } x_{0}\\right\\} \\\\ p \u0026amp;\\colon \\tilde{X}\\to X;\\quad[\\gamma] \\mapsto \\gamma(1) \\end{aligned} $$ で定める。$[\\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。",
   "keywords": [
     
   ],
-  "articleBody": "ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。\nTheorem 弧状連結かつ局所弧状連結な位相空間$X,\\tilde{X}$で、$\\tilde{X}$は$X$の被覆空間とする。$\\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。\nDefinition [半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\\colon U\\hookrightarrow X$から誘導される基本群の準同型写像$i_{\\ast}\\colon \\pi_{1}(U,x)\\hookrightarrow \\pi_{1}(X,x)$が自明になることである。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。\nProof: $p\\colon \\tilde{X}\\to X$が被覆空間で$\\tilde{X}$が単連結とする。 任意の$x\\in X$とその開近傍$U\\subset X$に対して、そのリフト$\\tilde{U}\\subset \\tilde{X}$が存在して、$p| _ {\\tilde{U}}\\colon \\tilde{U}\\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\\gamma$に対して、対応する$\\tilde{U}$内の$\\tilde{\\gamma}$が存在する。$\\tilde{X}$は単連結であるから$\\tilde{\\gamma}$は$\\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。\nProof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \\begin{aligned} \\tilde{X} \u0026= \\left\\{[\\gamma] \\mathrel{}\\middle|\\mathrel{} \\gamma\\colon \\textrm{path in } X \\textrm{ starting at } x_{0}\\right\\} \\\\ p \u0026\\colon \\tilde{X}\\to X;\\quad[\\gamma] \\mapsto \\gamma(1) \\end{aligned} $$ で定める。$[\\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。\n$p$はwell-defined\n$[\\gamma_{1}]=[\\gamma_{2}]$のとき、$\\gamma_{1}(1)=\\gamma_{2}(1)$であるから、$p$はwell-definedである。\n$p$は全射\n任意の$x\\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\\gamma$が存在する。このとき、$p([\\gamma])=\\gamma(1)=x$であるから、$p$は全射である。\n$X$の基底 $\\mathcal{U}$\n$\\tilde{X}$の基底 $\\tilde{\\mathcal{U}}$\n$p$は局所同型\n$p$は被覆空間\n$\\tilde{X}$は単連結\n",
-  "wordCount" : "77",
+  "articleBody": "ホモロジーゼミの基本群パートの一つの山場である、被覆空間の分類定理がやってきました。 この定理を示すためには、単連結な被覆空間の存在証明が必要になります。\nTheorem 弧状連結かつ局所弧状連結な位相空間$X,\\tilde{X}$で、$\\tilde{X}$は$X$の被覆空間とする。$\\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。 準備 はじめに、この証明に必要ないくつかの定義・定理を示します。\nDefinition [半局所単連結] 位相空間$X$が半局所単連結であるとは、任意の$x\\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\\colon U\\hookrightarrow X$から誘導される基本群の準同型写像$i_{\\ast}\\colon \\pi_{1}(U,x)\\hookrightarrow \\pi_{1}(X,x)$が自明になることである。 Theorem $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\\in O$と任意の$x\\in A$に対して、 $$ x\\in W,\\quad W\\subset A $$ となる$W\\in M$が存在することは同値である。 Theorem 空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。\n任意の$x\\in S$に対してある$W\\in M$が存在して$x\\in W$となる。 任意の$W_{1},W_{2}\\in M$で$W_{1}\\cap W_{2}\\ne \\emptyset$であるとき、任意の$x\\in W_{1}\\cap W_{2}$に対して、ある$W\\subset W_{1} \\cap W_{2}$が存在して$x\\in W$なる$W\\in M$が存在する。 証明は位相の基底を参照してください。\n証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。\nProof: $p\\colon \\tilde{X}\\to X$が被覆空間で$\\tilde{X}$が単連結とする。 任意の$x\\in X$とその開近傍$U\\subset X$に対して、そのリフト$\\tilde{U}\\subset \\tilde{X}$が存在して、$p| _ {\\tilde{U}}\\colon \\tilde{U}\\to U$が同相写像となる。 このとき、$U$内の$x_{0}$を基点とする任意のループ$\\gamma$に対して、対応する$\\tilde{U}$内の$\\tilde{\\gamma}$が存在する。$\\tilde{X}$は単連結であるから$\\tilde{\\gamma}$は$\\tilde{x}$の基点による定数関数にホモトピックになる。対応する$\\gamma$も$x_{0}$の基点による定数関数にホモトピックになる。 これより$X$は半局所単連結である。 次に、十分条件を示します。 すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\\tilde{X}$を持つことを示します。 証明は具体的に$\\tilde{X}$を構成し、それが単連結であることを示すことで行います。\nProof: 弧状連結、局所弧状連結、半局所単連結な位相空間$X$で$x_{0}$を基点とする。 このとき、単連結な被覆空間を $$ \\begin{aligned} \\tilde{X} \u0026= \\left\\{[\\gamma] \\mathrel{}\\middle|\\mathrel{} \\gamma\\colon \\textrm{path in } X \\textrm{ starting at } x_{0}\\right\\} \\\\ p \u0026\\colon \\tilde{X}\\to X;\\quad[\\gamma] \\mapsto \\gamma(1) \\end{aligned} $$ で定める。$[\\gamma]$は基点と終点を定めたときのpathをホモトピックなもので割った同値類である。 このように構成された空間が実際に単連結な被覆空間であることを示す。\n$p$はwell-defined\n$[\\gamma_{1}]=[\\gamma_{2}]$のとき、$\\gamma_{1}(1)=\\gamma_{2}(1)$であるから、$p$はwell-definedである。\n$p$は全射\n任意の$x\\in X$に対して、$X$は弧状連結であるから、$x_{0},x$をそれぞれ基点・終点とするpath$\\gamma$が存在する。このとき、$p([\\gamma])=\\gamma(1)=x$であるから、$p$は全射である。\n$X$の基底 $\\mathcal{U}$\nはじめに$X$の部分集合族を次のように\n$$ \\mathcal{U}=\\left\\{\\textrm{path-connected open set }U\\subset X \\mathrel{}\\middle|\\mathrel{} \\pi_{1}(U)\\hookrightarrow\\pi_{1}(X)\\colon\\textrm{trivial} \\right\\} $$\nで$\\mathcal{U}$を定める。このとき、任意の弧状連結開集合$V\\subset U \\in \\mathcal{U}$に対して$\\pi_{1}(V) \\hookrightarrow \\pi_{1}(U) \\hookrightarrow \\pi_{1}(X)$は自明になるので$V\\in \\mathcal{U}$がわかる。 これと$X$が局所弧状連結かつ半局所単連結より$\\mathcal{U}$が基底であることがわかる。\n$\\tilde{X}$の基底 $\\tilde{\\mathcal{U}}$\n任意の$U\\in\\mathcal{U}$と$x_{0}\\in X$を起点とし$U$内の一点を終点とするpath$\\gamma$を取る(このような$\\gamma$が取れることは$X$の弧状連結性からわかる)。 これに対して$\\tilde{X}$の部分集合\n$$ U_{[\\gamma]}=\\left\\{[\\gamma\\cdot\\eta] \\mathrel{}\\middle|\\mathrel{} \\eta\\colon \\textrm{path in } U \\textrm{ with } \\eta(0)=\\gamma(1) \\right\\} $$\nを定める。これは$\\gamma$のとり方に対してwell-definedである。これは$\\gamma\\sim\\gamma’$ならば$[\\gamma\\cdot\\eta]=[\\gamma’\\cdot\\eta]$からわかる。 このとき、 $$ [\\gamma’]\\in U_{[\\gamma]} \\Longrightarrow U_{[\\gamma]} = U_{[\\gamma’]} $$\nが成り立つ。\n$U_{[\\gamma’]}\\subset U_{[\\gamma]}$であること: $[\\gamma’]\\in U_{[\\gamma]}$であるとき、$\\gamma(1)$を起点とする$U$内のpath $\\eta$が存在して$\\gamma’=\\gamma\\cdot\\eta$が成り立つ。このとき、$U_{[\\gamma’]}$内の任意の元は$U$内のあるpath $\\mu$が存在して$[\\gamma’\\cdot\\mu]=[\\gamma\\cdot\\eta\\cdot\\mu]$と表される。$\\eta\\cdot\\mu$は$U$内のpathであり、$(\\eta\\cdot\\mu)(0)=\\eta(0)=\\gamma(1)$であるから$[\\gamma\\cdot\\eta\\cdot\\mu]=[\\gamma\\cdot(\\eta\\cdot\\mu)]$は$U_{[\\gamma]}$の元である。よって、$U_{[\\gamma’]}\\subset U_{[\\gamma]}$である。 $U_{[\\gamma]}\\subset U_{[\\gamma’]}$であること: 上と同様に$\\gamma’=\\gamma\\cdot\\eta$と表現する。$U_{[\\gamma]}$の任意の元は$U$内のあるpath $\\mu$を用いて$[\\gamma\\cdot\\mu]$と書ける。$[\\gamma\\cdot\\mu]=[\\gamma’\\cdot(\\overline{\\eta}\\cdot \\mu)]$であり、$\\overline{\\eta}\\cdot \\mu$は$U$内のpathであるから$[\\gamma’\\cdot(\\overline{\\eta}\\cdot \\mu)]$は$U_{[\\gamma’]}$の元である。よって、$U_{[\\gamma]}\\subset U_{[\\gamma’]}$である。 この結果を用いると$\\{U_{[\\gamma]}\\}$が$\\tilde{X}$の基底をなすことがわかる。これはTheorem 4により示される。\nhoge $p$は局所同型\n$p| _ {U_{[\\gamma]}}\\colon U_{[\\gamma]}\\to U$は全単射である。\n全射であること: 任意の$x\\in U$に対して、$\\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\\eta$であって$\\eta([0,1])\\subset U$なるものが存在する(このような$\\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\\gamma\\cdot\\eta]\\in U_{[\\gamma]}$であり、$p| _ {U_{[\\gamma]}}([\\gamma\\cdot\\eta])=\\eta(1)=x$となるから、$p| _ {U_{[\\gamma]}}$は全射である。 単射であること: 任意の$x\\in U$に対して、$\\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\\eta_{1},\\eta_{2}$が取れる。このとき、$\\pi_{1}(U)\\hookrightarrow \\pi_{1}(X)$は自明より$\\eta_{1}\\sim\\eta_{2}$である。これより、$[\\gamma\\cdot\\eta_{1}]=[\\gamma\\cdot\\eta_{2}]$であるから$p| _ {U_{[\\gamma]}}$は単射である。 $p$は被覆空間\n$\\tilde{X}$は単連結\n",
+  "wordCount" : "199",
   "inLanguage": "en",
   "datePublished": "2023-02-17T22:17:24+09:00",
   "dateModified": "2023-02-17T22:17:24+09:00",
@@ -245,7 +239,7 @@ $p$は全射
     <h1 class="post-title">
       単連結な被覆空間の存在<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
     </h1>
-    <div class="post-meta"><span title='2023-02-17 22:17:24 +0900 JST'>February 17, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;77 words&nbsp;·&nbsp;Ryosuke Yoneda
+    <div class="post-meta"><span title='2023-02-17 22:17:24 +0900 JST'>February 17, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;199 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
   </header> <div class="toc">
@@ -292,8 +286,42 @@ $p$は全射
 	</div>
 	<div class="thmbody">位相空間$X$が<strong>半局所単連結</strong>であるとは、任意の$x\in X$に対して$x$の開近傍$U$が存在して、包含写像$i\colon U\hookrightarrow X$から誘導される基本群の準同型写像$i_{\ast}\colon \pi_{1}(U,x)\hookrightarrow \pi_{1}(X,x)$が自明になることである。</div>
 </div>
+<div class="thmlike">
+	<div class="thmheader">
+		<span class="thmtype">
+			
+				Theorem
+			
+			&nbsp;
+		</span>
+		
+	</div>
+	<div class="thmbody">$O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、
+$$
+x\in W,\quad W\subset A
+$$
+となる$W\in M$が存在することは同値である。</div>
+</div>
+<div class="thmlike">
+	<div class="thmheader">
+		<span class="thmtype">
+			
+				Theorem
+			
+			&nbsp;
+		</span>
+		
+	</div>
+	<div class="thmbody"><p>空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。</p>
+<ol>
+<li>任意の$x\in S$に対してある$W\in M$が存在して$x\in W$となる。</li>
+<li>任意の$W_{1},W_{2}\in M$で$W_{1}\cap W_{2}\ne \emptyset$であるとき、任意の$x\in W_{1}\cap W_{2}$に対して、ある$W\subset W_{1} \cap W_{2}$が存在して$x\in W$なる$W\in M$が存在する。</li>
+</ol>
+</div>
+</div>
+<p>証明は<a href="../topology_basis">位相の基底</a>を参照してください。</p>
 <h2 id="証明">証明<a hidden class="anchor" aria-hidden="true" href="#証明">#</a></h2>
-<p>はじめに、必要条件を示します。
+<p>はじめに、<em>必要条件</em>を示します。
 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。</p>
 <div class="proof">
 	<div class="proofheader">Proof:</div>
@@ -305,8 +333,9 @@ $p$は全射
 	<div class="prooftomb"></div>
 	</div>
 </div>
-<p>次に、十分条件を示します。
-すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間を持つことを示します。</p>
+<p>次に、<em>十分条件</em>を示します。
+すなわち、$X$が半局所単連結であるとき、$X$が単連結な被覆空間$\tilde{X}$を持つことを示します。
+証明は具体的に$\tilde{X}$を構成し、それが単連結であることを示すことで行います。</p>
 <div class="proof">
 	<div class="proofheader">Proof:</div>
 	<div class="proofbodycontainer">
@@ -331,12 +360,42 @@ $$
 </li>
 <li>
 <p><strong>$X$の基底 $\mathcal{U}$</strong></p>
+<p>はじめに$X$の部分集合族を次のように</p>
+<p>$$
+\mathcal{U}=\left\{\textrm{path-connected open set }U\subset X \mathrel{}\middle|\mathrel{} \pi_{1}(U)\hookrightarrow\pi_{1}(X)\colon\textrm{trivial} \right\}
+$$</p>
+<p>で$\mathcal{U}$を定める。このとき、任意の弧状連結開集合$V\subset U \in \mathcal{U}$に対して$\pi_{1}(V) \hookrightarrow \pi_{1}(U) \hookrightarrow \pi_{1}(X)$は自明になるので$V\in \mathcal{U}$がわかる。
+これと$X$が局所弧状連結かつ半局所単連結より$\mathcal{U}$が基底であることがわかる。</p>
 </li>
 <li>
 <p><strong>$\tilde{X}$の基底 $\tilde{\mathcal{U}}$</strong></p>
+<p>任意の$U\in\mathcal{U}$と$x_{0}\in X$を起点とし$U$内の一点を終点とするpath$\gamma$を取る(このような$\gamma$が取れることは$X$の弧状連結性からわかる)。
+これに対して$\tilde{X}$の部分集合</p>
+<p>$$
+U_{[\gamma]}=\left\{[\gamma\cdot\eta] \mathrel{}\middle|\mathrel{} \eta\colon \textrm{path in } U \textrm{ with } \eta(0)=\gamma(1) \right\}
+$$</p>
+<p>を定める。これは$\gamma$のとり方に対してwell-definedである。これは$\gamma\sim\gamma&rsquo;$ならば$[\gamma\cdot\eta]=[\gamma&rsquo;\cdot\eta]$からわかる。
+このとき、
+$$
+[\gamma&rsquo;]\in U_{[\gamma]} \Longrightarrow U_{[\gamma]} = U_{[\gamma&rsquo;]}
+$$</p>
+<p>が成り立つ。</p>
+<ul>
+<li>$U_{[\gamma&rsquo;]}\subset U_{[\gamma]}$であること: $[\gamma&rsquo;]\in U_{[\gamma]}$であるとき、$\gamma(1)$を起点とする$U$内のpath $\eta$が存在して$\gamma&rsquo;=\gamma\cdot\eta$が成り立つ。このとき、$U_{[\gamma&rsquo;]}$内の任意の元は$U$内のあるpath $\mu$が存在して$[\gamma&rsquo;\cdot\mu]=[\gamma\cdot\eta\cdot\mu]$と表される。$\eta\cdot\mu$は$U$内のpathであり、$(\eta\cdot\mu)(0)=\eta(0)=\gamma(1)$であるから$[\gamma\cdot\eta\cdot\mu]=[\gamma\cdot(\eta\cdot\mu)]$は$U_{[\gamma]}$の元である。よって、$U_{[\gamma&rsquo;]}\subset U_{[\gamma]}$である。</li>
+<li>$U_{[\gamma]}\subset U_{[\gamma&rsquo;]}$であること: 上と同様に$\gamma&rsquo;=\gamma\cdot\eta$と表現する。$U_{[\gamma]}$の任意の元は$U$内のあるpath $\mu$を用いて$[\gamma\cdot\mu]$と書ける。$[\gamma\cdot\mu]=[\gamma&rsquo;\cdot(\overline{\eta}\cdot \mu)]$であり、$\overline{\eta}\cdot \mu$は$U$内のpathであるから$[\gamma&rsquo;\cdot(\overline{\eta}\cdot \mu)]$は$U_{[\gamma&rsquo;]}$の元である。よって、$U_{[\gamma]}\subset U_{[\gamma&rsquo;]}$である。</li>
+</ul>
+<p>この結果を用いると$\{U_{[\gamma]}\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4により示される。</p>
+<ul>
+<li>hoge</li>
+</ul>
 </li>
 <li>
 <p><strong>$p$は局所同型</strong></p>
+<p>$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射である。</p>
+<ul>
+<li>全射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta$であって$\eta([0,1])\subset U$なるものが存在する(このような$\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\gamma\cdot\eta]\in U_{[\gamma]}$であり、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta])=\eta(1)=x$となるから、$p| _ {U_{[\gamma]}}$は全射である。</li>
+<li>単射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta_{1},\eta_{2}$が取れる。このとき、$\pi_{1}(U)\hookrightarrow \pi_{1}(X)$は自明より$\eta_{1}\sim\eta_{2}$である。これより、$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$であるから$p| _ {U_{[\gamma]}}$は単射である。</li>
+</ul>
 </li>
 <li>
 <p><strong>$p$は被覆空間</strong></p>
