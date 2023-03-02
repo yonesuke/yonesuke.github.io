@@ -104,15 +104,22 @@ $$
     - $U_{[\gamma']}\subset U_{[\gamma]}$であること: $[\gamma']\in U_{[\gamma]}$であるとき、$\gamma(1)$を起点とする$U$内のpath $\eta$が存在して$\gamma'=\gamma\cdot\eta$が成り立つ。このとき、$U_{[\gamma']}$内の任意の元は$U$内のあるpath $\mu$が存在して$[\gamma'\cdot\mu]=[\gamma\cdot\eta\cdot\mu]$と表される。$\eta\cdot\mu$は$U$内のpathであり、$(\eta\cdot\mu)(0)=\eta(0)=\gamma(1)$であるから$[\gamma\cdot\eta\cdot\mu]=[\gamma\cdot(\eta\cdot\mu)]$は$U_{[\gamma]}$の元である。よって、$U_{[\gamma']}\subset U_{[\gamma]}$である。
     - $U_{[\gamma]}\subset U_{[\gamma']}$であること: 上と同様に$\gamma'=\gamma\cdot\eta$と表現する。$U_{[\gamma]}$の任意の元は$U$内のあるpath $\mu$を用いて$[\gamma\cdot\mu]$と書ける。$[\gamma\cdot\mu]=[\gamma'\cdot(\overline{\eta}\cdot \mu)]$であり、$\overline{\eta}\cdot \mu$は$U$内のpathであるから$[\gamma'\cdot(\overline{\eta}\cdot \mu)]$は$U_{[\gamma']}$の元である。よって、$U_{[\gamma]}\subset U_{[\gamma']}$である。
 
-    この結果を用いると$\\{U_{[\gamma]}\\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4により示される。
+    この結果を用いると$\mathcal{U}=\\{U_{[\gamma]}\\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4が満たされることを確認することにより示される。
 
-    - hoge
+    - 任意の$[\gamma]\in\tilde{X}$に対して、$p([\gamma])=\gamma(1)\in X$の開近傍$U\in \mathcal{U}$を取る。このとき、$[\gamma]\in U_{[\gamma]}\in \tilde{\mathcal{U}}$である。
+    - $U_{[\gamma]},V_{[\gamma']}\in\tilde{\mathcal{U}}$を任意にとって、$[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$なる元が存在するとする。上の議論から$U_{[\gamma]}=U_{[\gamma'']},V_{[\gamma']}=V_{[\gamma'']}$となる。このとき、$\gamma''(1)\in U\cap V$であり、その開近傍$W\subset U\cap V$を取ると、$W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$なる$W_{[\gamma'']}\in\tilde{\mathcal{U}}$が得られる。
 
-5. **$p$は局所同型**
+5. **$p$は局所同相**
 
-    $p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射である。
+    まず$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射であることを示す。
     - 全射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta$であって$\eta([0,1])\subset U$なるものが存在する(このような$\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\gamma\cdot\eta]\in U_{[\gamma]}$であり、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta])=\eta(1)=x$となるから、$p| _ {U_{[\gamma]}}$は全射である。
     - 単射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta_{1},\eta_{2}$が取れる。このとき、$\pi_{1}(U)\hookrightarrow \pi_{1}(X)$は自明より$\eta_{1}\sim\eta_{2}$である。これより、$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$であるから$p| _ {U_{[\gamma]}}$は単射である。
+
+    次に$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$が連続であることを示す。
+    - $V\subset U$に対して
+
+    最後に$\left(p| _ {U_{[\gamma]}}\right)^{-1}\colon U\to U_{[\gamma]}$が連続であることを示す。
+    - 任意の開基底$V_{[\gamma']}\subset U_{[\gamma]}$に対して$p(V_{[\gamma']})=V\subset U$は開集合であるから示された。
 
 6. **$p$は被覆空間**
 
