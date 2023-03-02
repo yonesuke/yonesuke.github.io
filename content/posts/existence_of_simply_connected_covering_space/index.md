@@ -82,8 +82,10 @@ $$
     \mathcal{U}=\left\\{\textrm{path-connected open set }U\subset X \mathrel{}\middle|\mathrel{} \pi_{1}(U)\hookrightarrow\pi_{1}(X)\colon\textrm{trivial} \right\\}
     $$
 
-    で$\mathcal{U}$を定める。このとき、任意の弧状連結開集合$V\subset U \in \mathcal{U}$に対して$\pi_{1}(V) \hookrightarrow \pi_{1}(U) \hookrightarrow \pi_{1}(X)$は自明になるので$V\in \mathcal{U}$がわかる。
-    これと$X$が局所弧状連結かつ半局所単連結より$\mathcal{U}$が基底であることがわかる。
+    で$\mathcal{U}$を定める。
+    これが$X$の基底をなすことを示す。これはTheorem 3を用いることによりわかる。
+
+    - $X$の任意の開集合$A$と$A$内の任意の点$x\in A$を取る。$X$が半局所単連結であることから、$x$を含むある開集合$V$が存在して、$\pi_{1}(V)\hookrightarrow\pi_{1}(X)$は自明となる。このとき、$x\in A\cap V$であり、$A\cap V$は開集合であるから$X$が局所弧状連結であることから$x$のある弧状連結開近傍$W$が存在して$W\subset A\cap V$となる。$\pi_{1}(W)\hookrightarrow\pi_{1}(V)\hookrightarrow\pi_{1}(X)$が自明である。これらより$W\in\mathcal{U}$であるからTheorem 3より$\mathcal{U}$は$X$の基底となる。
 
 4. **$\tilde{X}$の基底 $\tilde{\mathcal{U}}$**
 
@@ -104,7 +106,7 @@ $$
     - $U_{[\gamma']}\subset U_{[\gamma]}$であること: $[\gamma']\in U_{[\gamma]}$であるとき、$\gamma(1)$を起点とする$U$内のpath $\eta$が存在して$\gamma'=\gamma\cdot\eta$が成り立つ。このとき、$U_{[\gamma']}$内の任意の元は$U$内のあるpath $\mu$が存在して$[\gamma'\cdot\mu]=[\gamma\cdot\eta\cdot\mu]$と表される。$\eta\cdot\mu$は$U$内のpathであり、$(\eta\cdot\mu)(0)=\eta(0)=\gamma(1)$であるから$[\gamma\cdot\eta\cdot\mu]=[\gamma\cdot(\eta\cdot\mu)]$は$U_{[\gamma]}$の元である。よって、$U_{[\gamma']}\subset U_{[\gamma]}$である。
     - $U_{[\gamma]}\subset U_{[\gamma']}$であること: 上と同様に$\gamma'=\gamma\cdot\eta$と表現する。$U_{[\gamma]}$の任意の元は$U$内のあるpath $\mu$を用いて$[\gamma\cdot\mu]$と書ける。$[\gamma\cdot\mu]=[\gamma'\cdot(\overline{\eta}\cdot \mu)]$であり、$\overline{\eta}\cdot \mu$は$U$内のpathであるから$[\gamma'\cdot(\overline{\eta}\cdot \mu)]$は$U_{[\gamma']}$の元である。よって、$U_{[\gamma]}\subset U_{[\gamma']}$である。
 
-    この結果を用いると$\mathcal{U}=\\{U_{[\gamma]}\\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4が満たされることを確認することにより示される。
+    この結果を用いると$\tilde{\mathcal{U}}=\\{U_{[\gamma]}\\}$が$\tilde{X}$の基底をなすことがわかる。これはTheorem 4が満たされることを確認することにより示される。
 
     - 任意の$[\gamma]\in\tilde{X}$に対して、$p([\gamma])=\gamma(1)\in X$の開近傍$U\in \mathcal{U}$を取る。このとき、$[\gamma]\in U_{[\gamma]}\in \tilde{\mathcal{U}}$である。
     - $U_{[\gamma]},V_{[\gamma']}\in\tilde{\mathcal{U}}$を任意にとって、$[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$なる元が存在するとする。上の議論から$U_{[\gamma]}=U_{[\gamma'']},V_{[\gamma']}=V_{[\gamma'']}$となる。このとき、$\gamma''(1)\in U\cap V$であり、その開近傍$W\subset U\cap V$を取ると、$W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$なる$W_{[\gamma'']}\in\tilde{\mathcal{U}}$が得られる。
