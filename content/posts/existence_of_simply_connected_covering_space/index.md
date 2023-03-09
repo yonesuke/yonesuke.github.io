@@ -37,6 +37,17 @@ $$
 
 証明は[位相の基底](../topology_basis)を参照してください。
 
+基底を用いた連続性の特徴づけに関する次の定理があります。
+
+{{< thmlike type="Theorem">}}
+位相空間$X$から$Y$への写像$f$を考え、$Y$の位相の基底を$M_{Y}$とする。$f$が連続であることと任意の開基底$W\in M_{Y}$に対して$f^{-1}(W)\subset X$が開集合となることは同値である。
+{{< /thmlike >}}
+
+{{< proof >}}
+- $f$が連続であるとき、$Y$の任意の開集合$U$に対して、$f^{-1}(U)$が開集合であることは明らかである。$U$を$M_{Y}$の基底とすると、$f^{-1}(U)$は$X$の開集合であるから示された。
+- 逆に任意の開基底$W\in M_{Y}$に対して$f^{-1}(W)$が開集合であるとする。このとき、$Y$の任意の開集合$U$に対して、ある開基底$W_{\lambda}\in M_{Y}$が存在して、$U=\bigcup_{\lambda}W_{\lambda}$となる。 $f^{-1}(U)=\bigcup_{\lambda}f^{-1}(W_{\lambda})$であり、各$\lambda$について$f^{-1}(W_{\lambda})$は開集合となるので$f^{-1}(U)$は開集合となるので、$f$は連続である。
+{{< /proof >}}
+
 ## 証明
 
 はじめに、*必要条件*を示します。
@@ -115,9 +126,11 @@ $$
 
     まず$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射であることを示す。
     - 全射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta$であって$\eta([0,1])\subset U$なるものが存在する(このような$\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\gamma\cdot\eta]\in U_{[\gamma]}$であり、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta])=\eta(1)=x$となるから、$p| _ {U_{[\gamma]}}$は全射である。
-    - 単射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta_{1},\eta_{2}$が取れる。このとき、$\pi_{1}(U)\hookrightarrow \pi_{1}(X)$は自明より$\eta_{1}\sim\eta_{2}$である。これより、$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$であるから$p| _ {U_{[\gamma]}}$は単射である。
+    - 単射であること: $U_{[\gamma]}$内の任意の元$[\gamma\cdot\eta_{1}]\ne[\gamma\cdot\eta_{2}]$を取る。このとき、$\eta_{1}(1)\ne\eta_{2}(1)$となる[^a]ので、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{1}])\ne p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{2}])$となる。よって、$p| _ {U_{[\gamma]}}$は単射である。
 
-    次に$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$が連続であることを示す。
+    [^a]: $\eta_{1}(1)=\eta_{2}(1)$とすると$\eta_{1},\eta_{2}$は起点終点が一致するpathとなる。このとき、$\pi_{1}(U)\hookrightarrow\pi_{1}(X)$は自明なので$\eta_{1}\sim\eta_{2}$となり、よって$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$となり矛盾してしまう。
+
+    次に$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$が連続であることを示す。連続性の証明にはTheorem 5を用いる。
     - $V\subset U$に対して
 
     最後に$\left(p| _ {U_{[\gamma]}}\right)^{-1}\colon U\to U_{[\gamma]}$が連続であることを示す。
