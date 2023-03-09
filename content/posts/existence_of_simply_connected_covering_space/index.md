@@ -10,7 +10,7 @@ author: Ryosuke Yoneda
 この定理を示すためには、**単連結な被覆空間の存在証明**が必要になります。
 
 {{< thmlike type="Theorem" >}}
-弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が半局所単連結であることである。
+弧状連結かつ局所弧状連結な位相空間$X,\tilde{X}$で、$\tilde{X}$は$X$の被覆空間とする。$\tilde{X}$が単連結になるための必要十分条件は$X$が**半局所単連結**であることである。
 {{< /thmlike >}}
 
 ## 準備
@@ -47,6 +47,20 @@ $$
 - $f$が連続であるとき、$Y$の任意の開集合$U$に対して、$f^{-1}(U)$が開集合であることは明らかである。$U$を$M_{Y}$の基底とすると、$f^{-1}(U)$は$X$の開集合であるから示された。
 - 逆に任意の開基底$W\in M_{Y}$に対して$f^{-1}(W)$が開集合であるとする。このとき、$Y$の任意の開集合$U$に対して、ある開基底$W_{\lambda}\in M_{Y}$が存在して、$U=\bigcup_{\lambda}W_{\lambda}$となる。 $f^{-1}(U)=\bigcup_{\lambda}f^{-1}(W_{\lambda})$であり、各$\lambda$について$f^{-1}(W_{\lambda})$は開集合となるので$f^{-1}(U)$は開集合となるので、$f$は連続である。
 {{< /proof >}}
+
+最後にliftにまたがる定理を2つ紹介します。path$\tilde{f}$が$f$のliftであるとは、$p\circ\tilde{f}=f$が成り立つことです。
+
+{{< thmlike type="Theorem" title="path lifting property">}}
+$p\colon \tilde{X}\to X$を被覆空間とする。path$f\colon I\to X$について、始点$f(0)=x_{0}$のlift$\tilde{x}_ {0}$に対して、$\tilde{x}_{0}$を始点とする、$f$の唯一のlift $\tilde{f}\colon I\to \tilde{X}$が定まる。
+{{< /thmlike >}}
+
+{{< thmlike type="Theorem">}}
+被覆空間$p\colon(\tilde{X}, \tilde{x}_ {0})\to (X,x_{0})$から誘導される写像
+$$
+p_{\ast}\colon \pi_{1}(\tilde{X}, \tilde{x}_ {0})\to\pi _ {1}(X, x_ {0});\quad [f]\mapsto [p\circ f]
+$$
+は単射である。また、$\pi _ {1}(X, x_ {0})$の部分群である$p_{\ast}(\pi_{1}(\tilde{X}, \tilde{x}_ {0}))$の元は$x_{0}$を起点とするloopであって、そのliftが$\tilde{X}$上$\tilde{x}_{0}$を起点とするloopになる、ようなもののhomotopy類で表される。
+{{< /thmlike >}}
 
 ## 証明
 
@@ -126,17 +140,63 @@ $$
 
     まず$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$は全単射であることを示す。
     - 全射であること: 任意の$x\in U$に対して、$\gamma(1)$と$x$をそれぞれ起点・終点とするpath $\eta$であって$\eta([0,1])\subset U$なるものが存在する(このような$\eta$が取れることは$U$の弧状連結性よりわかる)。このとき、$[\gamma\cdot\eta]\in U_{[\gamma]}$であり、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta])=\eta(1)=x$となるから、$p| _ {U_{[\gamma]}}$は全射である。
-    - 単射であること: $U_{[\gamma]}$内の任意の元$[\gamma\cdot\eta_{1}]\ne[\gamma\cdot\eta_{2}]$を取る。このとき、$\eta_{1}(1)\ne\eta_{2}(1)$となる[^a]ので、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{1}])\ne p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{2}])$となる。よって、$p| _ {U_{[\gamma]}}$は単射である。
-
-    [^a]: $\eta_{1}(1)=\eta_{2}(1)$とすると$\eta_{1},\eta_{2}$は起点終点が一致するpathとなる。このとき、$\pi_{1}(U)\hookrightarrow\pi_{1}(X)$は自明なので$\eta_{1}\sim\eta_{2}$となり、よって$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$となり矛盾してしまう。
+    - 単射であること: $U_{[\gamma]}$内の任意の元$[\gamma\cdot\eta_{1}]\ne[\gamma\cdot\eta_{2}]$を取る。このとき、$\eta_{1}(1)\ne\eta_{2}(1)$となる。これは、$\eta_{1}(1)=\eta_{2}(1)$とすると$\eta_{1},\eta_{2}$は起点終点が一致するpathとなる。このとき、$\pi_{1}(U)\hookrightarrow\pi_{1}(X)$は自明なので$\eta_{1}\sim\eta_{2}$となり、よって$[\gamma\cdot\eta_{1}]=[\gamma\cdot\eta_{2}]$となり矛盾してしまうからである。以上より、$p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{1}])\ne p| _ {U_{[\gamma]}}([\gamma\cdot\eta_{2}])$となる。よって、$p| _ {U_{[\gamma]}}$は単射である。
 
     次に$p| _ {U_{[\gamma]}}\colon U_{[\gamma]}\to U$が連続であることを示す。連続性の証明にはTheorem 5を用いる。
-    - $V\subset U$に対して
+    - 任意の$V\in\mathcal{U}$かつ$V\subset U$に対して$\left(p| _ {U_{[\gamma]}}\right)^{-1}(V)$が開集合であることを示せば良い。$[\gamma']\in U_{[\gamma]}$かつ$\gamma'(1)\in V$なるpathを取ると、
+    $$
+    \begin{aligned}
+    \left(p| _ {U_{[\gamma]}}\right)^{-1}(V)& =p^{-1}(V)\cap U_{[\gamma]}=p^{-1}(V)\cap U_{[\gamma']}\\\\
+    & = \left\\{[\gamma'\cdot\eta] \mathrel{}\middle|\mathrel{} \eta\colon\textrm{path in } U,\eta(0),\eta(1)\in V \right\\}
+    \end{aligned}
+    $$
+    となる。特に$\eta$は$U$上のpathだが端点は$V$にある。$V$は弧状連結かつ$\pi_{1}(V)\hookrightarrow\pi_{1}(X)$は自明になるので、$\eta$は常に$V$内のpathにhomotopicになる。よって、
+    $$
+    \left(p| _ {U_{[\gamma]}}\right)^{-1}(V) = \left\\{[\gamma'\cdot\eta] \mathrel{}\middle|\mathrel{} \eta\colon\textrm{path in } V \right\\} = V_{[\gamma']}
+    $$
+    である。$V_{[\gamma']}$は$\tilde{X}$の開基底であるから示された。
 
-    最後に$\left(p| _ {U_{[\gamma]}}\right)^{-1}\colon U\to U_{[\gamma]}$が連続であることを示す。
+    最後に$\left(p| _ {U_{[\gamma]}}\right)^{-1}\colon U\to U_{[\gamma]}$が連続であることを示す。これにもTheorem 5を用いる。
     - 任意の開基底$V_{[\gamma']}\subset U_{[\gamma]}$に対して$p(V_{[\gamma']})=V\subset U$は開集合であるから示された。
+
+    よって$p$は局所同相であることが示された。
 
 6. **$p$は被覆空間**
 
+    $p$が被覆空間であることを示すには、あとは任意の$x\in X$に対して開近傍$U\subset X$であって、
+    $p^{-1}(U)$が共通部分を持たない$\tilde{X}$の開集合の和集合で表され、各開集合による$p$の制限が$U$と同相となることが分かれば良い。
+    まず$x$の開近傍の選び方として、$U\in\mathcal{U}$から選ぶことにする。また、$x_{0}$から$x$へのpathたちで$[\gamma]$を変えていき、
+    $\\{[\gamma_{\lambda}]\\}_{\lambda}$を集める。このとき、
+    $$
+    p^{-1}(U) = \bigcup _ {\lambda} U _ {[\gamma _ {\lambda}]}
+    $$
+    となる。もし、$U _ {[\gamma _ {\lambda}]}\cap U _ {[\gamma _ {\lambda'}]}$が空でなく$[\gamma']$を元として持つならば、step 4で示したことから
+    $U _ {[\gamma _ {\lambda}]} = U _ {[\gamma _ {\lambda'}]} = U _ {[\gamma']}$となり矛盾してしまう。よって$U _ {[\gamma _ {\lambda}]}$はそれぞれ互いに素な開集合である。
+    また、各$p| _ {U _ {[\gamma _ {\lambda}]}}$に対して$p| _ {U _ {[\gamma _ {\lambda}]}}\colon U _ {[\gamma _ {\lambda}]} \to U$が同相であることはstep 5で示した。
+    よって$p$は被覆空間であることが示された。
+
 7. **$\tilde{X}$は単連結**
+
+    最後に$\tilde{X}$が単連結であることを示す。そのためにまず弧状連結であることを示す。
+    
+    - $X$上のpath$\gamma$を$\tilde{X}$にliftしたものを始めに構成したい。
+    $$
+    \gamma_{t}(s) = \begin{cases} \gamma(s) & 0\leq s\leq t\\\\ \gamma(t) & t\leq s\leq 1\end{cases}
+    $$
+    を定める。これは$\gamma$上$\gamma(0)$から$\gamma(t)$までのpathになっている。これに対して、
+    $$
+    [0,1]\ni t\mapsto [\gamma_{t}]\in\tilde{X}
+    $$
+    という写像を考えると、
+    $$
+    p\circ(t\mapsto [\gamma_{t}]) = \gamma
+    $$
+    となる。よって、$t\mapsto [\gamma_{t}]$は$\gamma$のliftに他ならず、これはTheorem 6より$\tilde{X}$上の$[x_{0}]$から$[\gamma]$へのpathである。
+    $\gamma$のとり方は任意であったから、これは$\tilde{X}$上の2点間に必ずpathが引けることを意味する。よって、$\tilde{X}$は弧状連結である。
+
+    - 次に単連結であることを示す。これは$\pi_{1}(\tilde{X},[x_{0}])=0$を示すことに等しいが、今$p_{\ast}$が単射であることから$p_{\ast}(\pi_{1}(\tilde{X},[x_{0}]))=0$を示せば良い。
+    Theorem 7より、$p_{\ast}(\pi_{1}(\tilde{X},[x_{0}]))$の任意の元は$x_{0}$を起点とする$X$内のloop$\gamma$であって、そのliftが$[x_{0}]$を起点とする$\tilde{X}$内のloopとなるようなものを用いて$[\gamma]$と表現される。
+    ここで、$\gamma$のliftは上で定義した$t\mapsto [\gamma_{t}]$となるが、これが$\tilde{X}$のloopになることから、$[\gamma_{0}]=[\gamma_{1}]=[x_{0}]$となる。
+    特に$[\gamma_{1}]=[\gamma]$であり、これは$p_{\ast}(\pi_{1}(\tilde{X},[x_{0}]))$の任意の元が$[x_{0}]$であることを示している。
+    よって、$p_{\ast}(\pi_{1}(\tilde{X},[x_{0}]))=0$であり、$\tilde{X}$が単連結であることが示された。
 {{< /proof >}}
