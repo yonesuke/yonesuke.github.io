@@ -1,7 +1,7 @@
 ---
 title: "単連結な被覆空間の存在"
 date: 2023-02-17T22:17:24+09:00
-draft: true
+draft: false
 math: true
 author: Ryosuke Yoneda
 ---
