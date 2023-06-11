@@ -5,6 +5,7 @@ ShowReadingTime: false
 ShowToc: false
 ShowWordCount: false
 ShowBreadCrumbs: false
+comments: false
 ---
 
 ## 2022
