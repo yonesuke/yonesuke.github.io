@@ -15,7 +15,7 @@ Kernel Ridge Regression Random Fourier Featuresを用いてカーネル関数を
 データ$\mathcal{D}=\{(x_{i},y_{i})\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。 損失関数は $$ L=\sum_{i=1}^{n}[y_{i}-f(x_{i})]^{2}&#43;\lambda||f||^{2}_ {H} $$ となり、これを最小化する$f\in H$を探す。$\lambda||f||^{2}_ {H}$は正則化の項である。 Representation定理により$f$は$\Phi(x_{i})$で展開されることがわかり、色々計算すると損失関数を最小化する$\hat{f}$は $$ \hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}_{i}k(x_{i},x) $$ となることがわかる。ここで、$\hat{\alpha}=(K&#43;\lambda I_{n})^{-1}y,[K]_{ij}=k(x_{i},x_{j})$である。 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。">
 <meta name="author" content="Ryosuke Yoneda">
 <link rel="canonical" href="https://yonesuke.github.io/posts/random_fourier_feature/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3613efbd0b1772781e8f49935e973cae632a7f61471c05b17be155505ccf87b5.css" integrity="sha256-NhPvvQsXcngej0mTXpc8rmMqf2FHHAWxe&#43;FVUFzPh7U=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://yonesuke.github.io/favicon_io/favicon.ico">

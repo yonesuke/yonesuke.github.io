@@ -10,7 +10,7 @@
 <meta name="description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import jax.numpy as jnp from jax import random, jit from jax.lax import fori_loop class AutonomousDiffEq: def __init__(self, n_dim: int): self.n_dim = n_dim def forward(self, state): return NotImplementedError def runge_kutta(self, state, dt): k1 = self.forward(state) k2 = self.forward(state &#43; 0.5 * dt * k1) k3 = self.">
 <meta name="author" content="Ryosuke Yoneda">
 <link rel="canonical" href="https://yonesuke.github.io/posts/jax-kuramoto/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3613efbd0b1772781e8f49935e973cae632a7f61471c05b17be155505ccf87b5.css" integrity="sha256-NhPvvQsXcngej0mTXpc8rmMqf2FHHAWxe&#43;FVUFzPh7U=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://yonesuke.github.io/favicon_io/favicon.ico">
