@@ -8,7 +8,7 @@ ShowBreadCrumbs: false
 ---
 
 # Education
-- **Ph.D. student April 2020 -**
+- **Ph.D. student April 2020 - March 2023**
 
     [Nonlinear Physics Division](https://www-np.acs.i.kyoto-u.ac.jp/),
     [Department of Applied Mathematical Sciences](http://www.acs.i.kyoto-u.ac.jp/),
