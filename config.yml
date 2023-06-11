@@ -1,7 +1,8 @@
 baseURL: 'https://yonesuke.github.io'
 languageCode: 'en-us'
 title: 'Ryosuke Yoneda'
-theme: ["PaperMod", "hugo-notice"]
+# theme: ["PaperMod", "hugo-notice"]
+theme: ["papermod", "hugo-notice"]
 publishDir: "docs"
 
 enableEmoji: true
