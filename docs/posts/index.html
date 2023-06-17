@@ -168,6 +168,24 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>SHA-256に用いられる定数が微妙に合わない<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ひょんなことからSHA-256を実装しようと思ったのだが、少し謎なところがあったのでまとめる。 何かわかる人がいたらコメントしてほしい。
+SHA-256 SHA-256はハッシュ関数の一つで、任意の文字列を256ビットのハッシュ値を出力する関数である。 ハッシュ関数である以上そのアルゴリズムは複雑で、出力から元の文字列を取り出すことは困難である。 ただ、この関数自体はターミナルですぐに試すことができる。
+1 2 3 4 echo -n &#39;hello, world&#39; | sha256sum &gt; 09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b - echo -n &#39;hello, world!&#39; | sha256sum &gt; 68e656b251e67e8358bef8483ab0d51c6619f3e7a1a9f0e75838d41ff368f728 - もしくは、opensslを用いてもよい。
+1 2 3 4 echo -n &#39;hello, world&#39; | openssl dgst -sha256 &gt; SHA2-256(stdin)= 09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b echo -n &#39;hello, world!&#39; | openssl dgst -sha256 &gt; SHA2-256(stdin)= 68e656b251e67e8358bef8483ab0d51c6619f3e7a1a9f0e75838d41ff368f728 (当たり前だが)いずれも出力結果が同じであることが確認できる。また、文字列を少し変えるだけで全く異なった出力を得ることも見て取れる。
+今回の記事ではそのアルゴリズム自体は扱わない。参考になる記事として以下を挙げておく。
+https://en.wikipedia.org/wiki/SHA-2 Wikipedia https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/ アルゴリズムの流れが詳しく書いてある https://sha256algorithm.com/ SHA-256が内部でどのような計算をするのかをアニメーションできれいに表示してくれる。一見の価値あり。こういったウェブサイトを作れるの尊敬する。 SHA-256のアルゴリズムの中に登場する定数 SHA-256のアルゴリズムの中には定数がいくつか登場する。 それは、ハッシュ値の初期値として設定されるもので、
+first 32 bits of the fractional parts of the square roots of the first 8 primes 2....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-11 21:00:33 +0900 JST'>June 11, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;569 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to SHA-256に用いられる定数が微妙に合わない" href="https://yonesuke.github.io/posts/sha256-constants/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>単連結な被覆空間の存在
     </h2>
   </header>
@@ -318,18 +336,6 @@ Proposition   $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分
   </div>
   <footer class="entry-footer"><span title='2022-08-30 17:18:33 +0900 JST'>August 30, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;96 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to はめ込みと埋め込み" href="https://yonesuke.github.io/posts/immersion-embedding/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>JAXで蔵本モデル<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import jax.numpy as jnp from jax import random, jit from jax.lax import fori_loop class AutonomousDiffEq: def __init__(self, n_dim: int): self.n_dim = n_dim def forward(self, state): return NotImplementedError def runge_kutta(self, state, dt): k1 = self.forward(state) k2 = self.forward(state &#43; 0.5 * dt * k1) k3 = self....</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-08-26 14:46:14 +0900 JST'>August 26, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;157 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to JAXで蔵本モデル" href="https://yonesuke.github.io/posts/jax-kuramoto/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

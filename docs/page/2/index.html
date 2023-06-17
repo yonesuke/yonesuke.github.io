@@ -154,6 +154,18 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>JAXで蔵本モデル<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import jax.numpy as jnp from jax import random, jit from jax.lax import fori_loop class AutonomousDiffEq: def __init__(self, n_dim: int): self.n_dim = n_dim def forward(self, state): return NotImplementedError def runge_kutta(self, state, dt): k1 = self.forward(state) k2 = self.forward(state &#43; 0.5 * dt * k1) k3 = self....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-08-26 14:46:14 +0900 JST'>August 26, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;157 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to JAXで蔵本モデル" href="https://yonesuke.github.io/posts/jax-kuramoto/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Brouwer&#39;s fixed-point theorem
     </h2>
   </header>
@@ -312,22 +324,6 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
   </div>
   <footer class="entry-footer"><span title='2021-07-30 18:34:51 +0900 JST'>July 30, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;111 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Laplacianの積分表現" href="https://yonesuke.github.io/posts/laplacian_integral/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Borwein integral
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Borwein積分は$\sin x/x$に関する興味深い性質を持った積分のことです。 例えば $$ \int_{0}^{\infty}\frac{\sin x}{x}dx=\frac{\pi}{2} $$ となることはよく知られていますが、これに$\sin(3x)/3x$をかけたものについても $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}dx=\frac{\pi}{2} $$ が成り立ちます。同様のことは$\sin (x/5)/(x/5)$や$\sin(x/7)/(x/7)$をかけていっても成り立ち、 $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}\cdots\frac{\sin (x/13)}{x/13}dx=\frac{\pi}{2} $$ となります。しかし、次のステップではこの計算は崩れて $$ \int_{0}^{\infty}\frac{\sin x}{x}\frac{\sin (x/3)}{x/3}\cdots\frac{\sin (x/15)}{x/15}dx=\frac{467807924713440738696537864469}{935615849440640907310521750000}\pi&lt;\frac{\pi}{2} $$ となってしまいます。一見するとこの値も$\pi/2$になりそうなのですが、何故か値がずれてしまいます。 このような積分のことをBorwein積分とよび、いくつかの計算がなされています。
-公式 数列$a_{1},a_{2},\dots,a_{n}$に対して、Borwein積分$\tau_{n}$を $$ \tau_{n}=\int_{0}^{\infty}\prod_{k=1}^{n}\frac{\sin(a_{k}x)}{a_{k}x}dx $$ で定めます。ここでは各$a_{i}$は正だとしておきます。この積分は完全に計算することができて、 $$ \tau_{n}=\frac{\pi}{2^{n&#43;1}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)(\bm{p}\cdot\bm{a})^{n-1} $$ となります。以下でこれを示していきます。元論文ではFourier変換による畳込み積分を用いて計算していますが、留数定理を用いた計算でも示すことができたのでそれを紹介していきます。
-証明 はじめに$\sin(a_{k}x)$を展開していきます。 $$ \tau_{n}=\int_{0}^{\infty}\prod_{k=1}^{n}\frac{\sin(a_{k}x)}{a_{k}x}dx =\frac{1}{(2i)^{n}\prod_{k=1}^{n}a_{k}}\int_{0}^{\infty}\frac{\prod_{k=1}^{n}(e^{ia_{k}x}-e^{-ia_{k}x})}{x^{n}}dx $$ です。ここでパラメーター$p_{k}=\pm1$を導入して$e^{ia_{k}x}-e^{-ia_{k}x}=\sum_{p_{k}=\pm1}p_{k}e^{ip_{k}a_{k}x}$と書くと、 $$ \prod_{k=1}^{n}(e^{ia_{k}x}-e^{-ia_{k}x})=\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}e^{i\bm{p}\cdot\bm{a}x} $$ となるので、 $$ \tau_{n}=\frac{1}{(2i)^{n}\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\int_{0}^{\infty}\frac{e^{i\bm{p}\cdot\bm{a}x}}{x^{n}}dx $$ となります。
-よって、$\int_{0}^{\infty}e^{iax}/x^{n}dx$が計算できれば良いです。 $a&gt;0$の場合を考えます。 被積分関数を複素平面に持ち上げて $$ f(z)=\frac{e^{iaz}}{z^{n}} $$ とします。このとき、次のような積分経路$C$を考えます。
-$\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに回る経路で、$\Gamma_{R}$は半径$R$の上半面を反時計回りに回る経路です。 $f(z)$は$C$内で正則なので$\oint_{C}f(z)dz=0$です。 また、 $$ \oint_{C}=\int_{-R}^{-\varepsilon}&#43;\int_{\gamma_{\varepsilon}}&#43;\int_{\varepsilon}^{R}&#43;\int_{\Gamma_{R}} $$ です。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-07-13 02:20:20 +0900 JST'>July 13, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;259 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Borwein integral" href="https://yonesuke.github.io/posts/borwein/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
