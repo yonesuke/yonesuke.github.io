@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.113.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -210,6 +210,27 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>決定木を1から実装する
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>決定木って名前はよく聞くしscikit-learnで簡単に使えてしまうけど、中身を詳しく知っているわけではなかったのできちんと実装してみることにする。 from scratchでの実装にはこの記事が非常に参考になった。
+https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb https://darden.hatenablog.com/entry/2016/12/15/222447 決定木 まず決定木の仕組みについて説明する。 とは言っても懇切丁寧に説明している記事はほかにいくらでもあるので、ここではざっくりとした説明に留める。
+アルゴリズム 決定木における分類問題においては分類を行いたい対象に対する特徴量がn_features個与えられており、各特徴量は数で表現されるとする。
+例えば、sklearn内に格納されているirisデータセットには4個の特徴量が用意されている。具体的には、sepal length, sepal width, petal length, petal widthであり、いずれも単位はcmの数になっている。 このとき、決定木は与えられた特徴量たちに対して「特徴量Aは$x$より小さいか？」という質問を行う。この質問に対する答えがYesならば、次に「特徴量Bは$y$より小さいか？」という質問を、答えがNoならば、「特徴量Cは$z$より小さいか？」という質問を行う。 こういった質問を次々に行っていき、最後に「前の質問の答えがYesならば分類クラスはPである」といった具合に分類を行う。これが決定木の一つの大きな流れである。
+質問によって分岐が起きていくので、最初の質問を根とする木とみなすことができる。 この木のもとでは各質問は木のノードと捉えられ、また分岐の果てに分類問題の答えを出力する所は葉とみなすことができる。
+学習 上で説明した決定木アルゴリズムにおいて、各ノードに配置する「特徴量Aは$x$より小さいか？」という質問を作成する必要がある。これを学習データをもとに決定していくCARTアルゴリズムを紹介する。
+学習の流れは各ノードを根から順に決定していく流れとなるので、再帰的な構造を持つ。 学習データが質問を経てあるノードに到着した段階でn_samples個になったとしよう。 このとき、学習データがそれぞれ持つ分類クラスが質問を通して最も別れるような質問が最適な質問であると考える。明日晴れるか雨が降るかを知りたいときに、質問にYesと答えれば必ず晴れ、Noと答えれば必ず雨、ということが分かれば、これは最適な質問である、ということである。 これを定量的に評価する方法として、情報利得を用いることを考える。 n_samples個の学習データのそれぞれのクラスが格納された$y\in\mathbb{R}^{n_\mathrm{samples}}$に対して、クラスの揃い具合を表す情報量$f\colon\mathbb{R}^{N}\to\mathbb{R}$があったとしよう。 この指標は値が小さいほど学習データの分類クラスは揃っていて、値が大きいほどに学習データの分類クラスは全くもってばらけている状況を想定する。 ある質問を通して、n_left個の学習データがYesと、n_right個の学習データがNoと答えたとしよう。また、これに応じて分類クラス$y$は$y_{\mathrm{left}}$と$y_{\mathrm{right}}$に分けられるとする。 学習データが入力された段階では、情報量は$f(y)$である。 また、質問にYesと答えたときの情報量は$f(y_{\mathrm{left}})$、Noと答えたときの情報量は$f(y_{\mathrm{right}})$となる。 確率的には質問に答えた後の情報量は$\frac{n_{\mathrm{left}}}{n_{\mathrm{samples}}}f(y_{\mathrm{left}}) &#43; \frac{n_{\mathrm{right}}}{n_{\mathrm{samples}}}f(y_{\mathrm{right}})$となる。よって、質問に答える前後で情報利得 $$ f(y) - \left(\frac{n_{\mathrm{left}}}{n_{\mathrm{samples}}}f(y_{\mathrm{left}}) &#43; \frac{n_{\mathrm{right}}}{n_{\mathrm{samples}}}f(y_{\mathrm{right}})\right) $$ が最大となるような質問が最適である、と考える。 具体的な実装においては、各ノードに対して学習データを入力するたびごとに、まず特徴量を一つ選ぶ。学習データにわたってこの特徴量の値を閾値として情報利得を計算する。これをすべての特徴量と閾値に対して行い、最大の情報利得を取る特徴量と閾値でもってそのノードの質問を確定する、 という流れを取る。
+分類クラスの揃い具合を表す代表的な指標として、エントロピーとジニ不純度が ある。sklearnはデフォルトでジニ不純度を指定するようである。
+決定木の実装 はじめに、ノードの実装を行う。 各ノードは質問を決定する特徴量(のインデックス)self.featureとその閾値self.thresholdを持つ。 これにより定まる質問に対して答えがYesであれば左側の子ノードself.leftを、 Noであれば右側の子ノードselft.rightを参照するようにする。 ただし、葉ノードである場合には、その特徴量(のインデックス)を保管するようにする。
+1 2 3 4 5 6 7 8 9 10 class Node: def __init__(self, feature=None, threshold=None, left=None, right=None, value=None): self....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-25 10:00:06 +0900 JST'>June 25, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;631 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 決定木を1から実装する" href="https://yonesuke.github.io/posts/decision-tree/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>SHA-256に用いられる定数が微妙に合わない
     </h2>
   </header>
@@ -361,23 +382,6 @@ $x_{n}$は$n$に依存するので、$n$に関する漸化式を求めてみま�
   </div>
   <footer class="entry-footer"><span title='2022-10-01 16:15:49 +0900 JST'>October 1, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;109 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Ising model on a Bethe lattice" href="https://yonesuke.github.io/posts/bethe_ising/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>はめ込みと埋め込み
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>松本『多様体の基礎』とTu『トゥー多様体』を読みながらはめ込みと埋め込みについて書いてあったことをまとめます。
-はめ込みと埋め込み Definition    [はめ込み] $f\colon M\to N$がはめ込みであるとは、任意の$p\in M$における$f$の微分$(df) _ {p}\colon T_{p} M\to T_{f(p)} N$が単射になることである。 ユークリッド空間のもとでのはめ込みは$\mathbb{R}^{m}$からより高い次元$\mathbb{R}^{m}$への包含写像 $$ i\colon\mathbb{R}^{m}\to\mathbb{R}^{n};(x_{1},\dots,x_{m})\mapsto(x_{1},\dots,x_{n},0,\dots,0) $$ となります。この写像は局所的であり、これを多様体へと拡張したものが次のはめ込み定理になります。
-Theorem    [はめ込み定理] $f\colon M\to N$がはめ込みであるとする。任意の点$p\in M$に対してある座標近傍$(U;\phi)$と$f(p)\in N$に対するある座標近傍$(V;\psi)$があって、$\phi(p)$のある近傍で、 $$ (\psi\circ f\circ \phi^{-1})(r_{1},\dots,r_{m})=(r_{1},\dots,r_{n},0,\dots,0) $$ なるものが存在する。 この意味ですべてのはめ込みは局所的には包含写像になることがわかります。しかし、この場合$f(M)$は後で見る部分多様体にはならないことがあります。この場合$f$に次の条件を与えた埋め込みを考えます。
-Definition    [埋め込み] $f\colon M\to N$が埋め込みであるとは、$f$がはめ込みであってかつ、$f(M)$に$N$の相対位相を入れたときに$f\colon M\to f(M)$が同相写像となることである。 ただしはめ込み定理があるので、はめ込みは局所的には埋め込みになります。
-Proposition   $C^{r}$級はめ込みは局所的には$C^{r}$級埋め込みである。すなわり、任意の点$p\in M$に対して, $p$のある開近傍$U$が存在して、$f|_{U}\colon U\to N$は埋め込みである。 部分多様体 Definition    [正則部分多様体] $n$次元$C^{r}$級多様体$N$の部分集合$S$が$k$次元の $C^{r}$級正則部分多様体であるとは、任意の点$p\in S$に対して、ある座標近傍$(U;x_{1},\dots,x_{n})$が存在して、 $$ U\cap S=\{(x_{1},\dots,x_{n})\in U\mid x_{k&#43;1}=\cdots=x_{n}=0\} $$ が成り立つことである。 『トゥー多様体』ではこのような$N$のチャートを$S$に適合するチャートと呼びます。
-Proposition   $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分多様体$S$はそれ自身$k$次元$C^{r}$級多様体である。 Proof [Of Proposition]: $(U;\phi)=(U;x_{1},\dots,x_{n}),(V,\psi)=(V;y_{1},\dots,y_{n})$を適合するチャートとし、$U\cap V\ne\emptyset$とする。このとき、$p\in U\cap V\cap S$に対して $$ \phi(p)=(x_{1}(p),\dots,x_{k}(p),0,\dots,0),\psi(p)=(y_{1}(p),\dots,y_{k}(p),0,\dots,0) $$ である。そこで、$\phi,\psi$の出力を$k$次元目までのところに制限したものを$\phi_{S},\psi_{S}$と書くことにすると、$\psi_{S}\circ\phi_{S}^{-1},\phi_{S}\circ\psi_{S}^{-1}$はそれぞれ$C^{r}$級の座標変換関数になる。 よって適合するチャートから構成した族$\{(U\cap S;\phi_{S})\}$は$S$の$C^{r}$級のアトラスになる。よって$S$は$k$次元$C^{r}$級多様体である。 次の2つの定理によって多様体の埋め込みと正則部分多様体は同じものとみなすことができます。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-08-30 17:18:33 +0900 JST'>August 30, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;96 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to はめ込みと埋め込み" href="https://yonesuke.github.io/posts/immersion-embedding/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.113.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -151,6 +151,20 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Laplacianの積分表現
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>領域$\Omega\subset\mathbb{R}^{n}$上で定義された関数$u\in C^{2}(\Omega)$についてLaplacian(ラプラシアン)は $$ \Delta u(x)=\sum_{i=1}^{n}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x) $$ で表されます。このとき、$\partial B(x,r)=\{y\in\mathbb{R}^{n}\mid |x-y|=r\}$とおくと、 $$ \Delta u(x)=\lim_{r\to&#43;0}\frac{2n}{r^{2}|\partial B(x,r)|}\int_{\partial B(x,r)}u(y)-u(x)d\sigma_{y} $$ が成り立ちます。$d\sigma_{y}$は$\partial B(x,r)$上の面積要素です。 この表現を得るには$u(y)$を$x$まわりでTaylor展開することが大事になるのですが、 その際、平均値の定理によって得られるTaylor展開だと剰余項の評価が難しくなります。 積分型のTaylor展開を用いることでこの問題を解決することができます。
+積分型のTaylor展開 はじめに多重指数$\alpha\in\mathbb{N}_{\geq 0}^{n}$を導入します。 $$ |\alpha|=\alpha_{1}&#43;\cdots&#43;\alpha_{n},\quad x^{\alpha}=x_{1}^{\alpha_{1}}\cdots x_{n}^{\alpha_{n}} $$ とし、多重指数による微分を $$ D^{\alpha}f=\frac{\partial^{|\alpha|}f}{\partial x_{1}^{\alpha_{1}}\cdots\partial x_{n}^{\alpha_{n}}} $$ とします。 このとき、関数$f$が$C^{k&#43;1}$級であるとき、点$x$まわりの積分型のTaylor展開は $$\begin{aligned}&amp;f(y)=\sum_{|\alpha|\leq k}\frac{D^{\alpha}f(x)}{\alpha!}(y-x)^{\alpha}&#43;\sum_{|\beta|=k&#43;1}R_{\beta}(y)(y-x)^{\beta},\\&amp;R_{\beta}(y)=\frac{k&#43;1}{\beta!}\int_{0}^{1}(1-t)^{k}D^{\beta}f(x&#43;t(y-x))dt\end{aligned}$$ で与えられます。このように剰余項$R_{\beta}$が積分の形で明示的に与えられるのが特徴です。 授業ではよく平均値の定理を用いた証明を習うと思うのですが、意外にこの積分型のTaylor展開が役に立つことがあるので覚えておいて損はないと思います。
+証明 $u$を$x$周りで展開しましょう。$u\in C^{2}(\Omega)$なので、 $$\begin{aligned}u(y)-u(x)=&amp;\sum_{i=1}^{n}\frac{\partial u}{\partial x_{i}}(x)(y_{i}-x_{i})&#43;2\sum_{i\ne j}(y_{i}-x_{i})(y_{j}-x_{j})\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))dt\\&amp;&#43;\sum_{i=1}^{n}(y_{i}-x_{i})^{2}\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}^{2}}(x&#43;t(y-x))dt\end{aligned}$$ です。これを積分すると、 $$\begin{aligned}\int_{\partial B(x,r)}u(y)-u(x)d\sigma_{y}=&amp;\sum_{i=1}^{n}\frac{\partial u}{\partial x_{i}}(x)\int_{\partial B(x,r)}y_{i}-x_{i}d\sigma_{y}\\&amp;&#43;2\sum_{i\ne j}\int_{\partial B(x,r)}(y_{i}-x_{i})(y_{j}-x_{j})\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))dt\right]d\sigma_{y}\\&amp;&#43;\sum_{i=1}^{n}\int_{\partial B(x,r)}(y_{i}-x_{i})^{2}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}^{2}}(x&#43;t(y-x))dt\right]d\sigma_{y}\end{aligned}$$ となります。 まず、$y_{i}-x_{i}$は$\partial B(x,r)$の奇関数なのでこの積分は$0$となります。 また、$y-x=rz,\ d\sigma_{y}=r^{n-1}d\sigma_{z}$と変数変換すると、$|\partial B(x,r)|=r^{n-1}|\partial B(0,1)|$より、 $$ \begin{aligned}&amp;\frac{2n}{r^{2}|\partial B(x,r)|}\int_{\partial B(x,r)}(y_{i}-x_{i})(y_{j}-x_{j})\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))\right]d\sigma_{y}\\=&amp;\frac{2n}{|\partial B(0,1)|}\int_{\partial B(0,1)}z_{i}z_{j}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;trz)\right]d\sigma_{z}\\\to&amp;\frac{2n}{|\partial B(0,1)|}\int_{\partial B(0,1)}z_{i}z_{j}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\right]d\sigma_{z}=\frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\int_{\partial B(0,1)}z_{i}z_{j}d\sigma_{z}\end{aligned} $$ と$r\to&#43;0$の極限で求まります。ただし極限操作の交換は優収束定理から正当化されます。 さらに、$i\ne j$ならば$z_{i}z_{j}$の積分は$0$になり、$i=j$ならば、$z_{i}^{2}$の積分は$i$に依存しないので、 $$ \frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}z_{i}^{2}d\sigma_{z}=\frac{1}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}\sum_{i=1}^{n}z_{i}^{2}d\sigma_{z}=\frac{\partial^{2}u}{\partial x_{i}^{2}}(x) $$ と計算できます。よって、 $$ \frac{2n}{r^{2}|\partial B(x,r)|}\int_{\partial B(x,r)}u(y)-u(x)d\sigma_{y}\to\sum_{i=1}^{n}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)=\Delta u(x) $$ となり、示されました。</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-07-30 18:34:51 +0900 JST'>July 30, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;111 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Laplacianの積分表現" href="https://yonesuke.github.io/posts/laplacian_integral/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -304,20 +318,6 @@ $\alpha=1$の場合には、 $$ X = \frac{2}{\pi}\left[(\frac{\pi}{2}&#43;\beta 
   </div>
   <footer class="entry-footer"><span title='2021-04-21 20:58:21 +0900 JST'>April 21, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;49 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 安定分布に従うノイズの生成方法" href="https://yonesuke.github.io/posts/stable_simulations/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>多変量正規分布間のKL距離
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>確率分布の間の&#34;近さ&#34;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
-準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
-導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) &#43; \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp; &#43; \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-04-19 00:32:17 +0900 JST'>April 19, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;255 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to 多変量正規分布間のKL距離" href="https://yonesuke.github.io/posts/kl-gaussian/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

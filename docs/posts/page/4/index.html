@@ -168,6 +168,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>多変量正規分布間のKL距離
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>確率分布の間の&#34;近さ&#34;を測る代表的なものとしてKL距離(Kullback–Leibler divergence)があります。特に多変量正規分布間のKL距離は変分下界を計算する際に登場することもあったりして応用上も重要です。その導出を行います。
+準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
+導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) &#43; \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp; &#43; \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-04-19 00:32:17 +0900 JST'>April 19, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;255 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 多変量正規分布間のKL距離" href="https://yonesuke.github.io/posts/kl-gaussian/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>博士課程1年目を振り返る
     </h2>
   </header>

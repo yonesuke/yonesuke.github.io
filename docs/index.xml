@@ -11,7 +11,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jun 2023 01:00:33 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jun 2023 10:00:06 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>決定木を1から実装する</title>
+      <link>https://yonesuke.github.io/posts/decision-tree/</link>
+      <pubDate>Sun, 25 Jun 2023 10:00:06 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/decision-tree/</guid>
+      <description>決定木って名前はよく聞くしscikit-learnで簡単に使えてしまうけど、中身を詳しく知っているわけではなかったのできちんと実装してみることにする。 from scratchでの実装にはこの記事が非常に参考になった。
+https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb https://darden.hatenablog.com/entry/2016/12/15/222447 決定木 まず決定木の仕組みについて説明する。 とは言っても懇切丁寧に説明している記事はほかにいくらでもあるので、ここではざっくりとした説明に留める。
+アルゴリズム 決定木における分類問題においては分類を行いたい対象に対する特徴量がn_features個与えられており、各特徴量は数で表現されるとする。
+例えば、sklearn内に格納されているirisデータセットには4個の特徴量が用意されている。具体的には、sepal length, sepal width, petal length, petal widthであり、いずれも単位はcmの数になっている。 このとき、決定木は与えられた特徴量たちに対して「特徴量Aは$x$より小さいか？」という質問を行う。この質問に対する答えがYesならば、次に「特徴量Bは$y$より小さいか？」という質問を、答えがNoならば、「特徴量Cは$z$より小さいか？」という質問を行う。 こういった質問を次々に行っていき、最後に「前の質問の答えがYesならば分類クラスはPである」といった具合に分類を行う。これが決定木の一つの大きな流れである。
+質問によって分岐が起きていくので、最初の質問を根とする木とみなすことができる。 この木のもとでは各質問は木のノードと捉えられ、また分岐の果てに分類問題の答えを出力する所は葉とみなすことができる。
+学習 上で説明した決定木アルゴリズムにおいて、各ノードに配置する「特徴量Aは$x$より小さいか？」という質問を作成する必要がある。これを学習データをもとに決定していくCARTアルゴリズムを紹介する。
+学習の流れは各ノードを根から順に決定していく流れとなるので、再帰的な構造を持つ。 学習データが質問を経てあるノードに到着した段階でn_samples個になったとしよう。 このとき、学習データがそれぞれ持つ分類クラスが質問を通して最も別れるような質問が最適な質問であると考える。明日晴れるか雨が降るかを知りたいときに、質問にYesと答えれば必ず晴れ、Noと答えれば必ず雨、ということが分かれば、これは最適な質問である、ということである。 これを定量的に評価する方法として、情報利得を用いることを考える。 n_samples個の学習データのそれぞれのクラスが格納された$y\in\mathbb{R}^{n_\mathrm{samples}}$に対して、クラスの揃い具合を表す情報量$f\colon\mathbb{R}^{N}\to\mathbb{R}$があったとしよう。 この指標は値が小さいほど学習データの分類クラスは揃っていて、値が大きいほどに学習データの分類クラスは全くもってばらけている状況を想定する。 ある質問を通して、n_left個の学習データがYesと、n_right個の学習データがNoと答えたとしよう。また、これに応じて分類クラス$y$は$y_{\mathrm{left}}$と$y_{\mathrm{right}}$に分けられるとする。 学習データが入力された段階では、情報量は$f(y)$である。 また、質問にYesと答えたときの情報量は$f(y_{\mathrm{left}})$、Noと答えたときの情報量は$f(y_{\mathrm{right}})$となる。 確率的には質問に答えた後の情報量は$\frac{n_{\mathrm{left}}}{n_{\mathrm{samples}}}f(y_{\mathrm{left}}) + \frac{n_{\mathrm{right}}}{n_{\mathrm{samples}}}f(y_{\mathrm{right}})$となる。よって、質問に答える前後で情報利得 $$ f(y) - \left(\frac{n_{\mathrm{left}}}{n_{\mathrm{samples}}}f(y_{\mathrm{left}}) + \frac{n_{\mathrm{right}}}{n_{\mathrm{samples}}}f(y_{\mathrm{right}})\right) $$ が最大となるような質問が最適である、と考える。 具体的な実装においては、各ノードに対して学習データを入力するたびごとに、まず特徴量を一つ選ぶ。学習データにわたってこの特徴量の値を閾値として情報利得を計算する。これをすべての特徴量と閾値に対して行い、最大の情報利得を取る特徴量と閾値でもってそのノードの質問を確定する、 という流れを取る。
+分類クラスの揃い具合を表す代表的な指標として、エントロピーとジニ不純度が ある。sklearnはデフォルトでジニ不純度を指定するようである。
+決定木の実装 はじめに、ノードの実装を行う。 各ノードは質問を決定する特徴量(のインデックス)self.featureとその閾値self.thresholdを持つ。 これにより定まる質問に対して答えがYesであれば左側の子ノードself.leftを、 Noであれば右側の子ノードselft.rightを参照するようにする。 ただし、葉ノードである場合には、その特徴量(のインデックス)を保管するようにする。
+1 2 3 4 5 6 7 8 9 10 class Node: def __init__(self, feature=None, threshold=None, left=None, right=None, value=None): self.</description>
+    </item>
+    
     <item>
       <title>SHA-256に用いられる定数が微妙に合わない</title>
       <link>https://yonesuke.github.io/posts/sha256-constants/</link>
