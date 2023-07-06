@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.115.0"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -157,9 +157,7 @@
         <h1>Ryosuke Yoneda&rsquo;s Homepage</h1>
     </header>
     <div class="entry-content">
-        <p>I am a Ph.D. student at the <a href="https://www-np.acs.i.kyoto-u.ac.jp/">Nonlinear Physics Division, Kyoto University</a>.</p>
-<p>My main research areas are <strong>nonlinear dynamics</strong> and <strong>statistical mechanics</strong>. I am especially interested in theoretical analysis and numerical simulation of phase transition phenomena. In specific, I have been analyzing the <strong>Kuramoto model</strong>, which is known to exhibit synchronous phenomena. For numerical analysis, I often use regression with <strong>Gaussian process</strong> and <strong>neural networks</strong>. Recently, I am also studying <strong>spectral graph theory</strong> to investigate the effect of network structure on synchronization phenomena.</p>
-
+        My name is Ryosuke Yoneda. I studied informatics at Kyoto University and conducted theoretical and experimental research on coupled phase-oscillator models. After obtaining my Ph.D., I joined the data science department of Nomura Securities. I am currently engaged in tasks related to financial data analysis and machine learning applications. I am interested in mathematical models and network science, and I want to understand the dynamics of complex systems in nature and social phenomena. My hobbies are reading and programming. Nice to meet you.
     </div>
     <footer class="entry-footer">
         <div class="social-icons">
@@ -206,6 +204,22 @@
 </div>
 
     </footer>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>ベンフォードの法則<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。
+ベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。
+具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について $$ a_{n}=a_{n-1} &#43; a_{n-2} $$ で定められる数列$\{a_{n}\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。
+1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。
+1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-07-01 09:40:29 +0900 JST'>July 1, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;90 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to ベンフォードの法則" href="https://yonesuke.github.io/posts/benford/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -364,24 +378,6 @@ GitHubからAUTOのリポジトリをcloneする場合は次のコマンドを�
   </div>
   <footer class="entry-footer"><span title='2022-11-20 00:21:47 +0900 JST'>November 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;124 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to AUTOのインストール方法" href="https://yonesuke.github.io/posts/auto_install/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Ising model on a Bethe lattice<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Baxterの本にベーテ格子上のイジングモデルの話があって面白かったのでまとめてみます。臨界点と臨界指数を求めるところまで書いてみます。
-Bethe lattice ベーテ格子は無限サイズのグラフの一つで、統計力学において厳密に解ける模型としてしばしば登場するものです。 具体的には次のように構成します。
-中心の点からスタートとして$q$個の点と枝を繋ぐ。中心の点を$0$番目の殻、それと繋がる点を$1$番目の殻に属すると呼ぶ。 $r$番目の殻まで構成したとき、その殻に属するそれぞれの点から$q-1$個の点と枝を繋ぎ、この点を$r&#43;1$番目の殻とする。 この操作を無限に繰り返すことでベーテ格子が構成されます。例えば$q=$5として3番目の殻までプロットしたものは次のようになります。
-Ising model 統計力学の細かい話はここでは述べません。定義だけさらっとまとめていきます。イジングモデルのエネルギーは、 $$ H(\bm{\sigma})=-J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j}-H\sum_{i}\sigma_{i} $$ で与えられ、$\bm{\sigma}$の確率分布は $$ P(\bm{\sigma})=\exp(-H(\bm{\sigma})/k_{B}T)=\exp\left[K\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j}&#43;h\sum_{i}\sigma_{i}\right] $$ になります。$\bm{\sigma}$の各要素は$\pm1$の値を取ります。 $\langle i,j\rangle$はベーテ格子上の隣接する点を集めたものです。 $k_{B}$はボルツマン定数であり、$K=J/k_{B}T,h=H/k_{B}T$と置いています。 この分布は規格化されていません。規格化定数が分配関数でこれは$Z=\sum_{\bm{\sigma}}P(\bm{\sigma})$になります。 適当な物理量は確率分布をもとに計算されます。例えば中心の磁化を$\sigma_{0}$と置くとその値は $$ M=\langle\sigma_{0}\rangle=\frac{1}{Z}\sum_{\bm{\sigma}}\sigma_{0}P(\bm{\sigma}) $$ で与えられます。次のセクションで$M$の値を実際に計算していきます。
-Recurrence relation ベーテ格子の対称性から中心の点はは$q$個の同一の部分木に分けられます。$j$番目の部分木の点集合を$s^{(j)}$と置くと確率分布は、 $$ P(\bm{\sigma})=\exp(h\sigma_{0})\prod_{j=1}^{q}Q_{n}(\sigma_{0}\mid s^{(j)}) $$ で書けます。ここで、 $$ Q_{n}(\sigma_{0}\mid s) = \exp\left[K\sum_{\langle i,j\rangle}s_{i}s_{j}&#43;Ks_{1}\sigma_{0}&#43;h\sum_{i}s_{i}\right] $$ は$\sigma_{0}$と木$s$との接続が寄与する項を表します。そのため和を取る項はすべて$s$内のものになります。 添字$n$はこの段階では$n$番目の殻まで打ち切ったベーテ格子を考えていることから来るものです。このあとで$n\to\infty$の極限を考えます。
-これをもとに中心の磁化$M$を計算します。$Q_{n}$を部分木上で和を取ったものを$g_{n}$と置くことにします。すなわち、 $$ g_{n}(\sigma_{0})=\sum_{s}Q_{n}(\sigma_{0}\mid s) $$ です。各部分木上で$g_{n}$の値が一致することを用いると、 $$ \begin{align*} M=&amp;Z^{-1}\sum_{\sigma_{0}}\sigma_{0}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=Z^{-1}\left(e^{h}[g_{n}(&#43;1)]^{q}-e^{-h}[g_{n}(-1)]^{q}\right)\\ Z=&amp;\sum_{\sigma_{0}}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=e^{h}[g_{n}(&#43;1)]^{q}&#43;e^{-h}[g_{n}(-1)]^{q} \end{align*} $$ になります。ここで、$x_{n}=g_{n}(-1)/g_{n}(&#43;1)$と置くと、 $$ M=\frac{e^{h}-e^{-h}x_{n}}{e^{h}&#43;e^{-h}x_{n}} $$ が得られます。
-$x_{n}$は$n$に依存するので、$n$に関する漸化式を求めてみましょう。$Q_{n}$を構成する部分木$s$はそれ自身$q-1$個の部分木を含みます。なので、$Q_{n}$はさらなる分解が期待されます。 $$ Q_{n}(\sigma_{0}\mid s)=\exp(K\sigma_{0}s_{1}&#43;hs_{1})\prod_{j=1}^{q-1}Q_{n-1}(s_{1}\mid t^{(j)}) $$ ここで、$s_{1}$は部分木$s$の根であり、$t^{(j)}$は$s_{1}$に接続する$j$番目の部分木になります。 この式を部分木$s$上で和を取って見ましょう。特に、右辺は$s_{1}$と$t^{(j)}$上の和に分解してみると、 $$ \begin{align*} g_{n}(\sigma_{0})=&amp;\sum_{s_{1}}\exp(K\sigma_{0}s_{1}&#43;hs_{1})[g_{n-1}(s_{1})]^{q-1}\\ =&amp;\exp(K\sigma_{0}&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K\sigma_{0}-h)[g_{n-1}(-1)]^{q-1} \end{align*} $$ になるので、$x_{n}$については $$ \begin{align*} x_{n}=&amp;\frac{g_{n}(-1)}{g_{n}(&#43;1)}\\ =&amp;\frac{\exp(-K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(K-h)[g_{n-1}(-1)]^{q-1}}{\exp(K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K-h)[g_{n-1}(-1)]^{q-1}}\\ =&amp;\frac{e^{-K&#43;h}&#43;e^{K-h}x_{n-1}^{q-1}}{e^{K&#43;h}&#43;e^{-K-h}x_{n-1}^{q-1}} \end{align*} $$ が得られます。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-10-01 16:15:49 +0900 JST'>October 1, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;109 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Ising model on a Bethe lattice" href="https://yonesuke.github.io/posts/bethe_ising/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

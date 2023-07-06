@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.115.0"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -151,6 +151,24 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Ising model on a Bethe lattice<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Baxterの本にベーテ格子上のイジングモデルの話があって面白かったのでまとめてみます。臨界点と臨界指数を求めるところまで書いてみます。
+Bethe lattice ベーテ格子は無限サイズのグラフの一つで、統計力学において厳密に解ける模型としてしばしば登場するものです。 具体的には次のように構成します。
+中心の点からスタートとして$q$個の点と枝を繋ぐ。中心の点を$0$番目の殻、それと繋がる点を$1$番目の殻に属すると呼ぶ。 $r$番目の殻まで構成したとき、その殻に属するそれぞれの点から$q-1$個の点と枝を繋ぎ、この点を$r&#43;1$番目の殻とする。 この操作を無限に繰り返すことでベーテ格子が構成されます。例えば$q=$5として3番目の殻までプロットしたものは次のようになります。
+Ising model 統計力学の細かい話はここでは述べません。定義だけさらっとまとめていきます。イジングモデルのエネルギーは、 $$ H(\bm{\sigma})=-J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j}-H\sum_{i}\sigma_{i} $$ で与えられ、$\bm{\sigma}$の確率分布は $$ P(\bm{\sigma})=\exp(-H(\bm{\sigma})/k_{B}T)=\exp\left[K\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j}&#43;h\sum_{i}\sigma_{i}\right] $$ になります。$\bm{\sigma}$の各要素は$\pm1$の値を取ります。 $\langle i,j\rangle$はベーテ格子上の隣接する点を集めたものです。 $k_{B}$はボルツマン定数であり、$K=J/k_{B}T,h=H/k_{B}T$と置いています。 この分布は規格化されていません。規格化定数が分配関数でこれは$Z=\sum_{\bm{\sigma}}P(\bm{\sigma})$になります。 適当な物理量は確率分布をもとに計算されます。例えば中心の磁化を$\sigma_{0}$と置くとその値は $$ M=\langle\sigma_{0}\rangle=\frac{1}{Z}\sum_{\bm{\sigma}}\sigma_{0}P(\bm{\sigma}) $$ で与えられます。次のセクションで$M$の値を実際に計算していきます。
+Recurrence relation ベーテ格子の対称性から中心の点はは$q$個の同一の部分木に分けられます。$j$番目の部分木の点集合を$s^{(j)}$と置くと確率分布は、 $$ P(\bm{\sigma})=\exp(h\sigma_{0})\prod_{j=1}^{q}Q_{n}(\sigma_{0}\mid s^{(j)}) $$ で書けます。ここで、 $$ Q_{n}(\sigma_{0}\mid s) = \exp\left[K\sum_{\langle i,j\rangle}s_{i}s_{j}&#43;Ks_{1}\sigma_{0}&#43;h\sum_{i}s_{i}\right] $$ は$\sigma_{0}$と木$s$との接続が寄与する項を表します。そのため和を取る項はすべて$s$内のものになります。 添字$n$はこの段階では$n$番目の殻まで打ち切ったベーテ格子を考えていることから来るものです。このあとで$n\to\infty$の極限を考えます。
+これをもとに中心の磁化$M$を計算します。$Q_{n}$を部分木上で和を取ったものを$g_{n}$と置くことにします。すなわち、 $$ g_{n}(\sigma_{0})=\sum_{s}Q_{n}(\sigma_{0}\mid s) $$ です。各部分木上で$g_{n}$の値が一致することを用いると、 $$ \begin{align*} M=&amp;Z^{-1}\sum_{\sigma_{0}}\sigma_{0}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=Z^{-1}\left(e^{h}[g_{n}(&#43;1)]^{q}-e^{-h}[g_{n}(-1)]^{q}\right)\\ Z=&amp;\sum_{\sigma_{0}}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=e^{h}[g_{n}(&#43;1)]^{q}&#43;e^{-h}[g_{n}(-1)]^{q} \end{align*} $$ になります。ここで、$x_{n}=g_{n}(-1)/g_{n}(&#43;1)$と置くと、 $$ M=\frac{e^{h}-e^{-h}x_{n}}{e^{h}&#43;e^{-h}x_{n}} $$ が得られます。
+$x_{n}$は$n$に依存するので、$n$に関する漸化式を求めてみましょう。$Q_{n}$を構成する部分木$s$はそれ自身$q-1$個の部分木を含みます。なので、$Q_{n}$はさらなる分解が期待されます。 $$ Q_{n}(\sigma_{0}\mid s)=\exp(K\sigma_{0}s_{1}&#43;hs_{1})\prod_{j=1}^{q-1}Q_{n-1}(s_{1}\mid t^{(j)}) $$ ここで、$s_{1}$は部分木$s$の根であり、$t^{(j)}$は$s_{1}$に接続する$j$番目の部分木になります。 この式を部分木$s$上で和を取って見ましょう。特に、右辺は$s_{1}$と$t^{(j)}$上の和に分解してみると、 $$ \begin{align*} g_{n}(\sigma_{0})=&amp;\sum_{s_{1}}\exp(K\sigma_{0}s_{1}&#43;hs_{1})[g_{n-1}(s_{1})]^{q-1}\\ =&amp;\exp(K\sigma_{0}&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K\sigma_{0}-h)[g_{n-1}(-1)]^{q-1} \end{align*} $$ になるので、$x_{n}$については $$ \begin{align*} x_{n}=&amp;\frac{g_{n}(-1)}{g_{n}(&#43;1)}\\ =&amp;\frac{\exp(-K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(K-h)[g_{n-1}(-1)]^{q-1}}{\exp(K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K-h)[g_{n-1}(-1)]^{q-1}}\\ =&amp;\frac{e^{-K&#43;h}&#43;e^{K-h}x_{n-1}^{q-1}}{e^{K&#43;h}&#43;e^{-K-h}x_{n-1}^{q-1}} \end{align*} $$ が得られます。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-10-01 16:15:49 +0900 JST'>October 1, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;109 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Ising model on a Bethe lattice" href="https://yonesuke.github.io/posts/bethe_ising/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -310,23 +328,6 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
   </div>
   <footer class="entry-footer"><span title='2021-08-23 16:38:35 +0900 JST'>August 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;296 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to MNISTをMLPで推論(Julia/Flux実装)" href="https://yonesuke.github.io/posts/mnist_mlp/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Gram行列の固有値の数値計算
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\{x_{i}\}_{i=1}^{n}$に対するGram行列(グラム行列)は $$ K=\begin{pmatrix}k(x_{1},x_{1}) &amp; \cdots &amp; k(x_{1},x_{n})\\\vdots &amp; \ddots &amp; \vdots\\ k(x_{n},x_{1}) &amp; \cdots &amp; k(x_{n},x_{n})\end{pmatrix} $$ で与えられます。色々な場面に登場するのですが、RBFカーネルからガウス過程を生成する際にその固有値計算で詰まったところがあったのでかんたんにまとめておきます。
-Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成り立ってグラム行列が(半)正定値行列になることです。すなわち、任意のベクトル$\bm{c}$に対して、 $$ \bm{c}^{\top}K\bm{c}\geq0 $$ が成り立つことです。なので、カーネル関数から生成されたGram行列は常に半正定値行列になります。 半正定値性と固有値が非負であることは同値なのでGram行列の固有値は常に非負です。
-ガウス過程に従う関数の生成 次にガウス過程から関数をサンプルすることを考えましょう。$f\sim\mathcal{GP}(m,k)$について、特にかんたんのために平均を$0$としておきましょう。 このとき、$\{x_{i}\}_{i=1}^{n}$上で関数$f$のベクトル$\bm{f}$は $$ \bm{f}\sim\mathcal{N}(\bm{0},K) $$ という多次元ガウス分布に従うものになります。これはGram行列を分散共分散行列とするガウス分布で、代表的なサンプル方法は$K$のコレスキー分解行列と$n$次元の独立標準正規分布に従う乱数との行列・ベクトル積を計算することで得られます。
-固有値分布とガウス過程の関係 RBFカーネルからGram行列を生成し、コレスキー分解することを考えましょう。ここでRBFカーネルは $$ k(x,y)=\exp\left(-\frac{(x-y)^{2}}{2l^{2}}\right) $$ で与えられます。Julia実装をしてみると、
-1 2 3 4 using LinearAlgebra xs = -2:0.02:2 K = [exp(-(x-y)^2) for x in xs, y in xs] cholesky(K) となりますが、これを実行すると、
-1 ERROR: PosDefException: matrix is not positive definite; Cholesky factorization failed. と帰ってきて、Gram行列が正定値でないと言われてしまいます。理論ではGram行列は正定値であるはずなので、これは数値的な誤差に起因していると考えられます。 そこでGram行列の固有値分布を確認してみることにします。この際、RBFカーネルだけでなく周期カーネルとMatérnカーネルについても固有値分布と対応するガウス過程のサンプルをプロットしました。この結果が次のようになります。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-08-02 16:59:14 +0900 JST'>August 2, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;184 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Gram行列の固有値の数値計算" href="https://yonesuke.github.io/posts/gram_eigen/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

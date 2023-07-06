@@ -75,10 +75,7 @@ params:
   homeInfoParams:
     Title: "Ryosuke Yoneda's Homepage"
     Content: >
-              I am a Ph.D. student at the [Nonlinear Physics Division, Kyoto University](https://www-np.acs.i.kyoto-u.ac.jp/).
-
-
-              My main research areas are **nonlinear dynamics** and **statistical mechanics**. I am especially interested in theoretical analysis and numerical simulation of phase transition phenomena. In specific, I have been analyzing the **Kuramoto model**, which is known to exhibit synchronous phenomena. For numerical analysis, I often use regression with **Gaussian process** and **neural networks**. Recently, I am also studying **spectral graph theory** to investigate the effect of network structure on synchronization phenomena.
+              My name is Ryosuke Yoneda. I studied informatics at Kyoto University and conducted theoretical and experimental research on coupled phase-oscillator models. After obtaining my Ph.D., I joined the data science department of Nomura Securities. I am currently engaged in tasks related to financial data analysis and machine learning applications. I am interested in mathematical models and network science, and I want to understand the dynamics of complex systems in nature and social phenomena. My hobbies are reading and programming. Nice to meet you.
 
   socialIcons:
     - name: twitter
