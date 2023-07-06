@@ -8,6 +8,14 @@ ShowBreadCrumbs: false
 comments: false
 ---
 
+- 👋 Hi, I’m Ryosuke Yoneda, a data scientist at Nomura Securities
+- 🎓 I have a Ph.D. in informatics from Kyoto University
+- 🔬 I’m fascinated by complex systems and network science
+- 💻 I love coding in Python and [JAX](https://github.com/google/jax)
+- 📢 You can find me on Twitter as [@yonesuke1729](https://twitter.com/yonesuke1729)
+- 🌏 My name in kanji is 米田(Yoneda) 亮介(Ryosuke)
+- 🎵 I enjoy listening to music and podcasts
+
 # Education
 - **Ph.D. student April 2020 - March 2023**
 
