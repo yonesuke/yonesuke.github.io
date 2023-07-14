@@ -8,10 +8,11 @@
 <title>ベンフォードの法則 | Ryosuke Yoneda</title>
 <meta name="keywords" content="">
 <meta name="description" content="ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。
-ベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。
+ベンフォードの法則 ベンフォードの法則は以下のように定義される。 自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。 $$ P(d) = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ ただし、$d=1,2,\dots,9$である。 もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。 ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。 この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、 ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。
+指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。
+$b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。 例えば、$b^{3}$の先頭が5ならば、$\log_{10} 5\leq 3\log_{10}b\ (\bmod 1)&lt;\log_{10} 6$である。 よって、$n\log_{10} b \ (\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。 $\log_{10} b$が無理数ならば、ワイルの均等分布定理から一様分布に従うことがわかる。 すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は $$ \log_{10}(d&#43;1) - \log_{10} d = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ とわかる。これはベンフォードの法則の法則に他ならない。
 具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について $$ a_{n}=a_{n-1} &#43; a_{n-2} $$ で定められる数列$\{a_{n}\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。
-1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。
-1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np.">
+1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。">
 <meta name="author" content="Ryosuke Yoneda">
 <link rel="canonical" href="https://yonesuke.github.io/posts/benford/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.3613efbd0b1772781e8f49935e973cae632a7f61471c05b17be155505ccf87b5.css" integrity="sha256-NhPvvQsXcngej0mTXpc8rmMqf2FHHAWxe&#43;FVUFzPh7U=" rel="preload stylesheet" as="style">
@@ -85,10 +86,11 @@
 <link rel="stylesheet" href="https://yonesuke.github.io/css/theoremproof.css">
 <meta property="og:title" content="ベンフォードの法則" />
 <meta property="og:description" content="ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。
-ベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。
+ベンフォードの法則 ベンフォードの法則は以下のように定義される。 自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。 $$ P(d) = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ ただし、$d=1,2,\dots,9$である。 もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。 ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。 この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、 ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。
+指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。
+$b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。 例えば、$b^{3}$の先頭が5ならば、$\log_{10} 5\leq 3\log_{10}b\ (\bmod 1)&lt;\log_{10} 6$である。 よって、$n\log_{10} b \ (\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。 $\log_{10} b$が無理数ならば、ワイルの均等分布定理から一様分布に従うことがわかる。 すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は $$ \log_{10}(d&#43;1) - \log_{10} d = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ とわかる。これはベンフォードの法則の法則に他ならない。
 具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について $$ a_{n}=a_{n-1} &#43; a_{n-2} $$ で定められる数列$\{a_{n}\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。
-1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。
-1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np." />
+1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yonesuke.github.io/posts/benford/" /><meta property="og:image" content="https://yonesuke.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-01T09:40:29+09:00" />
@@ -99,10 +101,11 @@
 
 <meta name="twitter:title" content="ベンフォードの法則"/>
 <meta name="twitter:description" content="ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。
-ベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。
+ベンフォードの法則 ベンフォードの法則は以下のように定義される。 自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。 $$ P(d) = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ ただし、$d=1,2,\dots,9$である。 もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。 ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。 この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、 ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。
+指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。
+$b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。 例えば、$b^{3}$の先頭が5ならば、$\log_{10} 5\leq 3\log_{10}b\ (\bmod 1)&lt;\log_{10} 6$である。 よって、$n\log_{10} b \ (\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。 $\log_{10} b$が無理数ならば、ワイルの均等分布定理から一様分布に従うことがわかる。 すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は $$ \log_{10}(d&#43;1) - \log_{10} d = \log_{10}\left(1 &#43; \frac{1}{d}\right) $$ とわかる。これはベンフォードの法則の法則に他ならない。
 具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について $$ a_{n}=a_{n-1} &#43; a_{n-2} $$ で定められる数列$\{a_{n}\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。
-1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。
-1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np."/>
+1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。"/>
 
 
 <script type="application/ld+json">
@@ -131,12 +134,12 @@
   "@type": "BlogPosting",
   "headline": "ベンフォードの法則",
   "name": "ベンフォードの法則",
-  "description": "ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。\nベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\\log_{10}$をとった際の小数点によって決まる。\n具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\\geq2$について $$ a_{n}=a_{n-1} + a_{n-2} $$ で定められる数列$\\{a_{n}\\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。\n1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) + fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。\n1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np.",
+  "description": "ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。\nベンフォードの法則 ベンフォードの法則は以下のように定義される。 自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。 $$ P(d) = \\log_{10}\\left(1 + \\frac{1}{d}\\right) $$ ただし、$d=1,2,\\dots,9$である。 もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。 ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。 この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、 ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。\n指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。\n$b^n$の最初の桁の値は$\\log_{10}$をとった際の小数点によって決まる。 例えば、$b^{3}$の先頭が5ならば、$\\log_{10} 5\\leq 3\\log_{10}b\\ (\\bmod 1)\u0026lt;\\log_{10} 6$である。 よって、$n\\log_{10} b \\ (\\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。 $\\log_{10} b$が無理数ならば、ワイルの均等分布定理から一様分布に従うことがわかる。 すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は $$ \\log_{10}(d+1) - \\log_{10} d = \\log_{10}\\left(1 + \\frac{1}{d}\\right) $$ とわかる。これはベンフォードの法則の法則に他ならない。\n具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\\geq2$について $$ a_{n}=a_{n-1} + a_{n-2} $$ で定められる数列$\\{a_{n}\\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。\n1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) + fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。",
   "keywords": [
     
   ],
-  "articleBody": "ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。\nベンフォードの法則 指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。 $b^n$の最初の桁の値は$\\log_{10}$をとった際の小数点によって決まる。\n具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\\geq2$について $$ a_{n}=a_{n-1} + a_{n-2} $$ で定められる数列$\\{a_{n}\\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。\n1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) + fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。\n1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np.bincount([first_digit(fib(n)) for n in range(n_max)]) plt.bar(range(10), fib_first_digits / n_max) plt.xlabel(\"First digit\") plt.ylabel(\"Frequency\") plt.show() 日本の人口 ",
-  "wordCount" : "90",
+  "articleBody": "ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。 ふと出くわして非常に面白かったのでまとめておく。\nベンフォードの法則 ベンフォードの法則は以下のように定義される。 自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。 $$ P(d) = \\log_{10}\\left(1 + \\frac{1}{d}\\right) $$ ただし、$d=1,2,\\dots,9$である。 もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。 ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。 この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、 ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。\n指数関数の場合 べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。 簡単に$n$番目のデータが$b^n$の場合を考える。\n$b^n$の最初の桁の値は$\\log_{10}$をとった際の小数点によって決まる。 例えば、$b^{3}$の先頭が5ならば、$\\log_{10} 5\\leq 3\\log_{10}b\\ (\\bmod 1)\u003c\\log_{10} 6$である。 よって、$n\\log_{10} b \\ (\\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。 $\\log_{10} b$が無理数ならば、ワイルの均等分布定理から一様分布に従うことがわかる。 すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は $$ \\log_{10}(d+1) - \\log_{10} d = \\log_{10}\\left(1 + \\frac{1}{d}\\right) $$ とわかる。これはベンフォードの法則の法則に他ならない。\n具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\\geq2$について $$ a_{n}=a_{n-1} + a_{n-2} $$ で定められる数列$\\{a_{n}\\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。\n1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) + fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。\n1 2 3 4 5 6 7 8 9 10 11 12 13 import numpy as np import matplotlib.pyplot as plt def first_digit(n): return int(str(n)[0]) n_max = 1000 fib_first_digits = np.bincount([first_digit(fib(n)) for n in range(n_max)]) plt.plot(np.arange(1, 10), fib_first_digits[1:] / n_max, label='Fibonacci') xs = np.arange(1, 10) plt.plot(xs, np.log10(1 + 1 / xs), label='Benford') plt.legend() 図を見てもわかるように、フィボナッチ数列の先頭の桁がベンフォードの法則に従うことが確かめられた。 これが成り立つことは上の指数関数の例から証明を行うことができる。 フィボナッチ数列の一般項は、 $$ a_{n} = \\frac{1}{\\sqrt{5}}\\left(\\frac{1+\\sqrt{5}}{2}\\right)^{n} - \\frac{1}{\\sqrt{5}}\\left(\\frac{1-\\sqrt{5}}{2}\\right)^{n} $$ で与えられる。 第2項は$|(1-\\sqrt{5})/2|\u003c1$なので、$n$が大きくなれば無視できる項となる。 そうすると、フィボナッチ数列はべき的なふるまいをするとみなすことができるので、 先ほどの指数関数の場合と同様にベンフォードの法則が成り立つことがわかる。\n世界の人口 世界の国々の人口についてもベンフォードの法則が成り立つのかを確認してみよう。 世界の人口はpandas_datareaderを利用すると簡単に取得することができる。\n1 2 3 4 5 from pandas_datareader import wb df = wb.download(indicator='SP.POP.TOTL', country='all', start=2000, end=2022) df = df.pivot_table(columns='country', index='year', values='SP.POP.TOTL') print(df.iloc[:5,:5].to_markdown()) year Afghanistan Africa Eastern and Southern Africa Western and Central Albania Algeria 2000 1.9543e+07 4.01601e+08 2.69612e+08 3.08903e+06 3.07746e+07 2001 1.96886e+07 4.12002e+08 2.7716e+08 3.06017e+06 3.1201e+07 2002 2.10003e+07 4.22741e+08 2.84952e+08 3.05101e+06 3.16247e+07 2003 2.26451e+07 4.33807e+08 2.92978e+08 3.03962e+06 3.20559e+07 2004 2.35536e+07 4.45282e+08 3.01265e+08 3.02694e+06 3.25102e+07 このデータに対して、各年で最初の桁の数字の分布を確認する。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 import pandas as pd df_count = pd.DataFrame( df.applymap(lambda n: int(str(n)[0])).apply(np.bincount, axis=1).tolist(), index = df.index ) import matplotlib.pyplot as plt for year, v in df_count.iterrows(): plt.plot( v.index[1:], v.values[1:] / v.sum(), color='tab:blue', alpha=(int(year) - 2000) / 22, label=year ) xs = np.arange(1, 10) plt.plot(xs, np.log10(1 + 1 / xs), color='tab:orange', label='Benford') plt.legend(ncols=3) 世界の人口についてもベンフォードの法則への当てはまりが良いことがわかる。\nまとめ ベンフォードの法則を簡単に紹介し、指数関数に従うデータに対してはこの法則が成り立つことを確認した。 また、フィボナッチ数列や世界の人口についてもベンフォードの法則が成り立つことをみた。 ベンフォードの法則は、データの偽造を検出するために利用されることもあるそうなので、 気が向いたらそちらも試してみたいと思う。\n",
+  "wordCount" : "292",
   "inLanguage": "en",
   "datePublished": "2023-07-01T09:40:29+09:00",
   "dateModified": "2023-07-01T09:40:29+09:00",
@@ -231,9 +234,9 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://yonesuke.github.io">Home</a>&nbsp;»&nbsp;<a href="https://yonesuke.github.io/posts/">Posts</a></div>
     <h1 class="post-title">
-      ベンフォードの法則<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+      ベンフォードの法則
     </h1>
-    <div class="post-meta"><span title='2023-07-01 09:40:29 +0900 JST'>July 1, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;90 words&nbsp;·&nbsp;Ryosuke Yoneda
+    <div class="post-meta"><span title='2023-07-01 09:40:29 +0900 JST'>July 1, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;292 words&nbsp;·&nbsp;Ryosuke Yoneda
 
 </div>
   </header> <div class="toc">
@@ -249,9 +252,10 @@
     <li><a href="#具体例">具体例</a>
       <ul>
         <li><a href="#フィボナッチ数列">フィボナッチ数列</a></li>
-        <li><a href="#日本の人口">日本の人口</a></li>
+        <li><a href="#世界の人口">世界の人口</a></li>
       </ul>
     </li>
+    <li><a href="#まとめ">まとめ</a></li>
   </ul>
 </nav>
         </div>
@@ -261,10 +265,28 @@
   <div class="post-content"><p>ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。
 ふと出くわして非常に面白かったのでまとめておく。</p>
 <h2 id="ベンフォードの法則">ベンフォードの法則<a hidden class="anchor" aria-hidden="true" href="#ベンフォードの法則">#</a></h2>
+<p>ベンフォードの法則は以下のように定義される。
+自然界に現れる多くの数値の最初の桁の値は、一様分布ではなく、次のような分布に従う。
+$$
+P(d) = \log_{10}\left(1 + \frac{1}{d}\right)
+$$
+ただし、$d=1,2,\dots,9$である。
+もちろんこれは常に正しいわけではなく、経験的にそうなっている、というものである。
+ただ、以下でみるようにべき的なふるまいを見せるデータに対してはベンフォードの法則が成り立つことが示せる。
+この意味で、むしろ自然界にはべき的なふるまいをするデータがたくさんあることはよく知られているので、
+ベンフォードの法則が成り立つようなデータが多くあることは自然なのかもしれない。</p>
 <h2 id="指数関数の場合">指数関数の場合<a hidden class="anchor" aria-hidden="true" href="#指数関数の場合">#</a></h2>
 <p>べき乗則に従うようなデータに対しては、ベンフォードの法則が成り立つことが簡単に示せる。
-簡単に$n$番目のデータが$b^n$の場合を考える。
-$b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。</p>
+簡単に$n$番目のデータが$b^n$の場合を考える。</p>
+<p>$b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって決まる。
+例えば、$b^{3}$の先頭が5ならば、$\log_{10} 5\leq 3\log_{10}b\ (\bmod 1)&lt;\log_{10} 6$である。
+よって、$n\log_{10} b \ (\bmod 1)$が$[0, 1]$区間で従う分布がそのまま$b^n$の一桁目の分布に従う。
+<strong>$\log_{10} b$が無理数ならば</strong>、ワイルの均等分布定理から一様分布に従うことがわかる。
+すなわち、十分に大きな$n$において、先頭の桁が$d$となる確率は
+$$
+\log_{10}(d+1) - \log_{10} d = \log_{10}\left(1 + \frac{1}{d}\right)
+$$
+とわかる。これはベンフォードの法則の法則に他ならない。</p>
 <h2 id="具体例">具体例<a hidden class="anchor" aria-hidden="true" href="#具体例">#</a></h2>
 <h3 id="フィボナッチ数列">フィボナッチ数列<a hidden class="anchor" aria-hidden="true" href="#フィボナッチ数列">#</a></h3>
 <p>フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について
@@ -320,17 +342,148 @@ pythonでこの数列を実装するには再帰を利用する必要がある�
 </span></span><span class="line"><span class="cl"><span class="n">n_max</span> <span class="o">=</span> <span class="mi">1000</span>
 </span></span><span class="line"><span class="cl"><span class="n">fib_first_digits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">([</span><span class="n">first_digit</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_max</span><span class="p">)])</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">fib_first_digits</span> <span class="o">/</span> <span class="n">n_max</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;First digit&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Frequency&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">fib_first_digits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">n_max</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fibonacci&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">xs</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Benford&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><figure>
-    <img loading="lazy" src="image.png" width="700"/> 
+    <img loading="lazy" src="benford_fib.png" width="700"/> 
 </figure>
 
-<h3 id="日本の人口">日本の人口<a hidden class="anchor" aria-hidden="true" href="#日本の人口">#</a></h3>
+<p>図を見てもわかるように、フィボナッチ数列の先頭の桁がベンフォードの法則に従うことが確かめられた。
+これが成り立つことは上の指数関数の例から証明を行うことができる。
+フィボナッチ数列の一般項は、
+$$
+a_{n} = \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n} - \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n}
+$$
+で与えられる。
+第2項は$|(1-\sqrt{5})/2|&lt;1$なので、$n$が大きくなれば無視できる項となる。
+そうすると、フィボナッチ数列はべき的なふるまいをするとみなすことができるので、
+先ほどの指数関数の場合と同様にベンフォードの法則が成り立つことがわかる。</p>
+<h3 id="世界の人口">世界の人口<a hidden class="anchor" aria-hidden="true" href="#世界の人口">#</a></h3>
+<p>世界の国々の人口についてもベンフォードの法則が成り立つのかを確認してみよう。
+世界の人口は<code>pandas_datareader</code>を利用すると簡単に取得することができる。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pandas_datareader</span> <span class="kn">import</span> <span class="n">wb</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">indicator</span><span class="o">=</span><span class="s1">&#39;SP.POP.TOTL&#39;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;SP.POP.TOTL&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:right">year</th>
+<th style="text-align:right">Afghanistan</th>
+<th style="text-align:right">Africa Eastern and Southern</th>
+<th style="text-align:right">Africa Western and Central</th>
+<th style="text-align:right">Albania</th>
+<th style="text-align:right">Algeria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2000</td>
+<td style="text-align:right">1.9543e+07</td>
+<td style="text-align:right">4.01601e+08</td>
+<td style="text-align:right">2.69612e+08</td>
+<td style="text-align:right">3.08903e+06</td>
+<td style="text-align:right">3.07746e+07</td>
+</tr>
+<tr>
+<td style="text-align:right">2001</td>
+<td style="text-align:right">1.96886e+07</td>
+<td style="text-align:right">4.12002e+08</td>
+<td style="text-align:right">2.7716e+08</td>
+<td style="text-align:right">3.06017e+06</td>
+<td style="text-align:right">3.1201e+07</td>
+</tr>
+<tr>
+<td style="text-align:right">2002</td>
+<td style="text-align:right">2.10003e+07</td>
+<td style="text-align:right">4.22741e+08</td>
+<td style="text-align:right">2.84952e+08</td>
+<td style="text-align:right">3.05101e+06</td>
+<td style="text-align:right">3.16247e+07</td>
+</tr>
+<tr>
+<td style="text-align:right">2003</td>
+<td style="text-align:right">2.26451e+07</td>
+<td style="text-align:right">4.33807e+08</td>
+<td style="text-align:right">2.92978e+08</td>
+<td style="text-align:right">3.03962e+06</td>
+<td style="text-align:right">3.20559e+07</td>
+</tr>
+<tr>
+<td style="text-align:right">2004</td>
+<td style="text-align:right">2.35536e+07</td>
+<td style="text-align:right">4.45282e+08</td>
+<td style="text-align:right">3.01265e+08</td>
+<td style="text-align:right">3.02694e+06</td>
+<td style="text-align:right">3.25102e+07</td>
+</tr>
+</tbody>
+</table>
+<p>このデータに対して、各年で最初の桁の数字の分布を確認する。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_count</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df_count</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">v</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">v</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">22</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">label</span><span class="o">=</span><span class="n">year</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">xs</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Benford&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><figure>
+    <img loading="lazy" src="benford_population.png" width="700"/> 
+</figure>
+
+<p>世界の人口についてもベンフォードの法則への当てはまりが良いことがわかる。</p>
+<h2 id="まとめ">まとめ<a hidden class="anchor" aria-hidden="true" href="#まとめ">#</a></h2>
+<p>ベンフォードの法則を簡単に紹介し、指数関数に従うデータに対してはこの法則が成り立つことを確認した。
+また、フィボナッチ数列や世界の人口についてもベンフォードの法則が成り立つことをみた。
+ベンフォードの法則は、データの偽造を検出するために利用されることもあるそうなので、
+気が向いたらそちらも試してみたいと思う。</p>
 
 
   </div>
