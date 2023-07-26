@@ -11,7 +11,20 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Jul 2023 09:40:29 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 10:08:44 +0900</lastBuildDate><atom:link href="https://yonesuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>オルンシュタイン-ウーレンベック過程</title>
+      <link>https://yonesuke.github.io/posts/ou_process/</link>
+      <pubDate>Sat, 22 Jul 2023 10:08:44 +0900</pubDate>
+      
+      <guid>https://yonesuke.github.io/posts/ou_process/</guid>
+      <description>オルンシュタイン-ウーレンベック過程の基本的な性質を振り返り、 python(diffrax)で数値計算を行う。
+オルンシュタイン-ウーレンベック過程 オルンシュタインウーレンベック過程はもとをたどればブラウン運動を記述するランジュバン方程式になるだろう。 ランジュバン方程式は速度に比例する摩擦力と外部からの揺動力を受ける粒子の速度を記述する方程式である。 これを確率微分方程式の形で書き下したものがオルンシュタイン-ウーレンベック過程である。
+$$ dx_t = \theta(\mu - x_t)dt + \sigma dW_t $$
+解く 定数変化法を利用する。$x_{t}e^{\theta t}$を微分すると、 $$ d(x_{t}e^{\theta t})=e^{\theta t}dx_t+\theta e^{\theta t}x_t dt =\theta\mu e^{\theta t}dt+\sigma e^{\theta t}dW_t $$ である。これを積分すると、 $$ x_{t}e^{\theta t}=x_0+\mu(e^{\theta t}-1)+\sigma\int_0^t e^{\theta s}dW_s $$ である。両辺を$e^{\theta t}$で割ると、 $$ x_t = x_0 e^{-\theta t} + \mu (1 - e^{-\theta t})+\sigma\int_0^t e^{\theta (s-t)}dW_s $$ が得られる。
+この解の期待値と共分散は次のようになる。 $$ \begin{align*} &amp;amp;\mathbb{E}[x_t] = x_0 e^{-\theta t} + \mu (1 - e^{-\theta t}),\\ &amp;amp;\mathrm{cov}(x_t,x_s) = \frac{\sigma^2}{2\theta}e^{-\theta(t+s)}(e^{2\theta\min(t,s)}-1) \end{align*} $$ 特に分散は$t=s$とすることで$\sigma^{2}(1-e^{-2\theta t})/2\theta$が得られる。</description>
+    </item>
+    
     <item>
       <title>ベンフォードの法則</title>
       <link>https://yonesuke.github.io/posts/benford/</link>

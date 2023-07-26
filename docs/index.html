@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.115.1"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.115.4"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -208,6 +208,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>オルンシュタイン-ウーレンベック過程<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>オルンシュタイン-ウーレンベック過程の基本的な性質を振り返り、 python(diffrax)で数値計算を行う。
+オルンシュタイン-ウーレンベック過程 オルンシュタインウーレンベック過程はもとをたどればブラウン運動を記述するランジュバン方程式になるだろう。 ランジュバン方程式は速度に比例する摩擦力と外部からの揺動力を受ける粒子の速度を記述する方程式である。 これを確率微分方程式の形で書き下したものがオルンシュタイン-ウーレンベック過程である。
+$$ dx_t = \theta(\mu - x_t)dt &#43; \sigma dW_t $$
+解く 定数変化法を利用する。$x_{t}e^{\theta t}$を微分すると、 $$ d(x_{t}e^{\theta t})=e^{\theta t}dx_t&#43;\theta e^{\theta t}x_t dt =\theta\mu e^{\theta t}dt&#43;\sigma e^{\theta t}dW_t $$ である。これを積分すると、 $$ x_{t}e^{\theta t}=x_0&#43;\mu(e^{\theta t}-1)&#43;\sigma\int_0^t e^{\theta s}dW_s $$ である。両辺を$e^{\theta t}$で割ると、 $$ x_t = x_0 e^{-\theta t} &#43; \mu (1 - e^{-\theta t})&#43;\sigma\int_0^t e^{\theta (s-t)}dW_s $$ が得られる。
+この解の期待値と共分散は次のようになる。 $$ \begin{align*} &amp;\mathbb{E}[x_t] = x_0 e^{-\theta t} &#43; \mu (1 - e^{-\theta t}),\\ &amp;\mathrm{cov}(x_t,x_s) = \frac{\sigma^2}{2\theta}e^{-\theta(t&#43;s)}(e^{2\theta\min(t,s)}-1) \end{align*} $$ 特に分散は$t=s$とすることで$\sigma^{2}(1-e^{-2\theta t})/2\theta$が得られる。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-07-22 10:08:44 +0900 JST'>July 22, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;427 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to オルンシュタイン-ウーレンベック過程" href="https://yonesuke.github.io/posts/ou_process/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>ベンフォードの法則
     </h2>
   </header>
@@ -359,26 +375,6 @@ Kernel Ridge Regression Random Fourier Featuresを用いてカーネル関数を
   </div>
   <footer class="entry-footer"><span title='2023-01-06 23:34:02 +0900 JST'>January 6, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;766 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Random Fourier Features" href="https://yonesuke.github.io/posts/random_fourier_feature/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>AUTOのインストール方法
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AUTOはODE(常微分方程式)の分岐解析を扱うソフトウェアで、1980年に開発されて以来力学系界隈で使われてきました。 現在はGitHubにてコードが公開されて細々と(?)開発が続けられています。
-https://github.com/auto-07p/auto-07p AUTOは便利ではあるのですが、そのインストール方法がプログラム初心者には少し難しいことがあるそうなのでその流れを少しまとめてみました。 以下では基本的にMac OSでインストールする方法を述べますが、WindowsやLinuxでも同様だと思います。 また、最低限のターミナルでの操作は出来るものとしておきます。
-インストール方法 はじめにGitHubからコードをダウンロードする必要があります。これには、リポジトリをcloneする方法とリリースからダウンロードをする方法があります。 cloneという言葉の意味がわからなければリリースからダウンロードする方が良いかもしれません。
-GitHubからAUTOのリポジトリをcloneする場合は次のコマンドを打ち込みます。 1 git clone git@github.com:auto-07p/auto-07p.git 次にこのフォルダをホーム直下で~/.auto-07pという名前で移動させましょう。 1 mv auto-07p ~/.auto-07p この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。その場合は後で編集するauto.env.shも適切に変えてください。 GitHub内のリリースページ内にある最新のリリースからSource code (zip)をダウンロードしてください。記事作成時点ではバージョン0.9.3が最新でした。例えばDownloadsフォルダ内にzipファイルが格納されたとしましょう。このフォルダを開いてzipファイルを展開してください。同一フォルダ内でauto-07p-0.9.3というフォルダが作られるはずです(後ろの数字はバージョンを表すので変動する可能性はあります)。次にターミナルを開いて次のコマンドを打ち込んでください。 1 mv ~/Downloads/auto-07p-0.9.3 ~/.auto-07p 上に同じですが、この場所が嫌ならば他の場所に他の名前で移動させてもらっても構いません。 このフォルダ内に移動しておきます。
-1 cd ~/.auto-07p フォルダ内で./configureを実行した上でmakeを行います。
-1 2 ./configure make 何も問題がなければこのmakeは成功しますが、うまくAUTOが起動出来ない場合はこのmakeで失敗している可能性が高いです。エラーが出ていないかはよく見ておいてください。
-あとはAUTOの設定ファイルをシェルに読み込ませるだけですが、GitHubからcloneしたファイルに間違いがあるので修正する(間違っているというか、リリースされているもののフォルダ構成がGitHubのフォルダ構成と微妙に違うだけ、ではあります)。~/.auto-07p/cmds/auto.env.shの5行目を次のように編集してください。
-1 2 -AUTO_DIR=$HOME/auto/07p &#43;AUTO_DIR=$HOME/.auto-07p このとき~/.auto-07p以外にフォルダを設置している場合はそのようにAUTO_DIRを設定しておいてください。 最終的に~/.auto-07p/cmds/auto.env.shは次のようになります。
-1 2 3 4 5 6 7 8 9 10 11 12 13 # # This file has to be sourced before activating AUTO if you are using # a &#39;sh&#39; compatible shell, such as sh, bash, ksh, or ash....</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-11-20 00:21:47 +0900 JST'>November 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;124 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to AUTOのインストール方法" href="https://yonesuke.github.io/posts/auto_install/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
