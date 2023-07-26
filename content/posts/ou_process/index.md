@@ -1,7 +1,7 @@
 ---
 title: "オルンシュタイン-ウーレンベック過程"
 date: 2023-07-22T10:08:44+09:00
-draft: true
+draft: false
 math: true
 author: Ryosuke Yoneda
 ---
