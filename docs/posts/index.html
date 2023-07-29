@@ -168,6 +168,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>博士課程2年目3年目を振り返る
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>大昔に博士課程1年目を振り返るという記事で博士課程1年目のときに起こったことを書いていったのだが、 2年目3年目については特に何も書いていなかった。 その代わりといっては何だが、研究室内のwikiでつらつらと簡単な日記を書いていたので、それをここに貼っておくことにする。 研究室内のネットワーク関連の情報も一部載っていたので、そちらは非表示で対応することにしている。 あと画像・PDFは移植が面倒すぎたので諦めた。 こうしてみると、色々と手を動かしてもがいた3年間だったなあ、と。あとモチベーション維持にも苦労した3年間でもあったかなあ。 いつかまた読み返してこんなこともあったなあと笑えるように備忘録として残しておく。
+研究日誌 2023/03/29 NNを使って臨界指数を計算する論文がアクセプトされた。アクセプトのメールを開いたときに感情が全く動かなかった。感情が全く動かない自分にむしろ驚いた。もう論文書くとかのモチベーションが0に収束してしまった感じがあるなあ。 もう卒業らしい。長い学生生活も終焉を迎えてしまう。 2023/02/24 sekiの上でflexgenを動かした。楽しいわな。しょうみ爆笑やわ。 2023/02/21 huggingfaceに学習済みのパラメーターあるから誰かtensor networkで行列分解してどれくらいモデル圧縮できるかやってほしい。頼む。 GPT2の実装完全に理解した。 2023/02/16 https://suzuri.jp/yonesuke1729 蔵本モデルグッズを作ったので気が向いたら買ってください。 2023/01/25 臨界点近傍でもきちんと値が収束するところまで計算ができたらひとまず完成かなあ。色々試してみたい。 Ott-AntonsenをODEに落とし込んで直接解くというアイデア、いろんな数値積分手法で試してる。ガウス求積法の中でGauss-Hermiteは結構期待してたんやけど全然あかんかった。あとDE公式は一瞬で破綻してる。使い方を間違ってるかも。$[-1,1]$の区間に変換してtrapezoidで値を足し込むのが一番良いのかもしれない。あとは$[-1,1]$の区間に変換してGauss-Legendreで解くのはありなのかも。それも試してみる。 2023/01/16 (おそらく)卒業するのでこれまで蔵本モデルについて勉強した色々をまとめている。jaxkuramotoというパッケージとして出してる。ドキュメントを整備していく。 https://github.com/yonesuke/jaxkuramoto 生協のレジシステムがyahoo newsになってておもろい。 https://news.yahoo.co.jp/articles/c92e3b04375c89fa20a1640e906a6e9769994e3d 2023/01/13 自動微分がかなりあついなあ。$\int_{a}^{b}f(x,\theta)\mathrm{d}x$の$a,b,\theta$微分とかも自動微分設定したら出来るなあ。だいぶおもろくなってきてる。これ蔵本モデルのself-consistent方程式の解析に応用できるかも。 27になった。 2023/01/11 やってることneural odeのadjoint methodとほとんどパラレルな気がしてきた。 パラメタライズされた離散力学系の固定点周りの微分はbackpropで求まるらしい。天才かな。 https://jax.readthedocs.io/en/latest/notebooks/Custom_derivative_rules_for_Python_code.html#implicit-function-differentiation-of-iterative-implementations 2023/01/10 microsoft teamsで問題を作るサービスがあるんやけどそこでlatexが使えるらしくでびっくりした。 forwardの方向微分とかはdual number使ったほうが良いとかはありそう、などと思った。 jaxのgradのアイデアは基本的にはautogradと同じやと思うけど、jaxにはあとjitコンパイルとかvmapの並列化とかがあってそれも理解するには道のりがかなり遠い。 これがわかりやすい。 https://www.cs.toronto.edu/~rgrosse/courses/csc421_2019/readings/L06%20Automatic%20Differentiation.pdf jaxの前身のautogradの実装を見ながら手元で実装してみてる。Boxってのを作っててそこの理解がまだあやふや。 2023/01/09 リミットサイクルを持つ振動子のアイソクロンを書いて遊んでた。博論に載せる。 reviseしたものをsubmitした。一つ肩の荷が降りた。 2023/01/03 SSHがない。。。下にある&gt;&lt;ぽいのを押したら一応sshはできる。 vscodeのremote explorerからssh接続の一覧が消えてるんやけどなんで？？謎いなあ。 2023/01/01 数値計算結果がどうみても想定と違う結果を出してる。jaxのデフォルトがfloat32なのでそれに起因しているのかも。float64を有効にして計算しなおす。 あけおめ。ことよろ。 2022/12/31 どうでもよいSSH情報。ssh server hogeでserver先にコマンドhogeを送ってその結果を返してくれる。例えばssh euler nvidia-smiでeulerのGPU使用率をlocalから手軽に確認できる。ssh euler &#34;cat ~/hoge/nohup.out&#34;で(nohupに実験結果を投げてたら)eulerで実験中の結果を確認できる。 モクモクと博論の図をいじる。毎度恒例の「論文投稿直前matplotlib能力向上」が今回も観測されている。 2022/12/29 JAXを使うべき(使わないべき)理由を色んな人が書いてくれてるので非常にためになる。もう2022年終わるんやけどな。 https://www.reddit.com/r/MachineLearning/comments/st8b11/d_should_we_be_using_jax_in_2022/ 2022/12/28 GitHub copilotがフーリエ級数展開を完全に理解してて怖いです フーリエ級数の足し算引き算掛け算微分積分を備えたclassを作成したほうが良い気がしてきた。適用範囲は広い気がする。 予備審査願に論文概要の提出が必要らしい。慌てて書く。書き終わったら家の掃除して実家帰る。 2022/12/25 来年はなんか新しいことを勉強してみたい。 月曜日と火曜日で博論をひとまず完成させるのとrebuttalを提出する。それで今年は終わりかなあ〜〜 2022/12/23 仕事納め頑張るぞ〜〜 博論及び発表スライドを一生作ってます。rebuttalの方も一通り終わったので年を越す前に再投稿するぞ。 2022/12/07 ホモロジーのゼミで&#34;自由群の部分群は自由群&#34;っていうNielsen–Schreierの定理を知った。これいかつすぎんか？$\mathbb{S}^{1}\vee\mathbb{S}^{1}$の基本群が$\mathbb{Z}\ast\mathbb{Z}=F_{2}$になるっていうのがあって、そのcovering spaceの中で基本群が$F_{n}$になるようなものが構成されて、しかもcovering spaceの基本群はもとの空間の基本群の部分群になるから、、、というのが大まかな流れっぽい(なんか勘違いしてるかも)。いやあすごいなあ、と久しぶりに思った定理やった。 2022/11/28 プログラムを少し書いた。一歩前進。pythonとtexを一生書く。 2022/11/21 宮崎駿もこの気持ち。 研究する気力がまじで湧いてこない。neural scaling analysisのrebuttalをしようと思ってjupyter notebookまで開きはするけどそこから手が動かない。あー踏ん張り時。石川佳純もこの気持ちやし頑張る。 先週は婚姻届を出した。特に区役所から電話もなかったので受理されたと思う。人生を感じる。 春先まで使ってたパソコンに今一番必要としているコードが残されていた。。。慌てて取り出した。 2022/11/09 研究に専念していきたい。 試験受かってた〜〜まじで嬉しい。肩の荷が下りた気がする。 2022/11/03 家のシャワーからお湯が出なくなった。大ピンチ。とりあえず今はanytimeのシャワーを使うことでしばらく生きていくことにする。 資格試験の勉強にすべての時間が吸われてる。 2022/10/28 プロポーズしたとだけ書いて結果を書いてなかったがために何人かから心配されたんやけど無事にokしてもらってます笑。来月婚姻届を京都市に出す予定。 neural sdeの実行時間。pytorch実装だと1000iterationで1時間もかかってたのにjax実装だと5000iterationで9秒だった。jaxの圧勝。 20022/10/26 diffraxの使い方がなんとなくわかってきた 任意のことをする時間が足りない。まじで耐え時や〜〜〜 2022/10/18 そんなこんなでこの2週間まじで研究できてない。頑張ろう。 昨日プロポーズをした。緊張した。まじで人生を感じる。 2022/10/08 博論に使うフォーマットを何にしようかなとぼんやり考えてる。overleafにphd thesisのtemplateがたくさんあるからそこからいい感じのを選びたいと思っていて。 2022/10/07 査読帰ってきた〜〜好意的ではあるがコメント多すぎな。ちゃんと読んでくれてるのは伝わるからそれは嬉しい。2週間後には返事を返せるように頑張ってコメントを潰していく。 2022/10/06 PREに出してたのはそろそろ査読が帰ってきそう。ほんまは今ごろlevy kuramoto投稿してるはずやったのになあ。時間がないことをひたすら嘆くだけの人間になっている。 なんだか気がついたら書かないと行けない論文がどんどん溜まってる。。。気張るしかない。。。 2022/10/05 neural odeの話は卒業までにarxivに投稿してそれを博論にもぶち込む感じになるかなあ。acceptまでは時間的に厳しい気がする。 levy kuramotoも早く完成させてarxivに上げたいけど資格試験の勉強もしなあかんしなあ。時間をくれ。 torchsdeを使ってneural sdeを実装している。torchの書き方でつまるところがあって難しい。 2022/10/01 ベーテ格子上のイジングモデルの話を途中までまとめた。 https://yonesuke....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-07-29 07:38:49 +0900 JST'>July 29, 2023</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1258 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 博士課程2年目3年目を振り返る" href="https://yonesuke.github.io/posts/d2-d3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>オルンシュタイン-ウーレンベック過程
     </h2>
   </header>
@@ -318,23 +331,6 @@ Theorem    [Unique lifting property] 被覆写像$p\colon \tilde{X}\to X$と�
   </div>
   <footer class="entry-footer"><span title='2023-01-31 19:06:00 +0900 JST'>January 31, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;257 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Hermite多項式の係数" href="https://yonesuke.github.io/posts/hermite_coeff/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Random Fourier Features
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>カーネル法によるリッジ回帰は表現力が高いことが知られており、またその数学的背景の豊かさから多くの研究がなされてきました。 しかし、$n$個のデータ数に対して推論に$\mathcal{O}(n^{3})$の計算量が必要とされるため、計算量を低減させる方法を検討することは非常に重要です。 ここでは、Random Fourier Features 1と呼ばれる方法を紹介します。 実装も行ったがGistにも公開している。
-Random Fourier Features Random Fourier Featuresはカーネル関数$k(x,y)\colon\mathbb{R}^{d}\times\mathbb{R}^{d}\to\mathbb{R}$が$x-y$の関数$\phi(x-y)$で表現できる場合に、それをランダムな基底で近似する手法である。キモとなるのはBochnerの定理である。
-Theorem    [Bochnerの定理] $k(x,y)=\phi(x-y)$が連続な正定値カーネルであるための必要十分条件は$\mathbb{R}^{d}$上の有限非負Borel測度$\mu$があって、 $$ k(x,y)=\int_{\mathbb{R}^{d}}e^{i\omega^{\top}(x-y)}\mathrm{d}\mu(\omega) $$ で表されることである。 適当にスケールすれば$\mu$は確率になり、(存在すれば)$\mathrm{d}\mu(\omega)=p(\omega)\mathrm{d}\omega$と書くことが出来る。 このとき、$k$の値域は実数であるので、 $$ k(x,y)=\mathbb{E}_ {\omega}[\cos(\omega^{\top}(x-y))] $$ 実はこれは$b$を$[0,2\pi)$上の一様乱数として、 $$ 2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x&#43;b)\cos(\omega^{\top}y&#43;b)] $$ と一致することがわかる。(加法定理を用いよ)
-Proposition    [Random Fourier Features] カーネル関数$k(x,y)$が$x-y$の関数で与えられるとき、 $$ k(x,y)=2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x&#43;b)\cos(\omega^{\top}y&#43;b)] $$ が成立する。ここで、$\omega$は$k$の確率に従い、$b$は$[0,2\pi)$上の一様分布に従う。 この性質を用いてカーネル関数を近似することを考える。$\omega_{i},b_{i}$をそれぞれの分布に従う乱数として$m$個発生させ、関数$z_{i}(x)=\sqrt{2/m}\cos(\omega_{i}^{\top}x&#43;b_{i})$を構成したとき、 $$ \sum_{i=1}^{m}z_{i}(x)z_{i}(y)\to k(x,y) $$ が$m\to\infty$の極限で大数の法則により収束していく。
-Kernel Ridge Regression Random Fourier Featuresを用いてカーネル関数を表現することによってカーネルリッジ回帰の計算量が低減される。
-データ$\mathcal{D}=\{(x_{i},y_{i})\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。 損失関数は $$ L=\sum_{i=1}^{n}[y_{i}-f(x_{i})]^{2}&#43;\lambda||f||^{2}_ {H} $$ となり、これを最小化する$f\in H$を探す。$\lambda||f||^{2}_ {H}$は正則化の項である。 Representation定理により$f$は$\Phi(x_{i})$で展開されることがわかり、色々計算すると損失関数を最小化する$\hat{f}$は $$ \hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}_{i}k(x_{i},x) $$ となることがわかる。ここで、$\hat{\alpha}=(K&#43;\lambda I_{n})^{-1}y,[K]_{ij}=k(x_{i},x_{j})$である。 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-01-06 23:34:02 +0900 JST'>January 6, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;766 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Random Fourier Features" href="https://yonesuke.github.io/posts/random_fourier_feature/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
