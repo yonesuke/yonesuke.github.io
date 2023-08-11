@@ -17,7 +17,7 @@ comments: false
 - 🎵 I enjoy listening to music and podcasts
 
 # Education
-- **Ph.D. student April 2020 - March 2023**
+- **Ph.D. April 2020 - March 2023**
 
     [Nonlinear Physics Division](https://www-np.acs.i.kyoto-u.ac.jp/),
     [Department of Applied Mathematical Sciences](http://www.acs.i.kyoto-u.ac.jp/),
@@ -25,6 +25,11 @@ comments: false
     [Kyoto University](https://www.kyoto-u.ac.jp/).
 
     Supervised by Toshio Aoyagi
+
+    - Thesis
+        
+        [Theoretical and Experimental Research on Coupled Phase-Oscillator Models](https://repository.kulib.kyoto-u.ac.jp/dspace/handle/2433/283856)
+
 - **M.S. April 2018 - March 2020**
 
     [Dynamical Systems Group](http://yang.amp.i.kyoto-u.ac.jp/lab/jp/index.html),

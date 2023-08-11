@@ -175,7 +175,7 @@
     <p>大昔に博士課程1年目を振り返るという記事で博士課程1年目のときに起こったことを書いていったのだが、 2年目3年目については特に何も書いていなかった。 その代わりといっては何だが、研究室内のwikiでつらつらと簡単な日記を書いていたので、それをここに貼っておくことにする。 研究室内のネットワーク関連の情報も一部載っていたので、そちらは非表示で対応することにしている。 あと画像・PDFは移植が面倒すぎたので諦めた。 こうしてみると、色々と手を動かしてもがいた3年間だったなあ、と。あとモチベーション維持にも苦労した3年間でもあったかなあ。 いつかまた読み返してこんなこともあったなあと笑えるように備忘録として残しておく。
 研究日誌 2023/03/29 NNを使って臨界指数を計算する論文がアクセプトされた。アクセプトのメールを開いたときに感情が全く動かなかった。感情が全く動かない自分にむしろ驚いた。もう論文書くとかのモチベーションが0に収束してしまった感じがあるなあ。 もう卒業らしい。長い学生生活も終焉を迎えてしまう。 2023/02/24 sekiの上でflexgenを動かした。楽しいわな。しょうみ爆笑やわ。 2023/02/21 huggingfaceに学習済みのパラメーターあるから誰かtensor networkで行列分解してどれくらいモデル圧縮できるかやってほしい。頼む。 GPT2の実装完全に理解した。 2023/02/16 https://suzuri.jp/yonesuke1729 蔵本モデルグッズを作ったので気が向いたら買ってください。 2023/01/25 臨界点近傍でもきちんと値が収束するところまで計算ができたらひとまず完成かなあ。色々試してみたい。 Ott-AntonsenをODEに落とし込んで直接解くというアイデア、いろんな数値積分手法で試してる。ガウス求積法の中でGauss-Hermiteは結構期待してたんやけど全然あかんかった。あとDE公式は一瞬で破綻してる。使い方を間違ってるかも。$[-1,1]$の区間に変換してtrapezoidで値を足し込むのが一番良いのかもしれない。あとは$[-1,1]$の区間に変換してGauss-Legendreで解くのはありなのかも。それも試してみる。 2023/01/16 (おそらく)卒業するのでこれまで蔵本モデルについて勉強した色々をまとめている。jaxkuramotoというパッケージとして出してる。ドキュメントを整備していく。 https://github.com/yonesuke/jaxkuramoto 生協のレジシステムがyahoo newsになってておもろい。 https://news.yahoo.co.jp/articles/c92e3b04375c89fa20a1640e906a6e9769994e3d 2023/01/13 自動微分がかなりあついなあ。$\int_{a}^{b}f(x,\theta)\mathrm{d}x$の$a,b,\theta$微分とかも自動微分設定したら出来るなあ。だいぶおもろくなってきてる。これ蔵本モデルのself-consistent方程式の解析に応用できるかも。 27になった。 2023/01/11 やってることneural odeのadjoint methodとほとんどパラレルな気がしてきた。 パラメタライズされた離散力学系の固定点周りの微分はbackpropで求まるらしい。天才かな。 https://jax.readthedocs.io/en/latest/notebooks/Custom_derivative_rules_for_Python_code.html#implicit-function-differentiation-of-iterative-implementations 2023/01/10 microsoft teamsで問題を作るサービスがあるんやけどそこでlatexが使えるらしくでびっくりした。 forwardの方向微分とかはdual number使ったほうが良いとかはありそう、などと思った。 jaxのgradのアイデアは基本的にはautogradと同じやと思うけど、jaxにはあとjitコンパイルとかvmapの並列化とかがあってそれも理解するには道のりがかなり遠い。 これがわかりやすい。 https://www.cs.toronto.edu/~rgrosse/courses/csc421_2019/readings/L06%20Automatic%20Differentiation.pdf jaxの前身のautogradの実装を見ながら手元で実装してみてる。Boxってのを作っててそこの理解がまだあやふや。 2023/01/09 リミットサイクルを持つ振動子のアイソクロンを書いて遊んでた。博論に載せる。 reviseしたものをsubmitした。一つ肩の荷が降りた。 2023/01/03 SSHがない。。。下にある&gt;&lt;ぽいのを押したら一応sshはできる。 vscodeのremote explorerからssh接続の一覧が消えてるんやけどなんで？？謎いなあ。 2023/01/01 数値計算結果がどうみても想定と違う結果を出してる。jaxのデフォルトがfloat32なのでそれに起因しているのかも。float64を有効にして計算しなおす。 あけおめ。ことよろ。 2022/12/31 どうでもよいSSH情報。ssh server hogeでserver先にコマンドhogeを送ってその結果を返してくれる。例えばssh euler nvidia-smiでeulerのGPU使用率をlocalから手軽に確認できる。ssh euler &#34;cat ~/hoge/nohup.out&#34;で(nohupに実験結果を投げてたら)eulerで実験中の結果を確認できる。 モクモクと博論の図をいじる。毎度恒例の「論文投稿直前matplotlib能力向上」が今回も観測されている。 2022/12/29 JAXを使うべき(使わないべき)理由を色んな人が書いてくれてるので非常にためになる。もう2022年終わるんやけどな。 https://www.reddit.com/r/MachineLearning/comments/st8b11/d_should_we_be_using_jax_in_2022/ 2022/12/28 GitHub copilotがフーリエ級数展開を完全に理解してて怖いです フーリエ級数の足し算引き算掛け算微分積分を備えたclassを作成したほうが良い気がしてきた。適用範囲は広い気がする。 予備審査願に論文概要の提出が必要らしい。慌てて書く。書き終わったら家の掃除して実家帰る。 2022/12/25 来年はなんか新しいことを勉強してみたい。 月曜日と火曜日で博論をひとまず完成させるのとrebuttalを提出する。それで今年は終わりかなあ〜〜 2022/12/23 仕事納め頑張るぞ〜〜 博論及び発表スライドを一生作ってます。rebuttalの方も一通り終わったので年を越す前に再投稿するぞ。 2022/12/07 ホモロジーのゼミで&#34;自由群の部分群は自由群&#34;っていうNielsen–Schreierの定理を知った。これいかつすぎんか？$\mathbb{S}^{1}\vee\mathbb{S}^{1}$の基本群が$\mathbb{Z}\ast\mathbb{Z}=F_{2}$になるっていうのがあって、そのcovering spaceの中で基本群が$F_{n}$になるようなものが構成されて、しかもcovering spaceの基本群はもとの空間の基本群の部分群になるから、、、というのが大まかな流れっぽい(なんか勘違いしてるかも)。いやあすごいなあ、と久しぶりに思った定理やった。 2022/11/28 プログラムを少し書いた。一歩前進。pythonとtexを一生書く。 2022/11/21 宮崎駿もこの気持ち。 研究する気力がまじで湧いてこない。neural scaling analysisのrebuttalをしようと思ってjupyter notebookまで開きはするけどそこから手が動かない。あー踏ん張り時。石川佳純もこの気持ちやし頑張る。 先週は婚姻届を出した。特に区役所から電話もなかったので受理されたと思う。人生を感じる。 春先まで使ってたパソコンに今一番必要としているコードが残されていた。。。慌てて取り出した。 2022/11/09 研究に専念していきたい。 試験受かってた〜〜まじで嬉しい。肩の荷が下りた気がする。 2022/11/03 家のシャワーからお湯が出なくなった。大ピンチ。とりあえず今はanytimeのシャワーを使うことでしばらく生きていくことにする。 資格試験の勉強にすべての時間が吸われてる。 2022/10/28 プロポーズしたとだけ書いて結果を書いてなかったがために何人かから心配されたんやけど無事にokしてもらってます笑。来月婚姻届を京都市に出す予定。 neural sdeの実行時間。pytorch実装だと1000iterationで1時間もかかってたのにjax実装だと5000iterationで9秒だった。jaxの圧勝。 20022/10/26 diffraxの使い方がなんとなくわかってきた 任意のことをする時間が足りない。まじで耐え時や〜〜〜 2022/10/18 そんなこんなでこの2週間まじで研究できてない。頑張ろう。 昨日プロポーズをした。緊張した。まじで人生を感じる。 2022/10/08 博論に使うフォーマットを何にしようかなとぼんやり考えてる。overleafにphd thesisのtemplateがたくさんあるからそこからいい感じのを選びたいと思っていて。 2022/10/07 査読帰ってきた〜〜好意的ではあるがコメント多すぎな。ちゃんと読んでくれてるのは伝わるからそれは嬉しい。2週間後には返事を返せるように頑張ってコメントを潰していく。 2022/10/06 PREに出してたのはそろそろ査読が帰ってきそう。ほんまは今ごろlevy kuramoto投稿してるはずやったのになあ。時間がないことをひたすら嘆くだけの人間になっている。 なんだか気がついたら書かないと行けない論文がどんどん溜まってる。。。気張るしかない。。。 2022/10/05 neural odeの話は卒業までにarxivに投稿してそれを博論にもぶち込む感じになるかなあ。acceptまでは時間的に厳しい気がする。 levy kuramotoも早く完成させてarxivに上げたいけど資格試験の勉強もしなあかんしなあ。時間をくれ。 torchsdeを使ってneural sdeを実装している。torchの書き方でつまるところがあって難しい。 2022/10/01 ベーテ格子上のイジングモデルの話を途中までまとめた。 https://yonesuke....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-07-29 07:38:49 +0900 JST'>July 29, 2023</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1258 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-07-29 07:38:49 +0900 +0900'>July 29, 2023</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1258 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 博士課程2年目3年目を振り返る" href="https://yonesuke.github.io/posts/d2-d3/"></a>
 </article>
 
@@ -191,7 +191,7 @@ $$ dx_t = \theta(\mu - x_t)dt &#43; \sigma dW_t $$
 解く 定数変化法を利用する。$x_{t}e^{\theta t}$を微分すると、 $$ d(x_{t}e^{\theta t})=e^{\theta t}dx_t&#43;\theta e^{\theta t}x_t dt =\theta\mu e^{\theta t}dt&#43;\sigma e^{\theta t}dW_t $$ である。これを積分すると、 $$ x_{t}e^{\theta t}=x_0&#43;\mu(e^{\theta t}-1)&#43;\sigma\int_0^t e^{\theta s}dW_s $$ である。両辺を$e^{\theta t}$で割ると、 $$ x_t = x_0 e^{-\theta t} &#43; \mu (1 - e^{-\theta t})&#43;\sigma\int_0^t e^{\theta (s-t)}dW_s $$ が得られる。
 この解の期待値と共分散は次のようになる。 $$ \begin{align*} &amp;\mathbb{E}[x_t] = x_0 e^{-\theta t} &#43; \mu (1 - e^{-\theta t}),\\ &amp;\mathrm{cov}(x_t,x_s) = \frac{\sigma^2}{2\theta}e^{-\theta(t&#43;s)}(e^{2\theta\min(t,s)}-1) \end{align*} $$ 特に分散は$t=s$とすることで$\sigma^{2}(1-e^{-2\theta t})/2\theta$が得られる。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-07-22 10:08:44 +0900 JST'>July 22, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;427 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-07-22 10:08:44 +0900 +0900'>July 22, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;427 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to オルンシュタイン-ウーレンベック過程" href="https://yonesuke.github.io/posts/ou_process/"></a>
 </article>
 
@@ -208,7 +208,7 @@ $b^n$の最初の桁の値は$\log_{10}$をとった際の小数点によって�
 具体例 フィボナッチ数列 フィボナッチ数列は$a_{0}=a_{1}=1$として、一般の$n\geq2$について $$ a_{n}=a_{n-1} &#43; a_{n-2} $$ で定められる数列$\{a_{n}\}$を指す。 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸いfunctools.cacheが提供されているので簡単に実装ができる。
 1 2 3 4 5 6 7 from functools import cache @cache def fib(n): if n == 0 or n == 1: return 1 return fib(n-1) &#43; fib(n-2) この関数を用いて、フィボナッチ数列の最初の桁の値の分布を調べてみよう。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-07-01 09:40:29 +0900 JST'>July 1, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;292 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-07-01 09:40:29 +0900 +0900'>July 1, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;292 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to ベンフォードの法則" href="https://yonesuke.github.io/posts/benford/"></a>
 </article>
 
@@ -229,7 +229,7 @@ https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff
 決定木の実装 はじめに、ノードの実装を行う。 各ノードは質問を決定する特徴量(のインデックス)self.featureとその閾値self.thresholdを持つ。 これにより定まる質問に対して答えがYesであれば左側の子ノードself.leftを、 Noであれば右側の子ノードselft.rightを参照するようにする。 ただし、葉ノードである場合には、その特徴量(のインデックス)を保管するようにする。
 1 2 3 4 5 6 7 8 9 10 class Node: def __init__(self, feature=None, threshold=None, left=None, right=None, value=None): self....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-06-25 10:00:06 +0900 JST'>June 25, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;631 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-06-25 10:00:06 +0900 +0900'>June 25, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;631 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 決定木を1から実装する" href="https://yonesuke.github.io/posts/decision-tree/"></a>
 </article>
 
@@ -247,7 +247,7 @@ SHA-256 SHA-256はハッシュ関数の一つで、任意の文字列を256ビ�
 https://en.wikipedia.org/wiki/SHA-2 Wikipedia https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/ アルゴリズムの流れが詳しく書いてある https://sha256algorithm.com/ SHA-256が内部でどのような計算をするのかをアニメーションできれいに表示してくれる。一見の価値あり。こういったウェブサイトを作れるの尊敬する。 SHA-256のアルゴリズムの中に登場する定数 SHA-256のアルゴリズムの中には定数がいくつか登場する。 それは、ハッシュ値の初期値として設定されるもので、
 first 32 bits of the fractional parts of the square roots of the first 8 primes 2....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-06-18 01:00:33 +0900 JST'>June 18, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;569 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-06-18 01:00:33 +0900 +0900'>June 18, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;569 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to SHA-256に用いられる定数が微妙に合わない" href="https://yonesuke.github.io/posts/sha256-constants/"></a>
 </article>
 
@@ -265,7 +265,7 @@ Definition    [半局所単連結] 位相空間$X$が半局所単連結であ�
 Theorem   位相空間$X$から$Y$への写像$f$を考え、$Y$の位相の基底を$M_{Y}$とする。$f$が連続であることと任意の開基底$W\in M_{Y}$に対して$f^{-1}(W)\subset X$が開集合となることは同値である。 Proof: $f$が連続であるとき、$Y$の任意の開集合$U$に対して、$f^{-1}(U)$が開集合であることは明らかである。$U$を$M_{Y}$の基底とすると、$f^{-1}(U)$は$X$の開集合であるから示された。 逆に任意の開基底$W\in M_{Y}$に対して$f^{-1}(W)$が開集合であるとする。このとき、$Y$の任意の開集合$U$に対して、ある開基底$W_{\lambda}\in M_{Y}$が存在して、$U=\bigcup_{\lambda}W_{\lambda}$となる。 $f^{-1}(U)=\bigcup_{\lambda}f^{-1}(W_{\lambda})$であり、各$\lambda$について$f^{-1}(W_{\lambda})$は開集合となるので$f^{-1}(U)$は開集合となるので、$f$は連続である。 最後にliftにまたがる定理を2つ紹介します。path$\tilde{f}$が$f$のliftであるとは、$p\circ\tilde{f}=f$が成り立つことです。
 Theorem    [path lifting property] $p\colon \tilde{X}\to X$を被覆空間とする。path$f\colon I\to X$について、始点$f(0)=x_{0}$のlift$\tilde{x}_ {0}$に対して、$\tilde{x}_{0}$を始点とする、$f$の唯一のlift $\tilde{f}\colon I\to \tilde{X}$が定まる。 Theorem   被覆空間$p\colon(\tilde{X}, \tilde{x}_ {0})\to (X,x_{0})$から誘導される写像 $$ p_{\ast}\colon \pi_{1}(\tilde{X}, \tilde{x}_ {0})\to\pi _ {1}(X, x_ {0});\quad [f]\mapsto [p\circ f] $$ は単射である。また、$\pi _ {1}(X, x_ {0})$の部分群である$p_{\ast}(\pi_{1}(\tilde{X}, \tilde{x}_ {0}))$の元は$x_{0}$を起点とするloopであって、そのliftが$\tilde{X}$上$\tilde{x}_{0}$を起点とするloopになる、ようなもののhomotopy類で表される。 証明 はじめに、必要条件を示します。 すなわち、$X$が単連結な被覆空間を持つとき、$X$が半局所単連結であることを示します。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-17 22:17:24 +0900 JST'>February 17, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;438 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-02-17 22:17:24 +0900 +0900'>February 17, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;438 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 単連結な被覆空間の存在" href="https://yonesuke.github.io/posts/existence_of_simply_connected_covering_space/"></a>
 </article>
 
@@ -282,7 +282,7 @@ Theorem   $M$を$B(S)$の任意の部分集合とする。このとき、 $$ O(
 位相の基底 Definition    [位相の基底] $M$が位相$O$の部分集合で$O$の任意の元$A$が $$ A=\bigcup_{\lambda\in\Lambda} W_{\lambda},\quad W_{\lambda}\in M $$ と表されるとき、$M$は$O$の基底であるという。 すなわち、任意の開集合が$M$の元を用いて展開できる、という意味で基底になっている、ということです。
 性質 Theorem   $O$を$S$における1つの位相とする。$M$が$O$の基底であることと、任意の$A\in O$と任意の$x\in A$に対して、 $$ x\in W,\quad W\subset A $$ となる$W\in M$が存在することは同値である。 Proof: $M$が$O$の基底であるとき、$A$を$O$の任意の元とすると、基底の定義からある$W_{\lambda}\in M$が存在して、 $$ A=\bigcup_{\lambda\in\Lambda} W_{\lambda} $$ が成り立つ。このとき、$x\in A$なので、ある$\lambda^{\ast}\in \Lambda$が存在して$x\in W_{\lambda^{\ast}}$となるので示される。 逆に任意の$A\in O$と任意の$x\in A$に対して$x\in W_{x},W_{x}\subset A$なる$W_{x}\in M$が存在するとき、 $$ A=\bigcup_{x\in A}\{x\}=\bigcup_{x\in A} W_{x} $$ となるのでたしかに$M$は$O$の基底である。 Theorem   空でない集合$S$について、$B(S)$の部分集合$M$が$O(M)$の基底であることは次の2つと同値である。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-17 14:32:22 +0900 JST'>February 17, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;156 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-02-17 14:32:22 +0900 +0900'>February 17, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;156 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 位相の基底" href="https://yonesuke.github.io/posts/topology_basis/"></a>
 </article>
 
@@ -302,7 +302,7 @@ Definition    [局所弧状連結] 位相空間$X$の任意の$x\in X$の任�
 性質 連結性に関する性質の中でも一番重要なのは、“連続写像を通して連結性が写る&#34;ことであろう。
 Theorem   位相空間$X$は連結で連続写像$f\colon X\to Y$を通して位相空間$Y$へ写る。このとき、$f(X)$は$Y$の連結部分集合である。 Proof: $f(X)$が連結でないとすると、$Y$の空でない開集合$A,B$が存在して、 $$ f(X)\subset A\cup B, \quad A\cap B\cap f(Y) = \emptyset, \quad A\cap f(X)\neq\emptyset, \quad B\cap f(X)\neq\emptyset $$ となることである。これより、 $$ X = f^{-1}(A) \cup f^{-1}(B), \quad f^{-1}(A)\cap f^{-1}(B) = \emptyset $$ が得られる。また、$f$の連続性から$f^{-1}(A)$と$f^{-1}(B)$はそれぞれ$X$の空でない開集合である。 これは$X$が連結であることに矛盾する。 また、連結性に関する挟み撃ちの定理のようなものも成立する。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-08 12:56:17 +0900 JST'>February 8, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;189 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-02-08 12:56:17 +0900 +0900'>February 8, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;189 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 連結と局所連結、弧状連結と局所弧状連結について" href="https://yonesuke.github.io/posts/connected/"></a>
 </article>
 
@@ -316,7 +316,7 @@ Theorem   位相空間$X$は連結で連続写像$f\colon X\to Y$を通して�
 Unique lifting property Unique lifting propertyは被覆空間によってリフトされた連続写像が一点を決めれば一意に定まることを主張しています。
 Theorem    [Unique lifting property] 被覆写像$p\colon \tilde{X}\to X$と連続写像$f\colon Y\to X$が与えられている。 また、$Y$は連結であるとする。 $f$のリフト$\tilde{f} _{1},\tilde{f} _{2}\colon Y\to\tilde{X}$がある一点で同じ値を取るとき、$\tilde{f} _{1}=\tilde{f} _{2}$である。 この証明は$Y$が連結であることを巧妙に使います。 証明に用いる概略図を以下に示します。 Proof [Of Theorem 1]: はじめに被覆空間にまたがる性質を見る。 $y\in Y$に対して$U\subset X$を均一な被覆を持つ$f(y)$の開近傍とする。 すなわち、$p^{-1}(U)=\bigcup_{\lambda\in\Lambda}\tilde{U} _ {\lambda}$で$\tilde{U} _ {\lambda}$は互いに素な集合となっていることである。 このとき、$\left.p\right| _ {\tilde{U} _ {\lambda}}\colon\tilde{U} _ {\lambda}\to U$が同相写像となる。 今リフトは連続であるから、$y$のある開近傍$N(y)$が存在して、 $$ \tilde{f} _ {1}(N(y))\subset \tilde{U} _ {1},\quad \tilde{f} _ {2}(N(y))\subset \tilde{U} _ {2} $$ なるような$\tilde{U} _ {1},\tilde{U} _ {2}\in\bigcup_{\lambda\in\Lambda}\tilde{U} _ {\lambda}$が存在する。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-03 15:10:38 +0900 JST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;169 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-02-03 15:10:38 +0900 +0900'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;169 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Unique lifting property" href="https://yonesuke.github.io/posts/unique_lifting_property/"></a>
 </article>
 
@@ -329,7 +329,7 @@ Theorem    [Unique lifting property] 被覆写像$p\colon \tilde{X}\to X$と�
     <p>Hermite多項式の係数をpythonで求める方法を紹介します。 係数自体は三項間漸化式で求められますが、高次の係数を求めるときには再帰が必要になり計算量が増えてしまいます。 functoolsモジュールのcacheを使うと再帰を高速化できます。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from functools import cache @cache def hermite_coeff(n: int) -&gt; list: &#34;&#34;&#34;Compute the coefficients of the nth Hermite polynomial.&#34;&#34;&#34; if not isinstance(n, int): raise TypeError(&#34;n must be an integer&#34;) if n &lt; 0: raise ValueError(&#34;n must be non-negative&#34;) if n == 0: return [1] elif n == 1: return [0, 2] else: return [- 2 * (n - 1) * hermite_coeff(n - 2)[0]]\ &#43; [2 * hermite_coeff(n - 1)[i] - 2 * (n - 1) * hermite_coeff(n - 2)[i &#43; 1] for i in range(n - 2)]\ &#43; [2 * hermite_coeff(n - 1)[n - 2], 2 * hermite_coeff(n - 1)[n - 1]] hermite_coeff(n)はn次のHermite多項式の係数を返します。 hermite_coeff(n)はnが整数でないとき、nが負のときにTypeErrorとValueErrorを返します。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-01-31 19:06:00 +0900 JST'>January 31, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;257 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer"><span title='2023-01-31 19:06:00 +0900 +0900'>January 31, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;257 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Hermite多項式の係数" href="https://yonesuke.github.io/posts/hermite_coeff/"></a>
 </article>
 <footer class="page-footer">
