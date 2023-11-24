@@ -10,8 +10,8 @@ comments: false
 
 読んだ本の実装や`streamlit`で作ったウェブページなどをリストアップします。
 
-## Books
+## 数学
+
+## 経済
 - [『経済・ファイナンスデータの計量時系列分析』](https://yonesuke.github.io/timeseries-analysis/)
 - [『Pythonによる時系列予測』](https://yonesuke.github.io/TimeSeriesForecastingInPython/)
-
-## Codes
