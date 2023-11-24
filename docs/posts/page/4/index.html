@@ -144,6 +144,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://yonesuke.github.io/books_codes" title="Books &amp; Codes">
+                    <span>Books &amp; Codes</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://yonesuke.github.io/posts" title="Posts">
                     <span class="active">Posts</span>
                 </a>
@@ -168,6 +173,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>包除原理
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して $$ \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
+証明 証明は $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu $$ を二通りに計算することにより求まります。
+はじめに愚直に展開してみることにします。 $$ \prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i} $$ は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}} =\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}} $$ となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu = \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ がわかります。これで包除原理の右辺が示されました。
+次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}} =1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}} =1_{\bigcup_{i=1}^{n}A_{i}}$$ となります。最後にドモルガンの法則を用いました。 よって、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu =\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu = \mu\left(\bigcup_{i=1}^{n}A_{i}\right) $$ となります。 これで包除原理の左辺が導かれ、包除原理が示されました。</p>
+  </div>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-16 12:18:18 &#43;0900 JST&#39;&gt;May 16, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;50 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to 包除原理" href="https://yonesuke.github.io/posts/inclusion_exclusion/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>ガウス過程に関する文献
     </h2>
   </header>
@@ -189,7 +209,7 @@ Gaussian processes for Big data
 深層学習との関係 Deep Neural Networks as Gaussian Processes
 各層のunit数を無限に飛ばしたニューラルネットワークがガウス過程に対応する、という話です。中間層が一層の場合の話は昔に知られていましたが、多層の場合もそうだそうです。紹介しておきながら腰を据えて読んだことはないのでちゃんと読みたいです。</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-06 12:53:12 +0900 +0900'>May 6, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;59 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-06 12:53:12 &#43;0900 JST&#39;&gt;May 6, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;59 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to ガウス過程に関する文献" href="https://yonesuke.github.io/posts/gp-articles/"></a>
 </article>
 
@@ -202,7 +222,7 @@ Gaussian processes for Big data
     <p>$\LaTeX$で文章を書くときによく行う設定をまとめておきます。
 Overleaf Overleafで日本語で文章を書く場合は次のlatexmkrcというファイルをおいておきます。 1 2 3 4 5 $latex = &#39;platex&#39;; $bibtex = &#39;pbibtex&#39;; $dvipdf = &#39;dvipdfmx %O -o %D %S&#39;; $makeindex = &#39;mendex -U %O -o %D %S&#39;; $pdf_mode = 3; さらにCompilerはLaTeXにしておきましょう。 Beamer LaTeXでスライド生成する際に使われるbeamerです。テーマがたくさんあるので好みのものを選ぶと良いと思います。特にmetropolisとfocusというテーマが気に入っています。 1 2 3 4 5 6 7 \documentclass[dvipdfmx]{beamer} \usepackage{bxdpx-beamer} \usepackage{pxjahyper} \usepackage{minijs} \usetheme[numbering=fraction,block=fill,progressbar=frametitle]{metropolis} \usefonttheme{professionalfonts} \usepackage{appendixnumberbeamer} Appendixに移行する際の区切りのページには次を書くと便利です。 1 2 3 4 5 6 7 8 % スライド終わり \appendix \begin{frame}[standout] APPENDIX \end{frame} % アペンディクスはじまり % \begin{frame} % ... 便利Package hyperref 次のオプションとともに呼ぶと便利です。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-05 18:46:29 +0900 +0900'>May 5, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;102 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-05 18:46:29 &#43;0900 JST&#39;&gt;May 5, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;102 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to LaTeXの設定" href="https://yonesuke.github.io/posts/latex-setup/"></a>
 </article>
 
@@ -221,7 +241,7 @@ $\alpha=1$の場合には、 $$ X = \frac{2}{\pi}\left[(\frac{\pi}{2}&#43;\beta 
 この式において更に$\alpha=1$にすれば$X=\tan V$となり、これは平均$0$、$\gamma=1$のCauchy分布に従うノイズの生成方法に一致します。
 また、$\alpha=2$の場合には$P,Q\sim U(0,1)$として $$ X=-2\cos\pi P\sqrt{-\log Q} $$ となり、これは平均$0$、分散$2$の正規分布に従うノイズの生成方法であるBox–Muller法に一致します。</p>
   </div>
-  <footer class="entry-footer"><span title='2021-04-21 20:58:21 +0900 +0900'>April 21, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;49 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-04-21 20:58:21 &#43;0900 JST&#39;&gt;April 21, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;49 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 安定分布に従うノイズの生成方法" href="https://yonesuke.github.io/posts/stable_simulations/"></a>
 </article>
 
@@ -235,7 +255,7 @@ $\alpha=1$の場合には、 $$ X = \frac{2}{\pi}\left[(\frac{\pi}{2}&#43;\beta 
 準備 平均$\mu$、分散共分散行列$\Sigma$の$N$次元正規分布$\mathcal{N}(u\mid\mu,\Sigma)$の確率密度関数は $$ p(u)=\frac{1}{\sqrt{2\pi}^{N}\sqrt{| \Sigma |}}\exp\left[-\frac{1}{2}(u-\mu)^{\mathsf{T}}\Sigma^{-1}(u-\mu)\right] $$ で与えられます。 また、確率分布$q$に対する確率分布$p$のKL距離は $$ \text{KL}[p || q]=\int p(u)\log\frac{p(u)}{q(u)}du $$ で定義されます。
 導出 2つの$N$次元正規分布$p(u)=\mathcal{N}(u \mid \mu _ {1},\Sigma _ {1}),q(u)=\mathcal{N}(u \mid \mu _ {2},\Sigma _ {2})$に対して$\text{KL}[p || q]$を計算します。 $\log$部分を展開すると、 $$ \log\frac{p(u)}{q(u)}=\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|} -\frac{1}{2}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1}) &#43; \frac{1}{2}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) $$ と3つにわかれるので $$ \begin{aligned} \text{KL}[p || q] = &amp;\frac{1}{2}\log\frac{|\Sigma _ {2}|}{|\Sigma _ {1}|}\int_{\mathbb{R}^{N}}p(u)du \\ &amp; - \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {1})^{\mathsf{T}}\Sigma _ {1}^{-1}(u-\mu _ {1})p(u)du \\ &amp; &#43; \frac{1}{2}\int_{\mathbb{R}^{N}}(u-\mu _ {2})^{\mathsf{T}}\Sigma _ {2}^{-1}(u-\mu _ {2}) p(u)du \end{aligned} $$ とできます。各行を計算していきます。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-04-19 00:32:17 +0900 +0900'>April 19, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;255 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-04-19 00:32:17 &#43;0900 JST&#39;&gt;April 19, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;255 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 多変量正規分布間のKL距離" href="https://yonesuke.github.io/posts/kl-gaussian/"></a>
 </article>
 
@@ -263,7 +283,7 @@ $\alpha=1$の場合には、 $$ X = \frac{2}{\pi}\left[(\frac{\pi}{2}&#43;\beta 
 関数解析の勉強をしたし、neural networkの万能近似定理の証明を読みました。元論文はCybenkoによるものです。 この論文はいい感じの活性化関数を使った3層neural netoworkにおいて、中間層のunit数が無限の極限では任意の連続関数に近づけることができることを証明しています。 せっかく読んだので研究室内で発表することにしました。5人くらい(?)参加してくれて、2週に分けて関数解析の基礎から万能近似定理の証明まで話すことにしました。 駆け足で説明したのでみんながわかってくれたかは分からないです(笑)
 この時期はアメリカで大統領選挙が行われて、それに関連して(関連はしてないですが)Strogatz先生がtweetしたことが目に止まりました。 If anyone wants to distract themselves while the votes are being counted, or perhaps just catch up on some lost sleep, have a look at this lecture I gave to students at Cambridge University a few days ago: https://t....</p>
   </div>
-  <footer class="entry-footer"><span title='2021-03-22 00:14:18 +0900 +0900'>March 22, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;172 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-03-22 00:14:18 &#43;0900 JST&#39;&gt;March 22, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;172 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 博士課程1年目を振り返る" href="https://yonesuke.github.io/posts/d1/"></a>
 </article>
 <footer class="page-footer">

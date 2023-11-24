@@ -68,6 +68,8 @@ params:
         url: research
       - name: Teaching
         url: teaching
+      - name: Books & Codes
+        url: books_codes
       - name: Posts
         url: posts
 
@@ -123,10 +125,14 @@ menu:
       name: Teaching
       url: teaching
       weight: 4
+    - identifier: books_codes
+      name: Books & Codes
+      url: books_codes
+      weight: 5
     - identifier: posts
       name: Posts
       url: posts
-      weight: 5
+      weight: 6
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:

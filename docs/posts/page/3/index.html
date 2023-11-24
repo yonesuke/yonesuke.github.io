@@ -144,6 +144,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://yonesuke.github.io/books_codes" title="Books &amp; Codes">
+                    <span>Books &amp; Codes</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://yonesuke.github.io/posts" title="Posts">
                     <span class="active">Posts</span>
                 </a>
@@ -168,6 +173,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Egorov&#39;s theorem
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Egorovの定理は関数列の概収束と概一様収束の関係を述べたものになります。
+Theorem    [Egorovの定理] 有限測度空間$(X,\mathcal{F},\mu)$上の可測関数列$f_{n}\colon X\to\mathbb{C}$に対して、 $f_{n}$が可測関数$f$に概収束するならば、$f_{n}$は$f$に概一様収束する。 ここで、収束の定義についてそれぞれまとめておきます。
+Definition    [概収束] 関数列$f_{n}$が$f$に概収束するとは、ほとんどすべての$x\in X$に対して$f_{n}(x)$が$f(x)$に収束することである。すなわち、$f_{n}$はほとんど至るところ$f$に各点収束する。 Definition    [概一様収束] 関数列$f_{n}$が$f$に概一様収束するとは、任意の$\varepsilon&gt;0$に対して$\mu(E)&lt;\varepsilon$なる可測集合$E\in\mathcal{F}$が存在して、$E^{\mathrm{c}}$上では$f_{n}$が$f$に一様収束するようにできることである。 ちなみにT. TaoのAn Introduction to Measure Theoryでは、概収束のことをpointwise almost everywhere convergence, 概一様収束のことをalmost uniform convergenceと呼んでいます。(Taoの英語の本をずっと英語で読んでいたので対応する日本語を調べる必要がありました。)
+証明 Proof [Of Theorem 1]: 点$x_{0}$において$f_{n}$が$f$に収束することを集合を用いて表してみましょう。 $$\begin{aligned}&amp;f_{n}(x_{0})\to f(x_{0})\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow |f_{n}(x_{0})-f(x_{0})|\leq\frac{1}{m}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow x_{0}\in\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ x_{0}\in\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, x_{0}\in\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; x_{0}\in\bigcap_{m\in\mathbb{N}}\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\\end{aligned}$$ となります。これより、点$x_{0}$において$f_{n}$が$f$に収束しないことは $$ x_{0}\in\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}\bigcup_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|&gt;\frac{1}{m}\right\} $$ で書くことができます。ここで、 $$ E_{N,m}=\bigcup_{n\geq N} \left\{ x\in X \mid |f_{n}(x)-f(x)| &gt; \frac{1}{m} \right\} $$ を定義すると(これが可測集合であることは明らかです)、収束しない点の測度は0なので$\mu(\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}E_{N,m})=0$がわかります。特に測度の劣加法性から、任意の$m\in\mathbb{N}$に対して $$ \mu\left(\bigcap_{N\in\mathbb{N}}E_{N,m}\right)=0 $$ がわかります。$E_{N,m}$が集合として$N$に関して単調減少であり、しかも$\mu(X)&lt;\infty$であることから、$\lim_{N\to\infty}\mu\left(E_{N,m}\right)=0$とも書けます。これは$m$を決めるたびごとに定まる$N$に関する数列だと思うと、任意の$\varepsilon&gt;0$と任意の$m$に対してある$N_{m}$があって、$\mu\left(E_{N_{m},m}\right)&lt;\varepsilon/2^{m}$となるようにできます。このときに集合$E$を $$ E=\bigcup_{m\in\mathbb{N}}E_{N_{m},m} $$ で定めると、$\mu(E)&lt;\varepsilon$は測度の加法性から明らかです。$E^{\mathrm{c}}$は、 $$ E^{\mathrm{c}}=\bigcap_{m\in\mathbb{N}}\bigcap_{n\geq N_{m}}\left\{ x\in X \mid |f_{n}(x)-f(x)| \leq \frac{1}{m} \right\} $$ と書けて、これは$E^{\mathrm{c}}$上では$x$の選び方によらずに関数の差が$1/m$で抑えられていることを意味します。よって、$E^{\mathrm{c}}$上で一様収束することが示せました。 有限でない場合の反例 有限でない場合の例として、測度空間$(\mathbb{R}, \mathcal{B}, \mu)$で、$f_{n}=1_{[n,n&#43;1]}$を考えます。この関数が$f=0$に各点収束することは明らかですが、$\mu(E)&lt;1$であれば$E^{\mathrm{c}}$上で$f_{n}$の値が1になるようなものを作ることができてしまうので、この場合には概一様収束にはなりえません。</p>
+  </div>
+  <footer class="entry-footer">&lt;span title=&#39;2022-03-22 13:05:46 &#43;0900 JST&#39;&gt;March 22, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;126 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Egorov&#39;s theorem" href="https://yonesuke.github.io/posts/egorov/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Uniform ratio distribution and pi
     </h2>
   </header>
@@ -181,7 +201,7 @@ Answer: (5 - pi)/4 pic.twitter.com/ZWviwSQ2VM
 — 10-K Diver (@10kdiver) March 14, 2022 この証明を行っていきます。
 Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が取る分布はuniform ratio distributionという名前がついています。この分布は手で計算することができて、 $$ \begin{aligned} P_{X/Y}(u)\coloneqq&amp; \int_{0}^{1}\int_{0}^{1}\delta\left(\frac{x}{y}-u\right)dxdy\\ =&amp;\begin{cases} 1/2, &amp; 0&lt;u&lt;1\\ 1/(2u^{2}), &amp; u\geq1 \end{cases} \end{aligned} $$ となることが知られています。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-15 13:05:46 +0900 +0900'>March 15, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;120 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-03-15 13:05:46 &#43;0900 JST&#39;&gt;March 15, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;120 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Uniform ratio distribution and pi" href="https://yonesuke.github.io/posts/uniform-ratio-pi/"></a>
 </article>
 
@@ -199,7 +219,7 @@ Uniform ratio distribution $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が
 1 2 x_train = Flux.flatten(x_train) # 784×60000 x_test = Flux.flatten(x_test) # 784×10000 また、各画像の数字(0~9)はone-hotにしておきたいのでそちらはonehotbatchという関数で変換しておきます。
 1 2 y_train = onehotbatch(y_train, 0:9) # 10×60000 y_test = onehotbatch(y_test, 0:9) # 10×10000 モデルの定義 いよいよモデルの定義です。今回は一番簡単なMLPで実装していきます。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-08-23 16:38:35 +0900 +0900'>August 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;296 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-08-23 16:38:35 &#43;0900 JST&#39;&gt;August 23, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;296 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to MNISTをMLPで推論(Julia/Flux実装)" href="https://yonesuke.github.io/posts/mnist_mlp/"></a>
 </article>
 
@@ -216,7 +236,7 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
 1 2 3 4 using LinearAlgebra xs = -2:0.02:2 K = [exp(-(x-y)^2) for x in xs, y in xs] cholesky(K) となりますが、これを実行すると、
 1 ERROR: PosDefException: matrix is not positive definite; Cholesky factorization failed. と帰ってきて、Gram行列が正定値でないと言われてしまいます。理論ではGram行列は正定値であるはずなので、これは数値的な誤差に起因していると考えられます。 そこでGram行列の固有値分布を確認してみることにします。この際、RBFカーネルだけでなく周期カーネルとMatérnカーネルについても固有値分布と対応するガウス過程のサンプルをプロットしました。この結果が次のようになります。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-08-02 16:59:14 +0900 +0900'>August 2, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;184 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-08-02 16:59:14 &#43;0900 JST&#39;&gt;August 2, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;184 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Gram行列の固有値の数値計算" href="https://yonesuke.github.io/posts/gram_eigen/"></a>
 </article>
 
@@ -230,7 +250,7 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
 積分型のTaylor展開 はじめに多重指数$\alpha\in\mathbb{N}_{\geq 0}^{n}$を導入します。 $$ |\alpha|=\alpha_{1}&#43;\cdots&#43;\alpha_{n},\quad x^{\alpha}=x_{1}^{\alpha_{1}}\cdots x_{n}^{\alpha_{n}} $$ とし、多重指数による微分を $$ D^{\alpha}f=\frac{\partial^{|\alpha|}f}{\partial x_{1}^{\alpha_{1}}\cdots\partial x_{n}^{\alpha_{n}}} $$ とします。 このとき、関数$f$が$C^{k&#43;1}$級であるとき、点$x$まわりの積分型のTaylor展開は $$\begin{aligned}&amp;f(y)=\sum_{|\alpha|\leq k}\frac{D^{\alpha}f(x)}{\alpha!}(y-x)^{\alpha}&#43;\sum_{|\beta|=k&#43;1}R_{\beta}(y)(y-x)^{\beta},\\&amp;R_{\beta}(y)=\frac{k&#43;1}{\beta!}\int_{0}^{1}(1-t)^{k}D^{\beta}f(x&#43;t(y-x))dt\end{aligned}$$ で与えられます。このように剰余項$R_{\beta}$が積分の形で明示的に与えられるのが特徴です。 授業ではよく平均値の定理を用いた証明を習うと思うのですが、意外にこの積分型のTaylor展開が役に立つことがあるので覚えておいて損はないと思います。
 証明 $u$を$x$周りで展開しましょう。$u\in C^{2}(\Omega)$なので、 $$\begin{aligned}u(y)-u(x)=&amp;\sum_{i=1}^{n}\frac{\partial u}{\partial x_{i}}(x)(y_{i}-x_{i})&#43;2\sum_{i\ne j}(y_{i}-x_{i})(y_{j}-x_{j})\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))dt\\&amp;&#43;\sum_{i=1}^{n}(y_{i}-x_{i})^{2}\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}^{2}}(x&#43;t(y-x))dt\end{aligned}$$ です。これを積分すると、 $$\begin{aligned}\int_{\partial B(x,r)}u(y)-u(x)d\sigma_{y}=&amp;\sum_{i=1}^{n}\frac{\partial u}{\partial x_{i}}(x)\int_{\partial B(x,r)}y_{i}-x_{i}d\sigma_{y}\\&amp;&#43;2\sum_{i\ne j}\int_{\partial B(x,r)}(y_{i}-x_{i})(y_{j}-x_{j})\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))dt\right]d\sigma_{y}\\&amp;&#43;\sum_{i=1}^{n}\int_{\partial B(x,r)}(y_{i}-x_{i})^{2}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}^{2}}(x&#43;t(y-x))dt\right]d\sigma_{y}\end{aligned}$$ となります。 まず、$y_{i}-x_{i}$は$\partial B(x,r)$の奇関数なのでこの積分は$0$となります。 また、$y-x=rz,\ d\sigma_{y}=r^{n-1}d\sigma_{z}$と変数変換すると、$|\partial B(x,r)|=r^{n-1}|\partial B(0,1)|$より、 $$ \begin{aligned}&amp;\frac{2n}{r^{2}|\partial B(x,r)|}\int_{\partial B(x,r)}(y_{i}-x_{i})(y_{j}-x_{j})\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;t(y-x))\right]d\sigma_{y}\\=&amp;\frac{2n}{|\partial B(0,1)|}\int_{\partial B(0,1)}z_{i}z_{j}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x&#43;trz)\right]d\sigma_{z}\\\to&amp;\frac{2n}{|\partial B(0,1)|}\int_{\partial B(0,1)}z_{i}z_{j}\left[\int_{0}^{1}(1-t)\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\right]d\sigma_{z}=\frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}\partial x_{j}}(x)\int_{\partial B(0,1)}z_{i}z_{j}d\sigma_{z}\end{aligned} $$ と$r\to&#43;0$の極限で求まります。ただし極限操作の交換は優収束定理から正当化されます。 さらに、$i\ne j$ならば$z_{i}z_{j}$の積分は$0$になり、$i=j$ならば、$z_{i}^{2}$の積分は$i$に依存しないので、 $$ \frac{n}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}z_{i}^{2}d\sigma_{z}=\frac{1}{|\partial B(0,1)|}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)\int_{\partial B(0,1)}\sum_{i=1}^{n}z_{i}^{2}d\sigma_{z}=\frac{\partial^{2}u}{\partial x_{i}^{2}}(x) $$ と計算できます。よって、 $$ \frac{2n}{r^{2}|\partial B(x,r)|}\int_{\partial B(x,r)}u(y)-u(x)d\sigma_{y}\to\sum_{i=1}^{n}\frac{\partial^{2}u}{\partial x_{i}^{2}}(x)=\Delta u(x) $$ となり、示されました。</p>
   </div>
-  <footer class="entry-footer"><span title='2021-07-30 18:34:51 +0900 +0900'>July 30, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;111 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-07-30 18:34:51 &#43;0900 JST&#39;&gt;July 30, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;111 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Laplacianの積分表現" href="https://yonesuke.github.io/posts/laplacian_integral/"></a>
 </article>
 
@@ -246,7 +266,7 @@ Gram行列の性質 カーネル関数の定義は対称性$k(x,y)=k(y,x)$が成
 よって、$\int_{0}^{\infty}e^{iax}/x^{n}dx$が計算できれば良いです。 $a&gt;0$の場合を考えます。 被積分関数を複素平面に持ち上げて $$ f(z)=\frac{e^{iaz}}{z^{n}} $$ とします。このとき、次のような積分経路$C$を考えます。
 $\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに回る経路で、$\Gamma_{R}$は半径$R$の上半面を反時計回りに回る経路です。 $f(z)$は$C$内で正則なので$\oint_{C}f(z)dz=0$です。 また、 $$ \oint_{C}=\int_{-R}^{-\varepsilon}&#43;\int_{\gamma_{\varepsilon}}&#43;\int_{\varepsilon}^{R}&#43;\int_{\Gamma_{R}} $$ です。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-07-13 02:20:20 +0900 +0900'>July 13, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;259 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-07-13 02:20:20 &#43;0900 JST&#39;&gt;July 13, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;259 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Borwein integral" href="https://yonesuke.github.io/posts/borwein/"></a>
 </article>
 
@@ -262,7 +282,7 @@ $\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに
 上で得られたベクトルを用いて行列 $$ V=(v_{1},\dots,v_{n}),\quad U=(u_{1},\dots,u_{m}) $$ を構成します。これが直交行列なのは明らかです。 $U^{\mathsf{T}}AV$という行列を計算してみると、 $$ U^{\mathsf{T}}AV[i,j]=(u_{i},Av_{j}) $$ となります。
 $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j})=(v_{j},0)=0 $$ なので$(u_{i},Av_{j})=0$となります。 $i=r&#43;1,\dots,m$かつ$j=1,\dots,r$においても $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=0 $$ となります。 $1\leq i,j\leq r$のときには、 $$ (u_{i},Av_{j})=(u_{i},\sqrt{\xi_{j}}u_{j})=\sqrt{\xi_{j}}\delta_{ij} $$ となります。 よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) &amp; O_{r\times(n-r)} \\ O_{(m-r)\times r} &amp; O_{(m-r)\times (n-r)}\end{pmatrix}$$ となることが示されました。 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-31 16:22:52 +0900 +0900'>May 31, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;130 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-31 16:22:52 &#43;0900 JST&#39;&gt;May 31, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;130 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 特異値分解" href="https://yonesuke.github.io/posts/svd/"></a>
 </article>
 
@@ -276,7 +296,7 @@ $j=r&#43;1,\dots,n$においては $$ (Av_{j},Av_{j})=(v_{j},A^{\mathsf{T}}Av_{j
 Given the graph $G$, find
 The adjacency matrix, $A$ The matrix giving the number of 3 step walks The generating function for walks from $i\to j$ The generating function for walks from $1\to3$ 問1 グラフの隣接行列$A$の$(i,j)$成分は$i$から$j$に向かう枝があれば$1$、そうでなければ$0$となるように定義されています。 今の場合、頂点$3$と頂点$4$の間には2本枝があるのでその場合は重み付きの枝だと思って$2$とします。 そうすると隣接行列は、 $$ A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 1\\1 &amp; 0 &amp; 2 &amp; 1\\0 &amp; 2 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0 &amp; 0 \end{pmatrix} $$ となります。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-31 13:01:31 +0900 +0900'>May 31, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;244 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-31 13:01:31 &#43;0900 JST&#39;&gt;May 31, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;244 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Good Will Hunting Problem" href="https://yonesuke.github.io/posts/good-will-hunting/"></a>
 </article>
 
@@ -294,7 +314,7 @@ $n&gt;m$のときには$4^{n}\delta_{m}$は$2$の倍数となります。 $\varp
 $ k = 0,1,3,10 $の場合の$ f _ {k} $をプロットしたものが次のようになります。
 $f_{0}$は$\varphi$にほかなりません。 $f_{1}$は$\varphi(4x)$によって引き伸ばされたものを足し込むことによって微分不可能な点が新たに増えていることがわかります。 このように$\varphi(4^{m}x)$によって微分不可能点が$\mathbb{R}$全体に伝播していって最終的に$f$が微分不可能になる様子が確認できます。</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-30 09:56:32 +0900 +0900'>May 30, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;68 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-30 09:56:32 &#43;0900 JST&#39;&gt;May 30, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;68 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 至るところ微分不可能な連続関数: 初等的な構成方法" href="https://yonesuke.github.io/posts/nowherediff/"></a>
 </article>
 
@@ -310,23 +330,8 @@ $f_{0}$は$\varphi$にほかなりません。 $f_{1}$は$\varphi(4x)$によっ�
 $r\approx0$のときは振動子たちは円周上をバラバラに分布しているため、同期していないことがわかります。 $r=1$のときには振動子たちは円周上の1点に集中しているため、完全同期しています。 連続極限 振動子が無限個ある極限$N\to\infty$において、微分方程式は連続の式に従います。 $$ \frac{\partial f}{\partial t}&#43;\frac{\partial}{\partial\theta}(V[f]f)=0 $$ ここで$V[f]$は速度場で微分方程式を無限に飛ばした式になります。 $$ V[f]=\omega&#43;K\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)\sin(\theta’-\theta&#43;\alpha) $$
 $f(\theta,\omega,t)$は時刻$t$における$\theta,\omega$の密度関数になります。 すなわち、$[\theta,\theta&#43;\delta\theta)\times[\omega,\omega&#43;\delta\omega)$に存在する振動子の割合が $f(\theta,\omega,t)\delta\theta\delta\omega$になります。 $\omega$は$g(\omega)$に従うので、 $$ \int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)=g(\omega) $$ が成り立ちます。 連続極限において秩序変数は $$ z=re^{i\phi}=\int_{\mathbb{R}}d\omega\int_{\mathbb{S}^{1}}d\theta f(\theta,\omega,t)e^{i\theta} $$ となります。 Fourier級数展開 分布関数$f(\theta,\omega,t)$について、$\theta$方向は$\mathbb{S}^{1}$に乗っているのでFourier級数展開ができます。 $$ f(\theta,\omega,t)=\frac{1}{2\pi}\sum_{k\in\mathbb{Z}}\hat{f} _ {k}(\omega,t)e^{-ik\theta} $$ これをもとに連続の式もFourier級数展開しましょう。 かんたんのために$h(\omega)$の$\omega$積分を$\langle h\rangle$と書くことにします。 $$ \begin{aligned}V[f]=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)e^{i\theta’}-\frac{Ke^{i(\theta-\alpha)}}{2i}\int_{\mathbb{R}}d\omega’\int_{\mathbb{S}^{1}}d\theta’ f(\theta’,\omega’,t)e^{-i\theta’}\\=&amp;\omega&#43;\frac{Ke^{-i(\theta-\alpha)}}{2i}\langle\hat{f} _ {1}\rangle-\frac{Ke^{i(\theta-\alpha)}}{2i}\langle\hat{f} _ {-1}\rangle \end{aligned}$$ であるので、 $$ \widehat{V[f]} _ {0}=2\pi\omega,\widehat{V[f]} _ {-1}=i\pi Ke^{-i\alpha}\langle\hat{f} _ {-1}\rangle,\widehat{V[f]} _ {1}=-i\pi Ke^{i\alpha}\langle\hat{f} _ {1}\rangle $$ がわかります。 これを連続の式に代入することで、 $$ \begin{aligned} \frac{\partial\hat{f} _ {k}}{\partial t}=&amp;-\widehat{\frac{\partial}{\partial\theta}(V[f]f)} _ {k}=ik\widehat{V[f]f} _ {k}=\frac{ik}{2\pi}\left(\sum_{l\in\mathbb{Z}}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)=\frac{ik}{2\pi}\left(\sum_{l=0,\pm1}\widehat{V[f]} _ {l}\hat{f} _ {k-l}\right)\\=&amp;ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}}{2}\langle\hat{f} _ {1}\rangle\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}}{2}\langle\hat{f} _ {-1}\rangle\hat{f} _ {k&#43;1} \end{aligned} $$ となります。特に秩序変数が$z=\langle\hat{f} _ {1}\rangle$で書けるので、 $$ \frac{\partial\hat{f} _ {k}}{\partial t}=ik\omega\hat{f} _ {k}&#43;\frac{kKe^{i\alpha}z}{2}\hat{f} _ {k-1}-\frac{kKe^{-i\alpha}\overline{z}}{2}\hat{f} _ {k&#43;1} $$ とさらに簡略化して書くことができます。 この偏微分方程式を解くことができればダイナミクスの理解が進むのですが、 このままでは難しいです。 この難しさを乗り越えたのがOtt-Antonsen縮約と呼ばれるものがあって、この偏微分方程式の特解を表します。...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-28 13:32:31 +0900 +0900'>May 28, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;217 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2021-05-28 13:32:31 &#43;0900 JST&#39;&gt;May 28, 2021&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;217 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to 坂口-蔵本モデルのダイナミクス" href="https://yonesuke.github.io/posts/sakaguchi-kuramoto/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>包除原理
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して $$ \mu\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
-証明 証明は $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu $$ を二通りに計算することにより求まります。
-はじめに愚直に展開してみることにします。 $$ \prod_{i=1}^{n}(1-x_{i})=\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}x_{i} $$ は展開すればわかるので、この$x_{i}$に$1_{A_{i}}$を代入すると、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\sum_{J\subset[n]}(-1)^{|J|}\prod_{i\in J}1_{A_{i}} =\sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}1_{\bigcap_{i\in J}A_{i}} $$ となります。ここで$1_{A}1_{B}=1_{A\cap B}$を用いました。以上より、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu = \sum_{J\subset[n];J\ne\emptyset}(-1)^{|J|-1}\mu\left(\bigcap_{i\in J}A_{i}\right) $$ がわかります。これで包除原理の右辺が示されました。
-次に賢い計算をしましょう。$1-1_{A}=1_{\overline{A}}$なので、 $$ 1-\prod_{i=1}^{n}(1-1_{A_{i}})=1-\prod_{i=1}^{n}1_{\overline{A_{i}}}=1-1_{\bigcap_{i=1}^{n}\overline{A_{i}}} =1_{\overline{\bigcap_{i=1}^{n}\overline{A_{i}}}} =1_{\bigcup_{i=1}^{n}A_{i}}$$ となります。最後にドモルガンの法則を用いました。 よって、 $$ \int_{X}\left(1-\prod_{i=1}^{n}(1-1_{A_{i}})\right)d\mu =\int_{X} 1_{\bigcup_{i=1}^{n}A_{i}}d\mu = \mu\left(\bigcup_{i=1}^{n}A_{i}\right) $$ となります。 これで包除原理の左辺が導かれ、包除原理が示されました。</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-05-16 12:18:18 +0900 +0900'>May 16, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;50 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to 包除原理" href="https://yonesuke.github.io/posts/inclusion_exclusion/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

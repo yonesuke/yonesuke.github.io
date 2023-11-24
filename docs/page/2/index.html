@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.117.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.120.4"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -143,6 +143,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://yonesuke.github.io/books_codes" title="Books &amp; Codes">
+                    <span>Books &amp; Codes</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://yonesuke.github.io/posts" title="Posts">
                     <span>Posts</span>
                 </a>
@@ -151,6 +156,19 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Hermite多項式の係数
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermite多項式の係数をpythonで求める方法を紹介します。 係数自体は三項間漸化式で求められますが、高次の係数を求めるときには再帰が必要になり計算量が増えてしまいます。 functoolsモジュールのcacheを使うと再帰を高速化できます。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from functools import cache @cache def hermite_coeff(n: int) -&gt; list: &#34;&#34;&#34;Compute the coefficients of the nth Hermite polynomial.&#34;&#34;&#34; if not isinstance(n, int): raise TypeError(&#34;n must be an integer&#34;) if n &lt; 0: raise ValueError(&#34;n must be non-negative&#34;) if n == 0: return [1] elif n == 1: return [0, 2] else: return [- 2 * (n - 1) * hermite_coeff(n - 2)[0]]\ &#43; [2 * hermite_coeff(n - 1)[i] - 2 * (n - 1) * hermite_coeff(n - 2)[i &#43; 1] for i in range(n - 2)]\ &#43; [2 * hermite_coeff(n - 1)[n - 2], 2 * hermite_coeff(n - 1)[n - 1]] hermite_coeff(n)はn次のHermite多項式の係数を返します。 hermite_coeff(n)はnが整数でないとき、nが負のときにTypeErrorとValueErrorを返します。...</p>
+  </div>
+  <footer class="entry-footer">&lt;span title=&#39;2023-01-31 19:06:00 &#43;0900 JST&#39;&gt;January 31, 2023&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;257 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
+  <a class="entry-link" aria-label="post link to Hermite多項式の係数" href="https://yonesuke.github.io/posts/hermite_coeff/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -165,7 +183,7 @@ Proposition    [Random Fourier Features] カーネル関数$k(x,y)$が$x-y$の
 Kernel Ridge Regression Random Fourier Featuresを用いてカーネル関数を表現することによってカーネルリッジ回帰の計算量が低減される。
 データ$\mathcal{D}=\{(x_{i},y_{i})\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。 損失関数は $$ L=\sum_{i=1}^{n}[y_{i}-f(x_{i})]^{2}&#43;\lambda||f||^{2}_ {H} $$ となり、これを最小化する$f\in H$を探す。$\lambda||f||^{2}_ {H}$は正則化の項である。 Representation定理により$f$は$\Phi(x_{i})$で展開されることがわかり、色々計算すると損失関数を最小化する$\hat{f}$は $$ \hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}_{i}k(x_{i},x) $$ となることがわかる。ここで、$\hat{\alpha}=(K&#43;\lambda I_{n})^{-1}y,[K]_{ij}=k(x_{i},x_{j})$である。 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-01-06 23:34:02 +0900 +0900'>January 6, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;766 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2023-01-06 23:34:02 &#43;0900 JST&#39;&gt;January 6, 2023&lt;/span&gt;&amp;nbsp;·&amp;nbsp;4 min&amp;nbsp;·&amp;nbsp;766 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Random Fourier Features" href="https://yonesuke.github.io/posts/random_fourier_feature/"></a>
 </article>
 
@@ -185,7 +203,7 @@ GitHubからAUTOのリポジトリをcloneする場合は次のコマンドを�
 1 2 -AUTO_DIR=$HOME/auto/07p &#43;AUTO_DIR=$HOME/.auto-07p このとき~/.auto-07p以外にフォルダを設置している場合はそのようにAUTO_DIRを設定しておいてください。 最終的に~/.auto-07p/cmds/auto.env.shは次のようになります。
 1 2 3 4 5 6 7 8 9 10 11 12 13 # # This file has to be sourced before activating AUTO if you are using # a &#39;sh&#39; compatible shell, such as sh, bash, ksh, or ash....</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-20 00:21:47 +0900 +0900'>November 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;124 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-11-20 00:21:47 &#43;0900 JST&#39;&gt;November 20, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;124 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to AUTOのインストール方法" href="https://yonesuke.github.io/posts/auto_install/"></a>
 </article>
 
@@ -203,7 +221,7 @@ Recurrence relation ベーテ格子の対称性から中心の点はは$q$個の
 これをもとに中心の磁化$M$を計算します。$Q_{n}$を部分木上で和を取ったものを$g_{n}$と置くことにします。すなわち、 $$ g_{n}(\sigma_{0})=\sum_{s}Q_{n}(\sigma_{0}\mid s) $$ です。各部分木上で$g_{n}$の値が一致することを用いると、 $$ \begin{align*} M=&amp;Z^{-1}\sum_{\sigma_{0}}\sigma_{0}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=Z^{-1}\left(e^{h}[g_{n}(&#43;1)]^{q}-e^{-h}[g_{n}(-1)]^{q}\right)\\ Z=&amp;\sum_{\sigma_{0}}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=e^{h}[g_{n}(&#43;1)]^{q}&#43;e^{-h}[g_{n}(-1)]^{q} \end{align*} $$ になります。ここで、$x_{n}=g_{n}(-1)/g_{n}(&#43;1)$と置くと、 $$ M=\frac{e^{h}-e^{-h}x_{n}}{e^{h}&#43;e^{-h}x_{n}} $$ が得られます。
 $x_{n}$は$n$に依存するので、$n$に関する漸化式を求めてみましょう。$Q_{n}$を構成する部分木$s$はそれ自身$q-1$個の部分木を含みます。なので、$Q_{n}$はさらなる分解が期待されます。 $$ Q_{n}(\sigma_{0}\mid s)=\exp(K\sigma_{0}s_{1}&#43;hs_{1})\prod_{j=1}^{q-1}Q_{n-1}(s_{1}\mid t^{(j)}) $$ ここで、$s_{1}$は部分木$s$の根であり、$t^{(j)}$は$s_{1}$に接続する$j$番目の部分木になります。 この式を部分木$s$上で和を取って見ましょう。特に、右辺は$s_{1}$と$t^{(j)}$上の和に分解してみると、 $$ \begin{align*} g_{n}(\sigma_{0})=&amp;\sum_{s_{1}}\exp(K\sigma_{0}s_{1}&#43;hs_{1})[g_{n-1}(s_{1})]^{q-1}\\ =&amp;\exp(K\sigma_{0}&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K\sigma_{0}-h)[g_{n-1}(-1)]^{q-1} \end{align*} $$ になるので、$x_{n}$については $$ \begin{align*} x_{n}=&amp;\frac{g_{n}(-1)}{g_{n}(&#43;1)}\\ =&amp;\frac{\exp(-K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(K-h)[g_{n-1}(-1)]^{q-1}}{\exp(K&#43;h)[g_{n-1}(&#43;1)]^{q-1}&#43;\exp(-K-h)[g_{n-1}(-1)]^{q-1}}\\ =&amp;\frac{e^{-K&#43;h}&#43;e^{K-h}x_{n-1}^{q-1}}{e^{K&#43;h}&#43;e^{-K-h}x_{n-1}^{q-1}} \end{align*} $$ が得られます。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-10-01 16:15:49 +0900 +0900'>October 1, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;109 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-10-01 16:15:49 &#43;0900 JST&#39;&gt;October 1, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;109 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Ising model on a Bethe lattice" href="https://yonesuke.github.io/posts/bethe_ising/"></a>
 </article>
 
@@ -220,7 +238,7 @@ Definition    [埋め込み] $f\colon M\to N$が埋め込みであるとは、
 Proposition   $C^{r}$級はめ込みは局所的には$C^{r}$級埋め込みである。すなわり、任意の点$p\in M$に対して, $p$のある開近傍$U$が存在して、$f|_{U}\colon U\to N$は埋め込みである。 部分多様体 Definition    [正則部分多様体] $n$次元$C^{r}$級多様体$N$の部分集合$S$が$k$次元の $C^{r}$級正則部分多様体であるとは、任意の点$p\in S$に対して、ある座標近傍$(U;x_{1},\dots,x_{n})$が存在して、 $$ U\cap S=\{(x_{1},\dots,x_{n})\in U\mid x_{k&#43;1}=\cdots=x_{n}=0\} $$ が成り立つことである。 『トゥー多様体』ではこのような$N$のチャートを$S$に適合するチャートと呼びます。
 Proposition   $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分多様体$S$はそれ自身$k$次元$C^{r}$級多様体である。 Proof [Of Proposition]: $(U;\phi)=(U;x_{1},\dots,x_{n}),(V,\psi)=(V;y_{1},\dots,y_{n})$を適合するチャートとし、$U\cap V\ne\emptyset$とする。このとき、$p\in U\cap V\cap S$に対して $$ \phi(p)=(x_{1}(p),\dots,x_{k}(p),0,\dots,0),\psi(p)=(y_{1}(p),\dots,y_{k}(p),0,\dots,0) $$ である。そこで、$\phi,\psi$の出力を$k$次元目までのところに制限したものを$\phi_{S},\psi_{S}$と書くことにすると、$\psi_{S}\circ\phi_{S}^{-1},\phi_{S}\circ\psi_{S}^{-1}$はそれぞれ$C^{r}$級の座標変換関数になる。 よって適合するチャートから構成した族$\{(U\cap S;\phi_{S})\}$は$S$の$C^{r}$級のアトラスになる。よって$S$は$k$次元$C^{r}$級多様体である。 次の2つの定理によって多様体の埋め込みと正則部分多様体は同じものとみなすことができます。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-30 17:18:33 +0900 +0900'>August 30, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;96 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-08-30 17:18:33 &#43;0900 JST&#39;&gt;August 30, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;96 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to はめ込みと埋め込み" href="https://yonesuke.github.io/posts/immersion-embedding/"></a>
 </article>
 
@@ -232,7 +250,7 @@ Proposition   $n$次元$C^{r}$級多様体$N$の$k$次元$C^{r}$級正則部分
   <div class="entry-content">
     <p>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import jax.numpy as jnp from jax import random, jit from jax.lax import fori_loop class AutonomousDiffEq: def __init__(self, n_dim: int): self.n_dim = n_dim def forward(self, state): return NotImplementedError def runge_kutta(self, state, dt): k1 = self.forward(state) k2 = self.forward(state &#43; 0.5 * dt * k1) k3 = self....</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-26 14:46:14 +0900 +0900'>August 26, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;157 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-08-26 14:46:14 &#43;0900 JST&#39;&gt;August 26, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;157 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to JAXで蔵本モデル" href="https://yonesuke.github.io/posts/jax-kuramoto/"></a>
 </article>
 
@@ -251,7 +269,7 @@ Definition    [レトラクション] 連続関数$r\colon X\to A$がレトラ
 すると、$r\circ i=\mathrm{id} _ {A}$になります。誘導準同型からの帰結として、 $$ r_{\ast}\circ i_{\ast}=\mathrm{id} _ {\pi _ {1}(A,x_{0})} $$ になります。特に、$i_{\ast}\colon\pi_{1}(A,x_{0})\to\pi_{1}(X,x_{0})$は単射準同型になります。
 証明 Proof [Of Theorem 1]: 背理法で示す。ある連続関数$h\colon D^{2}\to D^{2}$が存在して、任意の$x\in D^{2}$で$h(x)\ne x$であるとしよう。 このとき、$r\colon D^{2}\to\mathbb{S}^{1}$のレトラクションを次のように構成できる。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-18 12:01:27 +0900 +0900'>August 18, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;89 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-08-18 12:01:27 &#43;0900 JST&#39;&gt;August 18, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;89 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Brouwer&#39;s fixed-point theorem" href="https://yonesuke.github.io/posts/brouwer-fixed-point-thm/"></a>
 </article>
 
@@ -272,7 +290,7 @@ Numerical Simulation Conjecture    [Riemann Hypothesis] This can be sometimes 
 gnmatiohnioanhaet@qio
 $\frac{1}{3}$</p>
   </div>
-  <footer class="entry-footer"><span title='2022-07-20 16:38:49 +0900 +0900'>July 20, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;57 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-07-20 16:38:49 &#43;0900 JST&#39;&gt;July 20, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;57 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to ランダムグラフ上の最小全域木" href="https://yonesuke.github.io/posts/random_mst/"></a>
 </article>
 
@@ -290,7 +308,7 @@ Apple Siliconではarmアーキテクチャが採用されているのでminifor
 インストールに必要なのはtensorflow-deps, tensorflow-macos, tensorflow-metalの3つ(多い！！)らしいです。そのうちtensorflow-deps, tensorflow-macosをインストールするときのバージョンがtensorflowのバージョンに対応するらしいです。そのためにまずtensorflow-depsがインストール可能なバージョンを確認します。tensorflow-depsはcondaによるインストールを利用するらしいのでconda searchを行います。
 1 2 3 4 5 6 7 8 9 -&gt; % conda search -c apple tensorflow-deps Loading channels: done # Name Version Build Channel tensorflow-deps 2.5.0 0 apple tensorflow-deps 2.5.0 1 apple tensorflow-deps 2.6.0 0 apple tensorflow-deps 2.7.0 0 apple tensorflow-deps 2.8.0 0 apple tensorflow-deps 2....</p>
   </div>
-  <footer class="entry-footer"><span title='2022-07-11 10:26:10 +0900 +0900'>July 11, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;222 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-07-11 10:26:10 &#43;0900 JST&#39;&gt;July 11, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&amp;nbsp;·&amp;nbsp;222 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to M1 MacでのPython環境構築(tensorflowとか)" href="https://yonesuke.github.io/posts/m1-mac-python/"></a>
 </article>
 
@@ -311,23 +329,8 @@ Case 1 Step 0 $z=\infty$における位数は偶数なのでStep 1に行きま�
 Step 1 $(\infty_{3})$を計算します。$z=\infty$における位数は$m=-2\nu$として、$\nu=1$となります。 $\sqrt{r}$の$z=\infty$周りの展開は、 $$ \sqrt{r}=\sqrt{(1/z)^{-2}-2E}=(1/z)^{-1}-E(1/z)^{1}-\frac{E^{2}}{2}(1/z)^{3}&#43;\cdots $$ となります。よって、 $$ [\omega]_ {\infty}=[\sqrt{r}]_ {\infty}=z $$ となります。$a$は$\sqrt{r}$のローラン展開の$z^{\nu}=z^{1}$の係数、$b$は$r-[\sqrt{r}]_ {\infty}^{2}$のローラン展開の$z^{\nu-1}=z^{0}$の係数となるので、 $$ a=1,\quad b=z^{2}-2E-z^{2}=-2E $$ です。よって、 $$ \alpha_{\infty}^{\pm}=\frac{1}{2}(\pm\frac{b}{a}-\nu)=\mp E-\frac{1}{2} $$ と求まりました。Step 2に行きます。
 Step 2 $s=(s(c))_ {c\in\Gamma\cup{\infty}}$を定めますが、今$\Gamma=\emptyset$なので$s=\pm$について考えれば良いです。このとき、$d_{\pm}=\alpha_ {\infty}^{\pm}=\mp E-1/2$となります。これらが非負の整数である必要があることから場合分けが生じます。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-06-09 00:14:18 +0900 +0900'>June 9, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;138 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
+  <footer class="entry-footer">&lt;span title=&#39;2022-06-09 00:14:18 &#43;0900 JST&#39;&gt;June 9, 2022&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 min&amp;nbsp;·&amp;nbsp;138 words&amp;nbsp;·&amp;nbsp;Ryosuke Yoneda</footer>
   <a class="entry-link" aria-label="post link to Kovacicのアルゴリズムを用いて調和振動子を解く" href="https://yonesuke.github.io/posts/kovacic/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Egorov&#39;s theorem
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Egorovの定理は関数列の概収束と概一様収束の関係を述べたものになります。
-Theorem    [Egorovの定理] 有限測度空間$(X,\mathcal{F},\mu)$上の可測関数列$f_{n}\colon X\to\mathbb{C}$に対して、 $f_{n}$が可測関数$f$に概収束するならば、$f_{n}$は$f$に概一様収束する。 ここで、収束の定義についてそれぞれまとめておきます。
-Definition    [概収束] 関数列$f_{n}$が$f$に概収束するとは、ほとんどすべての$x\in X$に対して$f_{n}(x)$が$f(x)$に収束することである。すなわち、$f_{n}$はほとんど至るところ$f$に各点収束する。 Definition    [概一様収束] 関数列$f_{n}$が$f$に概一様収束するとは、任意の$\varepsilon&gt;0$に対して$\mu(E)&lt;\varepsilon$なる可測集合$E\in\mathcal{F}$が存在して、$E^{\mathrm{c}}$上では$f_{n}$が$f$に一様収束するようにできることである。 ちなみにT. TaoのAn Introduction to Measure Theoryでは、概収束のことをpointwise almost everywhere convergence, 概一様収束のことをalmost uniform convergenceと呼んでいます。(Taoの英語の本をずっと英語で読んでいたので対応する日本語を調べる必要がありました。)
-証明 Proof [Of Theorem 1]: 点$x_{0}$において$f_{n}$が$f$に収束することを集合を用いて表してみましょう。 $$\begin{aligned}&amp;f_{n}(x_{0})\to f(x_{0})\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow |f_{n}(x_{0})-f(x_{0})|\leq\frac{1}{m}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ n\geq N \Rightarrow x_{0}\in\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, \exists N\in\mathbb{N}, \mathrm{s.t.}\ x_{0}\in\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; \forall m&gt;0, x_{0}\in\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\ \Leftrightarrow&amp; x_{0}\in\bigcap_{m\in\mathbb{N}}\bigcup_{N\in\mathbb{N}}\bigcap_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|\leq\frac{1}{m}\right\}\\\end{aligned}$$ となります。これより、点$x_{0}$において$f_{n}$が$f$に収束しないことは $$ x_{0}\in\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}\bigcup_{n\geq N}\left\{x\in X\mid |f_{n}(x)-f(x)|&gt;\frac{1}{m}\right\} $$ で書くことができます。ここで、 $$ E_{N,m}=\bigcup_{n\geq N} \left\{ x\in X \mid |f_{n}(x)-f(x)| &gt; \frac{1}{m} \right\} $$ を定義すると(これが可測集合であることは明らかです)、収束しない点の測度は0なので$\mu(\bigcup_{m\in\mathbb{N}}\bigcap_{N\in\mathbb{N}}E_{N,m})=0$がわかります。特に測度の劣加法性から、任意の$m\in\mathbb{N}$に対して $$ \mu\left(\bigcap_{N\in\mathbb{N}}E_{N,m}\right)=0 $$ がわかります。$E_{N,m}$が集合として$N$に関して単調減少であり、しかも$\mu(X)&lt;\infty$であることから、$\lim_{N\to\infty}\mu\left(E_{N,m}\right)=0$とも書けます。これは$m$を決めるたびごとに定まる$N$に関する数列だと思うと、任意の$\varepsilon&gt;0$と任意の$m$に対してある$N_{m}$があって、$\mu\left(E_{N_{m},m}\right)&lt;\varepsilon/2^{m}$となるようにできます。このときに集合$E$を $$ E=\bigcup_{m\in\mathbb{N}}E_{N_{m},m} $$ で定めると、$\mu(E)&lt;\varepsilon$は測度の加法性から明らかです。$E^{\mathrm{c}}$は、 $$ E^{\mathrm{c}}=\bigcap_{m\in\mathbb{N}}\bigcap_{n\geq N_{m}}\left\{ x\in X \mid |f_{n}(x)-f(x)| \leq \frac{1}{m} \right\} $$ と書けて、これは$E^{\mathrm{c}}$上では$x$の選び方によらずに関数の差が$1/m$で抑えられていることを意味します。よって、$E^{\mathrm{c}}$上で一様収束することが示せました。 有限でない場合の反例 有限でない場合の例として、測度空間$(\mathbb{R}, \mathcal{B}, \mu)$で、$f_{n}=1_{[n,n&#43;1]}$を考えます。この関数が$f=0$に各点収束することは明らかですが、$\mu(E)&lt;1$であれば$E^{\mathrm{c}}$上で$f_{n}$の値が1になるようなものを作ることができてしまうので、この場合には概一様収束にはなりえません。</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-03-22 13:05:46 +0900 +0900'>March 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;126 words&nbsp;·&nbsp;Ryosuke Yoneda</footer>
-  <a class="entry-link" aria-label="post link to Egorov&#39;s theorem" href="https://yonesuke.github.io/posts/egorov/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
