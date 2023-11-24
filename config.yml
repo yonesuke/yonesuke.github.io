@@ -3,7 +3,7 @@ languageCode: 'en-us'
 title: 'Ryosuke Yoneda'
 # theme: ["PaperMod", "hugo-notice"]
 theme: ["papermod", "hugo-notice"]
-publishDir: "docs"
+# publishDir: "public"
 
 enableEmoji: true
 buildDrafts: true
@@ -68,7 +68,7 @@ params:
         url: research
       - name: Teaching
         url: teaching
-      - name: Books & Codes
+      - name: "Books & Codes"
         url: books_codes
       - name: Posts
         url: posts
@@ -126,7 +126,7 @@ menu:
       url: teaching
       weight: 4
     - identifier: books_codes
-      name: Books & Codes
+      name: "Books & Codes"
       url: books_codes
       weight: 5
     - identifier: posts
