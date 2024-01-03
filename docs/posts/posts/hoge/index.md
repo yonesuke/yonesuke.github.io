@@ -15,3 +15,5 @@ categories:
 
 hogehoge
 my name is Ryosuke Yoneda
+
+<!-- more -->

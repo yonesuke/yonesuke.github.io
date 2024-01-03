@@ -13,6 +13,8 @@ $$
 $$
 が成り立ちます。これを包除原理(Inclusion-exclusion principle)と呼びます。
 
+<!-- more -->
+
 ## 証明
 証明は
 $$

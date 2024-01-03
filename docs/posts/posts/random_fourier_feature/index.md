@@ -12,6 +12,8 @@ authors:
 ここでは、Random Fourier Features [^rff]と呼ばれる方法を紹介します。
 実装も行ったが[Gist](https://gist.github.com/yonesuke/ebc5a69d270cf2cbc559ce228370f910)にも公開している。
 
+<!-- more -->
+
 ## Random Fourier Features
 Random Fourier Featuresはカーネル関数$k(x,y)\colon\mathbb{R}^{d}\times\mathbb{R}^{d}\to\mathbb{R}$が$x-y$の関数$\phi(x-y)$で表現できる場合に、それをランダムな基底で近似する手法である。キモとなるのはBochnerの定理である。
 

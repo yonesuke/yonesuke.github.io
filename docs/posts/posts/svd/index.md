@@ -12,6 +12,8 @@ authors:
 $$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) & O_{r\times(n-r)} \\\\ O_{(m-r)\times r} & O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$
 となるようにできます。このような分解を特異値分解と言います。
 
+<!-- more -->
+
 ## 証明
 $A^{\mathsf{T}}A$は実対称行列なので固有ベクトル$\{v_{1},\dots,v_{n}\}$と固有値$\{\xi_{1},\dots,\xi_{n}\}$が存在して
 $$

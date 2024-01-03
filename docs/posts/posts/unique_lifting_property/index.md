@@ -10,6 +10,8 @@ authors:
 Hatcherの"Algebraic Topology"のProposition 1.34でUnique lifting propertyとその証明が与えられているのですが、その証明がわかりにくかったのでここに分かりやすくまとめてみます。
 Hatcherが全体的に読みにくいと感じるのは自分だけだろうか。。。
 
+<!-- more -->
+
 ## Unique lifting property
 
 Unique lifting propertyは被覆空間によってリフトされた連続写像が一点を決めれば一意に定まることを主張しています。

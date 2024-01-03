@@ -12,6 +12,8 @@ from scratchでの実装にはこの記事が非常に参考になった。
 * https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb
 * https://darden.hatenablog.com/entry/2016/12/15/222447
 
+<!-- more -->
+
 ## 決定木
 
 まず決定木の仕組みについて説明する。

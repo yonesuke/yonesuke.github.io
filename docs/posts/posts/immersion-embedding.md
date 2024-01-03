@@ -9,6 +9,8 @@ authors:
 
 松本『[多様体の基礎](http://www.utp.or.jp/book/b302120.html)』とTu『[トゥー多様体](https://www.shokabo.co.jp/mybooks/ISBN978-4-7853-1586-3.htm)』を読みながらはめ込みと埋め込みについて書いてあったことをまとめます。
 
+<!-- more -->
+
 ## はめ込みと埋め込み
 
 {{< thmlike type="Definition" title="はめ込み" >}}

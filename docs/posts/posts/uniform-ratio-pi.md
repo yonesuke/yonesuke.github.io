@@ -13,6 +13,8 @@ authors:
 
 この証明を行っていきます。
 
+<!-- more -->
+
 ## Uniform ratio distribution
 $[0,1]$区間の一様乱数$X,Y$に対して$X/Y$が取る分布はuniform ratio distributionという名前がついています。この分布は手で計算することができて、
 $$

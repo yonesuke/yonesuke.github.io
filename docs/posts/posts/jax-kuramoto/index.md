@@ -7,6 +7,8 @@ authors:
     - yonesuke
 ---
 
+<!-- more -->
+
 ```python
 import jax.numpy as jnp
 from jax import random, jit

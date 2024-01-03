@@ -10,6 +10,8 @@ authors:
 Juliaで機械学習をするための有名なライブラリに[Flux](https://github.com/FluxML/Flux.jl)があります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。
 コードは次のようになります。[これ](https://github.com/FluxML/model-zoo/blob/master/vision/mlp_mnist/mlp_mnist.jl)を参考に書きました。
 
+<!-- more -->
+
 {{< gist yonesuke afc39543fb1de5ff484fa812e3ca5a1d >}}
 
 ## パッケージ

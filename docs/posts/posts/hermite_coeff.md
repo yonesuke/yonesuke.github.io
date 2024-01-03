@@ -11,6 +11,8 @@ Hermite多項式の係数をpythonで求める方法を紹介します。
 係数自体は三項間漸化式で求められますが、高次の係数を求めるときには再帰が必要になり計算量が増えてしまいます。
 `functools`モジュールの`cache`を使うと再帰を高速化できます。
 
+<!-- more -->
+
 ```python
 from functools import cache
 

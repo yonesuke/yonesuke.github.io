@@ -15,6 +15,8 @@ Hugo上で定義・定理・証明環境を整えるのに[このページ](http
 また、このinfoは[この拡張機能](https://github.com/martignoni/hugo-notice)を用いました。
 {{< /notice >}}
 
+<!-- more -->
+
 ## Minimum Spanning Tree
 はじめに最小全域木についてまとめておきます。まず、[Wikipedia](https://ja.wikipedia.org/wiki/%E5%85%A8%E5%9F%9F%E6%9C%A8)によると**全域木**は
 {{< thmlike type="Definition" title="全域木" >}}

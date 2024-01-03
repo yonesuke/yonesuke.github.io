@@ -9,6 +9,8 @@ authors:
 
 $\LaTeX$で文章を書くときによく行う設定をまとめておきます。
 
+<!-- more -->
+
 ## Overleaf
 
 - Overleafで日本語で文章を書く場合は次の`latexmkrc`というファイルをおいておきます。
