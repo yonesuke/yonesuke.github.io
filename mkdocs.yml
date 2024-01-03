@@ -25,6 +25,15 @@ extra:
       link: https://github.com/yonesuke
     - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/yonesuke1729
+
+extra_javascript:
+  - javascripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
@@ -35,6 +44,8 @@ markdown_extensions:
   - pymdownx.tabbed
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
 
 nav:
   - Home: index.md
