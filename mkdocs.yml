@@ -7,6 +7,8 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+  palette:
+    primary: light-green
 plugins:
   - blog:
       blog_dir: posts
