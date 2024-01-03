@@ -15,6 +15,10 @@ plugins:
       blog_toc: true
       post_dir: "{blog}/posts"
       post_url_format: "{slug}"
+      archive: true
+      archive_name: Archive
+      archive_url_date_format: yyyy
+      archive_toc: true
       # authors_profiles: true
   - search
   - social
@@ -23,10 +27,17 @@ plugins:
       include_requirejs: true
 extra:
   social:
+    - icon: fontawesome/solid/house-chimney
+      link: https://yonesuke.github.io/
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:yonedakyoto@gmail.com
     - icon: fontawesome/brands/github
       link: https://github.com/yonesuke
     - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/yonesuke1729
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.com/citations?user=XN3JxqIAAAAJ
+    
 
 extra_javascript:
   - javascripts/katex.js 
@@ -48,6 +59,10 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Home: index.md

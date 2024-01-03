@@ -10,9 +10,10 @@ I am interested in mathematical models and network science, and I want to unders
 My hobbies are reading and programming.
 Nice to meet you!!
 
-Links
+## Links
 
-[Twitter](https://twitter.com/yonesuke1729)
-[GitHub](https://github.com/yonesuke)
-[Google Scholar](https://scholar.google.com/citations?user=XN3JxqIAAAAJ)
-[E-mail](mailto:yonedakyoto@gmail.com)
+- [:fontawesome-solid-house-chimney: Homepage](https://yonesuke.github.io/)
+- [:fontawesome-solid-paper-plane: E-mail](mailto:yonedakyoto@gmail.com)
+- [:fontawesome-brands-twitter: Twitter](https://twitter.com/yonesuke1729)
+- [:fontawesome-brands-github: GitHub](https://github.com/yonesuke)
+- [:fontawesome-brands-google-scholar: Google Scholar](https://scholar.google.com/citations?user=XN3JxqIAAAAJ)
