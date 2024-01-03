@@ -1,0 +1,45 @@
+site_name: Ryosuke Yoneda's Homepage
+copyright: Copyright &copy; 2023 Ryosuke Yoneda
+repo_url: https://github.com/yonesuke/yonesuke.github.io
+repo_name: yonesuke/yonesuke.github.io
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+plugins:
+  - blog:
+      blog_dir: posts
+      blog_toc: true
+      post_dir: "{blog}/posts"
+      post_url_format: "{slug}"
+      # authors_profiles: true
+  - search
+  - social
+  - tags
+  - mkdocs-jupyter:
+      include_requirejs: true
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yonesuke
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/yonesuke1729
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - test: test.ipynb
+  - CV: cv.pdf
+  - Teaching: teaching/index.md
+  - Posts: posts/index.md
