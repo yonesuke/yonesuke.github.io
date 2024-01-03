@@ -67,7 +67,6 @@ markdown_extensions:
 nav:
   - Home: index.md
   - About: about.md
-  - test: test.ipynb
   - CV: cv.pdf
   - Projects: projects/index.md
   - Teaching: teaching/index.md
