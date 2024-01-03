@@ -14,7 +14,7 @@ plugins:
       blog_dir: posts
       blog_toc: true
       post_dir: "{blog}/posts"
-      post_url_format: "{slug}"
+      post_url_format: "{file}"
       archive: true
       archive_name: Archive
       archive_url_date_format: yyyy
