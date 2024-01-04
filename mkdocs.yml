@@ -5,8 +5,27 @@ repo_name: yonesuke/yonesuke.github.io
 theme:
   name: material
   features:
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
     - navigation.tabs
+    - navigation.tabs.sticky
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/
+    # - navigation.footer
+    - navigation.top
     - navigation.sections
+    # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
+    - search.suggest
+    - search.highlight
+    # When section index pages are enabled, documents can be directly attached to sections, which is particularly useful for providing overview pages
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.follow
   palette:
     primary: light-green
 plugins:
@@ -70,4 +89,6 @@ nav:
   - CV: cv.pdf
   - Projects: projects/index.md
   - Teaching: teaching/index.md
-  - Posts: posts/index.md
+  # - Posts: posts/index.md
+  - Posts:
+    - posts/index.md
