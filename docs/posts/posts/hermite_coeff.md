@@ -1,10 +1,14 @@
 ---
 title: "Hermite多項式の係数"
 date: 2023-01-31
+slug: hermite_coeff
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Python
+    - Mathematics
 ---
 
 Hermite多項式の係数をpythonで求める方法を紹介します。
