@@ -6,6 +6,8 @@ draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Diary
 ---
 
 # 博士課程2年目3年目を振り返る
