@@ -1,10 +1,14 @@
 ---
 title: "SHA-256に用いられる定数が微妙に合わない"
 date: 2023-06-18
+slug: sha256_constants
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - C++
+    - Cryptography
 ---
 
 ひょんなことからSHA-256を実装しようと思ったのだが、少し謎なところがあったのでまとめる。
@@ -35,11 +39,11 @@ echo -n 'hello, world!' | openssl dgst -sha256
 
 今回の記事ではそのアルゴリズム自体は扱わない。参考になる記事として以下を挙げておく。
 
-* https://en.wikipedia.org/wiki/SHA-2
+* [https://en.wikipedia.org/wiki/SHA-2](https://en.wikipedia.org/wiki/SHA-2)
     * Wikipedia
-* https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/
+* [https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/](https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/)
     * アルゴリズムの流れが詳しく書いてある
-* https://sha256algorithm.com/
+* [https://sha256algorithm.com/](https://sha256algorithm.com/)
     * SHA-256が内部でどのような計算をするのかをアニメーションできれいに表示してくれる。一見の価値あり。こういったウェブサイトを作れるの尊敬する。
 
 ## SHA-256のアルゴリズムの中に登場する定数
@@ -47,7 +51,8 @@ echo -n 'hello, world!' | openssl dgst -sha256
 SHA-256のアルゴリズムの中には定数がいくつか登場する。
 それは、ハッシュ値の初期値として設定されるもので、
 
-> first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19
+!!! quote
+    first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19
 
 と定義されている。これらを`h0`から`h7`とおくと、
 
