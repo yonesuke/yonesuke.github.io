@@ -1,10 +1,13 @@
 ---
 title: "Ising model on a Bethe lattice"
 date: 2022-10-01
+slug: bethe_ising
 draft: true
 math: true
 authors:
     - yonesuke
+categories:
+    - Physics
 ---
 
 Baxterの本にベーテ格子上のイジングモデルの話があって面白かったのでまとめてみます。臨界点と臨界指数を求めるところまで書いてみます。
@@ -61,10 +64,10 @@ g_{n}(\sigma_{0})=\sum_{s}Q_{n}(\sigma_{0}\mid s)
 $$
 です。各部分木上で$g_{n}$の値が一致することを用いると、
 $$
-\begin{align*}
+\begin{aligned}
 M=&Z^{-1}\sum_{\sigma_{0}}\sigma_{0}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=Z^{-1}\left(e^{h}[g_{n}(+1)]^{q}-e^{-h}[g_{n}(-1)]^{q}\right)\\\\
 Z=&\sum_{\sigma_{0}}\exp(h\sigma_{0})[g_{n}(\sigma_{0})]^{q}=e^{h}[g_{n}(+1)]^{q}+e^{-h}[g_{n}(-1)]^{q}
-\end{align*}
+\end{aligned}
 $$
 になります。ここで、$x_{n}=g_{n}(-1)/g_{n}(+1)$と置くと、
 $$
@@ -79,18 +82,18 @@ $$
 ここで、$s_{1}$は部分木$s$の根であり、$t^{(j)}$は$s_{1}$に接続する$j$番目の部分木になります。
 この式を部分木$s$上で和を取って見ましょう。特に、右辺は$s_{1}$と$t^{(j)}$上の和に分解してみると、
 $$
-\begin{align*}
+\begin{aligned}
 g_{n}(\sigma_{0})=&\sum_{s_{1}}\exp(K\sigma_{0}s_{1}+hs_{1})[g_{n-1}(s_{1})]^{q-1}\\\\
 =&\exp(K\sigma_{0}+h)[g_{n-1}(+1)]^{q-1}+\exp(-K\sigma_{0}-h)[g_{n-1}(-1)]^{q-1}
-\end{align*}
+\end{aligned}
 $$
 になるので、$x_{n}$については
 $$
-\begin{align*}
+\begin{aligned}
 x_{n}=&\frac{g_{n}(-1)}{g_{n}(+1)}\\\\
 =&\frac{\exp(-K+h)[g_{n-1}(+1)]^{q-1}+\exp(K-h)[g_{n-1}(-1)]^{q-1}}{\exp(K+h)[g_{n-1}(+1)]^{q-1}+\exp(-K-h)[g_{n-1}(-1)]^{q-1}}\\\\
 =&\frac{e^{-K+h}+e^{K-h}x_{n-1}^{q-1}}{e^{K+h}+e^{-K-h}x_{n-1}^{q-1}}
-\end{align*}
+\end{aligned}
 $$
 が得られます。
 
