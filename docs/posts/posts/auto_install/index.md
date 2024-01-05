@@ -1,16 +1,20 @@
 ---
 title: "AUTOのインストール方法"
 date: 2022-11-20
+slug: auto_install
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Differential Equation
 ---
 
 AUTOはODE(常微分方程式)の分岐解析を扱うソフトウェアで、1980年に開発されて以来力学系界隈で使われてきました。
 現在はGitHubにてコードが公開されて細々と(?)開発が続けられています。
 
-- https://github.com/auto-07p/auto-07p
+- [https://github.com/auto-07p/auto-07p](https://github.com/auto-07p/auto-07p)
 
 AUTOは便利ではあるのですが、そのインストール方法がプログラム初心者には少し難しいことがあるそうなのでその流れを少しまとめてみました。
 以下では基本的にMac OSでインストールする方法を述べますが、WindowsやLinuxでも同様だと思います。
