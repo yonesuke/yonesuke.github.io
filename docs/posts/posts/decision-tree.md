@@ -9,8 +9,9 @@ authors:
 
 決定木って名前はよく聞くし`scikit-learn`で簡単に使えてしまうけど、中身を詳しく知っているわけではなかったのできちんと実装してみることにする。
 from scratchでの実装にはこの記事が非常に参考になった。
-* https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb
-* https://darden.hatenablog.com/entry/2016/12/15/222447
+
+* [https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb](https://towardsdatascience.com/implementing-a-decision-tree-from-scratch-f5358ff9c4bb)
+* [https://darden.hatenablog.com/entry/2016/12/15/222447](https://darden.hatenablog.com/entry/2016/12/15/222447)
 
 <!-- more -->
 
@@ -170,11 +171,11 @@ class DecisionTree:
         return np.array(predictions)
 ```
 
-{{< notice info >}}
-`splitter='best'`の場合は各ノードの質問を構成する特徴量を決めるためにすべての特徴量を試す必要がある。そのため、はじめは`random_state`の指定は特に必要ないのではないか？と思っていた。具体的には45行目において`for feat in features_candidate:`を行う代わりに`for i in range(self.n_samples):`を行えば良いのではないか？ということである。
-自分の中での一つの答えは、毎回`for i in range(self.n_samples):`を行ってしまうと、複数の特徴量(と閾値)で同じ最善な情報利得を得た場合に、必ずインデックスが若いほうの特徴量を選んでしまう、という問題が発生してしまう。
-そのため、インデックスを`np.random.choice(self.n_features, self.n_features, replace=False)`で並び変えることによって複数の最適な情報利得を得た場合にもランダム性が作用して性能向上に繋がる可能性が出る。[このIssue](https://github.com/scikit-learn/scikit-learn/issues/2386)が参考になる。
-{{< /notice >}}
+!!! note
+    `splitter='best'`の場合は各ノードの質問を構成する特徴量を決めるためにすべての特徴量を試す必要がある。そのため、はじめは`random_state`の指定は特に必要ないのではないか？と思っていた。具体的には45行目において`for feat in features_candidate:`を行う代わりに`for i in range(self.n_samples):`を行えば良いのではないか？ということである。
+    自分の中での一つの答えは、毎回`for i in range(self.n_samples):`を行ってしまうと、複数の特徴量(と閾値)で同じ最善な情報利得を得た場合に、必ずインデックスが若いほうの特徴量を選んでしまう、という問題が発生してしまう。
+    そのため、インデックスを`np.random.choice(self.n_features, self.n_features, replace=False)`で並び変えることによって複数の最適な情報利得を得た場合にもランダム性が作用して性能向上に繋がる可能性が出る。[このIssue](https://github.com/scikit-learn/scikit-learn/issues/2386)が参考になる。
+
 
 ## 具体例
 
