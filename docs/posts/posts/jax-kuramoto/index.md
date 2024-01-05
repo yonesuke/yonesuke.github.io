@@ -1,11 +1,17 @@
 ---
 title: "JAXで蔵本モデル"
 date: 2022-08-26
+slug: jax_kuramoto
 draft: true
 math: true
 authors:
     - yonesuke
+categories:
+    - Physics
+    - Python
 ---
+
+# JAXで蔵本モデル
 
 <!-- more -->
 
