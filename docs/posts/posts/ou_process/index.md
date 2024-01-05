@@ -1,10 +1,15 @@
 ---
 title: "オルンシュタイン-ウーレンベック過程"
 date: 2023-07-22
+slug: ou_process
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Numerical Simulation
+    - Python
+    - Differential Equation
 ---
 
 オルンシュタイン-ウーレンベック過程の基本的な性質を振り返り、
@@ -39,10 +44,10 @@ $$
 
 この解の期待値と共分散は次のようになる。
 $$
-\begin{align*}
+\begin{aligned}
 &\mathbb{E}[x_t] = x_0 e^{-\theta t} + \mu (1 - e^{-\theta t}),\\\\
 &\mathrm{cov}(x_t,x_s) = \frac{\sigma^2}{2\theta}e^{-\theta(t+s)}(e^{2\theta\min(t,s)}-1)
-\end{align*}
+\end{aligned}
 $$
 特に分散は$t=s$とすることで$\sigma^{2}(1-e^{-2\theta t})/2\theta$が得られる。
 
