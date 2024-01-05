@@ -2,9 +2,14 @@
 title: "Random Fourier Features"
 date: 2023-01-06
 draft: false
+slug: random_fourier_feature
 math: true
 authors:
     - yonesuke
+categories:
+    - Python
+    - Mathematics
+    - Machine Learning
 ---
 
 カーネル法によるリッジ回帰は表現力が高いことが知られており、またその数学的背景の豊かさから多くの研究がなされてきました。
@@ -17,32 +22,34 @@ authors:
 ## Random Fourier Features
 Random Fourier Featuresはカーネル関数$k(x,y)\colon\mathbb{R}^{d}\times\mathbb{R}^{d}\to\mathbb{R}$が$x-y$の関数$\phi(x-y)$で表現できる場合に、それをランダムな基底で近似する手法である。キモとなるのはBochnerの定理である。
 
-{{< thmlike type="Theorem" title="Bochnerの定理" >}}
-$k(x,y)=\phi(x-y)$が連続な正定値カーネルであるための必要十分条件は$\mathbb{R}^{d}$上の有限非負Borel測度$\mu$があって、
-$$
-k(x,y)=\int_{\mathbb{R}^{d}}e^{i\omega^{\top}(x-y)}\mathrm{d}\mu(\omega)
-$$
-で表されることである。
-{{< /thmlike >}}
+!!! success "Bochner theorem"
+    $k(x,y)=\phi(x-y)$が連続な正定値カーネルであるための必要十分条件は$\mathbb{R}^{d}$上の有限非負Borel測度$\mu$があって、
+    $$
+    k(x,y)=\int_{\mathbb{R}^{d}}e^{i\omega^{\top}(x-y)}\mathrm{d}\mu(\omega)
+    $$
+    で表されることである。
 
 適当にスケールすれば$\mu$は確率になり、(存在すれば)$\mathrm{d}\mu(\omega)=p(\omega)\mathrm{d}\omega$と書くことが出来る。
 このとき、$k$の値域は実数であるので、
+
 $$
 k(x,y)=\mathbb{E}_ {\omega}[\cos(\omega^{\top}(x-y))]
 $$
+
 実はこれは$b$を$[0,2\pi)$上の一様乱数として、
+
 $$
 2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x+b)\cos(\omega^{\top}y+b)]
 $$
+
 と一致することがわかる。(加法定理を用いよ)
 
-{{< thmlike type="Proposition" title="Random Fourier Features" >}}
-カーネル関数$k(x,y)$が$x-y$の関数で与えられるとき、
-$$
-k(x,y)=2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x+b)\cos(\omega^{\top}y+b)]
-$$
-が成立する。ここで、$\omega$は$k$の確率に従い、$b$は$[0,2\pi)$上の一様分布に従う。
-{{< /thmlike >}}
+!!! success "Proposition: Random Fourier Features"
+    カーネル関数$k(x,y)$が$x-y$の関数で与えられるとき、
+    $$
+    k(x,y)=2\mathbb{E}_ {\omega,b}[\cos(\omega^{\top}x+b)\cos(\omega^{\top}y+b)]
+    $$
+    が成立する。ここで、$\omega$は$k$の確率に従い、$b$は$[0,2\pi)$上の一様分布に従う。
 
 この性質を用いてカーネル関数を近似することを考える。$\omega_{i},b_{i}$をそれぞれの分布に従う乱数として$m$個発生させ、関数$z_{i}(x)=\sqrt{2/m}\cos(\omega_{i}^{\top}x+b_{i})$を構成したとき、
 $$
@@ -53,31 +60,37 @@ $$
 ## Kernel Ridge Regression
 Random Fourier Featuresを用いてカーネル関数を表現することによってカーネルリッジ回帰の計算量が低減される。
 
-データ$\mathcal{D}=\\{(x_{i},y_{i})\\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。
+データ$\mathcal{D}=\{(x_{i},y_{i})\}_ {i=1}^{n}$が与えられる場合を考える。入力$x_{i}$を特徴写像$\Phi$で写し、写した先の空間$H$でリッジ回帰をする。
 損失関数は
+
 $$
 L=\sum_{i=1}^{n}[y_{i}-f(x_{i})]^{2}+\lambda\||f\||^{2}_ {H}
 $$
+
 となり、これを最小化する$f\in H$を探す。$\lambda\||f\||^{2}_ {H}$は正則化の項である。
 Representation定理により$f$は$\Phi(x_{i})$で展開されることがわかり、色々計算すると損失関数を最小化する$\hat{f}$は
+
 $$
-\hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}\_{i}k(x_{i},x)
+\hat{f}(x)=\sum_{i=1}^{n}\hat{\alpha}_{i}k(x_{i},x)
 $$
-となることがわかる。ここで、$\hat{\alpha}=(K+\lambda I_{n})^{-1}y,[K]\_{ij}=k(x_{i},x_{j})$である。
+
+となることがわかる。ここで、$\hat{\alpha}=(K+\lambda I_{n})^{-1}y,[K]_{ij}=k(x_{i},x_{j})$である。
 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。
 
 ここで、Random Fourier Featuresを用いてカーネル関数を近似することを考える。
 共分散行列は$[Z]\_{ij}=z_{j}(x_{i})$によって$K=ZZ^{\top}$で展開されるので、
+
 $$
 \begin{align*}
-\hat{f}(x)=&\sum_{i=1}^{n}\sum_{j=1}^{m}[(K+\lambda I_{n})^{-1}y]\_{i}z_{j}(x_{i})z_{j}(x)\\\\
-=&\sum_{i=1}^{n}\sum_{j=1}^{m}\left[\left(ZZ^{\top}+\lambda I_{n}\right)^{-1}y\right]\_{i}[Z]\_{ij}z_{j}(x)\\\\
-=&\sum_{j=1}^{m}\left[Z^{\top}\left(ZZ^{\top}+\lambda I_{n}\right)^{-1}y\right]\_{j}z_{j}(x)
+\hat{f}(x)=&\sum_{i=1}^{n}\sum_{j=1}^{m}[(K+\lambda I_{n})^{-1}y]_{i}z_{j}(x_{i})z_{j}(x)\\\\
+=&\sum_{i=1}^{n}\sum_{j=1}^{m}\left[\left(ZZ^{\top}+\lambda I_{n}\right)^{-1}y\right]_{i}[Z]_{ij}z_{j}(x)\\\\
+=&\sum_{j=1}^{m}\left[Z^{\top}\left(ZZ^{\top}+\lambda I_{n}\right)^{-1}y\right]_{j}z_{j}(x)
 \end{align*}
 $$
+
 ここでWoodburyの公式から$Z^{\top}(ZZ^{\top}+\lambda I_{n})^{-1}=(Z^{\top}Z+\lambda I_{m})^{-1}Z^{\top}$となる [^woodbury] ので、
 $$
-\hat{f}(x)=\sum_{j=1}^{m}\left[\left(Z^{\top}Z+\lambda I_{m}\right)^{-1}Z^{\top}y\right]\_{j}z_{j}(x)
+\hat{f}(x)=\sum_{j=1}^{m}\left[\left(Z^{\top}Z+\lambda I_{m}\right)^{-1}Z^{\top}y\right]_{j}z_{j}(x)
 $$
 で得られる。$Z^{\top}Z$の計算に$\mathcal{O}(m^{2}n)$、$Z^{\top}Z+\lambda I_{m}$の逆行列計算に$\mathcal{O}(m^{3})$になるので、$m\ll n$ならば計算量は$\mathcal{O}(m^{2}n)$に軽減される。
 
