@@ -78,7 +78,7 @@ $$
 $\alpha$の計算に逆行列が含まれるため$\mathcal{O}(n^{3})$の計算量が必要となってしまう。
 
 ここで、Random Fourier Featuresを用いてカーネル関数を近似することを考える。
-共分散行列は$[Z]\_{ij}=z_{j}(x_{i})$によって$K=ZZ^{\top}$で展開されるので、
+共分散行列は$[Z]_{ij}=z_{j}(x_{i})$によって$K=ZZ^{\top}$で展開されるので、
 
 $$
 \begin{align*}
@@ -89,9 +89,11 @@ $$
 $$
 
 ここでWoodburyの公式から$Z^{\top}(ZZ^{\top}+\lambda I_{n})^{-1}=(Z^{\top}Z+\lambda I_{m})^{-1}Z^{\top}$となる [^woodbury] ので、
+
 $$
 \hat{f}(x)=\sum_{j=1}^{m}\left[\left(Z^{\top}Z+\lambda I_{m}\right)^{-1}Z^{\top}y\right]_{j}z_{j}(x)
 $$
+
 で得られる。$Z^{\top}Z$の計算に$\mathcal{O}(m^{2}n)$、$Z^{\top}Z+\lambda I_{m}$の逆行列計算に$\mathcal{O}(m^{3})$になるので、$m\ll n$ならば計算量は$\mathcal{O}(m^{2}n)$に軽減される。
 
 ## Implementation
