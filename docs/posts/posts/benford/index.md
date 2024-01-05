@@ -1,11 +1,17 @@
 ---
 title: "ベンフォードの法則"
+slug: benford
 date: 2023-07-01
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Python
+    - Data Science
 ---
+
+# ベンフォードの法則
 
 ベンフォードの法則は「自然界に現れる多くの数値の最初の桁の値はある特定の分布に従う」ことを指す法則である。
 ふと出くわして非常に面白かったのでまとめておく。
@@ -47,7 +53,7 @@ $$
 $$
 a_{n}=a_{n-1} + a_{n-2}
 $$
-で定められる数列$\\{a_{n}\\}$を指す。
+で定められる数列$\{a_{n}\}$を指す。
 pythonでこの数列を実装するには再帰を利用する必要があるが、メモ化を行うことで高速化することができる。pythonでは幸い`functools.cache`が提供されているので簡単に実装ができる。
 ```python
 from functools import cache
@@ -74,7 +80,8 @@ xs = np.arange(1, 10)
 plt.plot(xs, np.log10(1 + 1 / xs), label='Benford')
 plt.legend()
 ```
-{{< figure src="benford_fib.png" width=700 >}}
+
+![](benford_fib.png)
 
 図を見てもわかるように、フィボナッチ数列の先頭の桁がベンフォードの法則に従うことが確かめられた。
 これが成り立つことは上の指数関数の例から証明を行うことができる。
@@ -129,7 +136,7 @@ plt.plot(xs, np.log10(1 + 1 / xs), color='tab:orange', label='Benford')
 plt.legend(ncols=3)
 ```
 
-{{< figure src="benford_population.png" width=700 >}}
+![](benford_population.png)
 
 世界の人口についてもベンフォードの法則への当てはまりが良いことがわかる。
 
