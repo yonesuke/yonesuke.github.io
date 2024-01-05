@@ -1,10 +1,15 @@
 ---
 title: "決定木を1から実装する"
+slug: decision_tree
 date: 2023-06-25
 draft: false
 math: true
 authors:
   - yonesuke
+categories:
+    - Python
+    - Machine Learning
+    - Data Science
 ---
 
 決定木って名前はよく聞くし`scikit-learn`で簡単に使えてしまうけど、中身を詳しく知っているわけではなかったのできちんと実装してみることにする。
