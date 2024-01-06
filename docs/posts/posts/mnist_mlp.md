@@ -1,10 +1,14 @@
 ---
 title: "MNISTをMLPで推論(Julia/Flux実装)"
 date: 2021-08-23
+slug: mnist_mlp
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Machine Learning
+    - Julia
 ---
 
 Juliaで機械学習をするための有名なライブラリに[Flux](https://github.com/FluxML/Flux.jl)があります。Fluxを使ってMNISTの手書き数字の推論を行ったのでその方法をまとめておきます。
@@ -12,7 +16,7 @@ Juliaで機械学習をするための有名なライブラリに[Flux](https://
 
 <!-- more -->
 
-{{< gist yonesuke afc39543fb1de5ff484fa812e3ca5a1d >}}
+<script src="https://gist.github.com/yonesuke/afc39543fb1de5ff484fa812e3ca5a1d.js"></script>
 
 ## パッケージ
 基本的に`Flux`さえあれば良いです。今回はMNISTデータを用いるので`MLDatasets`というパッケージを用いてデータを読み込みます。これらのパッケージは事前にインストールしておく必要があります。JuliaのREPLやnotebook上で次を入力してください。
