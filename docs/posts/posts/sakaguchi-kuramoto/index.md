@@ -1,10 +1,14 @@
 ---
 title: "坂口-蔵本モデルのダイナミクス"
 date: 2021-05-28
+slug: sakaguchi_kuramoto
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Differential Equation
 ---
 
 坂口-蔵本モデルは蔵本モデルにphase lagを導入したモデルで、次の微分方程式で表されます。
@@ -27,7 +31,7 @@ $$
 $\omega_{0}$は分布の中心で、$\Delta$は分布の幅を表します。
 このページでもCauchy分布を用いることにします。
 
-{{< figure src="natural-frequency.png" width=700 >}}
+![](natural-frequency.png)
 
 ## 秩序変数
 同期の具合をはかるパラメーターとして秩序変数(order parameter)を導入します。
@@ -156,8 +160,8 @@ $$
 ## 数値計算
 坂口-蔵本モデルをPythonを用いて実装しました。
 
-{{< gist yonesuke 8333db491c5833ae7cc5c7173c75fafd >}}
+<script src="https://gist.github.com/yonesuke/8333db491c5833ae7cc5c7173c75fafd.js"></script>
 
 $\alpha=\pi/4$のときに数値計算を行ったプロットした同期転移の図が次の通りである。
 
-{{< figure src="plot.png" width=700 >}}
+![](plot.png)
