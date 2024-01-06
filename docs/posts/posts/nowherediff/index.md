@@ -1,10 +1,14 @@
 ---
 title: "至るところ微分不可能な連続関数: 初等的な構成方法"
 date: 2021-05-30
+slug: nowherediff
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Analysis
 ---
 
 $[-1,1]$上の関数
@@ -58,7 +62,11 @@ $$
 =\left|\sum_{n=0}^{\infty}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|
 $$
 となりますが、$\gamma_{n}$が$n>m$で消えること、また$|x+y|\geq|x|-|y|$であることを用いると、
-$$\begin{aligned}\left|\sum_{n=0}^{\infty}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|=&\left|\sum_{n=0}^{m}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\=&\left|\left(\frac{3}{4}\right)^{m}\gamma_{m}+\sum_{n=0}^{m-1}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\\geq&\left(\frac{3}{4}\right)^{m}|\gamma_{m}|-\left|\sum_{n=0}^{m-1}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\\geq&3^{m}-\sum_{n=0}^{m-1}3^{m}=\frac{1}{2}(3^{m}+1)\to\infty\end{aligned}$$
+$$
+\begin{aligned}
+\left|\sum_{n=0}^{\infty}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|=&\left|\sum_{n=0}^{m}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\=&\left|\left(\frac{3}{4}\right)^{m}\gamma_{m}+\sum_{n=0}^{m-1}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\\geq&\left(\frac{3}{4}\right)^{m}|\gamma_{m}|-\left|\sum_{n=0}^{m-1}\left(\frac{3}{4}\right)^{n}\gamma_{n}\right|\\\\\geq&3^{m}-\sum_{n=0}^{m-1}3^{m}=\frac{1}{2}(3^{m}+1)\to\infty
+\end{aligned}
+$$
 となり、$\delta_{m}$を用いた点列の収束だと微分が発散することがわかります。
 よって$f$が微分不可能であることを示すことができました。
 
@@ -67,11 +75,10 @@ $f$自身は無限和で定義されているためプロットすることは�
 その代わりに$f_{k}$をプロットすることにしました。
 そのときのpythonファイルです。
 
-{{< gist yonesuke e4df40545421d82c3f92e7ce097ce687 >}}
+<script src="https://gist.github.com/yonesuke/e4df40545421d82c3f92e7ce097ce687.js"></script>
 
-$ k = 0,1,3,10 $の場合の$ f _ {k} $をプロットしたものが次のようになります。
-
-{{< figure src="plot.png" width=700 >}}
+$k = 0,1,3,10$の場合の$f_{k}$をプロットしたものが次のようになります。
+![](plot.png)
 
 $f_{0}$は$\varphi$にほかなりません。
 $f_{1}$は$\varphi(4x)$によって引き伸ばされたものを足し込むことによって微分不可能な点が新たに増えていることがわかります。
