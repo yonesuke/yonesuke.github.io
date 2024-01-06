@@ -1,10 +1,13 @@
 ---
 title: "LaTeXの設定"
 date: 2021-05-05
+slug: latex_setup
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - LaTeX
 ---
 
 $\LaTeX$で文章を書くときによく行う設定をまとめておきます。
