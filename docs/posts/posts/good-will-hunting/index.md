@@ -1,22 +1,28 @@
 ---
 title: "Good Will Hunting Problem"
 date: 2021-05-31
+slug: good_will_hunting
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Graph Theory
 ---
 
 マット・デイモンとロビン・ウィリアムズ主演の映画『グッド・ウィル・ハンティング/旅立ち』(Good Will Hunting)の中で、MITの廊下に掲示されたグラフ理論の問題を清掃をしていたマット・デイモンが解いてしまうシーンがあります。
 中学生とかのときに初めてこの映画を見たときにはよっぽど難しい問題なんだろうな、と思ったのですが、最近見返してみると定義に従って素直に計算すれば解ける問題だということがわかったのでまとめておきます。
 
-> Given the graph $G$, find
-> 1. The adjacency matrix, $A$
-> 2. The matrix giving the number of 3 step walks
-> 3. The generating function for walks from $i\to j$
-> 4. The generating function for walks from $1\to3$
+!!! quote
+    Given the graph $G$, find
 
-{{< figure src="graph.png" width=500 >}}
+    1. The adjacency matrix, $A$
+    2. The matrix giving the number of 3 step walks
+    3. The generating function for walks from $i\to j$
+    4. The generating function for walks from $1\to3$
+
+    ![](graph.png)
 
 <!-- more -->
 
@@ -95,7 +101,11 @@ $$
 F(z)=\frac{\det(\widetilde{I} _ {13}-z\widetilde{A} _ {13})}{\det(I-zA)}
 $$
 です。
-$$\begin{aligned}&\det(I-zA)=\det\begin{pmatrix}1 & -z & 0 & -z \\\\ -z & 1 & -2z & -z \\\\ 0 & -2z & 1 & 0 \\\\ -z & -z & 0 & 1\end{pmatrix} = 4z^4-2z^3-7z^2+1,\\\\&\det(\widetilde{I} _ {13}-z\widetilde{A}_{13})=\det\begin{pmatrix} -z & 1 & -z \\\\ 0 & -2z & 0 \\\\ -z & -z & 1 \end{pmatrix}=2z^{3}+2z^{2}\end{aligned}$$
+$$
+\begin{aligned}
+&\det(I-zA)=\det\begin{pmatrix}1 & -z & 0 & -z \\\\ -z & 1 & -2z & -z \\\\ 0 & -2z & 1 & 0 \\\\ -z & -z & 0 & 1\end{pmatrix} = 4z^4-2z^3-7z^2+1,\\\\&\det(\widetilde{I} _ {13}-z\widetilde{A}_{13})=\det\begin{pmatrix} -z & 1 & -z \\\\ 0 & -2z & 0 \\\\ -z & -z & 1 \end{pmatrix}=2z^{3}+2z^{2}
+\end{aligned}
+$$
 なので、母関数は
 $$
 F(z)=\frac{2z^{3}+2z^{2}}{4z^{4}-2z^{3}-7z^{2}+1}=\frac{2z^{2}}{4z^{3}-6z^{2}-z+1}
@@ -109,4 +119,4 @@ $$
 ## コード
 こういった行列計算はSympyを使うと便利です。
 
-{{< gist yonesuke 44694b88d8d92eebe7d69fd7182ac444 >}}
+<script src="https://gist.github.com/yonesuke/44694b88d8d92eebe7d69fd7182ac444.js"></script>
