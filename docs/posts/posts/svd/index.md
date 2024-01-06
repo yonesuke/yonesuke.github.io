@@ -1,15 +1,21 @@
 ---
 title: "特異値分解"
 date: 2021-05-31
+slug: svd
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Linear Algebra
 ---
 
 行列$A$を$m\times n$の実行列とします。
 このときある直交行列$U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$が存在して、
-$$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) & O_{r\times(n-r)} \\\\ O_{(m-r)\times r} & O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}$$
+$$
+U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) & O_{r\times(n-r)} \\\\ O_{(m-r)\times r} & O_{(m-r)\times (n-r)}\end{pmatrix}\in\mathbb{R}^{m\times n}
+$$
 となるようにできます。このような分解を特異値分解と言います。
 
 <!-- more -->
@@ -61,7 +67,9 @@ $$
     となります。
 
 よって、$\sqrt{\xi_{i}}=\sigma_{i}$と置くことで
-$$U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) & O_{r\times(n-r)} \\\\ O_{(m-r)\times r} & O_{(m-r)\times (n-r)}\end{pmatrix}$$
+$$
+U^{\mathsf{T}}AV=\Sigma=\begin{pmatrix}\mathrm{diag}(\sigma_{1},\dots,\sigma_{r}) & O_{r\times(n-r)} \\\\ O_{(m-r)\times r} & O_{(m-r)\times (n-r)}\end{pmatrix}
+$$
 となることが示されました。
 特に$A=U\Sigma V^{\mathsf{T}}$もわかります。
 
@@ -87,7 +95,7 @@ $$
 $\sigma_{i}(M)$を行列$M$の$i$番目に大きい特異値とします。
 また、ランクが$r$のときに、$i>r$であれば$\sigma_{i}(M)=0$としておきます。
 
-- 最大特異値について$\sigma_{1}(M)=\max_{\\|x\\|=1}\\| Mx\\|$です。
+- 最大特異値について$\sigma_{1}(M)=\max_{\|x\|=1}\| Mx\|$です。
 - $\sigma_{i}(M)=\sigma_{1}(M-M_{i-1})$です。
 - $\sigma_{1}(A+B)\leq\sigma_{1}(A)+\sigma_{1}(B)$です。三角不等式からわかります。
 - $i,j\in\mathbb{N},i+j-1\leq n$について$\sigma_{i}(A)+\sigma_{j}(B)\geq\sigma_{i+j-1}(A+B)$です。
@@ -99,31 +107,32 @@ $$
 ここで$\mathrm{rank}(A_{i-1}+B_{j-1})\leq i+j-2=\mathrm{rank}((A+B)_{i+j-2})$を用いました。
 
 ### 証明
-まず$\\|A-A_{k}\\|\_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
-また、$i>k$で$\sigma_{i}(B)=0$より
-$$
-\sigma_{i+k}(A)=\sigma_{i+(k+1)-1}((A-B)+B)\leq\sigma_{i}(A-B)+\sigma_{k+1}(B)=\sigma_{i}(A-B)
-$$
-がわかるので、
-$$
-\begin{aligned}
-\\|A-B\\|^{2}\_{F}=&\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\\\geq&\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\\|A-A_{k}\\|_{F}^{2}
-\end{aligned}
-$$
-となり、示されました。
+!!! abstract "Proof"
+    まず$\|A-A_{k}\|_{F}^{2}=\sum_{i=k+1}^{r}\sigma_{i}^{2}$です。
+    また、$i>k$で$\sigma_{i}(B)=0$より
+    $$
+    \sigma_{i+k}(A)=\sigma_{i+(k+1)-1}((A-B)+B)\leq\sigma_{i}(A-B)+\sigma_{k+1}(B)=\sigma_{i}(A-B)
+    $$
+    がわかるので、
+    $$
+    \begin{aligned}
+    \\|A-B\\|^{2}\_{F}=&\sum_{i=1}^{n}\sigma_{i}^{2}(A-B)\geq\sum_{i=1}^{r-k}\sigma_{i}^{2}(A-B)\\\\\geq&\sum_{i=1}^{r-k}\sigma_{i+k}^{2}(A)=\sum_{i=k+1}^{r}\sigma_{i}^{2}(A)=\\|A-A_{k}\\|_{F}^{2}
+    \end{aligned}
+    $$
+    となり、示されました。
 
 ## 実装
 実装の流れは$A^{\mathsf{T}}A$の固有値と固有ベクトルを計算したあと、そこから$U,\Sigma,V$を求めるだけです。
 今回はこの画像を使ってみましょう。
 
-{{< figure src="https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg" width=700 >}}
+![image](https://image.ganref.jp/photos/members/takudashin20120925/49106026da62b707f8d87e24fe34b9e3_3.jpg)
 
 コードはこんな感じです。
 
-{{< gist yonesuke 81753f5b58643b2ff508f8daf66e3044 >}}
+<script src="https://gist.github.com/yonesuke/81753f5b58643b2ff508f8daf66e3044.js"></script>
 
 これをもとにrankが1,2,3,10,30,50の場合のグラフをプロットすると次のようになります。
 
-{{< figure src="rank.png" width=700 >}}
+![](rank.png)
 
 rankが50の段階でもかなり元の画像に近づいてるのが確認できます。
