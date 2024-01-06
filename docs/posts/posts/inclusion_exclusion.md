@@ -1,10 +1,14 @@
 ---
 title: "包除原理"
 date: 2021-05-16
+slug: inclusion_exclusion
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Analysis
 ---
 
 測度空間$(X,\mathcal{B},\mu)$の有限測度集合$A_{i}(i=1,\dots,n)$に対して
