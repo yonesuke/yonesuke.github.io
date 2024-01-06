@@ -1,13 +1,18 @@
 ---
 title: "Gram行列の固有値の数値計算"
 date: 2021-08-02
+slug: gram_eigen
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Machine Learning
+    - Julia
 ---
 
-カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\\{x_{i}\\}\_{i=1}^{n}$に対するGram行列(グラム行列)は
+カーネル関数$k(\cdot,\cdot)$が与えられたとき、データ点$\{x_{i}\}_{i=1}^{n}$に対するGram行列(グラム行列)は
 $$
 K=\begin{pmatrix}k(x_{1},x_{1}) & \cdots & k(x_{1},x_{n})\\\\\vdots & \ddots & \vdots\\\\ k(x_{n},x_{1}) & \cdots & k(x_{n},x_{n})\end{pmatrix}
 $$
@@ -25,7 +30,7 @@ $$
 
 ## ガウス過程に従う関数の生成
 次にガウス過程から関数をサンプルすることを考えましょう。$f\sim\mathcal{GP}(m,k)$について、特にかんたんのために平均を$0$としておきましょう。
-このとき、$\\{x_{i}\\}_{i=1}^{n}$上で関数$f$のベクトル$\bm{f}$は
+このとき、$\{x_{i}\}_{i=1}^{n}$上で関数$f$のベクトル$\bm{f}$は
 $$
 \bm{f}\sim\mathcal{N}(\bm{0},K)
 $$
@@ -51,7 +56,8 @@ ERROR: PosDefException: matrix is not positive definite; Cholesky factorization 
 と帰ってきて、Gram行列が正定値でないと言われてしまいます。理論ではGram行列は正定値であるはずなので、これは数値的な誤差に起因していると考えられます。
 そこでGram行列の固有値分布を確認してみることにします。この際、RBFカーネルだけでなく周期カーネルとMatérnカーネルについても固有値分布と対応するガウス過程のサンプルをプロットしました。この結果が次のようになります。
 
-{{< figure src="out.png">}}
+![](out.png)
+
 固有値分布については降順にソートしたものの絶対値をとったものをプロットしています。ガウス過程のサンプル方法については後述します。
 
 RBFカーネルと周期カーネルの固有値分布に着目すると、指数的な減衰の後、途中で$0$を横切って負の値をとっていることが確認できます。これは固有値が非常に小さく、数値的な誤差によって負だと出力してしまったケースだと考えることができます。一方で、Matérnカーネルの固有値分布に着目すると、ベキ的な減衰が起こっており、負の値を取る等の誤差が見られるわけではありません。
@@ -64,7 +70,8 @@ RBFカーネルと周期カーネルの固有値分布に着目すると、指�
 コレスキー分解にこだわらなければ、$K=M^{2}$となる対称行列$M$を見つけることで$M$と$n$次元の独立標準正規分布に従う乱数との行列・ベクトル積を計算することにより多次元ガウス分布を生成しても構いません。
 実は行列のルートを計算するJulia実装の関数`sqrt`の内部実装では、非常に小さい負の固有値があればそれを$0$に置き換えて計算してくれるそうです。[公式ページ](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#Base.sqrt)によると次のような説明があります。
 
-> If `A` is real-symmetric or Hermitian, its eigendecomposition (eigen) is used to compute the square root. For such matrices, eigenvalues λ that appear to be slightly negative due to roundoff errors are treated as if they were zero More precisely, matrices with all eigenvalues `≥ -rtol*(max |λ|)` are treated as semidefinite (yielding a Hermitian square root), with negative eigenvalues taken to be zero. `rtol` is a keyword argument to `sqrt` (in the Hermitian/real-symmetric case only) that defaults to machine precision scaled by `size(A,1)`.
+!!! quote
+    If `A` is real-symmetric or Hermitian, its eigendecomposition (eigen) is used to compute the square root. For such matrices, eigenvalues λ that appear to be slightly negative due to roundoff errors are treated as if they were zero More precisely, matrices with all eigenvalues `≥ -rtol*(max |λ|)` are treated as semidefinite (yielding a Hermitian square root), with negative eigenvalues taken to be zero. `rtol` is a keyword argument to `sqrt` (in the Hermitian/real-symmetric case only) that defaults to machine precision scaled by `size(A,1)`.
 
 十分に小さい負の固有値についてはゼロとしてしまっても(数値計算の上では)問題ないので、これを用いた計算をするならば、
 ```julia
