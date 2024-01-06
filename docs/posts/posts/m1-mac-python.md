@@ -1,9 +1,12 @@
 ---
 title: "M1 MacでのPython環境構築(tensorflowとか)"
 date: 2022-07-11
+slug: m1_mac_python
 draft: false
 authors:
     - yonesuke
+categories:
+    - Python
 ---
 
 Apple Siliconが搭載されたMacが手元に何台かあって、その上で色々と研究をしていたのですが、pythonの環境構築に結構手こずってしまいました。何度か試してうまく行ったものを備忘録として記しておきます。
@@ -13,7 +16,8 @@ Apple Siliconが搭載されたMacが手元に何台かあって、その上で�
 <!-- more -->
 
 特にtensorflowのインストールが難しかったのですが、以下の記事が参考になりました。ありがとうございます。
-- https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb
+
+- [https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb](https://qiita.com/chipmunk-star/items/90931fb5180b8024adcb)
 
 ## pyenv
 はじめにpyenvをインストールします。これは[pyenvのGitHubページ](https://github.com/pyenv/pyenv#installation)に従えばうまく動きます。
