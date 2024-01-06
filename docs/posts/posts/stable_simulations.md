@@ -1,10 +1,14 @@
 ---
 title: "安定分布に従うノイズの生成方法"
 date: 2021-04-21
+slug: stable_simulations
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Probability
 ---
 
 安定分布に従うノイズの生成方法について簡単にまとめておきます。
@@ -14,6 +18,7 @@ authors:
 
 ## Weronの方法
 はじめに区間$(-\pi/2,\pi/2)$上の一様分布から乱数$V$を、平均$1$の指数分布に従う乱数$W$をそれぞれ生成します。
+
 - $\alpha\ne1$の場合、
     $$
     \begin{aligned}
@@ -21,7 +26,11 @@ authors:
     \end{aligned}
     $$
     を計算します。ここで$B_{\alpha,\beta},S_{\alpha,\beta}$はそれぞれ、
-    $$\begin{aligned}B_{\alpha,\beta}&=\frac{\arctan(\beta\tan(\pi\alpha/2))}{\alpha},\\\\S_{\alpha,\beta}&=\left(1+\beta^{2}\tan^{2}(\pi\alpha/2)\right)^{1/(2\alpha)}\end{aligned}$$
+    $$
+    \begin{aligned}
+    B_{\alpha,\beta}&=\frac{\arctan(\beta\tan(\pi\alpha/2))}{\alpha},\\\\S_{\alpha,\beta}&=\left(1+\beta^{2}\tan^{2}(\pi\alpha/2)\right)^{1/(2\alpha)}
+    \end{aligned}
+    $$
     です。
 
 - $\alpha=1$の場合には、
