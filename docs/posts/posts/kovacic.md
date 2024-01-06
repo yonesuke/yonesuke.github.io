@@ -1,10 +1,14 @@
 ---
 title: "Kovacicのアルゴリズムを用いて調和振動子を解く"
 date: 2022-06-09
+slug: kovacic
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Differential Equation
 ---
 
 Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解くアルゴリズムです。与えられた微分方程式が解くことができる場合にはその解を出力し、解くことができない場合にはそうであることがわかるという非常に便利なアルゴリズムになっています。ここで言う"解ける"という言葉は微分ガロア理論の意味で用いられています。僕自身は微分ガロア理論には詳しくはないので細かいことはわかりませんが、細かいことがわからなくてもKovacicのアルゴリズムを使うことができるものになっています。
@@ -14,7 +18,7 @@ Kovacicのアルゴリズムは有利係数の2階線形常微分方程式を解
 以前所属していた研究室には微分方程式の非可積分性に関する研究があり、その中でKovacicのアルゴリズムを知る機会がありました。Kovacicのアルゴリズムが適用できる微分方程式で僕が一番馴染み深かったのが調和振動子のシュレディンガー方程式でした。実際にその方程式に対してKovacicのアルゴリズムを適用するとたしかに固有エネルギーとその固有状態を得ることができたときはものすごく感動しました。物理の授業で習うような生成消滅演算子を用いた方法でなくとも、可積分なのかどうかという観点からその固有エネルギーを求めることができるのは非常に面白いと思います。というわけでここでその計算の流れを紹介したいと思います。
 
 ここでの計算はすべて
-https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445
+[https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445](https://tetobourbaki.hatenablog.com/entry/2018/11/03/231445)
 とそこに添付のPDFを参考にしています。
 
 ## 調和振動子
@@ -27,7 +31,9 @@ $$
 \left(-\frac{\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}+\frac{m\omega^{2}}{2}x^{2}\right)\phi(x)=E\phi(x)
 $$
 となります。この方程式は解くことができて、固有エネルギーと固有状態は$n\in\mathbb{Z}_ {\geq 0}$に対して
+
 $$\begin{aligned}&E=\left(n+\frac{1}{2}\right)\hbar\omega,\\\\&\phi(x)=H_ {n}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)\exp\left(-\frac{m\omega}{2\hbar}x^{2}\right)\end{aligned}$$
+
 で与えられます。規格化の定数は除いています。$H_{n}$は$n$次のエルミート多項式です。
 
 
