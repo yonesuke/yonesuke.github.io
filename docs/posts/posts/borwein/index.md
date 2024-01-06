@@ -64,7 +64,7 @@ f(z)=\frac{e^{iaz}}{z^{n}}
 $$
 とします。このとき、次のような積分経路$C$を考えます。
 
-{{< figure src="path.png" width=500 >}}
+![](path.png)
 
 $\gamma_{\varepsilon}$は半径$\varepsilon$の円の上半面を時計回りに回る経路で、$\Gamma_{R}$は半径$R$の上半面を反時計回りに回る経路です。
 $f(z)$は$C$内で正則なので$\oint_{C}f(z)dz=0$です。
@@ -122,7 +122,11 @@ $$
 と計算できました。
 
 これを$\tau_{n}$に代入することで、
-$$\begin{aligned}\tau_{n}=&\frac{1}{(2i)^{n}\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)\frac{\pi i^{n}(\bm{p}\cdot\bm{a})^{n-1}}{2(n-1)!}\\\\=&\frac{\pi}{2^{n+1}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)(\bm{p}\cdot\bm{a})^{n-1}\end{aligned}$$
+$$
+\begin{aligned}
+\tau_{n}=&\frac{1}{(2i)^{n}\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)\frac{\pi i^{n}(\bm{p}\cdot\bm{a})^{n-1}}{2(n-1)!}\\\\=&\frac{\pi}{2^{n+1}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{1},\dots,p_{n}=\pm1}p_{1}\cdots p_{n}\mathrm{sgn}\left(\bm{p}\cdot\bm{a}\right)(\bm{p}\cdot\bm{a})^{n-1}
+\end{aligned}
+$$
 となり、示されました。
 
 ## 特殊な場合
@@ -161,12 +165,20 @@ $$
 と大幅に簡約化することができました。
 
 先程は$a_{1}\geq\sum_{k=2}^{n}a_{k}$という条件を考えていましたが、これを絶妙に破る場合を考えましょう。
-$$\begin{aligned}&2a_{k}\geq a_{n}>0,\quad k=1,2,\dots,n-1,\\\\&\sum_{k=2}^{n}a_{k}>a_{1}\geq\sum_{k=2}^{n-1}a_{k}.\end{aligned}$$
+$$
+\begin{aligned}
+&2a_{k}\geq a_{n}>0,\quad k=1,2,\dots,n-1,\\\\&\sum_{k=2}^{n}a_{k}>a_{1}\geq\sum_{k=2}^{n-1}a_{k}.
+\end{aligned}
+$$
 １つ目の条件は数列が単調非増加であれば常に成り立ちます。２つ目の条件については$n-1$番目の数列までは先程の条件を満たしますが、$n$番目について$a_{1}$を超えてしまうような状況です。
 このとき、少なくとも１つの$p_{k}$が1であれば$a_{1}+\sum_{k\geq2}a_{k}>0$であり、
 $p_{2}=\cdots=p_{n}=-1$のときには$a_{1}+\sum_{k\geq2}a_{k}<0$です。
 よって、
-$$\begin{aligned}\tau_{n}=&\frac{\pi}{2^{n}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{2},\dots,p_{n}=\pm1}p_{2}\cdots p_{n}\mathrm{sgn}\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)^{n-1}\\\\=&\frac{\pi}{2^{n}(n-1)!\prod_{k=1}^{n}a_{k}}\left[\sum_{p_{2},\dots,p_{n}=\pm1}p_{2}\cdots p_{n}\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)^{n-1}-2(a_{2}+\cdots+a_{n}-a_{1})^{n-1}\right]\\\\=&\frac{\pi}{2a_{1}}-\frac{\pi(a_{2}+\cdots+a_{n}-a_{1})^{n-1}}{2^{n-1}(n-1)!\prod_{k=1}^{n}a_{k}}\end{aligned}$$
+$$
+\begin{aligned}
+\tau_{n}=&\frac{\pi}{2^{n}(n-1)!\prod_{k=1}^{n}a_{k}}\sum_{p_{2},\dots,p_{n}=\pm1}p_{2}\cdots p_{n}\mathrm{sgn}\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)^{n-1}\\\\=&\frac{\pi}{2^{n}(n-1)!\prod_{k=1}^{n}a_{k}}\left[\sum_{p_{2},\dots,p_{n}=\pm1}p_{2}\cdots p_{n}\left(a_{1}+\sum_{k\geq2}p_{k}a_{k}\right)^{n-1}-2(a_{2}+\cdots+a_{n}-a_{1})^{n-1}\right]\\\\=&\frac{\pi}{2a_{1}}-\frac{\pi(a_{2}+\cdots+a_{n}-a_{1})^{n-1}}{2^{n-1}(n-1)!\prod_{k=1}^{n}a_{k}}
+\end{aligned}
+$$
 と求まります。
 
 ## はじめに戻って
@@ -186,7 +198,7 @@ $$
 
 この結果をかんたんにJuliaで確認したコードを添付しておきます。
 
-{{< gist yonesuke df1d4f63254ea6e3ee75420a66b9f6b0 >}}
+<script src="https://gist.github.com/yonesuke/df1d4f63254ea6e3ee75420a66b9f6b0.js"></script>
 
 この出力結果は
 ```
