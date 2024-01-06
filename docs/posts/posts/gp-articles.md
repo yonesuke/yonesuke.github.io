@@ -1,10 +1,14 @@
 ---
 title: "ガウス過程に関する文献"
 date: 2021-05-06
+slug: gp_articles
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Machine Learning
 ---
 
 ガウス過程とその機械学習への応用に関する文献はたくさんあります。ここで特に有用だと思ったものを紹介していきます。
