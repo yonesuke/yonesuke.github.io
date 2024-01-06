@@ -2,13 +2,14 @@
 title: "ランダムグラフ上の最小全域木"
 date: 2022-07-20
 slug: random_mst
-draft: true
+draft: false
 math: true
 authors:
     - yonesuke
 categories:
     - Mathematics
     - Probability
+    - C++
 ---
 
 集中不等式に関する勉強をしている中でランダムグラフの最小全域木の重み和の期待値が頂点数無限の極限で$\zeta(3)$に収束するという驚異的な定理を目にしました。
@@ -41,7 +42,7 @@ categories:
 
 頂点数が$n$のときの最小全域木の重み和を$T_{n}$という確率変数で表すことにすると、実はその期待値の極限は次のように表せることが知られています。
 
-!!! success "Theorem: Alan M. Frieze 1985"
+!!! success "Theorem: Alan M. Frieze 1985 [^ref]"
     $$
     \lim_{n\to\infty}\mathbb{E}[T_{n}]=\zeta(3)
     $$
@@ -49,3 +50,7 @@ categories:
 ここで、$\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$は$\Re s>1$で定義されるリーマンゼータ関数です。
 
 ## Numerical Simulation
+
+See [:simple-github: yonesuke/randomMST](https://github.com/yonesuke/randomMST) for C++ implementation.
+
+[^ref]: Frieze, Alan M.. “On the value of a random minimum spanning tree problem.” [Discret. Appl. Math. 10 (1985): 47-56](https://www.sciencedirect.com/science/article/pii/0166218X85900587).
