@@ -1,10 +1,14 @@
 ---
 title: "Borwein integral"
 date: 2021-07-13
+slug: borwein
 draft: false
 math: true
 authors:
     - yonesuke
+categories:
+    - Mathematics
+    - Analysis
 ---
 
 Borwein積分は$\sin x/x$に関する興味深い性質を持った積分のことです。
