@@ -46,8 +46,8 @@ plugins:
   - search
   - social
   - tags
-  - mkdocs-jupyter:
-      include_requirejs: true
+  # - mkdocs-jupyter:
+  #     include_requirejs: true
 extra:
   social:
     - icon: fontawesome/solid/house-chimney
