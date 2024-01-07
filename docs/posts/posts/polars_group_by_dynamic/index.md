@@ -37,12 +37,12 @@ df_pandas = yf.download('7203.T', start="2000-01-01", end="2020-12-31").reset_in
         pl.col('Close').last(),
         pl.col('Volume').sum()
     ])
-    .drop(columns=['Date'])
+    # .drop(columns=['Date'])
 )
 ```
 ![Alt text](polars.png)
 
-`label='datapoint'`の引数を指定することで、indexに指定した`Date`の中に存在する値の中で初出の値を利用していることが確認できる。個人的にはpandasで実装していたときに欲しかった機能だったので、うれしい。
+`label='datapoint'`の引数を指定することで、indexに指定した`Date`の中に存在する値の中で初出の値を利用していることが確認できる。個人的にはpandasで実装していたときに欲しかった機能だったので嬉しい。今回の場合は`Month_Start`と`Month_End`のcolumnを作成しているので`.drop(columns=['Date'])`することになるので関係ないかもだが。
 
 ## Pandas
 
