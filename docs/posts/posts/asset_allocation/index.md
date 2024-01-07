@@ -1,6 +1,6 @@
 ---
 title: "投資家のポートフォリオ最適化問題"
-date: 2024-01-03
+date: 2024-01-07
 slug: asset_allocation
 draft: false
 slug: asset_allocation
