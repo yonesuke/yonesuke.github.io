@@ -1,5 +1,6 @@
 ## Publications
-
+- S. Harada, R. Yoneda, and H. Kashima, Treatment Effect Estimation for Graph-Structured Targets, 2024.
+    - [:simple-arxiv: arXiv:2412.20436](https://arxiv.org/abs/2412.20436)
 - R. Yoneda and K. Harada, Neural network approach to scaling analysis of critical phenomena, [Physical Review E 107 (4), 044128](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.107.044128).
     - [:simple-arxiv: arXiv:2209.01777](https://arxiv.org/abs/2209.01777)
     - [:simple-github: yonesuke/jaxfss (jax implementation)](https://github.com/yonesuke/jaxfss)
