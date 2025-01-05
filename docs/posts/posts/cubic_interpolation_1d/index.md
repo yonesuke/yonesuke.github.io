@@ -21,7 +21,7 @@ torchにはデフォルトでスプライン補間の実装がないなあと思
 
 この記事を書くにあたっては以下のサイト・本を参考にさせていただいた。
 
-* https://www.mk-mode.com/rails/docs/INTERPOLATION_SPLINE.pdf
+* [https://www.mk-mode.com/rails/docs/INTERPOLATION_SPLINE.pdf](https://www.mk-mode.com/rails/docs/INTERPOLATION_SPLINE.pdf)
 * [齊藤宣一 数値解析入門](https://www.utp.or.jp/book/b306462.html)
 
 ## スプライン補間の理論
