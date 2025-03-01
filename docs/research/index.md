@@ -1,4 +1,5 @@
 ## Publications
+- 水門善之, 米田亮介, KAN ベース自己符号化器を用いた国債イールドカーブのファクターモデルの構築, [人工知能学会第二種研究会資料 2025 (FIN-034), 185-188](https://www.jstage.jst.go.jp/article/jsaisigtwo/2025/FIN-034/2025_185/_article/-char/ja/).
 - S. Harada, R. Yoneda, and H. Kashima, Treatment Effect Estimation for Graph-Structured Targets, 2024.
     - [:simple-arxiv: arXiv:2412.20436](https://arxiv.org/abs/2412.20436)
 - R. Yoneda and K. Harada, Neural network approach to scaling analysis of critical phenomena, [Physical Review E 107 (4), 044128](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.107.044128).
