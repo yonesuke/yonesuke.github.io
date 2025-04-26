@@ -1,5 +1,5 @@
 ---
-title: "``gpytorch`を使う`"
+title: "gpytorchを使う"
 date: 2025-04-26
 slug: use_gpytorch
 draft: false
