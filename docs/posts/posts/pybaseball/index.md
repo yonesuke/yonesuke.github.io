@@ -110,10 +110,7 @@ fig.update_layout(
 )
 fig.show()
 ```
-
-```plotly
-{"file_path": "posts/posts/pybaseball/ohtani_vs_judge_hr.json"}
-```
+<iframe src="posts/posts/pybaseball/ohtani_vs_judge_hr.html"></iframe>
 
 ## Barrel Zoneについて
 
