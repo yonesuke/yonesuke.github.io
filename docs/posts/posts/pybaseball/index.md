@@ -235,3 +235,13 @@ fig.show()
 である。この打球を実際に見てみるとこんな感じ。少し上がり過ぎたか風に押し戻されたのかも。滞空時間はかなり長いことが分かる。
 
 <iframe src="https://streamable.com/m/aaron-nola-in-play-run-s-to-shohei-ohtani?partnerId=web_video-playback-page_video-share" width="560" height="315"></iframe>
+
+一方で全然Barrel Zoneに入っていないのにホームランになったものもある。これも一つ見てみると、
+
+- 2024年4月8日、MILvsCINでのデラクルーズ選手の打球（打球速度86.5mph、打球角度21度）
+
+である。この打席を詳しく見るとデラクルーズ選手のランニングホームランだったことが分かる。さすがの韋駄天ぷりがこうしたデータに反映されていて面白い。
+
+<iframe src="https://streamable.com/m/bryan-hudson-in-play-no-out-to-elly-de-la-cruz?partnerId=web_video-playback-page_video-share" width="560" height="315"></iframe>
+
+<iframe src="https://streamable.com/m/breaking-down-elly-de-la-cruz-s-home-run-x5811?partnerId=web_video-playback-page_video-share" width="560" height="315"></iframe>
