@@ -110,7 +110,7 @@ fig.update_layout(
 )
 fig.show()
 ```
-<iframe src="posts/posts/pybaseball/ohtani_vs_judge_hr.html"></iframe>
+<iframe src="ohtani_vs_judge_hr.html"></iframe>
 
 ## Barrel Zoneについて
 
