@@ -110,7 +110,7 @@ fig.update_layout(
 )
 fig.show()
 ```
-<iframe src="https://yonesuke.github.io/posts/posts/pybaseball/ohtani_vs_judge_hr.html" width="100%" frameborder=0></iframe>
+<iframe src="https://yonesuke.github.io/posts/posts/pybaseball/ohtani_vs_judge_hr.html" width="100%" height="600" overflow="auto" frameborder=0></iframe>
 
 ## Barrel Zoneについて
 
@@ -148,9 +148,7 @@ fig.update_layout(
 fig.show()
 ```
 
-```plotly
-{"file_path": "posts/posts/pybaseball/launch_speed_angle.json"}
-```
+<iframe src="https://yonesuke.github.io/posts/posts/pybaseball/launch_speed_angle.html" width="100%" height="600" overflow="auto" frameborder=0></iframe>
 
 次に、Barrel Zoneに入っている打球のうち、ホームランになったものとならなかったものを分けて可視化してみる。
 
@@ -227,9 +225,7 @@ fig.update_layout(
 fig.show()
 ```
 
-```plotly
-{"file_path": "posts/posts/pybaseball/barrel_zone_home_run.json"}
-```
+<iframe src="https://yonesuke.github.io/posts/posts/pybaseball/barrel_zone_home_run.html" width="100%" height="600" overflow="auto" frameborder=0></iframe>
 
 これを見ていると、Barrel Zoneに入っている打球はホームランになる確率が高いことがわかる。また、Barrel Zoneの中でも特に打球速度が大きいものを打った選手を見ていると、ジャッジ選手と大谷選手が目立つ。さすがと言わざるを得ない。
 また、Barrel Zoneに入っていて、しかもかなり打球速度・角度ともに良いところにあるのにも関わらずホームランになっていないものも見受けられる。その一つが、
