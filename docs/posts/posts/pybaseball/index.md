@@ -112,7 +112,7 @@ fig.show()
 ```
 
 ```plotly
-{"file_path": "posts/posts/pybaseball/ohtani_vs_judge_hr_2024.json"}
+{"file_path": "posts/posts/pybaseball/ohtani_vs_judge_hr.json"}
 ```
 
 ## Barrel Zoneについて
@@ -237,7 +237,7 @@ fig.show()
 これを見ていると、Barrel Zoneに入っている打球はホームランになる確率が高いことがわかる。また、Barrel Zoneの中でも特に打球速度が大きいものを打った選手を見ていると、ジャッジ選手と大谷選手が目立つ。さすがと言わざるを得ない。
 また、Barrel Zoneに入っていて、しかもかなり打球速度・角度ともに良いところにあるのにも関わらずホームランになっていないものも見受けられる。その一つが、
 
-- 2024年9月30日、NYM vs ATLの試合での大谷選手の打球
+- 2024年8月8日、PHIvsLADでの大谷選手の打球
 
 である。この打球を実際に見てみるとこんな感じ。少し上がり過ぎたか風に押し戻されたのかも。滞空時間はかなり長いことが分かる。
 
