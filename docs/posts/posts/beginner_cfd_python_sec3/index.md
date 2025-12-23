@@ -1,7 +1,7 @@
 ---
 title: "『Pythonによるはじめての数値流体力学』第3章"
 date: 2025-12-21
-slug: begginer_cfd_python_sec3
+slug: beginner_cfd_python_sec3
 draft: false
 math: true
 authors:
