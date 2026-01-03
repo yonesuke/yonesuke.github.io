@@ -1,6 +1,6 @@
 ---
 title: "高速なToeplitz 3重対角行列ソルバー: TDMA vs Cyclic Reduction"
-date: 2025-01-03
+date: 2026-01-03
 slug: toeplitz_tridiagonal_solver
 draft: false
 math: true
@@ -17,6 +17,8 @@ categories:
 
 !!! warning
     この記事は Google Antigravity を使用して作成されました。
+    あくまで私自身の勉強した結果の備忘録としてのメモと思っていただければと思います。
+    （正確性はかならずしも担保されません。）
     作成過程で知らないことが多くあり、非常に勉強になりました。
 
 <!-- more -->
@@ -49,18 +51,22 @@ TDMA はガウスの消去法を3重対角行列に特化させたアルゴリ�
 
 1.  **前進消去 (Forward Elimination)**:
     対角成分より下の要素 $a$ を消去し、上三角行列に変形します。Toeplitz 行列の場合でも係数がステップごとに変化するため、配列 $c', d'$ を更新していきます。
+
     $$
     c'_1 = \frac{c}{b}, \quad d'_1 = \frac{d_1}{b}
     $$
+    
     $$
     c'_i = \frac{c}{b - a c'_{i-1}}, \quad d'_i = \frac{d_i - a d'_{i-1}}{b - a c'_{i-1}} \quad (i = 2, \dots, N)
     $$
 
 2.  **後退代入 (Back Substitution)**:
     変形された上三角行列を後ろから解きます。
+    
     $$
     x_N = d'_N
     $$
+    
     $$
     x_i = d'_i - c'_i x_{i+1} \quad (i = N-1, \dots, 1)
     $$
