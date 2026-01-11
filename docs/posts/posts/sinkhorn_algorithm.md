@@ -70,6 +70,7 @@ $$
 
 ### 2.1 ラグランジュ関数
 制約条件は、行和と列和がともに $1$ になることである。
+
 1. $\sum_{j} P_{ij} = 1$
 2. $\sum_{i} P_{ij} = 1$
 
@@ -91,6 +92,7 @@ $$
 $$
 \log P_{ij} = \frac{\alpha_i + \beta_j - C_{ij}}{\epsilon}
 $$
+
 $$
 P_{ij} = \exp\left( \frac{\alpha_i}{\epsilon} \right) \exp\left( -\frac{C_{ij}}{\epsilon} \right) \exp\left( \frac{\beta_j}{\epsilon} \right)
 $$
