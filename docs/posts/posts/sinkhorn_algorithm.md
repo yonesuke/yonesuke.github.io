@@ -46,9 +46,18 @@ $$
 \sum_{j=1}^N P_{ij} = 1, \quad \sum_{i=1}^N P_{ij} = 1, \quad P_{ij} \ge 0
 $$
 
-DeepSeek が最近発表した **Manifold Constrained Hyper Connections (MHC)** などの文脈でも、このようなコスト行列 $C$ を入力として、対応する確率的なマッチング $P$ を得たい場面が頻出する。
-MHCでは、エキスパート間のルーティングや情報の集約において、制約付きの割り当て問題を効率的に解く必要があり、まさに Sinkhorn アルゴリズムの高速性が活きる場面の一つである。
+DeepSeek が最近発表した **Manifold Constrained Hyper Connections (MHC)** などの文脈でも、このアルゴリズムが重要な役割を果たしている。
 
+<details>
+<summary>詳細: DeepSeek MHC における Sinkhorn アルゴリズムの役割</summary>
+
+DeepSeek が提案した **MHC (Manifold Constrained Hyper Connections)** は、従来の Residual Connection の限界（勾配消失や表現崩壊）を克服するために、残差ストリームを多層化し、それらを動的に混合する手法である。
+
+単純な線形結合（Hyper-Connections）では深層モデルにおいて学習が不安定になる（Identity Mapping の喪失や信号の爆発）という問題があった。MHC ではこれを解決するために、ストリーム間を混合する行列 $H_{res}$ に対して **「二重確率行列（Doubly Stochastic Matrix）である」という多様体上の制約** を課す。
+
+この制約を満たすために、MHC の各レイヤーの順伝播プロセス（Forward Pass）において、学習可能な重み行列に対して **Sinkhorn-Knopp アルゴリズム** を適用し、正規化を行っている。これにより、信号のノルムが保存され、非常に深いネットワークでも安定した学習が可能になる。
+つまり、Sinkhorn アルゴリズムはここでは単なるデータ解析のツールではなく、ニューラルネットワークの微分可能なレイヤーの一部として組み込まれ、モデルの安定性に寄与しているのである。
+</details>
 しかし、これを厳密な線形計画法で解くのは計算コストが高く ($O(N^3)$)、微分可能でもない。
 
 ### 1.2 エントロピー正則化の導入
