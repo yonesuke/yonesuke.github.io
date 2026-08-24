@@ -177,3 +177,15 @@ pyrightconfig.json
 
 # mkdocs
 .cache/
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Generated / build output
+public/
+
+# Legacy empty dirs (kept out of VCS)
+content/
+layouts/
+static/
+cactus_layouts/
